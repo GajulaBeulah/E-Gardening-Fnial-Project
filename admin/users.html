@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>User Management - Plant Store Admin</title>
+ <link rel="stylesheet" href="../../header.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ✅ Proper Page Layout */
+body{
+    background: linear-gradient(135deg,#e8f5e9,#f1f8e9);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* ✅ Header Full Width */
+header{
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color:#fff;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    position:sticky;
+    top:0;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+}
+
+header{
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+#navbar{
+    display: flex;
+    gap: 0;
+    align-items: center;
+}
+
+.dropdown{
+    position: relative;
+}
+
+.dropdown > a,
+#navbar > a{
+    display: block;
+    padding: 12px 18px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1b5e20;
+    min-width: 200px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,.2);
+}
+
+.dropdown:hover .dropdown-menu{
+    display: flex;
+    flex-direction: column;
+}
+
+.dropdown-menu a{
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.icons{
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.icons span{
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-toggle{
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+/* ✅ Centered Content */
+.dashboard-container{
+    max-width:1200px;
+    width:100%;
+    margin:30px auto;
+    padding:0 20px;
+    flex:1;
+}
+
+/* Page Header */
+.page-header{
+    background: linear-gradient(135deg,#1b5e20,#2e7d32);
+    color:#fff;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.back-btn{
+    padding:8px 16px;
+    background:#fff;
+    color:#1b5e20;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* Table */
+.data-table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.data-table thead{
+    background:linear-gradient(135deg,#2e7d32,#1b5e20);
+    color:#fff;
+}
+
+.data-table th,
+.data-table td{
+    padding:14px;
+    text-align:left;
+}
+
+.data-table tr{
+    border-bottom:1px solid #eee;
+}
+
+.action-btn{
+    padding:6px 12px;
+    margin:0 3px;
+    background:#2e7d32;
+    color:#fff;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.action-btn.save{
+    background:#1976d2;
+}
+
+.action-btn.delete{
+    background:#d32f2f;
+}
+
+/* ✅ Proper Footer */
+footer{
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color:#fff;
+    padding:40px 30px;
+    margin-top:auto;
+}
+
+.footer-container{
+    max-width:1200px;
+    margin:0 auto;
+    display:grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap:40px;
+    margin-bottom:30px;
+}
+
+.footer-section h3{
+    margin-bottom:15px;
+    color:#66bb6a;
+}
+
+.footer-section p,
+.footer-section ul li a{
+    font-size:14px;
+    color:#c8e6c9;
+    text-decoration:none;
+}
+
+.footer-section ul{
+    list-style:none;
+}
+
+.footer-section ul li{
+    margin-bottom:10px;
+}
+
+.footer-bottom{
+    text-align:center;
+    border-top:1px solid rgba(255,255,255,.2);
+    padding-top:20px;
+    font-size:13px;
+    color:#a8d5a8;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .page-header{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+}
+</style>
+</head>
+
+<body>
+   <header>
+        <div class="logo">🌿 Garden Admin</div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav id="navbar">
+            <a href="index.html">📊 Dashboard</a>
+            <a href="users.html">👥 Users</a>
+            <a href="sellers.html">🧑‍🌾 Sellers</a>
+            <a href="reports.html">📈 Reports</a>
+            <div class="dropdown">
+                <a href="#">🌿 Plants</a>
+                <div class="dropdown-menu">
+                    <a href="plant-pedia.html">Plant Pedia</a>
+                    <a href="add-plant.html">Add Plant</a>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="icons">
+            <span title="Search">🔍</span>
+            <span title="Settings">⚙️</span>
+            <span title="Profile">👤</span>
+        </div> -->
+    </header>
+<div class="dashboard-container">
+
+    <div class="page-header">
+        <h2>👥 User Management</h2>
+        <!-- <a href="index.html" class="back-btn">← Back</a> -->
+    </div>
+
+    <!-- Search and Filter Section -->
+    <div style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
+        <input type="text" id="searchInput" placeholder="Search by name or email..." style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
+        <select id="statusFilter" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
+            <option value="">All Status</option>
+            <option value="Active">Active</option>
+            <option value="Inactive">Inactive</option>
+        </select>
+        <button id="clearFilters" style="padding: 8px 16px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear</button>
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>User ID</th>
+                <th>Name</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Address</th>
+                <th>Join Date</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>#U001</td>
+                <td>Raj Kumar</td>
+                <td>raj@example.com</td>
+                <td>+91 9876543210</td>
+                <td>Mumbai, Maharashtra</td>
+                <td>Jan 15, 2025</td>
+                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
+                <td>
+                    <button class="action-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#U002</td>
+                <td>Priya Singh</td>
+                <td>priya@example.com</td>
+                <td>+91 8765432109</td>
+                <td>Delhi, India</td>
+                <td>Feb 02, 2025</td>
+                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
+                <td>
+                    <button class="action-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#U003</td>
+                <td>Amit Patel</td>
+                <td>amit@example.com</td>
+                <td>+91 7654321098</td>
+                <td>Ahmedabad, Gujarat</td>
+                <td>Feb 05, 2025</td>
+                <td><span style="background:#ffe0b2;color:#e65100;padding:4px 8px;border-radius:4px;">Inactive</span></td>
+                <td>
+                    <button class="action-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#U004</td>
+                <td>Sneha Gupta</td>
+                <td>sneha@example.com</td>
+                <td>+91 6543210987</td>
+                <td>Bangalore, Karnataka</td>
+                <td>Feb 10, 2025</td>
+                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
+                <td>
+                    <button class="action-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#U005</td>
+                <td>Vikram Sharma</td>
+                <td>vikram@example.com</td>
+                <td>+91 5432109876</td>
+                <td>Chennai, Tamil Nadu</td>
+                <td>Feb 15, 2025</td>
+                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
+                <td>
+                    <button class="action-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#U006</td>
+                <td>Kavita Jain</td>
+                <td>kavita@example.com</td>
+                <td>+91 4321098765</td>
+                <td>Pune, Maharashtra</td>
+                <td>Feb 20, 2025</td>
+                <td><span style="background:#ffe0b2;color:#e65100;padding:4px 8px;border-radius:4px;">Inactive</span></td>
+                <td>
+                    <button class="action-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#U007</td>
+                <td>Rohit Verma</td>
+                <td>rohit@example.com</td>
+                <td>+91 3210987654</td>
+                <td>Kolkata, West Bengal</td>
+                <td>Feb 25, 2025</td>
+                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
+                <td>
+                    <button class="action-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#U008</td>
+                <td>Anjali Mehta</td>
+                <td>anjali@example.com</td>
+                <td>+91 2109876543</td>
+                <td>Hyderabad, Telangana</td>
+                <td>Mar 01, 2025</td>
+                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
+                <td>
+                    <button class="action-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<footer style="text-align: center;">
+    <p>© 2026 Garden</p>
+</footer>
+
+<script>
+function handleAddPlant(event) {
+    event.preventDefault();
+    alert('✅ Plant added successfully!');
+    event.target.reset();
+    window.location.href = 'index.html';
+}
+
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
+
+// Function to validate email
+function isValidEmail(email) {
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailRegex.test(email);
+}
+
+// Function to validate phone (basic Indian phone number)
+function isValidPhone(phone) {
+    const phoneRegex = /^\+91\s\d{10}$/;
+    return phoneRegex.test(phone);
+}
+
+// Function to handle edit button click
+function editUser(button) {
+    try {
+        console.log('Edit button clicked for user:', button.closest('tr').querySelector('td').textContent);
+        const row = button.closest('tr');
+        const cells = row.querySelectorAll('td:not(:last-child)'); // Exclude actions cell
+        const isEditing = button.textContent === 'Save';
+
+        if (isEditing) {
+            // Save changes
+            console.log('Saving changes for user');
+            let isValid = true;
+            let errorMessage = '';
+
+            // Validate inputs
+            cells.forEach((cell, index) => {
+                const input = cell.querySelector('input');
+                if (input) {
+                    const newValue = input.value.trim();
+                    if (index === 2 && !isValidEmail(newValue)) { // Email column (0-based: 0=ID,1=Name,2=Email,3=Phone,4=Address,5=JoinDate,6=Status)
+                        isValid = false;
+                        errorMessage = 'Please enter a valid email address.';
+                    } else if (index === 3 && !isValidPhone(newValue)) { // Phone column
+                        isValid = false;
+                        errorMessage = 'Please enter a valid phone number in format: +91 1234567890';
+                    }
+                }
+            });
+
+            if (!isValid) {
+                alert('Validation Error: ' + errorMessage);
+                console.error('Validation failed:', errorMessage);
+                return;
+            }
+
+            button.textContent = 'Edit';
+            button.classList.remove('save');
+            cells.forEach(cell => {
+                const input = cell.querySelector('input');
+                if (input) {
+                    const newValue = input.value.trim();
+                    console.log('Updated cell value:', newValue);
+                    cell.textContent = newValue;
+                }
+            });
+            alert('User updated successfully!');
+            console.log('User update completed');
+        } else {
+            // Enter edit mode
+            console.log('Entering edit mode for user');
+            button.textContent = 'Save';
+            button.classList.add('save');
+            cells.forEach(cell => {
+                if (!cell.querySelector('input')) {
+                    const value = cell.textContent.trim();
+                    console.log('Making cell editable with value:', value);
+                    cell.innerHTML = `<input type="text" value="${value}" style="width: 100%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">`;
+                }
+            });
+        }
+    } catch (error) {
+        console.error('Error in editUser function:', error);
+        alert('An error occurred while editing the user. Please try again.');
+    }
+}
+
+// Function to handle delete button click
+function deleteUser(button) {
+    try {
+        console.log('Delete button clicked for user:', button.closest('tr').querySelector('td').textContent);
+        if (confirm('Are you sure you want to delete this user?')) {
+            console.log('User deletion confirmed');
+            const row = button.closest('tr');
+            row.remove();
+            alert('User deleted successfully!');
+            console.log('User row removed from DOM');
+        } else {
+            console.log('User deletion cancelled');
+        }
+    } catch (error) {
+        console.error('Error in deleteUser function:', error);
+        alert('An error occurred while deleting the user. Please try again.');
+    }
+}
+
+// Add event listeners to buttons when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    try {
+        console.log('DOM loaded, attaching event listeners');
+        const editButtons = document.querySelectorAll('.action-btn:not(.delete)');
+        const deleteButtons = document.querySelectorAll('.action-btn.delete');
+
+        console.log('Found', editButtons.length, 'edit buttons and', deleteButtons.length, 'delete buttons');
+
+        editButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                editUser(this);
+            });
+        });
+
+        deleteButtons.forEach(button => {
+            button.addEventListener('click', function() {
+                deleteUser(this);
+            });
+        });
+
+        // Search and filter functionality
+        const searchInput = document.getElementById('searchInput');
+        const statusFilter = document.getElementById('statusFilter');
+        const clearFilters = document.getElementById('clearFilters');
+        const table = document.querySelector('.data-table');
+        const rows = table.querySelectorAll('tbody tr');
+
+        function filterTable() {
+            const searchTerm = searchInput.value.toLowerCase();
+            const statusValue = statusFilter.value;
+
+            console.log('Filtering table with search:', searchTerm, 'status:', statusValue);
+
+            rows.forEach(row => {
+                const name = row.cells[1].textContent.toLowerCase();
+                const email = row.cells[2].textContent.toLowerCase();
+                const status = row.cells[6].textContent.trim();
+
+                const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm);
+                const matchesStatus = !statusValue || status === statusValue;
+
+                if (matchesSearch && matchesStatus) {
+                    row.style.display = '';
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+        }
+
+        searchInput.addEventListener('input', filterTable);
+        statusFilter.addEventListener('change', filterTable);
+        clearFilters.addEventListener('click', function() {
+            searchInput.value = '';
+            statusFilter.value = '';
+            filterTable();
+        });
+
+        console.log('Event listeners attached successfully');
+    } catch (error) {
+        console.error('Error attaching event listeners:', error);
+    }
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,238 @@
+/* RESET */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+   
+    color: white;
+}
+
+/* HEADER */
+header {
+    background: #0b140e;
+    display: flex;
+    color: white;
+    padding: 15px 30px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+.logo {
+    font-size: 22px;
+    font-weight: bold;
+}
+
+nav {
+    display: flex;
+    gap: 15px;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    position: relative;
+    font-weight: 600;
+}
+
+nav a:hover {
+    text-decoration: underline;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background: #1b3d26;
+    border-radius: 8px;
+    padding: 10px;
+    display: none;
+    min-width: 180px;
+    z-index: 10;
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 6px;
+    font-size: 14px;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.icons span {
+    margin-left: 12px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+/* HOME SECTION */
+.home{
+    background-image: url(https://i.pinimg.com/736x/f7/c8/76/f7c8768df03d080ffd26828bd36b70df.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 200px;
+    text-align: center;
+    color: white;
+    font-size: 2rem;
+}
+/* HEADINGS */
+.seeds h2{
+    text-align: center;
+    font-size: 40px;
+}
+.seeds p,h4{
+    font-size: 20px;
+}
+
+#vegtables{
+    text-align: center;
+    color: green;
+    font-size: 30px;
+}
+
+/* SEEDS VEG GRID */
+.seedsveg{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    justify-content: center;
+    margin-top: 20px;
+    padding: 30px;
+}
+.box:hover{
+transform: scale(1.05);
+}
+
+/* IMAGES */
+.seedsveg img{
+    width: 100%;
+    max-width: 270px;
+    height: auto;
+    border-radius: 10px;
+}
+
+/* BOX */
+.seedsveg .box{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    color: green;
+    min-height: 470px;
+    border: 2px solid green;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 6px 6px 10px grey;
+}
+.reviews, .offer, .sold, .rating{
+    font-size: 17px;
+}
+
+/* SEEDS TEXT */
+.seeds{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    color: black;
+}
+
+#vegetables{
+    color: green;
+    font-weight: bold;
+}
+
+/* BUTTON */
+.seeds button{
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.seeds button:hover{
+    background-color: purple;
+}
+/* FOOTER */
+footer {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 20px;
+    margin-top: 40px;
+}
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
+@media (max-width: 1024px){
+    .home{
+        padding: 120px;
+        font-size: 1.8rem;
+    }
+
+    .seedsveg{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+    .home{
+        padding: 80px 20px;
+        font-size: 1.5rem;
+    }
+
+    .seedsveg{
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .seeds{
+        font-size: 18px;
+    }
+
+    .seedsveg .box{
+        min-height: auto;
+    }
+     .menu-toggle {
+        display: block;
+        color: white;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: #0b140e;
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        padding: 10px;
+        display: block;
+    }
+
+    .dropdown-menu {
+        position: static;
+        background: #1b3d26;
+        margin-top: 5px;
+    }
+}

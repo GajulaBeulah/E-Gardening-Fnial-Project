@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile - Garden E-Marketing Plants</title>
+    <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="../plant.css">
+    <style>
+        .profile-container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        .profile-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .profile-avatar {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background: #4caf50;
+            display: inline-block;
+            margin-bottom: 10px;
+            object-fit: cover;
+        }
+        .profile-tabs {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .tab-button {
+            background: #e0e0e0;
+            border: none;
+            padding: 10px 20px;
+            margin: 0 5px;
+            cursor: pointer;
+            border-radius: 5px;
+            transition: background 0.3s;
+        }
+        .tab-button.active {
+            background: #4caf50;
+            color: white;
+        }
+        .tab-content {
+            display: none;
+        }
+        .tab-content.active {
+            display: block;
+        }
+        .profile-info, .orders, .wishlist, .settings {
+            background: white;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+        }
+        .info-item {
+            margin-bottom: 15px;
+        }
+        .info-item label {
+            display: inline-block;
+            width: 150px;
+            font-weight: bold;
+        }
+        .info-item input, .info-item select {
+            width: 300px;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .edit-button {
+            background: #4caf50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-top: 20px;
+        }
+        .order-item, .wishlist-item {
+            border: 1px solid #ddd;
+            padding: 15px;
+            margin-bottom: 10px;
+            border-radius: 5px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .order-item img, .wishlist-item img {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 5px;
+        }
+        .order-details, .wishlist-details {
+            flex-grow: 1;
+            margin-left: 15px;
+        }
+        .order-status {
+            color: #4caf50;
+            font-weight: bold;
+        }
+        .settings-item {
+            margin-bottom: 20px;
+        }
+        .settings-item label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+        .settings-item input[type="checkbox"] {
+            margin-right: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+             <a href="./plantcare.html">Home</a>
+            <div class="dropdown">
+            <a href="#">Plants</a>
+            <div class="dropdown-menu">
+                   <a href="./indoor.html">Indoor</a>
+                <a href="./outdoor.html">Outdoor</a>
+                <a href="./flower.html">Flowers</a>
+                <a href="./medicine.html">Medical</a>
+            </div>
+        </div>
+        <div class=" dropdown">
+            <a href="#seeds">Seeds</a>
+            <div class="dropdown-menu">
+                <a href="./fruits.html">Fruits seeds</a>
+                <a href="./veg.html">Vegetables seeds</a>
+                <a href="./flowers.html">Flowers seeds</a>
+            </div>
+        </div>
+        <a href="./pots.html">Pots</a>
+        <a href="./decoserv.html">Services</a>
+             <a href="./plantdetails.html">Plantopidia</a>
+             <a href="./contact.html">Contact</a> 
+                <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->
+         <a href="./user_profile_Page.html">Profile👤</a>
+           <a href="../Index.html" class="auth-link" id="logoutBtn" style="color: #ddd;">Logout</a>
+    </div>
+        </nav>
+          <!-- <div class="icons"><span>🔍</span>
+        <a href="/project/login.html" class="auth-link">Login</a>
+        <a href="/project/register.html" class="auth-link">Register</a>
+        <span>👤</span>
+    </div> -->
+    </header>
+
+    <div class="profile-container">
+        <div class="profile-header">
+            <img id="profileAvatar" class="profile-avatar" src="" alt="Profile Avatar" style="display: none;">
+            <div id="defaultAvatar" class="profile-avatar"></div>
+            <h1>Welcome, John Doe</h1>
+            <p>Member since January 2024</p>
+        </div>
+
+        <div class="profile-tabs">
+            <button class="tab-button active" onclick="showTab('profile')">Profile Info</button>
+            <button class="tab-button" onclick="showTab('orders')">Order History</button>
+            <button class="tab-button" onclick="showTab('wishlist')">Wishlist</button>
+            <button class="tab-button" onclick="showTab('settings')">Settings</button>
+        </div>
+
+        <div id="profile" class="tab-content active">
+            <div class="profile-info">
+                <h2>Personal Information</h2>
+                <form id="profileForm" enctype="multipart/form-data">
+                    <div class="info-item">
+                        <label for="profileImage">Profile Image:</label>
+                        <input type="file" id="profileImage" accept="image/*" onchange="previewImage(event)">
+                    </div>
+                    <div class="info-item">
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" value="John" required>
+                    </div>
+                    <div class="info-item">
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" value="Doe" required>
+                    </div>
+                    <div class="info-item">
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" value="john.doe@example.com" required>
+                    </div>
+                    <div class="info-item">
+                        <label for="phone">Phone:</label>
+                        <input type="tel" id="phone" name="phone" value="+1 234 567 8900" required>
+                    </div>
+                    <div class="info-item">
+                        <label for="address">Address:</label>
+                        <input type="text" id="address" name="address" value="123 Garden Street, Plant City, PC 12345" required>
+                    </div>
+                    <input type="submit" value="Save Changes" class="edit-button">
+                </form>
+            </div>
+        </div>
+
+        <div id="orders" class="tab-content">
+            <div class="orders">
+                <h2>Order History</h2>
+                <div class="order-item">
+                    <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg" alt="Aloe Vera">
+                    <div class="order-details">
+                        <h3>Aloe Vera Plant</h3>
+                        <p>Quantity: 2</p>
+                        <p>Total: $25.00</p>
+                        <p class="order-status">Delivered on March 10, 2024</p>
+                    </div>
+                </div>
+                <div class="order-item">
+                    <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg" alt="Money Plant">
+                    <div class="order-details">
+                        <h3>Money Plant</h3>
+                        <p>Quantity: 1</p>
+                        <p>Total: $15.00</p>
+                        <p class="order-status">Shipped - Expected delivery: March 15, 2024</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="wishlist" class="tab-content">
+            <div class="wishlist">
+                <h2>My Wishlist</h2>
+                <div class="wishlist-item">
+                    <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg" alt="Snake Plant">
+                    <div class="wishlist-details">
+                        <h3>Snake Plant</h3>
+                        <p>$20.00</p>
+                        <button class="edit-button" onclick="addToCart('Snake Plant', 20)">Add to Cart</button>
+                    </div>
+                </div>
+                <div class="wishlist-item">
+                    <img src="https://images.pexels.com/photos/1072824/pexels-photo-1072824.jpeg" alt="Peace Lily">
+                    <div class="wishlist-details">
+                        <h3>Peace Lily</h3>
+                        <p>$18.00</p>
+                        <button class="edit-button" onclick="addToCart('Peace Lily', 18)">Add to Cart</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="settings" class="tab-content">
+            <div class="settings">
+                <h2>Account Settings</h2>
+                <div class="settings-item">
+                    <label for="emailNotifications">
+                        <input type="checkbox" id="emailNotifications" checked>
+                        Email Notifications for Orders
+                    </label>
+                </div>
+                <div class="settings-item">
+                    <label for="smsNotifications">
+                        <input type="checkbox" id="smsNotifications">
+                        SMS Notifications for Deliveries
+                    </label>
+                </div>
+                <div class="settings-item">
+                    <label for="newsletter">
+                        <input type="checkbox" id="newsletter" checked>
+                        Subscribe to Plant Care Newsletter
+                    </label>
+                </div>
+                <button class="edit-button" onclick="saveSettings()">Save Settings</button>
+                <br><br>
+                <button class="edit-button" style="background: #f44336;" onclick="deleteAccount()">Delete Account</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="addtocard.js"></script>
+    <script>
+        function showTab(tabName) {
+            // Hide all tab contents
+            const tabs = document.querySelectorAll('.tab-content');
+            tabs.forEach(tab => tab.classList.remove('active'));
+
+            // Remove active class from all buttons
+            const buttons = document.querySelectorAll('.tab-button');
+            buttons.forEach(button => button.classList.remove('active'));
+
+            // Show selected tab
+            document.getElementById(tabName).classList.add('active');
+            event.target.classList.add('active');
+        }
+
+        function previewImage(event) {
+            const file = event.target.files[0];
+            if (file) {
+                const reader = new FileReader();
+                reader.onload = function(e) {
+                    const avatar = document.getElementById('profileAvatar');
+                    const defaultAvatar = document.getElementById('defaultAvatar');
+                    avatar.src = e.target.result;
+                    avatar.style.display = 'inline-block';
+                    defaultAvatar.style.display = 'none';
+                };
+                reader.readAsDataURL(file);
+            }
+        }
+
+        document.getElementById('profileForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // In a real application, this would send data to server
+            const formData = new FormData(this);
+            // For demo, save to localStorage
+            const profileData = {
+                firstName: formData.get('firstName'),
+                lastName: formData.get('lastName'),
+                email: formData.get('email'),
+                phone: formData.get('phone'),
+                address: formData.get('address'),
+                image: document.getElementById('profileAvatar').src
+            };
+            localStorage.setItem('userProfile', JSON.stringify(profileData));
+            alert('Profile saved successfully!');
+        });
+
+        // Load saved profile data on page load
+        window.addEventListener('load', function() {
+            const savedProfile = localStorage.getItem('userProfile');
+            if (savedProfile) {
+                const profileData = JSON.parse(savedProfile);
+                document.getElementById('firstName').value = profileData.firstName || 'John';
+                document.getElementById('lastName').value = profileData.lastName || 'Doe';
+                document.getElementById('email').value = profileData.email || 'john.doe@example.com';
+                document.getElementById('phone').value = profileData.phone || '+1 234 567 8900';
+                document.getElementById('address').value = profileData.address || '123 Garden Street, Plant City, PC 12345';
+                if (profileData.image) {
+                    document.getElementById('profileAvatar').src = profileData.image;
+                    document.getElementById('profileAvatar').style.display = 'inline-block';
+                    document.getElementById('defaultAvatar').style.display = 'none';
+                }
+            }
+        });
+
+        function saveSettings() {
+            // In a real application, this would send data to server
+            alert('Settings saved successfully!');
+        }
+
+        function deleteAccount() {
+            if (confirm('Are you sure you want to delete your account? This action cannot be undone.')) {
+                // In a real application, this would send delete request to server
+                alert('Account deletion request submitted.');
+            }
+        }
+
+        function toggleMenu() {
+            const navbar = document.getElementById('navbar');
+            navbar.classList.toggle('active');
+        }
+    </script>
+</body>
+</html>

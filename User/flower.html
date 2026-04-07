@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Plant Product Card</title>
+        <link rel="stylesheet" href="../header.css">
+            <script src="./addtocard.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: aliceblue;
+
+        }
+          .head {
+            background-image: url(https://static.vecteezy.com/system/resources/previews/011/954/422/large_2x/watercolor-flower-background-frame-free-vector.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding:100px ;
+            text-align: center;
+            color: #000000;
+            font-size: 2rem;
+          }
+
+        .card {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            color: #480b7d;
+            min-height: 170px;
+            border: 2px solid rgb(115, 9, 110);
+            border-radius: 10px;
+              box-shadow: 3px 3px rgb(39, 39, 39);
+            padding:10px;
+            box-shadow: 6px 6px 10 px gray;
+            padding-bottom: 1px;
+
+        }
+
+        .card img {
+            width: 100%;
+            max-width:170px;
+            height: auto;
+            border-radius: 10px;
+
+
+
+        }
+
+
+        .product-name {
+            font-size: 14px;
+            margin: 8px 0;
+            padding: 40px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .rating {
+            color: rgb(219, 169, 20);
+            font-size: 14px;
+        }
+
+        .reviews {
+            font-size: 12px;
+            color: gray;
+        }
+
+        .offer,
+        .sold {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .buttons {
+             flex: 1;
+            padding: 4px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 10px;
+        }
+        button {
+            flex: 1;
+            padding: 3px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 10px;
+        }
+
+        .add-cart {
+            background: #5f0e85;
+            color: #fff;
+            
+        }
+
+       
+
+        .flex {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 50px;
+            padding: 30px;
+            row-gap: 20px;
+          
+        }
+         #flower-plants{
+            text-align: center;
+            color: rgb(129, 31, 164);
+          
+        }
+        #flower h2{
+            text-align: center;
+            background-color: rgb(28, 24, 24);
+        }
+        #flower h3{
+            text-align: center;
+            background-color: #5f0e85;
+        }
+        .card:hover{
+            transform: scale(1.1);
+        }
+        /* Large tablets */
+@media (max-width: 1024px) {
+    .flex {
+        grid-template-columns: repeat(3, 1fr);
+        column-gap: 30px;
+    }
+
+    .head {
+        padding: 80px;
+        font-size: 1.8rem;
+    }
+}
+
+/* Tablets */
+@media (max-width: 768px) {
+    .flex {
+        grid-template-columns: repeat(2, 1fr);
+        justify-items: center;
+        column-gap: 25px;
+    }
+
+    .card {
+        width: 90%;
+    }
+
+    .head {
+        padding: 60px;
+        font-size: 1.5rem;
+    }
+}
+
+/* Mobile */
+@media (max-width: 480px) {
+    .flex {
+        grid-template-columns: 1fr;
+        padding: 15px;
+    }
+
+    .card {
+        width: 95%;
+        margin: auto;
+    }
+
+    .head {
+        padding: 40px;
+        font-size: 1.2rem;
+    }
+
+    .buttons,
+    button {
+        width: 100%;
+    }
+}
+
+/* Footer width adjustment */
+footer {
+    width: 100%;
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+    </style>
+</head>
+
+<body>
+       <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+          <a href="./plantcare.html">Home</a>
+            <div class="dropdown">
+            <a href="#">Plants</a>
+            <div class="dropdown-menu">
+                   <a href="./indoor.html">Indoor</a>
+                <a href="./outdoor.html">Outdoor</a>
+                <a href="./flower.html">Flowers</a>
+                <a href="./medicine.html">Medical</a>
+            </div>
+        </div>
+        <div class=" dropdown">
+            <a href="#seeds">Seeds</a>
+            <div class="dropdown-menu">
+                <a href="./fruits.html">Fruits seeds</a>
+                <a href="./veg.html">Vegetables seeds</a>
+                <a href="./flowers.html">Flowers seeds</a>
+            </div>
+        </div>
+        <a href="./pots.html">Pots</a>
+        <a href="./decoserv.html">Services</a>
+             <a href="./plantdetails.html">Plantopidia</a>
+                <a href="./contact.html">Contact</a> 
+                <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->    <a href="./user_profile_Page.html">Profile👤</a>
+   <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+        <!-- <div class="icons"><span>🔍</span>
+        <a href="/project/login.html" class="auth-link">Login</a>
+        <a href="/project/register.html" class="auth-link">Register</a>
+        <span>👤</span>
+    </div> -->
+    </header>
+  <div class="head">
+        <h2> welcome to flower  plants</h2>
+        <p> Explore a variety of plants to start your own garden</p>
+    </div>
+     <div class="flower">
+        <h2 style="text-align: center;">shop by flower plants</h2>
+        <h3 id="flower-plants">FLOWER PLANTS</h3>
+    </div>
+
+    <div class="flex">
+        <div class="card">
+           <a href="./flow1.html"> <img src="https://plantskingdom.in/cdn/shop/products/91eSCsJ1IL._SL1500_-1-510x510.jpg?v=1657907340"
+                alt="Plant"></a>
+            <div class="card-content">
+                <div class="title">Abracadabra Rose Plant</div>
+                <div class="price">₹299</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">123 Reviews</div>
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 30 days</div>
+
+                <button class="add-cart" style="margin-top: 20px; width: 200px; margin-bottom: 30px;">Add to Cart</button>
+            </div>
+        </div>
+
+
+        <!-- CARD 1 -->
+        <div class="card">
+           <a href="/day1/flow2.html"> <img src="https://plantskingdom.in/cdn/shop/files/adarna_-1.jpg?v=1720273683&width=823" style="height: 190px;">
+            <div class="card-content" ></a>
+
+                <div class="title">ADARNA THAI BOUGAINVILLEA FLOWER PLANT</div>
+
+                <div class="price">₹399</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">995 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 10 days</div>
+
+                <button class="add-cart" style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+             
+
+            </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card">
+           <a href="/day1/flow3.html"> <img
+                src="https://plantskingdom.in/cdn/shop/products/rose-maroon_400x_acbf71ed-4449-4f86-950d-b650746c982c.webp?v=1667670277"style="height: 190px;">
+            <div class="card-content"></a>
+
+                <div class="title">Black Rose Plant for Sale </div>
+                <div class="price">₹459</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">672 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 10 days</div>
+
+
+                <button class="add-cart" style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>              
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card">
+           <a href="/day1/flow4.html"><img
+                src="https://plantskingdom.in/cdn/shop/products/ROSE1_496cc553-ab65-4395-b0e1-4d1bb422eaa1.jpg?v=1658737219">
+            <div class="card-content"></a>
+
+                <div class="title">Rose Plant</div>
+                <div class="price">₹369</div>
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">19 Reviews</div>
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 15 days</div>
+                <button class="add-cart" style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+            </div>
+        </div>
+        <!-- CARD 4 -->
+        <div class="card">
+            <img src="https://static-assets-prod.fnp.com/images/pr/l/v20251231115521/red-kalanchoe-in-black-pot_1.jpg">
+            <div class="card-content">
+
+                <div class="title">Red Kalanchoe in Black Pot</div>
+                <div class="price">₹559</div>
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">987 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 15 days</div>
+
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                
+            </div>
+        </div>
+
+        <!-- CARD 5 -->
+        <div class="card">
+            <img src="https://plantskingdom.in/cdn/shop/products/WhatsAppImage2022-07-28at4.38.17PM_3.jpg?v=1659536998">
+            <div class="card-content">
+
+                <div class="title">Plumeria, Champa
+                </div>
+                <div class="price">₹689</div>
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">333 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 15 days</div>
+
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+              
+            </div>
+
+        </div>
+        <!-- CARD 6 -->
+        <div class="card">
+            <img src="https://plantskingdom.in/cdn/shop/products/WhatsAppImage2023-04-23at1.32.26AM.jpg?v=1682238965">
+            <div class="card-content">
+
+                <div class="title">BlueBells Plant for Sale </div>
+                <div class="price">₹3557</div>
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">753 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 15 days</div>
+
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+               
+            </div>
+        </div>
+        <!-- CARD 7-->
+        <div class="card">
+            <img
+                src="https://plantskingdom.in/cdn/shop/products/WhatsApp-Image-2022-07-09-at-11.42.39-PM-1.jpg?v=1658576517" style="height: 170px;">
+
+            <div class="card-content">
+
+                <div class="title">Grafted Adenium Plant for Sale 
+                    <div class="price">₹569</div>
+                    <div class="rating">★★★★☆</div>
+                    <div class="reviews">237 Reviews</div>
+
+
+                    <div class="offer">🎁 Offers Inside</div>
+                    <div class="sold">⚡ Sold in 15 days</div>
+
+
+                    <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                   
+                </div>
+            </div>
+        </div>
+        <!-- CARD 8 -->
+        <div class="card">
+            <img
+                src="https://nurserylive.com/cdn/shop/products/nurserylive-combo-packs-plants-set-of-2-bonsai-looking-grafted-adeniums-16969316958348_600x600.jpg?v=1680344811">
+            <div class="card-content">
+
+                <div class="title">Set of 2 Bonsai Looking Grafted Adeniums
+                </div>
+                <div class="price">₹456</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">158 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 10 days</div>
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                
+
+            </div>
+        </div>
+        <!-- CARD 9 -->
+        <div class="card">
+            <img
+                src="https://nurserylive.com/cdn/shop/files/nfs-adenium-grafted-any-color-plant-in-5-inch-13-cm-pot_a552ca93-6fd6-4bb1-b01c-ab8273986c07_696x696.png?v=1751757511">
+            <div class="card-content">
+
+                <div class="title">Adenium Plant, Desert Rose 
+                </div>
+                <div class="price">₹389</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">159 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 24 days</div>
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                
+            </div>
+        </div>
+        <!-- CARD 10 -->
+        <div class="card">
+            <img
+                src="https://nurserylive.com/cdn/shop/products/nurserylive-adenium-plant-desert-rose-red-plant_600x600.jpg?v=1634211581">
+            <div class="card-content">
+
+                <div class="title">Adenium Plant, Desert Rose (Red) - Plant
+                </div>
+                <div class="price">₹559</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">108 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 15 days</div>
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                
+
+            </div>
+        </div>
+        <!-- CARD 11 -->
+        <div class="card">
+            <img
+                src="https://nurserylive.com/cdn/shop/files/nurserylive-combo-packs-plants-5-best-fragrant-plants-16968509653132_600x600.jpg?v=1752425892">
+            <div class="card-content">
+
+                <div class="title">5 Best Fragrant Plants
+                </div>
+                <div class="price">₹1333</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">124 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 19 days</div>
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+               
+            </div>
+        </div>
+        <!-- CARD 12 -->
+        <div class="card">
+            <img
+                src="https://nurserylive.com/cdn/shop/products/nurserylive-bougainvillea-orange-plant_600x600.jpg?v=1634214794">
+            <div class="card-content">
+
+                <div class="title">Bougainvillea (Orange) - Plant
+                </div>
+                <div class="price">₹444</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">98 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 26 days</div>
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                
+            </div>
+        </div>
+        <!-- CARD 13 -->
+        <div class="card">
+            <img
+                src="https://nurserylive.com/cdn/shop/files/predict-657653ae-9a52-4359-b1a1-b10bc756f3ac-1_695x695.webp?v=1763573021">
+            <div class="card-content">
+
+                <div class="title">Set of 2 Mesmerising Flower Pla</div>
+                <div class="price">₹699</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">585 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 12 days</div>
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+               
+            </div>
+        </div>
+        <!-- CARD 14 -->
+        <div class="card">
+            <img
+                src="https://nurserylive.com/cdn/shop/products/nurserylive-category-aster-plants_600x600.jpg?v=1634213990">
+            <div class="card-content">
+
+                <div class="title">Aster (violet) - Plant</div>
+                <div class="price">₹799</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">185 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 12 days</div>
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+               
+            </div>
+        </div>
+        <!-- CARD 15 -->
+        <div class="card">
+            <img
+                src="https://nurserylive.com/cdn/shop/products/nurserylive-hardy-begonia-plant_600x600.jpg?v=1634223205">
+            <div class="card-content">
+
+                <div class="title">Begonia (Any Color) - Plant
+                </div>
+                <div class="price">₹599</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">23Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 18 days</div>
+
+                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                
+            </div>
+        </div>
+    </div>
+    <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+       <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+        <script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+</script>
+</body>
+
+</html>

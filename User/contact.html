@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Contact Us | Garden</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="../header.css">
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:'Segoe UI',sans-serif;
+}
+
+body{
+background:linear-gradient(135deg,#1e5631,#4caf50);
+min-height:100vh;
+display:flex;
+flex-direction:column;
+}
+
+/* HEADER */
+header{
+background:#1e5631;
+color:white;
+padding:15px 30px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+header .logo{
+font-size:22px;
+font-weight:bold;
+}
+
+header nav a{
+color:white;
+margin-left:20px;
+text-decoration:none;
+font-size:15px;
+}
+
+header nav a:hover{
+text-decoration:underline;
+}
+
+/* CONTACT SECTION */
+.container{
+max-width:1000px;
+margin:40px auto;
+background:white;
+border-radius:10px;
+display:flex;
+flex-wrap:wrap;
+box-shadow:0 10px 25px rgba(0,0,0,0.3);
+overflow:hidden;
+}
+
+/* LEFT SIDE */
+.contact-info{
+flex:1;
+background:#1e5631;
+color:white;
+padding:30px;
+}
+
+.contact-info h2{
+margin-bottom:15px;
+}
+
+.contact-info p{
+font-size:14px;
+margin-bottom:20px;
+}
+
+.info-item{
+margin-bottom:15px;
+font-size:14px;
+}
+
+/* RIGHT SIDE FORM */
+.contact-form{
+flex:1;
+padding:30px;
+}
+
+.contact-form h2{
+margin-bottom:20px;
+color:#1e5631;
+}
+
+.input-group{
+margin-bottom:15px;
+}
+
+.input-group label{
+font-size:14px;
+}
+
+.input-group input,
+.input-group textarea{
+width:100%;
+padding:10px;
+margin-top:5px;
+border-radius:5px;
+border:1px solid #ccc;
+}
+
+.input-group textarea{
+resize:none;
+height:100px;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+outline:none;
+border-color:#4caf50;
+}
+
+/* BUTTON */
+.btn{
+width:100%;
+padding:12px;
+background:#4caf50;
+border:none;
+color:white;
+font-size:16px;
+border-radius:5px;
+cursor:pointer;
+}
+
+.btn:hover{
+background:#3e8e41;
+}
+
+/* FOOTER */
+footer{
+margin-top:auto;
+background:#1e5631;
+color:white;
+text-align:center;
+padding:15px;
+font-size:14px;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.container{
+flex-direction:column;
+}
+}
+</style>
+</head>
+
+<body>
+
+ <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+          <a href="./plantcare.html">Home</a>
+            <div class="dropdown">
+            <a href="#">Plants</a>
+            <div class="dropdown-menu">
+             <a href="./indoor.html">Indoor</a>
+                <a href="./outdoor.html">Outdoor</a>
+                <a href="./flower.html">Flowers</a>
+                <a href="./medicine.html">Medical</a>
+            </div>
+        </div>
+        <div class=" dropdown">
+            <a href="#seeds">Seeds</a>
+            <div class="dropdown-menu">
+                <a href="./fruits.html">Fruits seeds</a>
+                <a href="./veg.html">Vegetables seeds</a>
+                <a href="./flowers.html">Flowers seeds</a>
+            </div>
+        </div>
+        <a href="./pots.html">Pots</a>
+        <a href="./decoserv.html">Services</a>
+                 <a href="./plantdetails.html">Plantopidia</a>
+                <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->    <a href="./user_profile_Page.html">Profile👤</a>
+   <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+        </header>
+
+<div class="container">
+
+<!-- LEFT SIDE -->
+<div class="contact-info">
+<h2>Contact Us 🌿</h2>
+<p>We help you grow your dream garden. Reach out for plant services and support.</p>
+
+<div class="info-item">📍 Location: Hyderabad, India</div>
+<div class="info-item">📞 Phone: +91 98765 43210</div>
+<div class="info-item">📧 Email: support@garden.com</div>
+
+</div>
+
+<!-- RIGHT SIDE -->
+<div class="contact-form">
+<h2>Send Message</h2>
+
+<div class="input-group">
+<label>Name</label>
+<input type="text" placeholder="Enter your name">
+</div>
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" placeholder="Enter your email">
+</div>
+
+<div class="input-group">
+<label>Message</label>
+<textarea placeholder="Write your message"></textarea>
+</div>
+
+<button class="btn">Send Message</button>
+
+</div>
+
+</div>
+ <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Plants</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+<script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+</script>
+</body>
+</html>

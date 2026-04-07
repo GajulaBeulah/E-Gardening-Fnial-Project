@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Book a Service | Meedi Plant Care</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="../header.css">
+  <style>
+   /* RESET & BASE */
+*{
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    background: #f4f8f4;
+}
+
+/* HEADER */
+#head {
+    background: #2e7d32;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    font-size: 1.4rem;
+}
+
+/* FORM CONTAINER */
+.container {
+    max-width: 600px;
+    margin: 30px auto;
+    background: white;
+    padding: 25px;
+    border-radius: 10px;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+/* HEADINGS */
+h2 {
+    color: #2e7d32;
+    text-align: center;
+}
+
+/* FORM ELEMENTS */
+label {
+    display: block;
+    margin-top: 15px;
+    font-weight: bold;
+}
+
+input,
+select,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 5px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 15px;
+}
+
+/* BUTTON */
+button {
+    margin-top: 20px;
+    width: 100%;
+    padding: 12px;
+    background: #2e7d32;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #1b5e20;
+}
+
+/* NOTE */
+.note {
+    font-size: 13px;
+    color: #555;
+    margin-top: 10px;
+    text-align: center;
+}
+     footer {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0px;
+        }
+
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
+@media (max-width: 768px){
+    #head {
+        font-size: 1.2rem;
+        padding: 12px;
+    }
+
+    .container {
+        margin: 20px;
+        padding: 20px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 480px){
+    #head {
+        font-size: 1.1rem;
+        padding: 10px;
+    }
+
+    .container {
+        margin: 15px;
+        padding: 18px;
+    }
+
+    input,
+    select,
+    textarea {
+        font-size: 14px;
+        padding: 9px;
+    }
+
+    button {
+        font-size: 15px;
+        padding: 10px;
+    }
+
+    .note {
+        font-size: 12px;
+    }
+}
+
+  </style>
+</head>
+<body>
+<header>
+    <div class="logo">🌿 Garden</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
+        <a href="#">Home</a>
+        <div class="dropdown">
+            <a href="#">Plants</a>
+            <div class="dropdown-menu">
+               <a href="./indoor.html">Indoor</a>
+                <a href="./outdoor.html">Outdoor</a>
+                <a href="./flower.html">Flowers</a>
+                <a href="./medicine.html">Medical</a>
+            </div>
+        </div>
+        <div class=" dropdown">
+            <a href="#seeds">Seeds</a>
+            <div class="dropdown-menu">
+                <a href="./fruits.html">Fruits seeds</a>
+                <a href="./veg.html">Vegetables seeds</a>
+                <a href="./flowers.html">Flowers seeds</a>
+            </div>
+        </div>
+        <a href="./pots.html">Pots</a>
+        <a href="./decoserv.html">Services</a>
+          <a href="./plantdetails.html">Plantopidia</a>
+          <a href="./contact.html">Contact</a> 
+    <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->
+             <a href="./user_profile_Page.html">Profile👤</a>
+         <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+           <!-- <a href="/Seller/seller-register.html" class="auth-link">Register</a>
+         <span>👤 -->
+    </div>
+    </nav>
+     <!-- <div class="icons"><span>🔍</span>
+        <a href="/Admin/admin-login.html" class="auth-link">Login</a>
+        <a href="/Seller/seller-register.html" class="auth-link">Register</a>
+         <span>👤
+    </div> -->
+</header>
+
+  <h1 id="head">🧑‍🌾 Book Garden Decoration Service</h1>
+<div class="container">
+  <h2>Service Booking Form</h2>
+  <form>
+    <label>Full Name</label>
+    <input type="text" placeholder="Enter your name" required>
+
+    <label>Phone Number</label>
+    <input type="tel" placeholder="Enter phone number" required>
+
+    <label>Email</label>
+    <input type="email" placeholder="Enter email">
+
+    <label>Select Service</label>
+    <select required>
+      <option value="">-- Select Service --</option>
+      <option>Garden Decoration</option>
+      <option>Balcony Garden Service</option>
+      <option>Event Garden Decoration</option>
+      <option>Monthly Maintenance</option>
+    </select>
+
+    <label>Preferred Date</label>
+    <input type="date" required>
+
+    <label>Address</label>
+    <textarea rows="3" placeholder="Enter service address" required></textarea>
+
+    <label>Additional Notes (optional)</label>
+    <textarea rows="3" placeholder="Any special requirements"></textarea>
+
+    <button type="submit">Confirm Booking</button>
+  </form>
+
+  <p class="note">Our team will contact you within 24 hours to confirm the service.</p>
+</div>
+    <    <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Shop</a></li>
+        <li><a href="#">Plants</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+        <script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+</script>
+</body>
+</html>

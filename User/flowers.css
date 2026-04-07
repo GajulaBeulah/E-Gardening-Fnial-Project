@@ -1,0 +1,173 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* HOME SECTION */
+.home{
+    background-image: url(https://img.freepik.com/free-photo/overhead-view-flower-bouquet-blue-background_23-2147940397.jpg?semt=ais_hybrid&w=740&q=80);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 200px;
+}
+/* HEADINGS */
+.flowers h2{
+    text-align: center;
+    font-size: 40px;
+    padding: 20px 0px 20px;
+}
+.flowers p,h4{
+    font-size: 20px;
+}
+
+#flowershead{
+    text-align: center;
+    color: green;
+    font-size: 30px;
+}
+
+/* FLOWER SEEDS GRID */
+.seedsflowers{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin: 40px 20px 0 40px;
+    padding: 30px;
+}
+
+/* IMAGES */
+.seedsflowers img{
+    width: 100%;
+    max-width: 270px;
+    height: auto;
+    border-radius: 10px;
+    padding: 30px;
+}
+
+/* BOX */
+.seedsflowers .box{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    color: purple;
+    min-height: 470px;
+    border: 2px solid purple;
+    border-radius: 10px;
+    padding: 10px;
+    box-shadow: 6px 6px 10px grey;
+}
+.box:hover{
+transform: scale(1.05);
+}
+/* BUTTON */
+.seedsflowers button{
+    background-color: purple;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+.reviews, .offer, .sold{
+    color:#000000
+}
+ .rating {
+            color: rgb(219, 169, 20);
+            font-size: 14px;
+        }
+.seedsflowers button:hover{
+    background-color: green;
+}
+
+/* Auth Links */
+.icons .auth-link {
+    margin-left: 15px;
+    color: #e8f5e9;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    border: 1px solid transparent;
+}
+
+.icons .auth-link:first-of-type {
+    background: linear-gradient(135deg, #76ff03 0%, #5fd902 100%);
+    color: #1a3a0a;
+}
+
+.icons .auth-link:first-of-type:hover {
+    box-shadow: 0 5px 15px rgba(118, 255, 3, 0.4);
+    transform: translateY(-2px);
+}
+
+.icons .auth-link:last-of-type {
+    border: 1.5px solid #76ff03;
+    color: #76ff03;
+}
+
+.icons .auth-link:last-of-type:hover {
+    background: rgba(118, 255, 3, 0.1);
+}
+
+/* HEADINGS */
+#flowershead{
+    text-align: center;
+    font-weight: bold;
+    color:purple;
+    padding: 20px;
+}
+
+.flowers h2{
+    text-align: center;
+    margin-top: 20px;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+ .box:hover{
+            transform: scale(1.05);
+        }
+
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
+@media (max-width: 1024px){
+    .home{
+        padding: 120px;
+    }
+
+    .seedsflowers{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+        margin: 30px 20px;
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+    .home{
+        padding: 80px 20px;
+        text-align: center;
+    }
+
+    .seedsflowers{
+        grid-template-columns: 1fr;
+        padding: 20px;
+        margin: 20px;
+    }
+
+    .flowers h2{
+        font-size: 24px;
+    }
+
+    .seedsflowers .box{
+        min-height: auto;
+    }
+}

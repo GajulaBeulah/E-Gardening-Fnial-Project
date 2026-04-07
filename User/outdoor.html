@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="../header.css">
+    <title>Plant Product Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(249, 249, 249);
+        }
+        .head {
+            background-image: url(https://static.vecteezy.com/system/resources/previews/008/094/445/large_2x/closeup-of-beautiful-nature-view-green-leaf-on-blurred-greenery-background-in-garden-with-copy-space-using-as-background-wallpaper-page-concept-free-photo.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 120px;
+            text-align: center;
+            color: #025506;
+            font-size: 2rem;
+        }
+        .card {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            color: green;
+            min-height: 170px;
+            box-shadow: 3px 3px green;
+            border-radius: 10px;
+            padding: 10px;
+            border: 2px solid green;
+        }
+    .card:hover {
+            transition: transform 0.3s ease;
+        }
+
+        .card img {
+            width: 100%;
+            max-width: 170px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-name {
+            font-size: 15px;
+            margin-top: 0px;
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .rating {
+            color: rgb(219, 169, 20);
+            font-size: 14px;
+        }
+
+        .reviews {
+            font-size: 12px;
+            color: gray;
+        }
+
+        .offer,
+        .sold {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .buttons {
+            display: flex;
+            gap: 8px;
+            margin-top: 22px;
+        }
+
+        button {
+            /* flex: 1; */
+            padding: 6px 10px 6px 10px ;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .reviews,
+        .offer,
+        .sold {
+            color: #000000
+        }
+
+        .add-cart {
+            background: #02b20e;
+            color: #fff;
+        }
+
+
+
+        .flex {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 50px;
+            padding: 30px;
+            row-gap: 20px;
+        }
+
+        #outdoor-plants {
+            text-align: center;
+            color: #025506;
+        }
+
+        #outdoor h2 {
+            text-align: center;
+            background-color: black;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+        }
+        
+        footer {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0px;
+        }
+
+        /* Large tablets */
+        @media (max-width: 1024px) {
+            .flex {
+                grid-template-columns: repeat(3, 1fr);
+                column-gap: 40px;
+            }
+
+            .head {
+                padding: 90px;
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Tablets */
+        @media (max-width: 768px) {
+            .flex {
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 30px;
+                justify-items: center;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .head {
+                padding: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .flex {
+                grid-template-columns: 1fr;
+            }
+
+            .card {
+                width: 95%;
+                margin: 15px auto;
+            }
+
+            .head {
+                padding: 40px;
+                font-size: 1.2rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+    <a href="./plantcare.html">Home</a>
+
+            <div class="dropdown">
+                <a href="#">Plants</a>
+                <div class="dropdown-menu">
+                    <a href="./indoor.html">Indoor</a>
+                    <a href="./outdoor.html">Outdoor</a>
+                    <a href="./flower.html">Flowers</a>
+                    <a href="./medicine.html">Medical</a>
+                </div>
+            </div>
+            <div class=" dropdown">
+                <a href="#seeds">Seeds</a>
+                <div class="dropdown-menu">
+                    <a href="./fruits.html">Fruits seeds</a>
+                    <a href="./veg.html">Vegetables seeds</a>
+                    <a href="./flowers.html">Flowers seeds</a>
+                </div>
+            </div>
+            <a href="./pots.html">Pots</a>
+            <a href="./decoserv.html">Services</a>   
+              <a href="./plantdetails.html">Plantopidia</a>
+                 <a href="./contact.html">Contact</a> 
+                 <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->    <a href="./user_profile_Page.html">Profile👤</a>
+       <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+        <!-- <div class="icons"><span>🔍</span>
+        <a href="/project/login.html" class="auth-link">Login</a>
+        <a href="/project/register.html" class="auth-link">Register</a>
+        <span>👤</span>
+    </div> -->
+    </header>
+
+    <main>
+    <div class="head">
+        <h2> welcome to plants</h2>
+        <p> Explore a variety of plants to start your own garden</p>
+    </div>
+    <div class="outdoor">
+        <h2 style="text-align: center;">Shop by Outdoor Plants</h2>
+        <h3 id="outdoor-plants">OUTDOOR PLANTS</h3>
+    </div>
+    <div class="flex">
+        <div class="card">
+            <a href="./outdoor1.html"> <img
+                    src="https://i5.walmartimages.com/seo/Pottery-Pots-Natural-Jesslyn-Round-Planter-Pot-Indoor-Outdoor-Fiberstone-Planter-Box-24-in-Medium-24-Black_3dbd6986-8ff6-434e-a157-6d5029ae7985.5e5b1ae9f9fba7af029ce75d5e5ee658.jpeg"
+                    alt="Plant"></a>
+
+            <div class="product-name">Pottery pot natural round outdoor planter</div>
+            <div class="price">₹1007</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">985 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+
+            <div class="buttons">
+                <button class="add-cart" style="width: 250px; margin-left: 70px;">Add to Cart</button>
+
+            </div>
+        </div>
+
+
+        <!-- CARD 1 -->
+        <div class="card">
+            <a href="./outdoor2.html"><img
+                    src="https://cdn.shopify.com/s/files/1/0621/8157/2697/files/hqvklcvfk0eesekb77tm_9b8d84cd-ee92-4cef-b3e7-d72322d2235d_1000x1000_crop_center.jpg.webp?v=1738163005">
+                <div class="card-content">
+            </a>
+
+            <div class="title" >Phoebe outdoor plant</div>
+
+            <div class="price" >₹2333</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">479 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 10 days</div>
+
+            <button class="add-cart" style=" width: 250px;">Add to Cart</button>
+
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+        <a href="./outdoor3.html"> <img
+                src="https://cdn.shopify.com/s/files/1/0621/8157/2697/files/qxgplyaenfkvrwotbchzmjuis.jpg?v=1744030818">
+            <div class="card-content">
+        </a>
+
+        <div class="title">Vivi outdoor plant</div>
+        <div class="price">₹3999</div>
+
+        <div class="rating">★★★★☆</div>
+        <div class="reviews">9875 Reviews</div>
+
+
+        <div class="offer">🎁 Offers Inside</div>
+        <div class="sold">⚡ Sold in 10 days</div>
+
+
+        <button class="add-cart" style=" width: 250px;">Add to Cart</button>
+
+    </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+        <a href="./outdoor4.html"> <img
+                src="https://cdn.shopify.com/s/files/1/0621/8157/2697/files/rmjooxmidulzlmcnjf12_1240d378-74b2-4459-b1a7-775b2b0633c7_1000x1000_crop_center.jpg.webp?v=1738163042">
+            <div class="card-content">
+        </a>
+
+        <div class="title">Jazz outdoor plant </div>
+        <div class="price">₹2455</div>
+        <div class="rating">★★★★☆</div>
+        <div class="reviews">1925 Reviews</div>
+
+
+        <div class="offer">🎁 Offers Inside</div>
+        <div class="sold">⚡ Sold in 15 days</div>
+
+
+        <button class="add-cart" style=" width: 250px;">Add to Cart</button>
+
+    </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+        <a href="">
+        <img
+            src="https://cdn.shopify.com/s/files/1/0621/8157/2697/files/dpygqvyrvdzx48qeixek_8f1f5abd-b9c6-4c3a-abfa-d2ea32df2371_1000x1000_crop_center.jpg.webp?v=1738163012">
+            </a>
+        <div class="card-content">
+
+            <div class="title">Laura 3 tree outdoor Plant </div>
+            <div class="price">₹4559</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">2584Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+
+
+            <button class="add-cart" style="width: 250px;">Add to Cart</button>
+
+        </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="card">
+        <img
+            src="https://cdn.shopify.com/s/files/1/0621/8157/2697/files/vqzyynk0y9zoisvcribn_fec7f11e-3387-4557-a9ea-1a5d1b5285ae_1000x1000_crop_center.jpg.webp?v=1738163041">
+        <div class="card-content">
+
+            <div class="title">Blaze outdoor Plant</div>
+            <div class="price">₹4559</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">333 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+
+    </div>
+    <!-- CARD 6 -->
+    <div class="card">
+        <img
+            src="https://cdn.shopify.com/s/files/1/0621/8157/2697/files/jfssmifgzbtvzqvxcw9u_6edcf14c-64fd-4194-8d91-7ffb11daebd6_1000x1000_crop_center.jpg.webp?v=1738163013">
+        <div class="card-content">
+
+            <div class="title">Boo outdoor Plant</div>
+            <div class="price">₹3157</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">7534 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 7-->
+    <div class="card">
+        <img src="https://radhakrishnaagriculture.in/cdn/shop/files/clivia.jpg?v=1709187685&width=600">
+
+        <div class="card-content">
+
+            <div class="title">Clivia flower plants outdoor Plant
+                <div class="price">₹4469</div>
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">2371 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 15 days</div>
+
+
+                <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to
+                    Cart</button>
+
+            </div>
+        </div>
+    </div>
+    <!-- CARD 8 -->
+    <div class="card">
+        <img src="https://radhakrishnaagriculture.in/cdn/shop/files/arecapalm..jpg?v=1709188423">
+        <div class="card-content">
+
+            <div class="title">Areca Palm Miniature Air Purifying Plants Plant</div>
+            <div class="price">₹5988</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">4858 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 10 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 9 -->
+    <div class="card">
+        <img
+            src="https://radhakrishnaagriculture.in/cdn/shop/files/WhatsAppImage2024-03-14at2.57.10PM_2.jpg?v=1710411340&width=600">
+        <div class="card-content">
+
+            <div class="title">Bougainvillea Multigrafted Flower outdoor Plant</div>
+            <div class="price">₹3489</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">1599 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 24 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+
+        </div>
+    </div>
+    <!-- CARD 10 -->
+    <div class="card">
+        <img src="https://radhakrishnaagriculture.in/cdn/shop/files/phonexpalm.jpg?v=1709189356&width=600">
+        <div class="card-content">
+
+            <div class="title">Phoenix Palm Outdoor plant </div>
+            <div class="price">₹2559</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">1080 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+
+        </div>
+    </div>
+    <!-- CARD 11 -->
+    <div class="card">
+        <img src="https://imagecdn.99acres.com//microsite/wp-content/blogs.dir/6161/files/2023/05/Geraniums.jpg">
+        <div class="card-content">
+
+            <div class="title">Geraniums outdoor plant </div>
+            <div class="price">₹3333</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">1248 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 19 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+
+        </div>
+    </div>
+    <!-- CARD 12 -->
+    <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQrvc0aFJ7WIwh3CdtFrtfxbJl69lniX5yJog&s">
+        <div class="card-content">
+
+            <div class="title">Chinese Banyan Plant for Bonsai outdoor plant</div>
+            <div class="price">₹4444</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">9568 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 26 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+
+        </div>
+    </div> 
+    <!-- CARD 13 -->
+     <div class="card">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTbyOLZaTsSKlqv3VSlmg07K71LMPKZaCa9Ig&s">
+        <div class="card-content">
+
+            <div class="title">Aloe Vera Live Plant For Outdoor | Ghritkumari Aloevera Plant |</div>
+            <div class="price">₹5299</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">1555 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 12 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div> 
+    <!-- CARD 14 -->
+    <div class="card">
+        <img src="https://unlimitedgreens.com/cdn/shop/files/DiamondDwarfMurraya.jpg?v=1684558785&width=800">
+        <div class="card-content">
+
+            <div class="title">Murraya Topiary Tree (Diamond Shaped) outdoor plant
+            </div>
+            <div class="price">₹2599</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">1854 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 12 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+
+    <!-- CARD 15 -->
+    <div class="card">
+        <img src="https://unlimitedgreens.com/cdn/shop/products/Asparagus-Meyeri.webp?v=1676457544">
+        <div class="card-content">
+
+            <div class="title">Asparagus Meyeri outdoor plant </div>
+            <div class="price">₹2599</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">2583Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 18 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+        </div>
+    </div>
+</main>
+
+      <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+        <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+        <script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+</script>
+</body>
+
+</html>

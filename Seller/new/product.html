@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Products Dashboard</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../header.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:#f4f6f8;
+    color:#333;
+}
+   /* Header/Navbar */
+        header {
+           background-color: #0b140c;
+            padding: 15px 40px;
+            color: #fff;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #c8e6c9;
+        }
+.products-section{
+    padding:50px 40px;
+    max-width:1200px;
+    margin:auto;
+}
+
+.products-section h2{
+    text-align:center;
+    margin-bottom:30px;
+    font-size:28px;
+}
+
+.products-cards{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+    margin-bottom:20px;
+}
+
+.product-card{
+    background:#fff;
+    padding:50px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    cursor:pointer;
+    transition:0.3s ease;
+}
+
+.product-card:hover{
+    transform:translateY(-5px);
+}
+
+.product-card h3{
+    margin-bottom:10px;
+}
+
+.product-card p{
+    font-size:26px;
+    font-weight:bold;
+    color:#2e7d32;
+}
+
+/* Dropdown */
+.dropdown{
+    display:none;
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+    margin-bottom:40px;
+    animation:fadeIn 0.3s ease-in-out;
+}
+
+.dropdown ul{
+    list-style:none;
+}
+
+.dropdown ul li{
+    padding:8px 0;
+    border-bottom:1px solid #eee;
+}
+
+.dropdown ul li:last-child{
+    border-bottom:none;
+}
+
+@keyframes fadeIn{
+    from{opacity:0; transform:translateY(-10px);}
+    to{opacity:1; transform:translateY(0);}
+}
+
+/* Actions */
+.product-actions{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.action-card{
+    background:#fff;
+    padding:50px;
+    border-radius:12px;
+    text-align:center;
+    box-shadow:0 8px 20px rgba(0,0,0,0.08);
+}
+
+.action-card h3{
+    margin-bottom:15px;
+}
+
+.action-card button{
+    padding:10px 22px;
+    border:none;
+    border-radius:6px;
+    cursor:pointer;
+    font-size:14px;
+    color:#fff;
+}
+
+.btn-edit{
+    background:#2e7d32;
+}
+
+.btn-edit:hover{
+    background:#256428;
+}
+
+.btn-delete{
+    background:#d32f2f;
+}
+
+.btn-delete:hover{
+    background:#b71c1c;
+}
+
+ /* Footer */
+            footer {
+            background: green;
+            color:white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 300px;
+        }
+/* ================= RESPONSIVE ================= */
+
+/* Tablet */
+@media (max-width: 992px) {
+
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .products-section {
+        padding: 30px 20px;
+    }
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+
+    header {
+        padding: 15px 20px;
+    }
+
+    .logo {
+        font-size: 18px;
+    }
+
+    .products-section {
+        padding: 20px 10px;
+    }
+
+    .product-card,
+    .action-card {
+        padding: 25px;
+    }
+
+    .product-card p {
+        font-size: 20px;
+    }
+
+    .dropdown {
+        padding: 15px;
+    }
+
+    footer {
+        margin-top: 40px; /* fix large gap */
+        padding: 15px;
+        font-size: 14px;
+    }
+}</style>
+</head>
+
+<body>
+<header>
+    <div class="nav-container">
+        <h1 class="logo">🌿 Garden Seller Dashboard</h1>
+
+        <nav>
+            <ul>
+                <li><a href="./sales.html">Sales</a></li>
+                <li><a href="./orders.html">Orders</a></li>
+                <li><a href="./product.html">Products</a></li>
+                <li><a href="./profile.html">Profile</a></li>
+                <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<section class="products-section">
+
+<h2>Products Overview 🛒</h2>
+
+<div class="products-cards">
+
+    <div class="product-card" onclick="showDropdown('totalProducts')">
+        <h3>Total Products</h3>
+        <p>120</p>
+    </div>
+
+    <div class="product-card" onclick="showDropdown('currentProducts')">
+        <h3>Current Products</h3>
+        <p>95</p>
+    </div>
+
+</div>
+
+<!-- TOTAL PRODUCTS -->
+<div class="dropdown" id="totalProducts">
+<h3>Total Product Names</h3>
+<ul>
+<li>Garden Chair</li>
+<li>Outdoor Table</li>
+<li>Flower Pot</li>
+<li>Hanging Lamp</li>
+<li>Garden Bench</li>
+<li>Water Fountain</li>
+<li>Plant Stand</li>
+<li>Decor Stones</li>
+</ul>
+</div>
+
+<!-- CURRENT PRODUCTS -->
+<div class="dropdown" id="currentProducts">
+<h3>Current Available Products</h3>
+<ul>
+<li>Garden Chair</li>
+<li>Outdoor Table</li>
+<li>Flower Pot</li>
+<li>Plant Stand</li>
+<li>Decor Stones</li>
+</ul>
+</div>
+
+<!-- Actions -->
+<div class="product-actions">
+    <div class="action-card">
+        <h3>Change Product</h3>
+        <a href="./edit product.html">
+            <button class="btn-edit">Edit Product</button>
+        </a>
+    </div>
+
+    <div class="action-card">   
+        <h3>Delete Product</h3>
+        <a href="./delete.html">
+            <button class="btn-delete">Delete Product</button>
+        </a>
+    </div>
+</div>
+
+</section>
+
+      <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+        <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+<script>
+function showDropdown(id){
+
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(drop => drop.style.display = "none");
+
+    document.getElementById(id).style.display = "block";
+}
+</script>
+
+</body>
+</html>

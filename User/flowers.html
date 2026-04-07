@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flower Seeds - Garden Store</title>
+    <link rel="stylesheet" href="flowers.css">
+        <link rel="stylesheet" href="../header.css">
+    <style>
+        #message {
+            position: fixed;
+            top: 100px;
+            right: 20px;
+            background: #4caf50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            z-index: 1000;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+        <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+     <a href="./plantcare.html">Home</a>
+            <div class="dropdown">
+            <a href="#">Plants</a>
+             <div class="dropdown-menu">
+                <a href="./indoor.html">Indoor</a>
+                <a href="./outdoor.html">Outdoor</a>
+                <a href="./flowers.css">Flowers</a>
+                <a href="./medicine.html">Medical</a>
+            </div>
+        </div>
+        <div class=" dropdown">
+            <a href="#seeds">Seeds</a>
+            <div class="dropdown-menu">
+                <a href="./fruits.html">Fruits seeds</a>
+                <a href="./veg.html">Vegetables seeds</a>
+                <a href="./flowers.html">Flowers seeds</a>
+            </div>
+        </div>
+        <a href="./pots.html">Pots</a>
+        <a href="./decoserv.html">Services</a>
+             <a href="./plantdetails.html">Plantopidia</a>
+                <a href="./contact.html">Contact</a> 
+                <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->    <a href="./user_profile_Page.html">Profile👤</a>
+  <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+         <!-- <div class="icons"><span>🔍</span>
+        <a href="/project/login.html" class="auth-link">Login</a>
+        <a href="/project/register.html" class="auth-link">Register</a>
+        <span>👤</span>
+    </div> -->
+    </header>
+    <div id="message"></div>
+    <div class="home">
+        <h1>Welcome to Flower Section</h1><br>
+        <p>Explore a variety of flower seeds to beautify your garden!</p>
+    </div>
+    <div class="flowers">
+        <h2>Shop by Seeds</h2>
+            <h3 id="flowershead">Flower Seeds</h3>
+        <div class="seedsflowers">
+            <div class="box">
+           <a href="./flowers1.html"><img src="https://organicbazar.net/cdn/shop/files/MarigoldOrangeFlowerSeedsOrganicbazarFlowerSeeds.jpg?v=1754912126" alt=""></a>
+            <p>Marigold Seeds</p>
+            <h4>₹39</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Marigold Seeds', 39, 'https://organicbazar.net/cdn/shop/files/MarigoldOrangeFlowerSeedsOrganicbazarFlowerSeeds.jpg?v=1754912126', 1)">Add to Cart</button>
+            </div>
+            <div class="box">
+            <a href="./flowers2.html"><img src="https://www.geneticnutrition.in/cdn/shop/articles/sunflower-seeds-nutritious-snacks-rich-in-vegan-protein-732860.jpg?crop=center&height=500&v=1729273310&width=600" alt=""></a>
+            <p>Sunflower Seeds</p>   
+            <h4>₹49</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Sunflower Seeds', 49, 'https://www.geneticnutrition.in/cdn/shop/articles/sunflower-seeds-nutritious-snacks-rich-in-vegan-protein-732860.jpg?crop=center&height=500&v=1729273310&width=600', 1)">Add to Cart</button>
+            </div>
+            <div class="box">
+           <a href="./flowers3.html"><img src="https://organicbazar.net/cdn/shop/files/ZinniaTallDoubleMixFlowerSeeds_ZinniaSeeds_MixColorZinnia_OrganicbazarFlowerSeeds.jpg?v=1757748203" alt=""></a>
+            <p>Zinnia Seeds</p> 
+            <h4>₹29</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Zinnia Seeds', 29, 'https://organicbazar.net/cdn/shop/files/ZinniaTallDoubleMixFlowerSeeds_ZinniaSeeds_MixColorZinnia_OrganicbazarFlowerSeeds.jpg?v=1757748203', 1)">Add to Cart</button>
+            </div>
+        <div class="box">
+           <a href="./flowers4.html"><img src="https://gogreenkol.in/cdn/shop/files/89380e7b-7548-4292-8ecc-e24372be461f.png?v=1764154933&width=1445" alt=""></a>
+            <p>Cosmos Seeds</p>
+            <h4>₹39</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Cosmos Seeds', 39, 'https://gogreenkol.in/cdn/shop/files/89380e7b-7548-4292-8ecc-e24372be461f.png?v=1764154933&width=1445', 1)">Add to Cart</button>
+            </div>
+<div class="box">
+            <a href="./flowers5.html"><img src="https://organicbazar.net/cdn/shop/files/PetuniaNanaCompactaMixSeeds_PetuniaSeeds_1.jpg?v=1758789724&width=1946" alt=""></a>
+            <p>Petunia Seeds</p>
+            <h4>₹59</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Petunia Seeds', 59, 'https://organicbazar.net/cdn/shop/files/PetuniaNanaCompactaMixSeeds_PetuniaSeeds_1.jpg?v=1758789724&width=1946', 1)">Add to Cart</button>
+        </div>
+<div class="box">   
+           <a href="./flowers6.html"><img src="https://gardenary-data.s3.amazonaws.com/section-image/T3zUhGhpOzikDI0qSWDKaMqfzPfau0gdldK8R9xm.jpg" alt=""></a>
+            <p>Nasturtium Seeds</p>
+            <h4>₹49</h4><div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Nasturtium Seeds', 49, 'https://gardenary-data.s3.amazonaws.com/section-image/T3zUhGhpOzikDI0qSWDKaMqfzPfau0gdldK8R9xm.jpg', 1)">Add to Cart</button>
+    </div>
+<div class="box">
+            <img src="https://organicbazar.net/cdn/shop/files/PetuniaDoubleGloriousMixSeeds_Petuniaseeds.jpg?v=1761196501&width=533" alt="">
+            <p>Ageratum Seeds</p>
+            <h4>₹29</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Ageratum Seeds', 29, 'https://organicbazar.net/cdn/shop/files/PetuniaDoubleGloriousMixSeeds_Petuniaseeds.jpg?v=1761196501&width=533', 1)">Add to Cart</button>
+</div>
+<div class="box">
+            <img src="https://cdn.shopify.com/s/files/1/0813/0828/7252/files/CelosiaCockscombDwarfMixSeeds_OrganicbazarFLowerSeeds_720x.jpg?v=1756210486" alt="">
+            <p>Celosia Seeds</p>
+            <h4>₹39</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Celosia Seeds', 39, 'https://cdn.shopify.com/s/files/1/0813/0828/7252/files/CelosiaCockscombDwarfMixSeeds_OrganicbazarFLowerSeeds_720x.jpg?v=1756210486', 1)">Add to Cart</button>
+</div>
+<div class="box">
+            <img src="https://organicbazar.net/cdn/shop/files/Calendula_Officinalis_Fiesta_Gitana_Orange_Seeds_Calendula_Orange_Seeds_flower_seeds_organic_bazar_seeds_Calendula_flower_seeds.jpg?v=1756708690&width=823" alt="">
+            <p>Calendula Seeds</p>
+            <h4>₹49</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Calendula Seeds', 49, 'https://organicbazar.net/cdn/shop/files/Calendula_Officinalis_Fiesta_Gitana_Orange_Seeds_Calendula_Orange_Seeds_flower_seeds_organic_bazar_seeds_Calendula_flower_seeds.jpg?v=1756708690&width=823', 1)">Add to Cart</button>
+</div>
+<div class="box">
+            <img src="https://cdn.shopify.com/s/files/1/0813/0828/7252/files/DahliaFigaroMixedColorFlowerSeeds_DahliaSeeds_720x.jpg?v=1760773582" alt="">
+            <p>Dahlia Seeds</p>
+            <h4>₹59</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Dahlia Seeds', 59, 'https://cdn.shopify.com/s/files/1/0813/0828/7252/files/DahliaFigaroMixedColorFlowerSeeds_DahliaSeeds_720x.jpg?v=1760773582', 1)">Add to Cart</button>
+</div>
+<div class="box">
+            <img src="https://organicbazar.net/cdn/shop/files/Daisy_Double_mix_seeds_organic_bazar_seeds_daisy_flowers_daisy_seeds_daisy_flowers_seeds.jpg?v=1756191322&width=493" alt="">
+            <p>Daisy Seeds</p>
+            <h4>₹29</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Daisy Seeds', 29, 'https://organicbazar.net/cdn/shop/files/Daisy_Double_mix_seeds_organic_bazar_seeds_daisy_flowers_daisy_seeds_daisy_flowers_seeds.jpg?v=1756191322&width=493', 1)">Add to Cart</button>
+</div>
+<div class="box">
+            <img src="https://cdn.shopify.com/s/files/1/0813/0828/7252/files/ImpatinesBabyDwarfMixedSeeds_impatinesSeeds_FlowerSeeds_720x.jpg?v=1761649182" alt="">
+            <p>Impatiens Seeds</p>
+            <h4>₹39</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Impatiens Seeds', 39, 'https://cdn.shopify.com/s/files/1/0813/0828/7252/files/ImpatinesBabyDwarfMixedSeeds_impatinesSeeds_FlowerSeeds_720x.jpg?v=1761649182', 1)">Add to Cart</button>
+</div>
+<div class="box">
+            <img src="https://cdn.shopify.com/s/files/1/0813/0828/7252/files/AlyssumRose-O-DayRoseSeeds_5_720x.jpg?v=1760614375" alt="">
+            <p>Alyssum Seeds</p>
+            <h4>₹19</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Alyssum Seeds', 19, 'https://cdn.shopify.com/s/files/1/0813/0828/7252/files/AlyssumRose-O-DayRoseSeeds_5_720x.jpg?v=1760614375', 1)">Add to Cart</button>
+</div>
+<div class="box">
+            <img src="https://organicbazar.net/cdn/shop/files/DianthusBabyDollMixSeedsOrganicbazarFlowerSeedsOrganicbazarSeeds_1.jpg?v=1755513081" alt="">
+            <p>Dianthus Baby Doll Mix Seeds</p>
+            <h4>₹29</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Dianthus Baby Doll Mix Seeds', 29, 'https://organicbazar.net/cdn/shop/files/DianthusBabyDollMixSeedsOrganicbazarFlowerSeedsOrganicbazarSeeds_1.jpg?v=1755513081', 1)">Add to Cart</button>
+</div>
+<div class="box">
+            <img src="https://cdn.shopify.com/s/files/1/0813/0828/7252/files/Pansy_Swiss_Giant_Blue_seeds_organic_bazar_seeds_flower_seeds_pansy_flowers_blue_flowers_organic_bazar_flowers_seeds_720x.jpg?v=1757595396" alt="">
+            <p>Pansy Seeds</p>
+            <h4>₹49</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Pansy Seeds', 49, 'https://cdn.shopify.com/s/files/1/0813/0828/7252/files/Pansy_Swiss_Giant_Blue_seeds_organic_bazar_seeds_flower_seeds_pansy_flowers_blue_flowers_organic_bazar_flowers_seeds_720x.jpg?v=1757595396', 1)">Add to Cart</button>
+</div>
+<div class="box">
+            <img src="https://cdn.shopify.com/s/files/1/0813/0828/7252/files/HollyhockDoubleDwarfMixSeeds_HollyhockSeeds_1_720x.jpg?v=1758693567" alt="">
+            <p>Hollyhock Seeds</p>
+            <h4>₹59</h4>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+            <button onclick="addToCart('Hollyhock Seeds', 59, 'https://cdn.shopify.com/s/files/1/0813/0828/7252/files/HollyhockDoubleDwarfMixSeeds_HollyhockSeeds_1_720x.jpg?v=1758693567', 1)">Add to Cart</button>
+</div>
+</div>
+    </div>
+    <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+       <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+        <script src="./addtocard.js"></script>
+        <script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+</script>
+</body>
+</html>

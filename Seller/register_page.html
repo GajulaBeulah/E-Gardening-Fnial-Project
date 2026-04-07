@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller Register | Garden</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../header.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        body {
+            min-height: 100vh;
+            background: linear-gradient(135deg, #1e5631, #4caf50);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .container {
+            background: white;
+            width: 380px;
+            padding: 32px;
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
+            margin: auto;
+        }
+
+        h2 {
+            text-align: center;
+            color: #1e5631;
+        }
+
+        p {
+            text-align: center;
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .input-group {
+            margin-bottom: 14px;
+        }
+
+        label {
+            font-size: 14px;
+        }
+
+        input {
+            width: 100%;
+            padding: 10px;
+            margin-top: 6px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #4caf50;
+        }
+
+        input.error {
+            border-color: #f44336;
+            background-color: #ffebee;
+        }
+
+        .error-message {
+            color: #f44336;
+            font-size: 12px;
+            margin-top: 4px;
+            display: none;
+        }
+
+        .password-strength {
+            margin-top: 4px;
+            font-size: 12px;
+        }
+
+        .strength-weak {
+            color: #f44336;
+        }
+
+        .strength-medium {
+            color: #ff9800;
+        }
+
+        .strength-strong {
+            color: #4caf50;
+        }
+
+        .btn {
+            width: 100%;
+            padding: 12px;
+            background: #4caf50;
+            border: none;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-top: 10px;
+            transition: background 0.2s ease;
+        }
+
+        .btn:hover {
+            background: #3e8e41;
+        }
+
+        .btn:disabled {
+            background: #cccccc;
+            cursor: not-allowed;
+        }
+
+        .extra {
+            text-align: center;
+            margin-top: 14px;
+            font-size: 14px;
+        }
+
+        .extra a {
+            color: #1e5631;
+            text-decoration: none;
+            font-weight: bold;
+            cursor: pointer;
+        }
+
+        .extra a:hover {
+            text-decoration: underline;
+        }
+
+        footer {
+            margin-top: auto;
+            background: #1e5631;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 14px;
+        }
+
+        footer p {
+            color: white;
+        }
+
+        @media (max-width: 420px) {
+            .container {
+                width: 92%;
+                padding: 24px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <div class="logo">🌿 Garden</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
+        <a href="../Index.html">Home</a>
+        <a href="../plantcare.html">Plant Care</a>
+        <a href="../review.html">Reviews</a>
+    </nav>
+</header>
+
+<div class="container">
+    <h2> Registration</h2>
+    <p>Create your account</p>
+
+    <div class="input-group">
+        <label>Full Name</label>
+        <input type="text" id="name">
+        <div class="error-message" id="nameError"></div>
+    </div>
+
+    <div class="input-group">
+        <label>Email</label>
+        <input type="email" id="email">
+        <div class="error-message" id="emailError"></div>
+    </div>
+
+    <div class="input-group">
+        <label>Phone</label>
+        <input type="tel" id="phone">
+        <div class="error-message" id="phoneError"></div>
+    </div>
+
+    <div class="input-group">
+        <label>Password</label>
+        <input type="password" id="password">
+        <div class="error-message" id="passwordError"></div>
+        <div class="password-strength" id="passwordStrength"></div>
+    </div>
+
+    <div class="input-group">
+        <label>Confirm Password</label>
+        <input type="password" id="confirmPassword">
+        <div class="error-message" id="confirmPasswordError"></div>
+    </div>
+
+    <button class="btn" id="registerBtn">Register</button>
+
+    <div class="extra">
+        Already have an account? <a href="selllogin.html">Login</a>
+    </div>
+</div>
+
+<footer>
+    <p>© 2026 Garden Decoration Services. All Rights Reserved</p>
+</footer>
+
+<script>
+function toggleMenu(){
+    document.getElementById("navbar").classList.toggle("active");
+}
+
+const registerBtn = document.getElementById('registerBtn');
+
+registerBtn.addEventListener('click', function(){
+    validateAndRegister();
+});
+
+const validators = {
+    name: () => validateName('name', 'nameError'),
+    email: () => validateEmail('email', 'emailError'),
+    phone: () => validatePhone('phone', 'phoneError'),
+    password: () => validatePassword('password', 'passwordError'),
+    confirmPassword: () => validateConfirmPassword('confirmPassword', 'confirmPasswordError')
+};
+
+Object.keys(validators).forEach(field => {
+    document.getElementById(field).addEventListener('blur', validators[field]);
+});
+
+document.getElementById('password').addEventListener('input', function(){
+    checkPasswordStrength('password');
+});
+
+function validateAndRegister(){
+    clearAllErrors();
+
+    const isNameValid = validateName('name', 'nameError');
+    const isEmailValid = validateEmail('email', 'emailError');
+    const isPhoneValid = validatePhone('phone', 'phoneError');
+    const isPasswordValid = validatePassword('password', 'passwordError');
+    const isConfirmValid = validateConfirmPassword('confirmPassword', 'confirmPasswordError');
+
+    if(isNameValid && isEmailValid && isPhoneValid && isPasswordValid && isConfirmValid){
+        alert('Registration successful!');
+        window.location.href = 'selllogin.html';
+    }
+}
+
+function validateName(inputId, errorId){
+    const value = document.getElementById(inputId).value.trim();
+    if(!value){
+        showError(inputId, errorId, 'Name is required');
+        return false;
+    }
+    if(value.length < 2){
+        showError(inputId, errorId, 'Name must be at least 2 characters');
+        return false;
+    }
+    clearFieldError(inputId, errorId);
+    return true;
+}
+
+function validateEmail(inputId, errorId){
+    const value = document.getElementById(inputId).value.trim();
+    if(!value){
+        showError(inputId, errorId, 'Email is required');
+        return false;
+    }
+    if(!isValidEmail(value)){
+        showError(inputId, errorId, 'Enter a valid email address');
+        return false;
+    }
+    clearFieldError(inputId, errorId);
+    return true;
+}
+
+function validatePhone(inputId, errorId){
+    const value = document.getElementById(inputId).value.trim();
+    if(!value){
+        showError(inputId, errorId, 'Phone number is required');
+        return false;
+    }
+    if(!isValidPhone(value)){
+        showError(inputId, errorId, 'Enter a valid 10-digit phone number');
+        return false;
+    }
+    clearFieldError(inputId, errorId);
+    return true;
+}
+
+function validatePassword(inputId, errorId){
+    const value = document.getElementById(inputId).value;
+    if(!value){
+        showError(inputId, errorId, 'Password is required');
+        return false;
+    }
+    if(!isValidPassword(value)){
+        showError(inputId, errorId, 'Password must be 8+ chars and include uppercase, lowercase, number, and special character');
+        return false;
+    }
+    clearFieldError(inputId, errorId);
+    return true;
+}
+
+function validateConfirmPassword(inputId, errorId){
+    const value = document.getElementById(inputId).value;
+    const password = document.getElementById('password').value;
+    if(!value){
+        showError(inputId, errorId, 'Please confirm your password');
+        return false;
+    }
+    if(value !== password){
+        showError(inputId, errorId, 'Passwords do not match');
+        return false;
+    }
+    clearFieldError(inputId, errorId);
+    return true;
+}
+
+function showError(inputId, errorId, message){
+    document.getElementById(inputId).classList.add('error');
+    const errorDiv = document.getElementById(errorId);
+    errorDiv.textContent = message;
+    errorDiv.style.display = 'block';
+}
+
+function clearFieldError(inputId, errorId){
+    document.getElementById(inputId).classList.remove('error');
+    const errorDiv = document.getElementById(errorId);
+    errorDiv.textContent = '';
+    errorDiv.style.display = 'none';
+}
+
+function clearAllErrors(){
+    const errorDivs = document.querySelectorAll('.error-message');
+    errorDivs.forEach(div => {
+        div.textContent = '';
+        div.style.display = 'none';
+    });
+
+    const inputs = document.querySelectorAll('input');
+    inputs.forEach(input => input.classList.remove('error'));
+}
+
+function checkPasswordStrength(inputId){
+    const value = document.getElementById(inputId).value;
+    const strengthDiv = document.getElementById('passwordStrength');
+
+    if(!value){
+        strengthDiv.textContent = '';
+        return;
+    }
+
+    let score = 0;
+    const requirements = [];
+
+    if(value.length >= 8){
+        score += 1;
+    } else {
+        requirements.push('8+ characters');
+    }
+
+    if(/[A-Z]/.test(value)) score += 1;
+    else requirements.push('Uppercase');
+
+    if(/[a-z]/.test(value)) score += 1;
+    else requirements.push('Lowercase');
+
+    if(/\d/.test(value)) score += 1;
+    else requirements.push('Number');
+
+    if(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value)) score += 1;
+    else requirements.push('Special char');
+
+    if(score <= 2){
+        strengthDiv.innerHTML = '<span class="strength-weak">Weak password</span>' + (requirements.length ? '<br><small>Needs: ' + requirements.join(', ') + '</small>' : '');
+    } else if(score <= 4){
+        strengthDiv.innerHTML = '<span class="strength-medium">Medium strength</span>' + (requirements.length ? '<br><small>Needs: ' + requirements.join(', ') + '</small>' : '');
+    } else {
+        strengthDiv.innerHTML = '<span class="strength-strong">Strong password</span>';
+    }
+}
+
+function isValidEmail(email){
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
+}
+
+function isValidPhone(phone){
+    const cleanPhone = phone.replace(/\D/g, '');
+    return cleanPhone.length === 10;
+}
+
+function isValidPassword(password){
+    const minLength = password.length >= 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumber = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+
+    return minLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar;
+}
+</script>
+</body>
+</html>

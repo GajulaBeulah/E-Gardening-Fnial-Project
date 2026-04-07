@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="/E-Gardening/header.css">
+    <style>
+       #plant{
+         border: 1px solid #ccc;
+            padding: 10px;
+       }
+       #plant img{
+      width: 700px;
+            height: 600px;
+       }
+       #plant p{
+        font-size: 40px;
+        margin-top: 0px;
+        
+       }
+    body {
+        font-family: Arial, sans-serif;
+        background: #f4f9f4;
+        margin: 0;
+        padding: 20px;
+    }
+    h1 {
+        text-align: center;
+        color: #2e7d32;
+    }
+    .container {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 20px;
+    }
+    .plant-card {
+        background: #ffffff;
+        padding: 15px;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    }
+    .plant-card h2 {
+        color: #388e3c;
+        margin-bottom: 10px;
+        font-size: 50px;
+    }
+    .plant-card p {
+        font-size: 20px;
+        margin: 5px 0;
+    }
+    .label {
+        font-weight: bold;
+        color: #1b5e20;
+        font-size: 30px;
+    }
+    .laura{
+display: flex;
+gap: 50px;
+    }
+    .label{
+        font-size: 20px;
+    }
+    /* Responsive Design */
+@media (max-width: 1024px) {
+    #plant img {
+        width: 100%;
+        height: auto;
+    }
+}
+
+@media (max-width: 768px) {
+    .laura {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .plant-card h2 {
+        font-size: 32px;
+    }
+
+    .plant-card p {
+        font-size: 16px;
+    }
+
+    .label {
+        font-size: 16px;
+    }
+
+    #plant p {
+        font-size: 24px;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 24px;
+    }
+
+    .plant-card {
+        padding: 10px;
+    }
+
+    .plant-card h2 {
+        font-size: 24px;
+    }
+
+    .plant-card p {
+        font-size: 14px;
+    }
+
+    .label {
+        font-size: 14px;
+    }
+}
+</style>
+    
+</head>
+<body>
+      <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+                     <a href="/E-Gardening/User/plantcare.html">Home</a>
+            <div class="dropdown">
+                <a href="#">Plants</a>
+                <div class="dropdown-menu">
+                  <a href="/E-Gardening/User/outdoor.html">Outdoor</a>
+                    <a href="/E-Gardening/User/flower.html">Flowers</a>
+                    <a href="/E-Gardening/User/medicine.html">Medical</a>
+                </div>
+            </div>
+            <div class=" dropdown">
+                <a href="#seeds">Seeds</a>
+                <div class="dropdown-menu">
+                    <a href="/E-Gardening/User/fruits.html">Fruits seeds</a>
+                    <a href="/E-Gardening/User/veg.html">Vegetables seeds</a>
+                    <a href="/E-Gardening/User/flowers.html">Flowers seeds</a>
+                </div>
+            </div>
+            <a href="/E-Gardening/User/pots.html">Pots</a>
+            <a href="/E-Gardening/User/decoserv.html">Services</a>
+                    <a href="/E-Gardening/User/plantdetails.html">Plantopidia</a>
+           <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->
+        <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+        <!-- <div class="icons"><span>🔍</span> 
+        <a href="/Admin/admin-login.html" class="auth-link">Login</a>
+        <a href="/Seller/seller-register.html" class="auth-link">Register</a>
+        <span>👤</span> -->
+        </div>
+    </header>
+<div class="laura">
+    <div id="plant">
+        <img
+            src="https://gachwala.in/wp-content/uploads/2023/09/tinospora-cordifolia-600x600.jpg">
+        <p>Neem + Giloy Stem</p>
+    </div>
+
+    <!-- Neem + Giloy Stem -->
+    <div class="plant-card">
+        <h2>🌿 Neem + Giloy Stem</h2>
+
+        <p><span class="label">Scientific Names:</span>
+            Neem – Azadirachta indica <br>
+            Giloy – Tinospora cordifolia
+        </p>
+
+        <p><span class="label">Common Names:</span>
+            Neem, Indian Lilac <br>
+            Giloy, Guduchi, Amrita
+        </p>
+
+        <p><span class="label">Description:</span>
+            Neem and Giloy are powerful medicinal plants widely used in Ayurveda.
+            Neem is known for its bitter taste and antibacterial properties,
+            while Giloy stems are valued for boosting immunity and detoxifying the body.
+        </p>
+
+        <p><span class="label">Uses:</span>
+            Helps boost immunity and purify blood.
+            Supports skin health and helps manage infections.
+            Useful in fever management and improving digestion.
+        </p>
+
+        <p><span class="label">Disadvantages:</span>
+            Excess intake may cause low blood sugar or stomach upset.
+            Not recommended during pregnancy without medical advice.
+        </p>
+
+        <p><span class="label">Weather:</span>
+            Grows well in tropical and subtropical climates.
+            Ideal temperature range is 20°C to 35°C.
+        </p>
+
+        <p><span class="label">Soil:</span>
+            Requires well-drained loamy or sandy soil.
+            Giloy can grow on Neem or other trees as a climber.
+        </p>
+
+        <p><span class="label">Regular Watering:</span>
+            Water moderately.
+            Avoid waterlogging.
+        </p>
+
+        <p><span class="label">Sunlight:</span>
+            Prefers full sunlight to partial shade.
+        </p>
+    </div>
+</div>
+
+            <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+        <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+    <script>
+        function toggleMenu() {
+            document.getElementById("navbar").classList.toggle("active");
+        }
+    </script>
+</body>
+</html>

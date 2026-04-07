@@ -1,0 +1,502 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link rel="stylesheet" href="../header.css">
+    <meta charset="UTF-8">
+    <title>Plant Product Card</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .head {
+            background-image: url(https://static.vecteezy.com/system/resources/previews/008/094/445/large_2x/closeup-of-beautiful-nature-view-green-leaf-on-blurred-greenery-background-in-garden-with-copy-space-using-as-background-wallpaper-page-concept-free-photo.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 190px;
+            text-align: center;
+            color: #025506;
+            font-size: 2rem;
+        }
+        .card {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            color: green;
+            min-height: 170px;
+            box-shadow: 3px 3px green;
+            border-radius: 10px;
+            padding: 10px;
+            padding-bottom: 1px;
+            border: 2px solid green;
+            /* or remove completely */
+        }
+        .card:hover {
+            transition: transform 0.3s ease;
+        }
+
+        .card img {
+            width: 100%;
+            max-width: 170px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-name {
+            font-size: 14px;
+            margin: 8px 0;
+            padding: 40px;
+            /* or remove padding */
+        }
+
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .rating {
+            color: rgb(219, 169, 20);
+            font-size: 14px;
+        }
+
+        .reviews {
+            font-size: 12px;
+            color: gray;
+        }
+
+        .offer,
+        .sold {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 10px;
+            cursor: pointer;
+            border: 2px solid green;
+        }
+
+        button:hover {
+            background-color: purple;
+        }
+
+        .add-cart {
+            background: green;
+            color: #fff;
+        }
+
+        /* .flex {
+             display: grid;
+            grid-template-columns: repeat(4, 1fr);
+              column-gap: 10px; 
+
+        }   */
+        .flex {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 50px;
+            /* padding: 30px; */
+            row-gap: 20px;
+        }
+
+        .reviews,
+        .offer,
+        .sold {
+            color: #000000
+        }
+
+        .Medicine-plants {
+            text-align: center;
+            color: #025506;
+
+        }
+
+        #Medicine h2 {
+            text-align: center;
+            background-color: rgb(0, 0, 0);
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+        }
+         footer {
+            width: 100%;
+            text-align: center;
+            margin-bottom: 0px;
+        }
+        /* Tablets (max-width: 1024px) */
+        @media (max-width: 1024px) {
+            .flex {
+                grid-template-columns: repeat(3, 1fr);
+                column-gap: 40px;
+            }
+
+            .head {
+                padding: 70px;
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Small tablets & large mobiles (max-width: 768px) */
+        @media (max-width: 768px) {
+            .flex {
+                grid-template-columns: repeat(2, 1fr);
+                column-gap: 30px;
+                justify-items: center;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .head {
+                padding: 50px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Mobile phones (max-width: 480px) */
+        @media (max-width: 480px) {
+            .flex {
+                grid-template-columns: 1fr;
+                column-gap: 0;
+            }
+
+            .card {
+                width: 95%;
+                margin: 15px auto;
+            }
+
+            .head {
+                padding: 30px;
+                font-size: 1.2rem;
+            }
+
+            .buttons {
+                flex-direction: column;
+            }
+
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+            <a href="./plantcare.html">Home</a>
+            <div class="dropdown">
+                <a href="#">Plants</a>
+                <div class="dropdown-menu">
+                    <a href="./indoor.html">Indoor</a>
+                    <a href="./outdoor.html">Outdoor</a>
+                    <a href="./flower.html">Flowers</a>
+                    <a href="./medicine.html">Medical</a>
+                </div>
+            </div>
+            <div class=" dropdown">
+                <a href="#seeds">Seeds</a>
+                <div class="dropdown-menu">
+                    <a href="./fruits.html">Fruits seeds</a>
+                    <a href="./veg.html">Vegetables seeds</a>
+                    <a href="./flowers.html">Flowers seeds</a>
+                </div>
+            </div>
+            <a href="./pots.html">Pots</a>
+            <a href="./decoserv.html">Services</a>
+            <a href="./plantdetails.html">Plantopidia</a>\
+               <a href="./contact.html">Contact</a> 
+               <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->    <a href="./user_profile_Page.html">Profile👤</a>
+         <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+        <!-- <div class="icons"><span>🔍</span>
+        <a href="/project/login.html" class="auth-link">Login</a>
+        <a href="/project/register.html" class="auth-link">Register</a>
+        <span>👤</span>
+    </div> -->
+    </header>
+    <div class="head">
+        <h2> welcome to Medicine plants</h2>
+        <p> Explore a variety of plants to start your own garden</p>
+    </div>
+    <div class="Medicine">
+        <h2 style="text-align: center;">shop by outdoor plants</h2>
+        <h3 id="Medicine" style="text-align: center; color: green;">MEDICINE PLANTS</h3>
+    </div>
+    <div class="flex">
+        <div class="card">
+            <a href="./medi1.html"><img src="https://gachwala.in/wp-content/uploads/2022/06/51eaa5lJMeL._SX569_.jpg"
+                    alt="Plant"></a>
+            <div class="product-name">Kulekhara Live Plant (Hygrophila Auriculata) – Swampweeds Plant</div>
+            <div class="price" >₹300</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">985 Reviews</div>
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+
+            <div class="buttons">
+                <button class="add-cart">Add to Cart</button>
+
+            </div>
+        </div>
+
+        <!-- CARD 1 -->
+        <div class="card">
+            <a href="./medi2.html"><img
+                    src="https://gachwala.in/wp-content/uploads/2022/06/BRAHMI-3-1-600x600.webp"></a>
+            <div class="card-content">
+
+                <div class="title" style="padding-top: 0px;">Neer Brahmi Plant Live | Bacopa Monnieri | Brahmi Plant
+                    with Pot </div>
+
+                <div class="price">₹444</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">479 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 10 days</div>
+
+                <button class="add-cart">Add to Cart</button>
+
+
+            </div>
+        </div>
+
+        <!-- CARD 2 -->
+        <div class="card">
+            <a href="./medi3.html"><img src="https://gachwala.in/wp-content/uploads/2023/03/IMAGE-1-6.webp"></a>
+            <div class="card-content">
+
+                <div class="title">Bhringraj | Eclipta alba | Bhangra | False daisy | Ayurvedic Plant for Hair | 1
+                    Healthy Live Plant with 3 inch Pot (White/Yellow)</div>
+                <div class="price">₹599</div>
+
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">9875 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 10 days</div>
+
+
+                <button class="add-cart">Add to Cart</button>
+
+            </div>
+        </div>
+
+        <!-- CARD 3 -->
+        <div class="card">
+            <a href="./medi4.html"><img
+                    src="https://gachwala.in/wp-content/uploads/2022/07/New-Project-2024-03-14T125957.226.jpg">
+                <div class="card-content">
+            </a>
+
+            <div class="title">Vasaka (Justicia adhatoda) Live plant | Malabar nut | Vasa | Adhatoda Medicinal Herb
+                | Medicinal Plant Live with Pot </div>
+            <div class="price">₹355</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">1925 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+
+
+            <button class="add-cart">Add to Cart</button>
+
+        </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+        <img src="https://gachwala.in/wp-content/uploads/2023/09/tinospora-cordifolia-600x600.jpg">
+        <div class="card-content">
+
+            <div class="title">Fresh Neem Giloy Stem (7 inch) / Neem Giloy Stick (Pack 10) | Guduchi stems/Gudhi
+                Stick for Herbal Use </div>
+            <div class="price">₹559</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">2584Reviews</div>
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+            <button class="add-cart">Add to Cart</button>
+
+        </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="card">
+        <img src="https://gachwala.in/wp-content/uploads/2022/06/IMAGE-1-4.webp">
+        <div class="card-content">
+
+            <div class="title">Tulsi Live Herbal Plant (Holy Basil) for Home, Balcony, Outdoor Garden with Pot
+                (Krishna Tulsi)
+            </div>
+            <div class="price">₹359</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">333 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+
+
+            <button class="add-cart">Add to Cart</button>
+
+        </div>
+
+    </div>
+    <!-- CARD 6 -->
+    <div class="card">
+        <img src="https://gachwala.in/wp-content/uploads/2022/06/image_2024_03_14T05_02_53_935Z.jpg">
+        <div class="card-content">
+
+            <div class="title">Medicinal Plant Combo (Brahmi + Kulekhara) | (Bacopa monnieri,Centella asiatica)
+                Plant with Pot</div>
+            <div class="price">₹357</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">7534 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+
+
+            <button class="add-cart">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 7-->
+    <div class="card">
+        <img src="https://gachwala.in/wp-content/uploads/2022/07/New-Project-2024-03-14T131607.269.jpg">
+
+        <div class="card-content">
+
+            <div class="title">Miracle Leaf Live Plant (Kalanchoe Pinnata) | Cathedral bells | Goethe Plant | Life
+                Plant | Pathor Kuchi Plant | Succulent Plant with Pot
+                <div class="price">₹469</div>
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">2371 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 15 days</div>
+
+
+                <button class="add-cart">Add to Cart</button>
+
+            </div>
+        </div>
+    </div>
+    <!-- CARD 8 -->
+    <div class="card">
+        <img src="https://gachwala.in/wp-content/uploads/2022/06/IMAGE-1-7-600x600.webp">
+        <div class="card-content">
+
+            <div class="title">Tulsi Live Medicine/Herbal Plant (Holy Basil) for Home, Balcony, Outdoor Garden with
+                Pot (Radha Tulsi)</div>
+            <div class="price">₹988</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">4858 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 10 days</div>
+
+            <button class="add-cart">Add to Cart</button>
+
+
+        </div>
+    </div>
+    <!-- CARD 9 -->
+    <div class="card">
+        <img src="https://gachwala.in/wp-content/uploads/2022/06/tulsi-varieties-600x600.jpg">
+        <div class="card-content">
+
+            <div class="title">Tulsi Live Medicine/Herbal Plant (Holy Basil) for Home, Balcony, Outdoor Garden with
+                Pot (Ram Tulsi)</div>
+            <div class="price">₹489</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">1599 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 24 days</div>
+
+            <button class="add-cart">Add to Cart</button>
+
+
+        </div>
+    </div>
+
+    </div>
+    </div>
+       <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+        <script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+</script>
+</body>
+
+</html>

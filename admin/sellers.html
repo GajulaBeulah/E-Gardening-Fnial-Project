@@ -1,0 +1,715 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Seller Management - Plant Store Admin</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body{
+    background: linear-gradient(135deg,#e8f5e9,#f1f8e9);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* HEADER */
+header{
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 24px;
+    font-weight: 700;
+}
+
+.menu-toggle{
+    display:none;
+    background:none;
+    border:none;
+    color:#fff;
+    font-size:24px;
+    cursor:pointer;
+}
+
+#navbar{
+    display:flex;
+    align-items:center;
+}
+
+#navbar a{
+    padding: 12px 18px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.dropdown{
+    position: relative;
+}
+
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1b5e20;
+    min-width: 200px;
+    border-radius: 0 0 8px 8px;
+}
+
+.dropdown:hover .dropdown-menu{
+    display:block;
+}
+
+.dropdown-menu a{
+    display:block;
+    padding:12px 20px;
+}
+
+/* MAIN */
+main{
+    flex:1;
+    padding:20px;
+}
+
+.dashboard-container{
+    max-width:1200px;
+    margin:auto;
+    width:100%;
+}
+
+.page-header{
+    background: linear-gradient(135deg,#1b5e20,#2e7d32);
+    color:#fff;
+    padding:25px;
+    border-radius:12px;
+    margin-bottom:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.section-header{
+    margin: 30px 0 15px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.section-header h3{
+    color: #1b5e20;
+    font-size: 20px;
+    font-weight: 600;
+    margin: 0;
+}
+
+/* TABLE */
+.table-wrapper{
+    overflow-x:auto;
+    margin-bottom: 40px;
+}
+
+.data-table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:12px;
+    overflow:hidden;
+    box-shadow:0 6px 20px rgba(0,0,0,.08);
+    min-width:700px;
+}
+
+.data-table th{
+    background:linear-gradient(135deg,#2e7d32,#1b5e20);
+    color:#fff;
+    padding:15px;
+    text-align:left;
+}
+
+.data-table td{
+    padding:15px;
+    border-bottom:1px solid #eee;
+}
+
+.action-btn{
+    padding:6px 12px;
+    margin:0 3px;
+    background:#2e7d32;
+    color:#fff;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.action-btn.delete{
+    background:#d32f2f;
+}
+
+.action-btn.approve-btn{
+    background:#4caf50;
+}
+
+.action-btn.reject-btn{
+    background:#f44336;
+}
+
+.action-btn.view-btn{
+    background:#2196f3;
+}
+
+.action-btn.docs-btn{
+    background:#ff9800;
+}
+
+.action-btn.activate-btn{
+    background:#4caf50;
+}
+
+.approve-checkbox{
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+/* FOOTER */
+footer{
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color: #fff;
+    padding: 20px;
+    text-align: center;
+    margin-top:auto;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width:768px){
+
+    header{
+        flex-wrap:wrap;
+        padding:15px;
+    }
+
+    .menu-toggle{
+        display:block;
+    }
+
+    #navbar{
+        flex-direction:column;
+        width:100%;
+        display:none;
+        margin-top:10px;
+        background:#1b5e20;
+        border-radius:8px;
+    }
+
+    #navbar.active{
+        display:flex;
+    }
+
+    #navbar a{
+        width:100%;
+        text-align:left;
+    }
+
+    .page-header{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+
+    main{
+        padding:15px;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">🌿 Garden Admin</div>
+    <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+
+    <nav id="navbar">
+        <a href="index.html">📊 Dashboard</a>
+        <a href="users.html">👥 Users</a>
+        <a href="sellers.html">🧑‍🌾 Sellers</a>
+        <a href="reports.html">📈 Reports</a>
+
+        <div class="dropdown">
+            <a href="#">🌿 Plants</a>
+            <div class="dropdown-menu">
+                <a href="plant-pedia.html">Plant Pedia</a>
+                <a href="add-plant.html">Add Plant</a>
+            </div>
+        </div>
+    </nav>
+</header>
+
+<main>
+<div class="dashboard-container">
+
+    <div class="page-header">
+        <h2>🧑‍🌾 Seller Management</h2>
+    </div>
+
+    <!-- Pending Approvals Table -->
+    <div class="section-header">
+        <h3>📋 Pending Approvals</h3>
+        <button onclick="bulkApprove()" style="background: #4caf50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">✅ Bulk Approve Selected</button>
+    </div>
+
+    <div class="table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>View Details</th>
+                <th>Approve</th>
+                <th>Owner Name</th>
+                <th>Shop Name</th>
+                <th>Shop Location</th>
+                <th>Documents</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td><button class="action-btn view-btn">👁️ View</button></td>
+                <td><input type="checkbox" class="approve-checkbox"></td>
+                <td>Rahul Verma</td>
+                <td>Green Paradise</td>
+                <td>Mumbai, Maharashtra</td>
+                <td><button class="action-btn docs-btn">📄 View Docs</button></td>
+                <td>
+                    <button class="action-btn approve-btn">✅ Approve</button>
+                    <button class="action-btn delete reject-btn">❌ Reject</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button class="action-btn view-btn">👁️ View</button></td>
+                <td><input type="checkbox" class="approve-checkbox"></td>
+                <td>Meera Saxena</td>
+                <td>Bloom House</td>
+                <td>Delhi, India</td>
+                <td><button class="action-btn docs-btn">📄 View Docs</button></td>
+                <td>
+                    <button class="action-btn approve-btn">✅ Approve</button>
+                    <button class="action-btn delete reject-btn">❌ Reject</button>
+                </td>
+            </tr>
+            <tr>
+                <td><button class="action-btn view-btn">👁️ View</button></td>
+                <td><input type="checkbox" class="approve-checkbox"></td>
+                <td>Amit Kumar</td>
+                <td>Plant World</td>
+                <td>Bangalore, Karnataka</td>
+                <td><button class="action-btn docs-btn">📄 View Docs</button></td>
+                <td>
+                    <button class="action-btn approve-btn">✅ Approve</button>
+                    <button class="action-btn delete reject-btn">❌ Reject</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+    <!-- Existing Shops Table -->
+    <div class="section-header">
+        <h3>🏪 Existing Shops</h3>
+    </div>
+
+    <div class="table-wrapper">
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Seller ID</th>
+                <th>Shop Name</th>
+                <th>Owner Name</th>
+                <th>Shop Location</th>
+                <th>Status</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>#S001</td>
+                <td>Nature's Gift</td>
+                <td>Priya Sharma</td>
+                <td>Pune, Maharashtra</td>
+                <td><span style="color: #2e7d32; font-weight: bold;">Active</span></td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn delete">🚫 Suspend</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#S002</td>
+                <td>Green Thumb</td>
+                <td>Rajesh Patel</td>
+                <td>Ahmedabad, Gujarat</td>
+                <td><span style="color: #2e7d32; font-weight: bold;">Active</span></td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn delete">🚫 Suspend</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#S003</td>
+                <td>Botanical Bliss</td>
+                <td>Sneha Gupta</td>
+                <td>Chennai, Tamil Nadu</td>
+                <td><span style="color: #ff9800; font-weight: bold;">Suspended</span></td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn activate-btn">✅ Activate</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#S004</td>
+                <td>Plant Paradise</td>
+                <td>Vikram Singh</td>
+                <td>Jaipur, Rajasthan</td>
+                <td><span style="color: #2e7d32; font-weight: bold;">Active</span></td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn delete">🚫 Suspend</button>
+                </td>
+            </tr>
+            <tr>
+                <td>#S005</td>
+                <td>Foliage Friends</td>
+                <td>Kavita Jain</td>
+                <td>Hyderabad, Telangana</td>
+                <td><span style="color: #2e7d32; font-weight: bold;">Active</span></td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn delete">🚫 Suspend</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    </div>
+
+</div>
+</main>
+
+<footer>
+    © 2026 Garden | All Rights Reserved
+</footer>
+
+<script>
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
+
+// View seller details
+function viewSellerDetails(button) {
+    try {
+        console.log('View button clicked');
+        const row = button.closest('tr');
+        let ownerName, shopName, location;
+        
+        if (row.cells.length === 7) {
+            ownerName = row.cells[2].textContent;
+            shopName = row.cells[3].textContent;
+            location = row.cells[4].textContent;
+            console.log('Pending table - Owner:', ownerName, 'Shop:', shopName, 'Location:', location);
+        } else {
+            ownerName = row.cells[2].textContent;
+            shopName = row.cells[1].textContent;
+            location = row.cells[3].textContent;
+            console.log('Existing shops table - Owner:', ownerName, 'Shop:', shopName, 'Location:', location);
+        }
+        
+        alert(`Seller Details:\n\nOwner: ${ownerName}\nShop: ${shopName}\nLocation: ${location}\n\nMore detailed information would be shown in a modal or separate page.`);
+    } catch (error) {
+        console.error('Error in viewSellerDetails:', error);
+        alert('Error viewing seller details. Please try again.');
+    }
+}
+
+// View documents
+function viewDocuments(button) {
+    try {
+        console.log('Documents button clicked');
+        const row = button.closest('tr');
+        const ownerName = row.cells[2].textContent;
+        const shopName = row.cells[3].textContent;
+        console.log('Viewing documents for:', shopName);
+        
+        alert(`Viewing documents for ${shopName} owned by ${ownerName}\n\nDocument types: Business License, ID Proof, Address Proof, Tax Certificate\n\nIn a real application, this would open a document viewer.`);
+    } catch (error) {
+        console.error('Error in viewDocuments:', error);
+        alert('Error viewing documents. Please try again.');
+    }
+}
+
+// Approve seller
+function approveSeller(button) {
+    try {
+        console.log('Approve button clicked');
+        const row = button.closest('tr');
+        const ownerName = row.cells[2].textContent;
+        const shopName = row.cells[3].textContent;
+        console.log('Approving seller:', shopName);
+        
+        if (confirm(`Are you sure you want to approve ${shopName} owned by ${ownerName}?`)) {
+            row.remove();
+            alert(`${shopName} has been approved successfully!`);
+            console.log('Seller approved, reloading...');
+            location.reload();
+        }
+    } catch (error) {
+        console.error('Error in approveSeller:', error);
+        alert('Error approving seller. Please try again.');
+    }
+}
+
+// Reject seller
+function rejectSeller(button) {
+    try {
+        console.log('Reject button clicked');
+        const row = button.closest('tr');
+        const ownerName = row.cells[2].textContent;
+        const shopName = row.cells[3].textContent;
+        console.log('Rejecting seller:', shopName);
+        
+        if (confirm(`Are you sure you want to reject ${shopName} owned by ${ownerName}?`)) {
+            row.remove();
+            alert(`${shopName} has been rejected.`);
+            console.log('Seller rejected successfully');
+        }
+    } catch (error) {
+        console.error('Error in rejectSeller:', error);
+        alert('Error rejecting seller. Please try again.');
+    }
+}
+
+// Suspend seller
+function suspendSeller(button) {
+    try {
+        console.log('Suspend button clicked');
+        const row = button.closest('tr');
+        const shopName = row.cells[1].textContent;
+        console.log('Suspending seller:', shopName);
+        
+        if (confirm(`Are you sure you want to suspend ${shopName}?`)) {
+            const statusCell = row.cells[4];
+            statusCell.innerHTML = '<span style="color: #ff9800; font-weight: bold;">Suspended</span>';
+            const actionsCell = row.cells[5];
+            actionsCell.innerHTML = `
+                <button class="action-btn view-btn">👁️ View</button>
+                <button class="action-btn edit-btn">✏️ Edit</button>
+                <button class="action-btn activate-btn">✅ Activate</button>
+            `;
+            
+            actionsCell.querySelector('.view-btn').addEventListener('click', function() { viewSellerDetails(this); });
+            actionsCell.querySelector('.edit-btn').addEventListener('click', function() { editSeller(this); });
+            actionsCell.querySelector('.activate-btn').addEventListener('click', function() { activateSeller(this); });
+            
+            alert(`${shopName} has been suspended.`);
+            console.log('Seller suspended successfully');
+        }
+    } catch (error) {
+        console.error('Error in suspendSeller:', error);
+        alert('Error suspending seller. Please try again.');
+    }
+}
+
+// Activate seller
+function activateSeller(button) {
+    try {
+        console.log('Activate button clicked');
+        const row = button.closest('tr');
+        const shopName = row.cells[1].textContent;
+        console.log('Activating seller:', shopName);
+        
+        if (confirm(`Are you sure you want to reactivate ${shopName}?`)) {
+            const statusCell = row.cells[4];
+            statusCell.innerHTML = '<span style="color: #2e7d32; font-weight: bold;">Active</span>';
+            const actionsCell = row.cells[5];
+            actionsCell.innerHTML = `
+                <button class="action-btn view-btn">👁️ View</button>
+                <button class="action-btn edit-btn">✏️ Edit</button>
+                <button class="action-btn delete">🚫 Suspend</button>
+            `;
+            
+            actionsCell.querySelector('.view-btn').addEventListener('click', function() { viewSellerDetails(this); });
+            actionsCell.querySelector('.edit-btn').addEventListener('click', function() { editSeller(this); });
+            actionsCell.querySelector('.delete').addEventListener('click', function() { suspendSeller(this); });
+            
+            alert(`${shopName} has been reactivated.`);
+            console.log('Seller activated successfully');
+        }
+    } catch (error) {
+        console.error('Error in activateSeller:', error);
+        alert('Error activating seller. Please try again.');
+    }
+}
+
+// Bulk approve selected sellers
+function bulkApprove() {
+    try {
+        console.log('Bulk approve clicked');
+        const checkboxes = document.querySelectorAll('.approve-checkbox:checked');
+        console.log('Selected sellers:', checkboxes.length);
+        
+        if (checkboxes.length === 0) {
+            alert('Please select sellers to approve.');
+            console.warn('No sellers selected for bulk approval');
+            return;
+        }
+        
+        if (confirm(`Are you sure you want to approve ${checkboxes.length} selected seller(s)?`)) {
+            checkboxes.forEach(checkbox => {
+                const row = checkbox.closest('tr');
+                row.remove();
+            });
+            alert(`${checkboxes.length} seller(s) have been approved successfully!`);
+            console.log('Bulk approval completed, reloading...');
+            location.reload();
+        }
+    } catch (error) {
+        console.error('Error in bulkApprove:', error);
+        alert('Error approving sellers. Please try again.');
+    }
+}
+
+// Edit seller details
+function editSeller(button) {
+    try {
+        console.log('Edit button clicked');
+        const row = button.closest('tr');
+        const isEditing = button.textContent.includes('Save');
+        
+        if (isEditing) {
+            // Save changes
+            console.log('Saving seller changes');
+            const cells = row.querySelectorAll('td:not(:last-child)');
+            cells.forEach((cell, index) => {
+                const input = cell.querySelector('input');
+                if (input) {
+                    const newValue = input.value.trim();
+                    console.log('Updated field', index, ':', newValue);
+                    cell.textContent = newValue;
+                }
+            });
+            button.textContent = '✏️ Edit';
+            button.classList.remove('approve-btn');
+            alert('Seller details updated successfully!');
+            console.log('Edit mode disabled, changes saved');
+        } else {
+            // Enter edit mode
+            console.log('Entering edit mode for seller');
+            const cells = row.querySelectorAll('td:not(:last-child)');
+            cells.forEach(cell => {
+                const value = cell.textContent.trim();
+                // Skip ID column
+                if (!value.startsWith('#')) {
+                    cell.innerHTML = `<input type="text" value="${value}" style="width: 100%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">`;
+                }
+            });
+            button.textContent = '💾 Save';
+            button.classList.add('approve-btn');
+        }
+    } catch (error) {
+        console.error('Error in editSeller:', error);
+        alert('Error editing seller. Please try again.');
+    }
+}
+
+// Add event listeners when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Attaching event listeners');
+    
+    try {
+        // View buttons
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                viewSellerDetails(this);
+            });
+        });
+        console.log('View button listeners attached');
+        
+        // Edit buttons
+        document.querySelectorAll('.edit-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                editSeller(this);
+            });
+        });
+        console.log('Edit button listeners attached');
+        
+        // Document buttons
+        document.querySelectorAll('.docs-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                viewDocuments(this);
+            });
+        });
+        console.log('Document button listeners attached');
+        
+        // Approve buttons
+        document.querySelectorAll('.approve-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                approveSeller(this);
+            });
+        });
+        console.log('Approve button listeners attached');
+        
+        // Reject buttons
+        document.querySelectorAll('.reject-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                rejectSeller(this);
+            });
+        });
+        console.log('Reject button listeners attached');
+        
+        // Delete/Suspend buttons
+        document.querySelectorAll('.action-btn.delete').forEach(btn => {
+            btn.addEventListener('click', function() {
+                suspendSeller(this);
+            });
+        });
+        console.log('Delete/Suspend button listeners attached');
+        
+        // Activate buttons
+        document.querySelectorAll('.activate-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                activateSeller(this);
+            });
+        });
+        console.log('Activate button listeners attached');
+        
+        console.log('All event listeners attached successfully');
+    } catch (error) {
+        console.error('Error attaching event listeners:', error);
+    }
+});
+</script>
+
+</body>
+</html>

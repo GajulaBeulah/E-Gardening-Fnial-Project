@@ -1,0 +1,209 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Seller Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../../header.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+
+        body {
+            background: #f4f6f8;
+            color: #333;
+        }
+
+        /* Header/Navbar */
+        header {
+            background: #2e7d32;
+            padding: 15px 40px;
+            color: #fff;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+            font-size: 15px;
+            transition: 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            color: #c8e6c9;
+        }
+
+        /* Dashboard Section */
+        .dashboard {
+            padding: 50px 40px;
+        }
+
+        .dashboard h2 {
+            margin-bottom: 30px;
+            font-size: 28px;
+            text-align: center;
+        }
+
+        .card-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 25px;
+            max-width: 1100px;
+            margin: auto;
+        }
+
+        .dashboard-card {
+            background: #fff;
+            border-radius: 12px;
+            padding: 30px;
+            text-align: center;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+
+        .dashboard-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 12px 30px rgba(0,0,0,0.12);
+        }
+
+        .dashboard-card .icon {
+            font-size: 40px;
+            margin-bottom: 15px;
+        }
+
+        .dashboard-card h3 {
+            font-size: 22px;
+            margin-bottom: 10px;
+        }
+
+        .dashboard-card p {
+            font-size: 14px;
+            color: #666;
+            margin-bottom: 20px;
+        }
+
+        .dashboard-card button {
+            padding: 10px 22px;
+            border: none;
+            background: #2e7d32;
+            color: #fff;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+        }
+
+        .dashboard-card button:hover {
+            background: #256428;
+        }
+
+        /* Footer */
+        footer {
+            background: green;
+            color:white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 400px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .nav-container {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            nav ul {
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- Header -->
+<header>
+    <div class="nav-container">
+        <h1 class="logo">🌿 Garden Seller Dashboard</h1>
+
+        <nav>
+            <ul>
+             
+                <li><a href="./sales.html">Sales</a></li>
+                <li><a href="./orders.html">Orders</a></li>
+                <li><a href="./product.html">Products</a></li>
+                <li><a href="./profile.html">Profile</a></li>
+                
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<!-- Dashboard Cards -->
+<section class="dashboard">
+    <h2>Welcome Back, Seller 👋</h2>
+
+    <div class="card-grid">
+        <!-- Sales -->
+        <div class="dashboard-card">
+            <div class="icon">💰</div>
+            <h3>Sales</h3>
+            <p>View total sales, revenue, and performance.</p>
+            <a href="./sales.html"><button>View Sales</button></a>
+        </div>
+
+        <!-- Orders -->
+        <div class="dashboard-card">
+            <div class="icon">📦</div>
+            <h3>Orders</h3>
+            <p>Manage customer orders and delivery status.</p>
+            <a href="./orders.html"><button>View Orders</button></a>
+        </div>
+
+        <!-- Products -->
+        <div class="dashboard-card">
+            <div class="icon">🛒</div>
+            <h3>Products</h3>
+            <p>Add, edit, and manage your products.</p>
+            <a href="./product.html"><button>Manage Products</button></a>
+        </div>
+
+        <!-- Profile -->
+        <div class="dashboard-card">
+            <div class="icon">👤</div>
+            <h3>Profile</h3>
+            <p>View and update your seller profile.</p>
+            <a href="./profile.html"><button>View Profile</button></a>
+        </div>
+    </div>
+</section>
+
+<!-- Footer -->
+<footer>
+    <p>&copy; 2026 Garden Decoration Services. All Rights Reserved. | Creating Beautiful Outdoor Spaces</p>
+</footer>
+
+</body>
+</html>

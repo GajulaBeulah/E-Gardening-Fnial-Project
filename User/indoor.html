@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Plant Product Card</title>
+    <link rel="stylesheet" href="../header.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: rgb(254, 255, 255);
+        }
+
+        .head {
+            background-image: url(https://static.vecteezy.com/system/resources/previews/011/954/422/large_2x/watercolor-flower-background-frame-free-vector.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 100px;
+            text-align: center;
+            color: #000000;
+            font-size: 2rem;
+        }
+
+        .card {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            color: green;
+            min-height: 170px;
+            box-shadow: 3px 3px green;
+            border-radius: 10px;
+            padding: 10px;
+
+            border: 2px solid green;
+
+        }
+
+        .card img {
+            width: 100%;
+            max-width: 170px;
+            height: auto;
+            border-radius: 10px;
+        }
+
+        .product-name {
+            font-size: 14px;
+
+
+        }
+
+        .price {
+            font-size: 18px;
+            font-weight: bold;
+        }
+
+        .rating {
+            color: rgb(219, 169, 20);
+            font-size: 14px;
+        }
+
+        .reviews {
+            font-size: 12px;
+            color: gray;
+        }
+
+        .offer,
+        .sold {
+            font-size: 12px;
+            margin-top: 4px;
+        }
+
+        .button {
+            flex: 1;
+            padding: 4px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 10px;
+
+        }
+
+        .reviews,
+        .offer,
+        .sold {
+            color: #000000
+        }
+
+        button {
+            flex: 1;
+            padding: 3px;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            width: 10px;
+        }
+
+        .add-cart {
+            background: green;
+            color: #fff;
+
+        }
+
+
+
+        .flex {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            column-gap: 50px;
+            padding: 30px;
+            row-gap: 20px;
+
+        }
+
+        #flower-plants {
+            text-align: center;
+            color: rgb(129, 31, 164);
+
+        }
+
+        #flower h2 {
+            text-align: center;
+            background-color: rgb(28, 24, 24);
+        }
+
+        #flower h3 {
+            text-align: center;
+            background-color: #5f0e85;
+        }
+
+        .card:hover {
+            transform: scale(1.1);
+        }
+
+        /* Footer width adjustment */
+        footer {
+            width: 100%;
+            max-width: 100%;
+            box-sizing: border-box;
+        }
+        /* Large tablets */
+        @media (max-width: 1024px) {
+            .flex {
+                grid-template-columns: repeat(3, 1fr);
+                column-gap: 30px;
+            }
+
+            .head {
+                padding: 80px;
+                font-size: 1.8rem;
+            }
+        }
+
+        /* Tablets */
+        @media (max-width: 768px) {
+            .flex {
+                grid-template-columns: repeat(2, 1fr);
+                justify-items: center;
+                column-gap: 25px;
+            }
+
+            .card {
+                width: 90%;
+            }
+
+            .head {
+                padding: 60px;
+                font-size: 1.5rem;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 480px) {
+            .flex {
+                grid-template-columns: 1fr;
+                padding: 15px;
+            }
+
+            .card {
+                width: 95%;
+                margin: auto;
+            }
+
+            .head {
+                padding: 40px;
+                font-size: 1.2rem;
+            }
+
+            .buttons,
+            button {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+            <a href="./plantcare.html">Home</a>
+
+            <div class="dropdown">
+                <a href="#">Plants</a>
+                <div class="dropdown-menu">
+                    <a href="./indoor.html">Indoor</a>
+                    <a href="./outdoor.html">Outdoor</a>
+                    <a href="./flower.html">Flowers</a>
+                    <a href="./medicine.html">Medical</a>
+                </div>
+            </div>
+            <div class=" dropdown">
+                <a href="#seeds">Seeds</a>
+                <div class="dropdown-menu">
+                    <a href="./fruits.html">Fruits seeds</a>
+                    <a href="./veg.html">Vegetables seeds</a>
+                    <a href="./flowers.html">Flowers seeds</a>
+                </div>
+            </div>
+            <a href="./pots.html">Pots</a>
+            <a href="./decoserv.html">Services</a>
+                 <a href="./plantdetails.html">Plantopidia</a>
+                    <a href="./contact.html">Contact</a> 
+                    <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->    <a href="./user_profile_Page.html">Profile👤</a>
+       <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+        <!-- <div class="icons"><span>🔍</span>
+        <a href="/project/login.html" class="auth-link">Login</a>
+        <a href="/project/register.html" class="auth-link">Register</a>
+        <span>👤</span>
+    </div> -->
+    </header>
+    <div class="head">
+        <h2> welcome to plants</h2>
+        <p> Explore a variety of plants to start your own garden</p>
+    </div>
+    <div class="flower">
+        <h2 style="text-align: center;">shop by indoor plants</h2>
+        <h3 id="flower-plants" style="color: green;">INDOOR PLANTS</h3>
+    </div>
+
+    <div class="flex">
+        <div class="card">
+            <a href="./indoor1.html"> <img
+                    src="https://nurserylive.com/cdn/shop/products/nurserylive-air-purifier-money-plant_600x600.jpg?v=1634212709"
+                    alt="Plant"></a>
+            <div class="title">Air Purifier Money</div>
+            <div class="price">₹249</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+
+            <div class="buttons">
+                <button class="add-cart" style="margin-top: 20px; width: 200px;">Add to
+                        Cart</button>
+
+            </div>
+        </div>
+
+
+        <!-- CARD 1 -->
+        <div class="card">
+            <a href="./indoor2.html"><img
+                    src="https://www.ugaoo.com/cdn/shop/files/1_65df4ea5-2702-4a23-b434-7dad643b4e03.jpg?v=1744815220&width=750">
+                <div class="card-content">
+            </a>
+            <div class="title">Areca Palm Indoor Plant Greens That Make </div>
+
+            <div class="price">₹598</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">9 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 10 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+
+    <!-- CARD 2 -->
+    <div class="card">
+        <a href="./indoor3.html"> <img
+                src="https://rooted.co.in/cdn/shop/files/Rooted_Money_Plant_in_White_Crown_Pot.jpg?v=1752843465&width=700">
+            <div class="card-content">
+        </a>
+
+        <div class="title">Rooted Green Money Indoor Plant Variegated in Crown Pot</div>
+        <div class="price">₹758</div>
+
+        <div class="rating">★★★★☆</div>
+        <div class="reviews">672 Reviews</div>
+
+
+        <div class="offer">🎁 Offers Inside</div>
+        <div class="sold">⚡ Sold in 10 days</div>
+
+
+        <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+    </div>
+    </div>
+
+    <!-- CARD 3 -->
+    <div class="card">
+        <a href="./indoor4.html"> <img
+                src="https://www.ugaoo.com/cdn/shop/files/1_3ac6ec86-3765-4a74-bc33-9e713eb5eb35.jpg?v=1765219019&width=750">
+            <div class="card-content">
+        </a>
+
+        <div class="title">Set of 6 Air Purifier Plant Bundle indoor plant </div>
+        <div class="price">₹369</div>
+        <div class="rating">★★★★☆</div>
+        <div class="reviews">19 Reviews</div>
+
+
+        <div class="offer">🎁 Offers Inside</div>
+        <div class="sold">⚡ Sold in 15 days</div>
+
+
+        <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+    </div>
+    </div>
+
+    <!-- CARD 4 -->
+    <div class="card">
+        <a href="./outdoor4.html">
+        <img
+            src="https://static-assets-prod.fnp.com/images/pr/l/v20211109161002/3-layer-lucky-bamboo-plant-with-pot_1.jpg">
+            </a>
+        <div class="card-content">
+            <div class="title">3 Layer Lucky Bamboo indoor Plant </div>
+            <div class="price">₹459</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">987 Reviews</div>
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+
+    <!-- CARD 2-->
+    <div class="card">
+       <a href="./indoor2.html"><img
+            src="https://www.ugaoo.com/cdn/shop/files/2_430a864d-f4ed-46d0-b5e6-ff0d55c422db.jpg?v=1706608270&width=750">
+            </a>
+        <div class="card-content">
+
+            <div class="title">Monstera Deliciosa
+            </div>
+            <div class="price">₹689</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">333 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+
+    </div>
+    <!-- CARD 3-->
+    <div class="card">
+        <a href="./indoor3.html"><img
+            src="https://www.ugaoo.com/cdn/shop/files/1_abe4adfb-c2da-4153-8a41-4b224ff4243b.jpg?v=1756145336&width=750">
+            </a>
+        <div class="card-content">
+            <div class="title">Ficus Bonsai</div>
+            <div class="price">₹357</div>
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">753 Reviews</div>
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 4-->
+    <div class="card">
+        <a href="./indoor4.html"><img
+            src="https://www.ugaoo.com/cdn/shop/files/1_a13c280d-c164-4511-bdc2-1a9a237f01ea.jpg?v=1741698811&width=750">
+            </a>
+        <div class="card-content">
+
+            <div class="title">Thuja
+                <div class="price">₹469</div>
+                <div class="rating">★★★★☆</div>
+                <div class="reviews">237 Reviews</div>
+
+
+                <div class="offer">🎁 Offers Inside</div>
+                <div class="sold">⚡ Sold in 15 days</div>
+
+
+                <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to
+                    Cart</button>
+
+            </div>
+        </div>
+    </div>
+    <!-- CARD 8 -->
+    <div class="card">
+        <img src="https://www.ugaoo.com/cdn/shop/files/A_image_4.jpg?v=1765004025&width=750">
+        <div class="card-content">
+
+            <div class="title">Aralia Golden indoor Plant</div>
+            <div class="price">₹598</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">158 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 10 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 9 -->
+    <div class="card">
+        <img
+            src="https://www.ugaoo.com/cdn/shop/files/1_8a460822-f07e-40bc-a178-8f1e73bb4102.jpg?v=1709640492&width=750">
+        <div class="card-content">
+
+            <div class="title">Peperomia Variegated Creeper With Hanging Pot indoor plant</div>
+            <div class="price">₹689</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">159 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 24 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 10 -->
+    <div class="card">
+        <img
+            src="https://www.ugaoo.com/cdn/shop/files/1_ec5c0b2a-34b6-4fd2-b95b-0775fc80d710.jpg?v=1709643092&width=750">
+        <div class="card-content">
+
+            <div class="title">Spider indoor Plant With Hanging Pot</div>
+            <div class="price">₹459</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">108 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 15 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 11 -->
+    <div class="card">
+        <img
+            src="https://www.ugaoo.com/cdn/shop/files/1_30840627-98a9-425a-a79c-62bf5a3bd664.jpg?v=1765548193&width=750">
+        <div class="card-content">
+
+            <div class="title">Oxycardium Golden indoor Plant with Moss Stick - Medium</div>
+            <div class="price">₹333</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">124 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 19 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 12 -->
+    <div class="card">
+        <img src="https://www.ugaoo.com/cdn/shop/products/netted-ficus-tree-32169816686724.jpg?v=1675560431&width=750">
+        <div class="card-content">
+
+            <div class="title">Netted Ficus indoor Tree</div>
+            <div class="price">₹444</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">98 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 26 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 13 -->
+    <div class="card">
+        <img src="https://www.ugaoo.com/cdn/shop/files/DSC_6414.jpg?v=1710229477&width=750">
+        <div class="card-content">
+
+            <div class="title">Golden Fern indoor Plant</div>
+            <div class="price">₹699</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">585 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 12 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+        </div>
+    </div>
+    <!-- CARD 14 -->
+    <div class="card">
+        <img
+            src="https://www.ugaoo.com/cdn/shop/files/1_c3ac302d-28ec-408a-b241-65e025cb676c.jpg?v=1735970845&width=750">
+        <div class="card-content">
+
+            <div class="title">Philodendron Oxycardium Golden indoor Plant with Moss Stick</div>
+            <div class="price">₹699</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">185 Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 12 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+
+        </div>
+    </div>
+    <!-- CARD 15 -->
+    <div class="card">
+        <img
+            src="https://www.ugaoo.com/cdn/shop/files/1_c053ae20-f8ec-400a-9e7f-60cc3aa7af3d.jpg?v=1724849259&width=750">
+        <div class="card-content">
+
+            <div class="title">Lotus Lucky Bamboo 5 Sticks indoorPlant</div>
+            <div class="price">₹599</div>
+
+            <div class="rating">★★★★☆</div>
+            <div class="reviews">23Reviews</div>
+
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 18 days</div>
+
+            <button class="add-cart" style="margin-top: 20px; width: 250px;margin-bottom: 30px;">Add to Cart</button>
+        </div>
+    </div>
+    </div>
+      <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+  <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+    <script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+</script>
+</body>
+</html>

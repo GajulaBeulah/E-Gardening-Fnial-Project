@@ -1,0 +1,475 @@
+
+
+/* ================== BASE CSS ================== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+ background-color: #0f1a12;
+    color: #333;
+    line-height: 1.6;
+}
+
+/* HEADER */
+header {
+    background-color: #0b140c;
+    display: flex;
+    color: white;
+    padding: 15px 30px;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.logo {
+    font-size: 26px;
+    font-weight: bold;
+    background: linear-gradient(45deg, #76ff03, #4caf50);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+nav {
+    display: flex;
+    gap: 25px;
+}
+
+nav a {
+    color: #e8f5e9;
+    text-decoration: none;
+    position: relative;
+    font-weight: 500;
+    transition: 0.3s ease;
+}
+
+nav a:hover {
+    color: #76ff03;
+    transform: translateY(-2px);
+}
+
+nav a::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #76ff03;
+    transition: width 0.3s ease;
+}
+
+nav a:hover::after {
+    width: 100%;
+}
+
+.dropdown {
+    position: relative;
+}
+
+.dropdown-menu {
+    position: absolute;
+    top: 20px;
+    left: 0;
+    background: linear-gradient(135deg, #1b3a0a 0%, #0f2407 100%);
+    border-radius: 12px;
+    padding: 12px;
+    display: none;
+    min-width: 180px;
+    z-index: 10;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3);
+}
+
+.dropdown-menu a {
+    display: block;
+    padding: 10px 12px;
+    font-size: 14px;
+    border-radius: 6px;
+    transition: 0.3s ease;
+}
+
+.dropdown-menu a:hover {
+    background: rgba(76, 175, 80, 0.2);
+    color: #76ff03;
+}
+
+.dropdown:hover .dropdown-menu {
+    display: block;
+}
+
+.icons span {
+    margin-left: 15px;
+    cursor: pointer;
+    font-size: 24px;
+    transition: 0.3s ease;
+}
+
+.icons span:hover {
+    transform: scale(1.2);
+    color: #76ff03;
+}
+
+.icons .auth-link {
+    margin-left: 15px;
+    color: black;
+    text-decoration: none;
+    font-weight: 600;
+    padding: 8px 15px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    font-size: 14px;
+    border: 1px solid transparent;
+}
+
+.icons .auth-link:first-of-type {
+    background: linear-gradient(135deg, #76ff03 0%, #5fd902 100%);
+    color: #1a3a0a;
+}
+
+.icons .auth-link:first-of-type:hover {
+    box-shadow: 0 5px 15px rgba(118, 255, 3, 0.4);
+    transform: translateY(-2px);
+}
+
+.icons .auth-link:last-of-type {
+    border: 1.5px solid #76ff03;
+    color: black;
+}
+
+.icons .auth-link:last-of-type:hover {
+    background: rgba(0, 0, 0, 0.1);
+    color: white;
+}
+
+/* HERO */
+.hero {
+    background: linear-gradient(rgba(13, 71, 13, 0.4), rgba(13, 71, 13, 0.4)), 
+                url("https://media.architecturaldigest.com/photos/5dcde00380598800086215f6/16:9/w_2560%2Cc_limit/Osofsky_Oct19-5.jpg") 
+                no-repeat center/cover;
+    height: 500px;
+    width: 90%;
+    margin: 30px auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.hero h1 {
+    font-size: 60px;
+    color: #76ff03;
+    text-shadow: 3px 3px 15px rgba(0, 0, 0, 0.5);
+    font-weight: bold;
+    text-align: center;
+    animation: fadeInUp 1s ease;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* SECTION */
+.section-title {
+    text-align: center;
+    margin: 50px 0 30px 0;
+    font-size: 36px;
+    color: #2d5016;
+    font-weight: bold;
+}
+
+.cards {
+    display: flex;
+    gap: 30px;
+    margin: 30px;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* CARD */
+.card {
+    position: relative;
+    width: 300px;
+    height: 350px;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    cursor: pointer;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-10px);
+}
+
+/* IMAGE */
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s ease;
+    border-radius: 15px;
+}
+
+/* CONTENT */
+.card-content {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg, rgba(1, 66, 1, 0.95), rgba(13, 71, 13, 0.95));
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transform: translateY(100%);
+    transition: 0.5s ease;
+}
+
+.card:hover img {
+    transform: scale(1.1);
+}
+
+.card:hover .card-content {
+    transform: translateY(0);
+}
+
+.icon {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.card h3 {
+    color:#0b140c;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.card p {
+    color: #c8e6c9;
+    margin-bottom: 15px;
+    font-size: 14px;
+}
+
+.card ul {
+    list-style: none;
+}
+
+.card ul li {
+    margin: 8px 0;
+    font-size: 13px;
+    color: #a5d6a7;
+}
+
+/* SERVICE SECTION */
+.service {
+    padding: 40px 20px;
+}
+
+.box {
+    display: flex;
+    margin: 40px auto;
+    max-width: 1200px;
+    gap: 40px;
+    align-items: center;
+}
+
+.left-img {
+    flex: 1;
+}
+
+.left-img img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s ease;
+}
+
+.left-img img:hover {
+    transform: scale(1.05);
+}
+
+.right-content {
+    flex: 1;
+    padding: 30px;
+}
+
+.right-content h2 {
+    font-size: 40px;
+    font-weight: bold;
+    color:green;
+    margin-bottom: 20px;
+}
+
+.right-content p {
+    font-size: 16px;
+   color:antiquewhite;
+    text-align: justify;
+    line-height: 1.8;
+}
+
+/* FOOTER */
+footer {
+    background: linear-gradient(135deg, #2d5016 0%, #1a3a0a 100%);
+    color: white;
+    text-align: center;
+    padding: 30px 20px;
+    margin-top: 50px;
+    box-shadow: 0 -4px 15px rgba(0, 0, 0, 0.2);
+}
+
+footer p {
+    font-size: 14px;
+    opacity: 0.9;
+}
+
+/* ================== RESPONSIVE CSS ================== */
+
+/* 📱 MOBILE */
+@media (max-width: 768px) {
+
+    header {
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+    }
+
+    nav {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .hero {
+        width: 95%;
+        height: 280px;
+    }
+
+    .hero h1 {
+        font-size: 32px;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .cards {
+        margin: 15px;
+    }
+
+    .card {
+        width: 90%;
+        height: 320px;
+    }
+
+    .box {
+        flex-direction: column;
+        align-items: center;
+        gap: 20px;
+    }
+
+    .left-img img {
+        width: 100%;
+        height: 250px;
+    }
+
+    .right-content {
+        padding: 15px;
+    }
+
+    .right-content h2 {
+        font-size: 28px;
+    }
+
+    .right-content p {
+        font-size: 14px;
+    }
+}
+
+/* 📲 TABLET */
+@media (min-width: 769px) and (max-width: 1024px) {
+
+    .hero {
+        width: 90%;
+        height: 400px;
+    }
+
+    .hero h1 {
+        font-size: 45px;
+    }
+
+    .left-img img {
+        width: 100%;
+        height: auto;
+    }
+
+    .right-content h2 {
+        font-size: 34px;
+    }
+
+    .right-content p {
+        font-size: 16px;
+    }
+}
+
+/* 💻 DESKTOP */
+@media (min-width: 1025px) {
+    .hero {
+        width: 1000px;
+    }
+}
+
+/* MENU TOGGLE BUTTON */
+.menu-toggle {
+    display: none;
+    font-size: 26px;
+    cursor: pointer;
+    color: #76ff03;
+}
+
+/* MOBILE MENU */
+@media (max-width: 768px) {
+
+    .menu-toggle {
+        display: block;
+        color: white;
+    }
+
+    nav {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: rgba(13, 58, 10, 0.95);
+        padding: 15px 0;
+        text-align: center;
+    }
+
+    nav.active {
+        display: flex;
+    }
+
+    nav a {
+        padding: 10px;
+        display: block;
+    }
+
+    .dropdown-menu {
+        position: static;
+        background: rgba(11, 20, 14, 0.9);
+        margin-top: 5px;
+    }
+}

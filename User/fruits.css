@@ -1,0 +1,162 @@
+/* RESET */
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+/* HOME SECTION */
+.home{
+    background-image: url(https://png.pngtree.com/thumb_back/fh260/background/20240929/pngtree-a-colorful-assortment-of-fruits-including-oranges-grapes-and-mangoes-concept-image_16270662.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    padding: 170px;
+    font-size: 2rem;
+    color:black;
+    text-align: center;
+}
+.home h2,p{
+    padding: 10px;
+}
+/* SEEDS FRUITS GRID */
+.seeds h2{
+    margin-top: 20px;
+}
+.seedsfruits{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 40px;
+    margin-top: 20px;
+    padding: 30px;
+}
+
+/* IMAGES */
+.seedsfruits img{
+    width: 200px;
+    height: 200px;
+    border-radius: 10px;
+    object-fit: cover;
+    display: block;
+    margin: 0 auto;
+}
+
+/* HEADINGS */
+.seeds h2{
+    text-align: center;
+    font-size: 40px;
+}
+.seeds p,h4{
+    font-size: 20px;
+}
+
+#fruits{
+    text-align: center;
+    color: green;
+    font-size: 30px;
+}
+
+/* PRODUCT BOX */
+.seedsfruits .box{
+    text-align: center;
+    font-weight: bold;
+    margin-top: 10px;
+    padding: 20px 15px;
+    color: green;
+    min-height: 450px;
+    border: 2px solid green;
+    border-radius: 10px;
+    box-shadow: 6px 6px 10px grey;
+}
+/* OFFERS */
+.offer{
+    font-size: 14px;
+    color:black;
+    margin-top: 6px;
+    font-weight: bold;
+    padding: 5px;
+    border-radius: 5px;
+}
+/*review*/
+.reviews, .offer, .sold{
+    color:#000000
+}
+ .rating {
+            color: rgb(219, 169, 20);
+            font-size: 14px;
+        }
+
+/* SHIPPING INFO */
+.info{
+    font-size: 13px;
+    color: #0984e3;
+    margin-top: 6px;
+    font-weight: normal;
+}
+
+/* SOLD COUNT */
+.sold{
+    font-size: 13px;
+    color:black;
+    margin-top: 6px;
+    font-weight: bold;
+}
+
+/* BUTTON */
+.seedsfruits button{
+    background-color: green;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 15px;
+}
+
+.seedsfruits button:hover{
+    background-color: purple;
+}
+ .box:hover{
+            transform: scale(1.05);
+        }
+
+
+/* ================= RESPONSIVE ================= */
+
+/* TABLET */
+@media (max-width: 1024px){
+    .home{
+        padding: 120px;
+        font-size: 1.8rem;
+    }
+
+    .seedsfruits{
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+/* MOBILE */
+@media (max-width: 768px){
+    .home{
+        padding: 80px 20px;
+        font-size: 1.5rem;
+    }
+
+    .seedsfruits{
+        grid-template-columns: 1fr;
+        padding: 20px;
+    }
+
+    .seeds h2{
+        font-size: 30px;
+    }
+
+    #fruits{
+        font-size: 24px;
+    }
+
+    .seedsfruits .box{
+        min-height: auto;
+    }
+}

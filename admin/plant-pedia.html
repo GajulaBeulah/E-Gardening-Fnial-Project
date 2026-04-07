@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Plant Pedia Management - Plant Store Admin</title>
+ <link rel="stylesheet" href="../../header.css">
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* ✅ Proper Page Layout */
+body{
+    background: linear-gradient(135deg,#e8f5e9,#f1f8e9);
+    min-height:100vh;
+    display:flex;
+    flex-direction:column;
+}
+
+/* ✅ Header Full Width
+header{
+    width:100%;
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color:#fff;
+    padding:15px 30px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:600;
+} */
+header{
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color: #fff;
+    padding: 15px 30px;
+    box-shadow: 0 4px 12px rgba(0,0,0,.15);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo{
+    font-size: 24px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+/* Navigation */
+#navbar{
+    display: flex;
+    gap: 0;
+    align-items: center;
+}
+
+#navbar > a,
+.dropdown > a{
+    display: block;
+    padding: 12px 18px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+    position: relative;
+}
+
+/* Disable problematic hover effects from header.css */
+#navbar a:hover {
+    transform: none !important;
+    color: #fff !important;
+}
+
+#navbar a:hover::after {
+    width: 0 !important;
+}
+
+/* Dropdown Styles */
+.dropdown{
+    position: relative;
+}
+
+.dropdown-menu{
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: #1b5e20;
+    min-width: 200px;
+    border-radius: 0 0 8px 8px;
+    box-shadow: 0 8px 16px rgba(0,0,0,.2);
+    z-index: 1000;
+    opacity: 0;
+    visibility: hidden;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.dropdown-menu a{
+    padding: 12px 20px;
+    color: #fff;
+    text-decoration: none;
+    transition: 0.3s;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+}
+
+.dropdown-menu a:last-child{
+    border-bottom: none;
+}
+
+.dropdown-menu a:hover{
+    background: rgba(255,255,255,0.1);
+}
+
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
+    display: block;
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+.icons{
+    display: flex;
+    gap: 20px;
+    font-size: 20px;
+}
+
+.icons span{
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.menu-toggle{
+    display: none;
+    background: none;
+    border: none;
+    color: #fff;
+    font-size: 24px;
+    cursor: pointer;
+}
+/* ✅ Centered Main Content */
+.dashboard-container{
+    max-width:1200px;
+    width:100%;
+    margin:30px auto;
+    padding:0 20px;
+    flex:1;
+}
+
+/* Page Header */
+.page-header{
+    background: linear-gradient(135deg,#1b5e20,#2e7d32);
+    color:#fff;
+    padding:20px;
+    border-radius:10px;
+    margin-bottom:25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.back-btn{
+    padding:8px 16px;
+    background:#fff;
+    color:#1b5e20;
+    border:none;
+    border-radius:5px;
+    text-decoration:none;
+    font-weight:600;
+}
+
+/* Table */
+.data-table{
+    width:100%;
+    border-collapse:collapse;
+    background:#fff;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.data-table thead{
+    background:linear-gradient(135deg,#2e7d32,#1b5e20);
+    color:#fff;
+}
+
+.data-table th,
+.data-table td{
+    padding:14px;
+    text-align:left;
+}
+
+.data-table tr{
+    border-bottom:1px solid #eee;
+}
+
+/* Buttons */
+.action-btn{
+    padding:6px 12px;
+    margin:0 3px;
+    background:#2e7d32;
+    color:#fff;
+    border:none;
+    border-radius:4px;
+    cursor:pointer;
+    font-size:12px;
+}
+
+.action-btn.delete{
+    background:#d32f2f;
+}
+
+.action-btn.view-btn{
+    background:#2196f3;
+}
+
+.action-btn.edit-btn{
+    background:#ff9800;
+}
+
+.action-btn.save-btn{
+    background:#4caf50;
+}
+
+/* ✅ Footer Full Width & Bottom */
+footer{
+    width:100%;
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color:#fff;
+    padding:20px;
+    text-align:center;
+    margin-top:auto;
+}
+
+/* Responsive */
+@media(max-width:768px){
+    .page-header{
+        flex-direction:column;
+        gap:10px;
+        text-align:center;
+    }
+
+    /* Mobile dropdown adjustments */
+    .dropdown-menu{
+        min-width: 180px;
+        left: -20px; /* Adjust position for mobile */
+    }
+
+    .dropdown-menu a{
+        padding: 14px 16px;
+        font-size: 14px;
+    }
+}
+
+@media(max-width:480px){
+    #navbar > a,
+    .dropdown > a{
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .dropdown-menu{
+        min-width: 160px;
+        left: -10px;
+    }
+
+    .dropdown-menu a{
+        padding: 12px 14px;
+        font-size: 13px;
+    }
+}
+</style>
+</head>
+
+<body>
+    <header>
+        <div class="logo">🌿 Garden Admin</div>
+        <button class="menu-toggle" onclick="toggleMenu()">☰</button>
+        <nav id="navbar">
+            <a href="index.html">📊 Dashboard</a>
+            <a href="users.html">👥 Users</a>
+            <a href="sellers.html">🧑‍🌾 Sellers</a>
+            <a href="reports.html">📈 Reports</a>
+            <div class="dropdown">
+                <a href="#">🌿 Plants</a>
+                <div class="dropdown-menu">
+                    <a href="plant-pedia.html">Plant Pedia</a>
+                    <a href="add-plant.html">Add Plant</a>
+                </div>
+            </div>
+        </nav>
+        <!-- <div class="icons">
+            <span title="Search">🔍</span>
+            <span title="Settings">⚙️</span>
+            <span title="Profile">👤</span>
+        </div> -->
+    </header>
+
+<div class="dashboard-container">
+
+    <div class="page-header">
+        <h2>🌿 Plant Pedia Management</h2>
+        <!-- <a href="index.html" class="back-btn">← Back</a> -->
+    </div>
+
+    <table class="data-table">
+        <thead>
+            <tr>
+                <th>Plant Name</th>
+                <th>Category</th>
+                <th>Care Level</th>
+                <th>Views</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>🌿 Monstera Deliciosa</td>
+                <td>Indoor Plants</td>
+                <td>Easy</td>enter add plant i cant comeing ba
+                <td>1,245</td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn delete">🗑️ Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>🌱 Snake Plant</td>
+                <td>Indoor Plants</td>
+                <td>Very Easy</td>
+                <td>892</td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn delete">🗑️ Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>🌸 Spider Plant</td>
+                <td>Hanging Plants</td>
+                <td>Easy</td>
+                <td>654</td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn delete">🗑️ Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>🌸 Pothos Plant</td>
+                <td>Hanging Plants</td>
+                <td>Easy</td>
+                <td>554</td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn delete">🗑️ Delete</button>
+                </td>
+            </tr>
+            <tr>
+                <td>🌸 Aloe Vera Plant</td>
+                <td>Indoor Plants</td>
+                <td>Easy</td>
+                <td>654</td>
+                <td>
+                    <button class="action-btn view-btn">👁️ View</button>
+                    <button class="action-btn edit-btn">✏️ Edit</button>
+                    <button class="action-btn delete">🗑️ Delete</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<footer>
+    <p>© 2026 Garden</p>
+</footer>
+<script>
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
+
+// View plant details
+function viewPlant(button) {
+    try {
+        console.log('View button clicked');
+        const row = button.closest('tr');
+        const plantName = row.cells[0].textContent.trim();
+        const category = row.cells[1].textContent.trim();
+        const careLevel = row.cells[2].textContent.trim();
+        const views = row.cells[3].textContent.trim();
+        
+        console.log('Plant Details - Name:', plantName, 'Category:', category, 'Care Level:', careLevel, 'Views:', views);
+        
+        alert(`🌿 Plant Details\n\nName: ${plantName}\nCategory: ${category}\nCare Level: ${careLevel}\nViews: ${views}\n\nDetailed description and care instructions would be shown here.`);
+    } catch (error) {
+        console.error('Error in viewPlant:', error);
+        alert('Error viewing plant details. Please try again.');
+    }
+}
+
+// Edit plant
+function editPlant(button) {
+    try {
+        console.log('Edit button clicked');
+        const row = button.closest('tr');
+        const isEditing = button.textContent.includes('Save');
+        
+        if (isEditing) {
+            // Save changes
+            console.log('Saving plant changes');
+            const cells = row.querySelectorAll('td:not(:last-child)');
+            cells.forEach((cell, index) => {
+                const input = cell.querySelector('input');
+                if (input) {
+                    const newValue = input.value.trim();
+                    console.log('Updated field', index, ':', newValue);
+                    cell.textContent = newValue;
+                }
+            });
+            button.textContent = '✏️ Edit';
+            button.classList.remove('save-btn');
+            button.classList.add('edit-btn');
+            alert('Plant details updated successfully!');
+            console.log('Edit mode disabled, changes saved');
+        } else {
+            // Enter edit mode
+            console.log('Entering edit mode for plant');
+            const cells = row.querySelectorAll('td:not(:last-child)');
+            cells.forEach(cell => {
+                const value = cell.textContent.trim();
+                cell.innerHTML = `<input type="text" value="${value}" style="width: 100%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">`;
+            });
+            button.textContent = '💾 Save';
+            button.classList.remove('edit-btn');
+            button.classList.add('save-btn');
+        }
+    } catch (error) {
+        console.error('Error in editPlant:', error);
+        alert('Error editing plant. Please try again.');
+    }
+}
+
+// Delete plant
+function deletePlant(button) {
+    try {
+        console.log('Delete button clicked');
+        const row = button.closest('tr');
+        const plantName = row.cells[0].textContent.trim();
+        console.log('Deleting plant:', plantName);
+        
+        if (confirm(`Are you sure you want to delete ${plantName}?`)) {
+            row.remove();
+            alert(`${plantName} has been deleted successfully!`);
+            console.log('Plant deleted successfully');
+        }
+    } catch (error) {
+        console.error('Error in deletePlant:', error);
+        alert('Error deleting plant. Please try again.');
+    }
+}
+
+// Validate plant data
+function validatePlantData(name, category, careLevel) {
+    if (!name || !category || !careLevel) {
+        return false;
+    }
+    return true;
+}
+
+// Add event listeners when DOM is loaded
+document.addEventListener('DOMContentLoaded', function() {
+    console.log('DOM Content Loaded - Attaching event listeners');
+    
+    try {
+        // View buttons
+        document.querySelectorAll('.view-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                viewPlant(this);
+            });
+        });
+        console.log('View button listeners attached');
+        
+        // Edit buttons
+        document.querySelectorAll('.edit-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                editPlant(this);
+            });
+        });
+        console.log('Edit button listeners attached');
+        
+        // Delete buttons
+        document.querySelectorAll('.action-btn.delete').forEach(btn => {
+            btn.addEventListener('click', function() {
+                deletePlant(this);
+            });
+        });
+        console.log('Delete button listeners attached');
+        
+        console.log('All event listeners attached successfully');
+    } catch (error) {
+        console.error('Error attaching event listeners:', error);
+    }
+});
+</script>
+</body>
+</html>

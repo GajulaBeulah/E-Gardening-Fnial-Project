@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ratings & Reviews</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+
+        .review-container {
+            max-width: 700px;
+            margin: 40px auto;
+            background: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        h2 {
+            margin-bottom: 10px;
+            text-align: center;
+            color: green;
+        }
+
+        .review-form label {
+            display: block;
+            margin-top: 15px;
+            font-weight: bold;
+        }
+
+        .review-form span {
+            color: red;
+        }
+
+        .review-form input,
+        .review-form textarea {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            border: 2px solid #c8d600;
+            border-radius: 4px;
+            outline: none;
+            font-size: 14px;
+        }
+
+        .review-form textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        button {
+            margin-top: 20px;
+            background: green;
+            color: white;
+            border: none;
+            padding: 12px 25px;
+            font-size: 16px;
+            border-radius: 4px;
+            cursor: pointer;
+            width: 100%;
+        }
+
+        button:hover {
+            background: purple;
+        }
+
+        /* 📱 Mobile Responsive */
+        @media (max-width: 600px) {
+            .review-container {
+                padding: 15px;
+                margin: 20px;
+            }
+
+            h2 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <div class="review-container">
+        <h2>Ratings & Reviews</h2>
+
+        <form class="review-form">
+
+            <label for="name">Name <span>*</span></label>
+            <input type="text" id="name" placeholder="Display name" required>
+
+            <label for="email">Email address <span>*</span></label>
+            <input type="email" id="email" placeholder="Your email address" required>
+
+            <label for="rating">Rating <span>*</span></label>
+            <input type="number" id="rating" min="1" max="5" placeholder="1 to 5" required>
+
+            <label for="title">Review Title <span>*</span></label>
+            <input type="text" id="title" placeholder="Give your review a title" required>
+
+            <label for="content">Review Content <span>*</span></label>
+            <textarea id="content" placeholder="Start writing here..." required></textarea>
+
+            <button type="submit">Submit Review</button>
+
+        </form>
+    </div>
+
+</body>
+</html>

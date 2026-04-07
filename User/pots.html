@@ -1,0 +1,376 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Garden Pots - Plant Pots Store</title>
+    <link rel="stylesheet" href="fruits.css">
+ <link rel="stylesheet" href="../header.css">
+    <style>
+        .home {
+            background-image: url(https://img.freepik.com/premium-photo/potted-succulent-plants-wooden-table-with-blue-background_337384-146479.jpg?semt=ais_user_personalization&w=740&q=80);
+            background-repeat: no-repeat;
+            background-size: cover;
+            padding: 300px;
+            font-size: 2rem;
+            width: 100%;
+        }
+
+        .pot {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 100px;
+            justify-content: space-around;
+            margin-top: 20px;
+            padding: 30px;
+        }
+
+        .pot img {
+            width: 270px;
+            height: 270px;
+            border-radius: 10px;
+        }
+.pots h2{
+    font-size: 40px;
+    text-align: center;
+    padding: 30px 0px 20px ;
+}
+.pots h3{
+    font-size: 37px;
+    color: green;
+    text-align: center;
+}
+        .pot .box {
+            text-align: center;
+            font-weight: bold;
+            margin-top: 10px;
+            padding: 40px 20px 0px 20px;
+            color: green;
+            height: 590px;
+            border: 2px solid green;
+            border-radius: 10px;
+            box-shadow: 10px 10px 5px grey;
+
+        }
+
+        .pot button {
+            background-color: green;
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        .pot button:hover {
+            background-color: purple;
+        }
+        .box:hover{
+            transform: scale(1.05);
+        }
+        .reviews, .offer, .sold{
+    color:#000000
+}
+ .rating {
+            color: rgb(219, 169, 20);
+            font-size: 14px;
+        }
+
+    /* ========== RESPONSIVE DESIGN ========== */
+
+/* Tablets */
+@media (max-width: 1024px) {
+
+    .pot {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 40px;
+    }
+
+    .pot img {
+        width: 100%;
+        height: auto;
+    }
+
+    .pot .box {
+        height: auto;
+        padding: 20px;
+    }
+
+    .home {
+        padding: 150px 20px;
+    }
+}
+
+
+/* Mobile */
+@media (max-width: 768px) {
+
+    .pot {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 15px;
+    }
+
+    .pot img {
+        width: 100%;
+        height: auto;
+    }
+
+    .pots h2 {
+        font-size: 28px;
+    }
+
+    .pots h3 {
+        font-size: 24px;
+    }
+
+    .home {
+        padding: 100px 15px;
+        font-size: 1.5rem;
+        text-align: center;
+    }
+
+    .pot .box {
+        height: auto;
+        padding: 20px;
+    }
+}
+
+
+/* Small phones */
+@media (max-width: 480px) {
+
+    .home {
+        padding: 70px 10px;
+        font-size: 1.2rem;
+    }
+
+    .pot button {
+        width: 100%;
+    }
+
+}
+    </style>
+</head>
+
+<body>
+          <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+         <a href="./plantcare.html">Home</a>
+            <div class="dropdown">
+            <a href="#">Plants</a>
+            <div class="dropdown-menu">
+                            <a href="./indoor.html">Indoor</a>
+                <a href="./outdoor.html">Outdoor</a>
+                <a href="./flower.html">Flowers</a>
+                <a href="./medicine.html">Medical</a>
+            </div>
+        </div>
+        <div class=" dropdown">
+            <a href="#seeds">Seeds</a>
+            <div class="dropdown-menu">
+                <a href="./fruits.html">Fruits seeds</a>
+                <a href="./veg.html">Vegetables seeds</a>
+                <a href="./flowers.html">Flowers seeds</a>
+            </div>
+        </div>
+        <a href="./pots.html">Pots</a>
+        <a href="./decoserv.html">Services</a>
+             <a href="./plantdetails.html">Plantopidia</a>
+             <a href="./contact.html">Contact</a> 
+                <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->
+           <a href="./user_profile_Page.html">Profile👤</a>
+         <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+        <!-- <div class="icons"><span>🔍</span>
+        <a href="/project/login.html" class="auth-link">Login</a>
+        <a href="/project/register.html" class="auth-link">Register</a>
+        <span>👤</span>
+    </div> -->
+    </header>
+    <div class="home">
+
+    </div>
+    <div class="pots">
+        <h2>Shop by pots</h2>
+        <h3 id="pothead">pots</h3>
+        <div class="pot">
+            <div class="box">
+                <a href="./pot1.html"><img src="https://organicbazar.net/cdn/shop/files/ThermoformPot-4TerracottaColor_1.jpg?v=1763634902&width=823"
+                    alt=""></a>
+                <p>Thermoform Pot-4 Terracotta Color (Set of 20) (10cm)</p>
+                <h4>₹199</h4>
+                <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="box">
+                <a href="./pot2.html"><img src="https://gardengram.in/cdn/shop/files/RoundHandPaintedCeramicPot.png?v=1707896290" alt=""></a>
+                <p>Round Hand Painted Ceramic Pot</p>
+                <h4>₹399</h4>
+                <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="box">
+                <a href="./pot3.html"><img src="https://rukminim2.flixcart.com/image/612/612/xif0q/plant-container-set/t/e/e/5-flower-techhark-original-imah9cawafcrpzpg.jpeg?q=70"
+                    alt=""></a>
+                <p>TechHark Round Flower Pots</p>
+                <h4>₹279</h4>
+                       <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="box">
+               <a href="./pot4.html"><img src="https://organicbazar.net/cdn/shop/files/self_watering_pot_M_2.jpg?v=1719838818" alt=""></a>
+                <p>OrganicBazar Self Watering Pot</p>
+                <h4>₹89</h4>
+                       <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="box">
+                <a href="./pot5.html"><img src="https://organicbazar.net/cdn/shop/files/Duckshapedplanter_decorativeduckplanter_indoorduckplanter_plasticduckplanter_duckplantpot_duckflowerpot_animalshapeplanter_cuteindoorplanter_decorativeindoorplanter_mode.jpg?v=1766043107&width=823"
+                    alt=""></a>
+                <p>Duck Plastic Pot</p>
+                <h4>₹249</h4>
+                       <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="box">
+               <a href="./pot6.html"><img src="https://organicbazar.net/cdn/shop/files/white_pot_Calista_pots_luxury_planter_tall_planter_terrazzo_finish_planter_roto_moulded_pot_premium_plant_pot_decorative_planter_30_inch_35_inch_planter_designer_planter_30_inch_pot_b4b3aca4-d0d0-4e09-881d-dbbb64977a26.jpg?v=1764653050&width=1445"
+                    alt=""></a>
+                <p>Durable, Lightweight & Weatherproof Large Pot </p>
+                <h4>₹429</h4>
+                       <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="box">
+                <img src="https://theaffordableorganicstore.com/cdn/shop/files/3.webp?v=1744630853" alt="">
+                <p>Philodendron Pink Princess Plant Sapling (1pc)</p>
+                <h4>₹379</h4>
+                       <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="box">
+                <img src="https://kyari.co/cdn/shop/files/01_065f92f4-88c9-4073-9d3a-5a36e62f0445.jpg?crop=center&height=480&v=1758956631&width=480"
+                    alt="">
+                <p>Golden Hahnii Snake Plant with Medium Metal Self Watering Pot</p>
+                <h4>₹559</h4>
+                       <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="box">
+                <img src="https://kyari.co/cdn/shop/files/1_b102422f-99cc-4923-93b8-65bb7d3c2ea1.jpg?crop=center&height=1296&v=1754476836&width=1080"
+                    alt="">
+                <p>Vastu Friendly Indoor Plant Combo – Set of 4</p>
+                <h4>₹639</h4>
+                       <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+            <div class="box">
+                <img src="https://theaffordableorganicstore.com/cdn/shop/files/Arabian-Jasmine-Sapling.webp?v=1744629336&width=550"
+                    alt="">
+                <p>Arabian Jasmine Plant Sapling (1pc)</p>
+                <h4>₹179</h4>
+                       <div class="rating">★★★★☆</div>
+            <div class="reviews">123 Reviews</div>
+
+            <div class="offer">🎁 Offers Inside</div>
+            <div class="sold">⚡ Sold in 30 days</div>
+                <button>Add to Cart</button>
+            </div>
+
+        </div>
+    </div>
+           <!-- FOOTER -->
+  <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+        <script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
+</script>
+</body>
+
+</html>

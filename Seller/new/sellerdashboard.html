@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>Seller Dashboard</title>
+    <link rel="stylesheet" href="../../header.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial;
+            background: #f4f6f9;
+        }
+
+        /* HEADER */
+        header {
+        background-color: #0b140c;
+            padding: 15px 40px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+       /* .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        } */
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: #c8e6c9;
+        }
+
+        /* MAIN */
+        .main {
+            padding: 30px;
+        }
+
+        /* CARDS */
+        .cards {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .card {
+            flex: 1;
+            min-width: 200px;
+            padding: 20px;
+            color: white;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+
+        .blue {
+            background: #3498db;
+        }
+
+        .green {
+            background: #2ecc71;
+        }
+
+        .purple {
+            background: #9b59b6;
+        }
+
+        .orange {
+            background: #e67e22;
+        }
+
+        /* BOX */
+        .box {
+            background: white;
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 8px;
+        }
+
+        /* MEDIUM GRAPHS */
+        .graphs {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 30px;
+        }
+
+        .graph-box {
+            width: 400px;
+        }
+
+        /* TABLE */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th {
+            background: #2e7d32;
+            color: white;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        /* BUTTON */
+        button {
+            padding: 6px 10px;
+            border: none;
+            background: #2e7d32;
+            color: white;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+
+        button:hover {
+            background: #256428;
+        }
+
+        /* FOOTER */
+        footer {
+            background: green;
+            color: white;
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+        }
+        
+    /* RESPONSIVE DESIGN */
+
+/* Tablet (max-width: 992px) */
+@media (max-width: 992px) {
+
+    .nav-container {
+        flex-direction: column;
+        gap: 10px;
+        text-align: center;
+    }
+
+    nav ul {
+        flex-direction: column;
+        gap: 10px;
+    }
+
+    .graphs {
+        justify-content: center;
+    }
+
+    .graph-box {
+        width: 100%;
+    }
+}
+
+/* Mobile (max-width: 600px) */
+@media (max-width: 600px) {
+
+    header {
+        padding: 15px 20px;
+    }
+
+    .main {
+        padding: 15px;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+
+    .card {
+        width: 100%;
+    }
+
+    .graphs {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .graph-box {
+        width: 100%;
+    }
+
+    table {
+        font-size: 12px;
+    }
+
+    th, td {
+        padding: 6px;
+    }
+}</style>
+
+</head>
+
+<body>
+
+    <header>
+        <!-- <div class="nav-container"> -->
+            <h1 class="logo">🌿 Garden Seller Dashboard</h1>
+            <nav>
+                <ul>
+                    <li><a href="./sales.html">Sales</a></li>
+                    <li><a href="./orders.html">Orders</a></li>
+                    <li><a href="./product.html">Products</a></li>
+                    <li><a href="./profile.html">Profile</a></li>
+                    <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
+                </ul>
+            </nav>
+        <!-- </div> -->
+    </header>
+
+    <div class="main">
+
+        <!-- CARDS -->
+        <div class="cards">
+            <div class="card blue" onclick="showOrders('all')">
+                <h3>Total Orders</h3>
+                <p id="totalOrders"></p>
+            </div>
+
+            <div class="card green" onclick="showOrders('new')">
+                <h3>New Orders</h3>
+                <p id="newOrders"></p>
+            </div>
+
+            <div class="card purple" onclick="showOrders('delivered')">
+                <h3>Delivered</h3>
+                <p id="delivered"></p>
+            </div>
+
+            <div class="card orange" onclick="showOrders('pending')">
+                <h3>Pending</h3>
+                <p id="pending"></p>
+            </div>
+        </div>
+
+        <!-- GRAPHS -->
+        <div class="box">
+            <h3>Statistics</h3>
+
+            <div class="graphs">
+                <div class="graph-box">
+                    <canvas id="statusChart"></canvas>
+                </div>
+
+                <div class="graph-box">
+                    <canvas id="priceChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- TABLE -->
+        <div class="box" id="detailsBox" style="display:none;">
+            <h3>Order Details</h3>
+
+            <table>
+                <tr>
+                    <th>Name</th>
+                    <th>Product</th>
+                    <th>Time</th>
+                    <th>Price</th>
+                    <th>Qty</th>
+                    <th>Tracking ID</th>
+                    <th>Address</th>
+                    <th>Action</th>
+                </tr>
+
+                <tbody id="detailsTable"></tbody>
+            </table>
+        </div>
+
+    </div>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>Green Garden</h3>
+                <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="./plantcare.html">Home</a></li>
+                    <li><a href="./decoserv.html">Decoration Services</a></li>
+                    <li><a href="./fruits.html">Plants</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: support@greengarden.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Location: Hyderabad, India</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#">🌱FaceBook</a>
+                    <a href="#">🌿Instagram</a>
+                    <a href="#">🌼YouTube</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Line -->
+        <div class="footer-bottom">
+            <p>© 2026 Green Garden | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script>
+
+        let orders = [
+            { name: "Ravi", product: "Rose", time: "10AM", price: 200, qty: 2, tracking: "TRK1", address: "Hyderabad", status: "Pending" },
+            { name: "Priya", product: "Tulsi", time: "11AM", price: 150, qty: 1, tracking: "TRK2", address: "Chennai", status: "Delivered" },
+            { name: "Amit", product: "Lily", time: "12PM", price: 300, qty: 3, tracking: "TRK3", address: "Delhi", status: "Pending" },
+            { name: "Sneha", product: "Aloe", time: "1PM", price: 120, qty: 1, tracking: "TRK4", address: "Mumbai", status: "Delivered" },
+            { name: "Kiran", product: "Cactus", time: "2PM", price: 180, qty: 2, tracking: "TRK5", address: "Pune", status: "Pending" },
+            { name: "Meena", product: "Jasmine", time: "3PM", price: 220, qty: 2, tracking: "TRK6", address: "Bangalore", status: "Delivered" },
+            { name: "Arjun", product: "Bonsai", time: "4PM", price: 500, qty: 1, tracking: "TRK7", address: "Kolkata", status: "Pending" },
+            { name: "Divya", product: "Mint", time: "5PM", price: 100, qty: 3, tracking: "TRK8", address: "Vizag", status: "Delivered" },
+            { name: "Rahul", product: "Neem", time: "6PM", price: 250, qty: 2, tracking: "TRK9", address: "Nagpur", status: "Pending" },
+            { name: "Pooja", product: "Lotus", time: "7PM", price: 400, qty: 1, tracking: "TRK10", address: "Jaipur", status: "Delivered" }
+        ];
+
+        let statusChart, priceChart;
+
+        function updateCounts() {
+            let pending = 0, delivered = 0;
+
+            orders.forEach(o => {
+                if (o.status === "Pending") pending++;
+                else delivered++;
+            });
+
+            document.getElementById("totalOrders").innerText = orders.length;
+            document.getElementById("newOrders").innerText = orders.length;
+            document.getElementById("delivered").innerText = delivered;
+            document.getElementById("pending").innerText = pending;
+
+            updateCharts(pending, delivered);
+        }
+
+        function updateCharts(pending, delivered) {
+
+            if (statusChart) statusChart.destroy();
+            if (priceChart) priceChart.destroy();
+
+            // PIE CHART
+            statusChart = new Chart(document.getElementById("statusChart"), {
+                type: 'pie',
+                data: {
+                    labels: ["Pending", "Delivered"],
+                    datasets: [{
+                        data: [pending, delivered]
+                    }]
+                }
+            });
+
+            // BAR GRAPH
+            let names = orders.map(o => o.name);
+            let prices = orders.map(o => o.price);
+
+            priceChart = new Chart(document.getElementById("priceChart"), {
+                type: 'bar',
+                data: {
+                    labels: names,
+                    datasets: [{
+                        label: "Order Prices",
+                        data: prices
+                    }]
+                }
+            });
+        }
+
+        function showOrders(type) {
+            document.getElementById("detailsBox").style.display = "block";
+            let table = document.getElementById("detailsTable");
+            table.innerHTML = "";
+
+            let filtered = orders;
+
+            if (type === "delivered") {
+                filtered = orders.filter(o => o.status === "Delivered");
+            }
+            else if (type === "pending") {
+                filtered = orders.filter(o => o.status === "Pending");
+            }
+
+            filtered.forEach((o, index) => {
+                table.innerHTML += `
+        <tr>
+            <td>${o.name}</td>
+            <td>${o.product}</td>
+            <td>${o.time}</td>
+            <td>₹${o.price}</td>
+            <td>${o.qty}</td>
+            <td>${o.tracking}</td>
+            <td>${o.address}</td>
+            <td>
+                <button onclick="editOrder(${index})">Edit</button>
+                <button onclick="deleteOrder(${index})">Delete</button>
+            </td>
+        </tr>`;
+            });
+        }
+
+        function editOrder(index) {
+            let name = prompt("Edit Name", orders[index].name);
+            if (name) {
+                orders[index].name = name;
+                updateCounts();
+                showOrders("all");
+            }
+        }
+
+        function deleteOrder(index) {
+            orders.splice(index, 1);
+            updateCounts();
+            showOrders("all");
+        }
+
+        function logout() {
+            alert("Logged out!");
+        }
+
+        updateCounts();
+
+    </script>
+
+</body>
+
+</html>
