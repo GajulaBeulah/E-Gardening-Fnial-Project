@@ -18,6 +18,7 @@ body{
     background: linear-gradient(135deg,#e8f5e9,#f1f8e9);
     min-height:100vh;
     display:flex;
+
     flex-direction:column;
 }
 
@@ -74,17 +75,13 @@ header{
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
+    position: relative;
+    border-bottom: 3px solid transparent;
 }
 
-.dropdown-menu{
-    display: none;
-    position: absolute;
-    top: 100%;
-    left: 0;
-    background: #1b5e20;
-    min-width: 200px;
-    border-radius: 0 0 8px 8px;
-    box-shadow: 0 8px 16px rgba(0,0,0,.2);
+#navbar > a:hover,
+.dropdown > a:hover{
+    border-bottom: 3px solid #66bb6a;
 }
 
 .dropdown:hover .dropdown-menu{
@@ -262,7 +259,6 @@ footer{
                 <a href="#">🌿 Plants</a>
                 <div class="dropdown-menu">
                     <a href="plant-pedia.html">Plant Pedia</a>
-                    <a href="add-plant.html">Add Plant</a>
                 </div>
             </div>
         </nav>
@@ -282,11 +278,6 @@ footer{
     <!-- Search and Filter Section -->
     <div style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
         <input type="text" id="searchInput" placeholder="Search by name or email..." style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
-        <select id="statusFilter" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-            <option value="">All Status</option>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-        </select>
         <button id="clearFilters" style="padding: 8px 16px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear</button>
     </div>
 
@@ -299,7 +290,6 @@ footer{
                 <th>Phone</th>
                 <th>Address</th>
                 <th>Join Date</th>
-                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -311,7 +301,6 @@ footer{
                 <td>+91 9876543210</td>
                 <td>Mumbai, Maharashtra</td>
                 <td>Jan 15, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -324,7 +313,6 @@ footer{
                 <td>+91 8765432109</td>
                 <td>Delhi, India</td>
                 <td>Feb 02, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -337,7 +325,6 @@ footer{
                 <td>+91 7654321098</td>
                 <td>Ahmedabad, Gujarat</td>
                 <td>Feb 05, 2025</td>
-                <td><span style="background:#ffe0b2;color:#e65100;padding:4px 8px;border-radius:4px;">Inactive</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -350,7 +337,6 @@ footer{
                 <td>+91 6543210987</td>
                 <td>Bangalore, Karnataka</td>
                 <td>Feb 10, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -363,7 +349,6 @@ footer{
                 <td>+91 5432109876</td>
                 <td>Chennai, Tamil Nadu</td>
                 <td>Feb 15, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -376,7 +361,6 @@ footer{
                 <td>+91 4321098765</td>
                 <td>Pune, Maharashtra</td>
                 <td>Feb 20, 2025</td>
-                <td><span style="background:#ffe0b2;color:#e65100;padding:4px 8px;border-radius:4px;">Inactive</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -389,7 +373,6 @@ footer{
                 <td>+91 3210987654</td>
                 <td>Kolkata, West Bengal</td>
                 <td>Feb 25, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -402,7 +385,6 @@ footer{
                 <td>+91 2109876543</td>
                 <td>Hyderabad, Telangana</td>
                 <td>Mar 01, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -461,7 +443,7 @@ function editUser(button) {
                 const input = cell.querySelector('input');
                 if (input) {
                     const newValue = input.value.trim();
-                    if (index === 2 && !isValidEmail(newValue)) { // Email column (0-based: 0=ID,1=Name,2=Email,3=Phone,4=Address,5=JoinDate,6=Status)
+                    if (index === 2 && !isValidEmail(newValue)) { // Email column (0-based: 0=ID,1=Name,2=Email,3=Phone,4=Address,5=JoinDate)
                         isValid = false;
                         errorMessage = 'Please enter a valid email address.';
                     } else if (index === 3 && !isValidPhone(newValue)) { // Phone column
@@ -550,26 +532,22 @@ document.addEventListener('DOMContentLoaded', function() {
 
         // Search and filter functionality
         const searchInput = document.getElementById('searchInput');
-        const statusFilter = document.getElementById('statusFilter');
         const clearFilters = document.getElementById('clearFilters');
         const table = document.querySelector('.data-table');
         const rows = table.querySelectorAll('tbody tr');
 
         function filterTable() {
             const searchTerm = searchInput.value.toLowerCase();
-            const statusValue = statusFilter.value;
 
-            console.log('Filtering table with search:', searchTerm, 'status:', statusValue);
+            console.log('Filtering table with search:', searchTerm);
 
             rows.forEach(row => {
                 const name = row.cells[1].textContent.toLowerCase();
                 const email = row.cells[2].textContent.toLowerCase();
-                const status = row.cells[6].textContent.trim();
 
                 const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm);
-                const matchesStatus = !statusValue || status === statusValue;
 
-                if (matchesSearch && matchesStatus) {
+                if (matchesSearch) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';
@@ -578,10 +556,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         searchInput.addEventListener('input', filterTable);
-        statusFilter.addEventListener('change', filterTable);
         clearFilters.addEventListener('click', function() {
             searchInput.value = '';
-            statusFilter.value = '';
             filterTable();
         });
 
