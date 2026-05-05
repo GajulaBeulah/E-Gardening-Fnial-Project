@@ -7,7 +7,9 @@
 <link rel="stylesheet" href="../header.css">
 
 <style>
+
 *{
+margin:0;
 padding:0;
 box-sizing:border-box;
 font-family:'Segoe UI',sans-serif;
@@ -20,6 +22,7 @@ display:flex;
 flex-direction:column;
 }
 
+/* CENTER LOGIN BOX */
 .container{
 background:white;
 width:360px;
@@ -29,10 +32,25 @@ box-shadow:0 10px 25px rgba(0,0,0,0.3);
 margin:auto;
 }
 
-h2{text-align:center;color:#1e5631;}
-p{text-align:center;font-size:14px;color:#666;margin-bottom:20px;}
+h2{
+text-align:center;
+color:#1e5631;
+}
 
-.input-group{margin-bottom:12px;}
+p{
+text-align:center;
+font-size:14px;
+color:#666;
+margin-bottom:20px;
+}
+
+.input-group{
+margin-bottom:12px;
+}
+
+label{
+font-size:14px;
+}
 
 input{
 width:100%;
@@ -42,7 +60,10 @@ border-radius:5px;
 border:1px solid #ccc;
 }
 
-input:focus{outline:none;border-color:#4caf50;}
+input:focus{
+outline:none;
+border-color:#4caf50;
+}
 
 input.error{
 border-color:#f44336;
@@ -54,6 +75,23 @@ color:#f44336;
 font-size:12px;
 margin-top:4px;
 display:none;
+}
+
+.password-strength{
+margin-top:4px;
+font-size:12px;
+}
+
+.strength-weak{
+color:#f44336;
+}
+
+.strength-medium{
+color:#ff9800;
+}
+
+.strength-strong{
+color:#4caf50;
 }
 
 .btn{
@@ -68,9 +106,20 @@ cursor:pointer;
 margin-top:10px;
 }
 
-.btn:hover{background:#3e8e41;}
+.btn:hover{
+background:#3e8e41;
+}
 
-.extra{text-align:center;margin-top:15px;font-size:14px;}
+.btn:disabled{
+background:#cccccc;
+cursor:not-allowed;
+}
+
+.extra{
+text-align:center;
+margin-top:15px;
+font-size:14px;
+}
 
 .extra a{
 color:#1e5631;
@@ -79,41 +128,59 @@ font-weight:bold;
 cursor:pointer;
 }
 
-.extra a:hover{text-decoration:underline;}
+.extra a:hover{
+text-decoration:underline;
+}
 
-#registerBox,#forgotBox{display:none;}
+#registerBox,
+#forgotBox{
+display:none;
+}
 
+/* FOOTER FIX */
 footer{
 margin-top:auto;
 background:#1e5631;
 color:white;
 text-align:center;
 padding:15px;
+font-size:14px;
 }
-
-#loginError{
-color:red;
-text-align:center;
-margin-top:10px;
-display:none;
-font-weight:bold;
+footer p{
+  color:white;
 }
-
 @media(max-width:400px){
-.container{width:90%;}
+.container{
+width:90%;
 }
+}
+
 </style>
 </head>
 
 <body>
 
+<!-- NAVBAR -->
+<header>
+    <div class="logo">🌿 Garden</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
+        <!-- <a href="/E-Gardening/User/Index.html">Home</a>
+        <a href="#plant">Plant Care</a>
+        <a href="#aboutus">About us</a> -->
+    </nav>
+        <!-- <a href="../E-Gardening/register.html" class="auth-link">Register</a> -->
+    </div>
+</header>
+
+<!-- LOGIN CONTAINER -->
 <div class="container">
 
 <!-- LOGIN -->
 <div id="loginBox">
+
 <h2>Login</h2>
 <p>Login to your account</p>
-
 <div class="input-group">
 <label>Email</label>
 <input type="email" id="loginEmail">
@@ -126,23 +193,24 @@ font-weight:bold;
 <div class="error-message" id="loginPassError"></div>
 </div>
 
-<button class="btn" onclick="handleLogin()">Login</button>
-
-<div id="loginError">❌ Invalid Email or Password</div>
+<button class="btn" Onclick="loginSeller(); login();">Login</button>
 
 <div class="extra">
 New User? <a onclick="showRegister()">Create Account</a>
 <br><br>
 <a onclick="showForgot()">Forgot Password?</a>
 </div>
+
 </div>
 
 <!-- REGISTER -->
 <div id="registerBox">
+
 <h2>Create User Account</h2>
+<p>Register your business</p>
 
 <div class="input-group">
-<label>Name</label>
+<label>User Name</label>
 <input type="text" id="name">
 <div class="error-message" id="nameError"></div>
 </div>
@@ -163,6 +231,7 @@ New User? <a onclick="showRegister()">Create Account</a>
 <label>Password</label>
 <input type="password" id="regPass">
 <div class="error-message" id="regPassError"></div>
+<div class="password-strength" id="passwordStrength"></div>
 </div>
 
 <button class="btn" onclick="registerSeller()">Register</button>
@@ -170,11 +239,14 @@ New User? <a onclick="showRegister()">Create Account</a>
 <div class="extra">
 Already have an account? <a onclick="showLogin()">Login</a>
 </div>
+
 </div>
 
-<!-- FORGOT -->
+<!-- FORGOT PASSWORD -->
 <div id="forgotBox">
+
 <h2>Forgot Password</h2>
+<p>Enter your registered email</p>
 
 <div class="input-group">
 <label>Email</label>
@@ -185,113 +257,401 @@ Already have an account? <a onclick="showLogin()">Login</a>
 <button class="btn" onclick="resetPassword()">Reset Password</button>
 
 <div class="extra">
-<a onclick="showLogin()">Back</a>
+<a onclick="showLogin()">Back to Login</a>
 </div>
+
 </div>
 
 </div>
 
+<!-- FOOTER -->
 <footer>
-<p>© 2026 Garden Decoration Services</p>
+<p>© 2026 Garden Decoration Services. All Rights Reserved | Creating Beautiful Outdoor Spaces</p>
 </footer>
 
 <script>
 
-// SWITCH BOXES
-function showRegister(){hideAll();document.getElementById("registerBox").style.display="block";}
-function showLogin(){hideAll();document.getElementById("loginBox").style.display="block";}
-function showForgot(){hideAll();document.getElementById("forgotBox").style.display="block";}
+function showRegister(){
+hideAll();
+document.getElementById("registerBox").style.display="block";
+}
+
+function showLogin(){
+hideAll();
+document.getElementById("loginBox").style.display="block";
+}
+
+function showForgot(){
+hideAll();
+document.getElementById("forgotBox").style.display="block";
+}
+
 function hideAll(){
 document.getElementById("loginBox").style.display="none";
 document.getElementById("registerBox").style.display="none";
 document.getElementById("forgotBox").style.display="none";
 }
 
-// HANDLE LOGIN FLOW
-function handleLogin(){
-if(loginSeller()){
-login();
-}
-}
-
-// VALIDATION
 function loginSeller(){
+
 let email=document.getElementById("loginEmail").value;
 let pass=document.getElementById("loginPass").value;
 
+// Clear previous errors
 clearErrors();
 
+// Email validation
 if(email===""){
-showError("loginEmail","loginEmailError","Enter email");
-return false;
+    showError("loginEmail", "loginEmailError", "Please enter your email address");
+    return;
 }
+
 if(!isValidEmail(email)){
-showError("loginEmail","loginEmailError","Invalid email");
-return false;
+    showError("loginEmail", "loginEmailError", "Please enter a valid email address");
+    return;
 }
 
+// Password validation
 if(pass===""){
-showError("loginPass","loginPassError","Enter password");
-return false;
-}
-if(pass.length<6){
-showError("loginPass","loginPassError","Min 6 chars");
-return false;
+    showError("loginPass", "loginPassError", "Please enter your password");
+    return;
 }
 
-return true;
+if(pass.length < 6){
+    showError("loginPass", "loginPassError", "Password must be at least 6 characters long");
+    return;
 }
 
-// LOGIN LOGIC
-function login(){
-let email=document.getElementById("loginEmail").value;
-let password=document.getElementById("loginPass").value;
+alert("Login Successful!");
 
-let seller_email="seller@gmail.com";
-let seller_password="seller123";
-
-if(email===seller_email && password===seller_password){
-alert("✅ Login Successful");
-window.location.href="../Seller/new/sellerdashboard.html";
-}
-else{
-let error=document.getElementById("loginError");
-error.style.display="block";
-
-setTimeout(()=>{error.style.display="none";},3000);
-}
 }
 
-// REGISTER
 function registerSeller(){
-alert("Registered Successfully");
-showLogin();
+
+let name=document.getElementById("name").value;
+let email=document.getElementById("regEmail").value;
+let phone=document.getElementById("phone").value;
+let pass=document.getElementById("regPass").value;
+
+// Clear previous errors
+clearErrors();
+
+// Name validation
+if(name===""){
+    showError("name", "nameError", "Please enter your name");
+    return;
 }
 
-// RESET
+if(name.length < 2){
+    showError("name", "nameError", "Name must be at least 2 characters long");
+    return;
+}
+
+// Email validation
+if(email===""){
+    showError("regEmail", "regEmailError", "Please enter your email address");
+    return;
+}
+
+if(!isValidEmail(email)){
+    showError("regEmail", "regEmailError", "Please enter a valid email address");
+    return;
+}
+
+// Phone validation
+if(phone===""){
+    showError("phone", "phoneError", "Please enter your phone number");
+    return;
+}
+
+if(!isValidPhone(phone)){
+    showError("phone", "phoneError", "Please enter a valid phone number (10 digits)");
+    return;
+}
+
+// Password validation
+if(pass===""){
+    showError("regPass", "regPassError", "Please enter a password");
+    return;
+}
+
+if(!isValidPassword(pass)){
+    showError("regPass", "regPassError", "Password must be at least 8 characters and contain uppercase, lowercase, number, and special character");
+    return;
+}
+
+alert("Registration Successful!");
+showLogin();
+
+}
+
 function resetPassword(){
-alert("Reset link sent");
-showLogin();
+
+let email=document.getElementById("forgotEmail").value;
+
+// Clear previous errors
+clearErrors();
+
+// Email validation
+if(email===""){
+    showError("forgotEmail", "forgotEmailError", "Please enter your email address");
+    return;
 }
 
-// HELPERS
-function showError(inputId,errorId,msg){
-document.getElementById(inputId).classList.add("error");
-let err=document.getElementById(errorId);
-err.innerText=msg;
-err.style.display="block";
+if(!isValidEmail(email)){
+    showError("forgotEmail", "forgotEmailError", "Please enter a valid email address");
+    return;
+}
+
+alert("Password reset link sent to your email!");
+showLogin();
+
+}
+
+// Helper functions for error handling
+function showError(inputId, errorId, message){
+    document.getElementById(inputId).classList.add("error");
+    document.getElementById(errorId).textContent = message;
+    document.getElementById(errorId).style.display = "block";
 }
 
 function clearErrors(){
-document.querySelectorAll("input").forEach(i=>i.classList.remove("error"));
-document.querySelectorAll(".error-message").forEach(e=>e.style.display="none");
-document.getElementById("loginError").style.display="none";
+    // Clear all error classes and messages
+    const inputs = document.querySelectorAll("input");
+    const errorMessages = document.querySelectorAll(".error-message");
+    
+    inputs.forEach(input => input.classList.remove("error"));
+    errorMessages.forEach(error => {
+        error.textContent = "";
+        error.style.display = "none";
+    });
 }
 
+// Real-time validation
+document.addEventListener('DOMContentLoaded', function(){
+    // Login form validation
+    document.getElementById('loginEmail').addEventListener('blur', function(){
+        validateEmailField('loginEmail', 'loginEmailError');
+    });
+    
+    document.getElementById('loginPass').addEventListener('blur', function(){
+        validatePasswordField('loginPass', 'loginPassError', false);
+    });
+    
+    // Registration form validation
+    document.getElementById('name').addEventListener('blur', function(){
+        validateNameField('name', 'nameError');
+    });
+    
+    document.getElementById('regEmail').addEventListener('blur', function(){
+        validateEmailField('regEmail', 'regEmailError');
+    });
+    
+    document.getElementById('phone').addEventListener('blur', function(){
+        validatePhoneField('phone', 'phoneError');
+    });
+    
+    document.getElementById('regPass').addEventListener('input', function(){
+        checkPasswordStrength('regPass');
+    });
+    
+    document.getElementById('regPass').addEventListener('blur', function(){
+        validatePasswordField('regPass', 'regPassError', true);
+    });
+    
+    // Forgot password validation
+    document.getElementById('forgotEmail').addEventListener('blur', function(){
+        validateEmailField('forgotEmail', 'forgotEmailError');
+    });
+});
+
+// Real-time validation functions
+function validateNameField(inputId, errorId){
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+    const value = input.value;
+    
+    if(value === ""){
+        showError(inputId, errorId, "Name is required");
+    } else if(value.length < 2){
+        showError(inputId, errorId, "Name must be at least 2 characters");
+    } else {
+        clearFieldError(inputId, errorId);
+    }
+}
+
+function validateEmailField(inputId, errorId){
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+    const value = input.value;
+    
+    if(value === ""){
+        showError(inputId, errorId, "Email is required");
+    } else if(!isValidEmail(value)){
+        showError(inputId, errorId, "Please enter a valid email address");
+    } else {
+        clearFieldError(inputId, errorId);
+    }
+}
+
+function validatePhoneField(inputId, errorId){
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+    const value = input.value;
+    
+    if(value === ""){
+        showError(inputId, errorId, "Phone number is required");
+    } else if(!isValidPhone(value)){
+        showError(inputId, errorId, "Please enter a valid 10-digit phone number");
+    } else {
+        clearFieldError(inputId, errorId);
+    }
+}
+
+function validatePasswordField(inputId, errorId, isRegistration = false){
+    const input = document.getElementById(inputId);
+    const error = document.getElementById(errorId);
+    const value = input.value;
+    
+    if(value === ""){
+        showError(inputId, errorId, "Password is required");
+    } else if(isRegistration && !isValidPassword(value)){
+        showError(inputId, errorId, "Password must be 8+ chars with uppercase, lowercase, number, and special character");
+    } else if(!isRegistration && value.length < 6){
+        showError(inputId, errorId, "Password must be at least 6 characters");
+    } else {
+        clearFieldError(inputId, errorId);
+    }
+}
+
+function checkPasswordStrength(inputId){
+    const input = document.getElementById(inputId);
+    const strengthDiv = document.getElementById('passwordStrength');
+    const password = input.value;
+    
+    if(password === ""){
+        strengthDiv.textContent = "";
+        return;
+    }
+    
+    let score = 0;
+    let feedback = [];
+    
+    // Length check
+    if(password.length >= 8){
+        score += 1;
+    } else {
+        feedback.push("At least 8 characters");
+    }
+    
+    // Uppercase check
+    if(/[A-Z]/.test(password)){
+        score += 1;
+    } else {
+        feedback.push("One uppercase letter");
+    }
+    
+    // Lowercase check
+    if(/[a-z]/.test(password)){
+        score += 1;
+    } else {
+        feedback.push("One lowercase letter");
+    }
+    
+    // Number check
+    if(/\d/.test(password)){
+        score += 1;
+    } else {
+        feedback.push("One number");
+    }
+    
+    // Special character check
+    if(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password)){
+        score += 1;
+    } else {
+        feedback.push("One special character");
+    }
+    
+    // Display strength
+    if(score <= 2){
+        strengthDiv.innerHTML = '<span class="strength-weak">Weak Password</span>';
+    } else if(score <= 4){
+        strengthDiv.innerHTML = '<span class="strength-medium">Medium Strength</span>';
+    } else {
+        strengthDiv.innerHTML = '<span class="strength-strong">Strong Password</span>';
+    }
+    
+    // Show requirements if not met
+    if(score < 5 && feedback.length > 0){
+        strengthDiv.innerHTML += '<br><small>Needs: ' + feedback.join(', ') + '</small>';
+    }
+}
+
+// Validation helper functions
 function isValidEmail(email){
-return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    // Basic email regex pattern
+    const emailPattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return emailPattern.test(email);
 }
 
+function isValidPhone(phone){
+    // Remove all non-digit characters
+    const cleanPhone = phone.replace(/\D/g, '');
+    // Check if it's exactly 10 digits
+    return cleanPhone.length === 10;
+}
+
+function isValidPassword(password){
+    // Password must be at least 8 characters and contain:
+    // - At least one uppercase letter
+    // - At least one lowercase letter
+    // - At least one number
+    // - At least one special character
+    const minLength = password.length >= 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
+    const hasNumbers = /\d/.test(password);
+    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+
+    return minLength && hasUpperCase && hasLowerCase && hasNumbers && hasSpecialChar;
+}
+
+function toggleMenu(){
+document.getElementById("navbar").classList.toggle("active");
+}
+function login(){
+  let user_email = "user@gmail.com"
+  let user_password = "user123"
+
+  let seller_email = "seller@gmail.com"
+  let seller_password = "seller123"
+
+  let admin_email = "admin@gmail.com"
+  let admin_password = "admin123"
+
+//   let rescue_email = "rescue@gmail.com"
+//   let rescue_password = "rescue123"
+
+  let email = document.getElementById("loginEmail").value;
+  let password = document.getElementById("loginPass").value;
+  
+  if (email === user_email && password === user_password){
+    window.location.href = "../User/plantcare.html";
+  }
+  else if (email === seller_email && password === seller_password){
+    window.location.href = "../Seller//new/sellerdashboard.html";
+  }
+  else if (email === admin_email && password === admin_password){
+    window.location.href = "../admin/index.html";
+  }
+//   else if (email === rescue_email && password === rescue_password){
+//     window.location.href = "./rescue-home-page.html";
+//   }
+  else{
+    document.getElementById("notification").innerHTML = "Invalid Credentials";
+    document.getElementById("notification").style.color = "red";
+  }
+}
 </script>
 
 </body>
