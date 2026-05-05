@@ -37,6 +37,7 @@ header{
 .logo{
     font-size: 24px;
     font-weight: 700;
+
 }
 
 .menu-toggle{
@@ -58,10 +59,12 @@ header{
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
+    position: relative;
+    border-bottom: 3px solid transparent;
 }
 
-.dropdown{
-    position: relative;
+#navbar a:hover{
+    border-bottom: 3px solid #66bb6a;
 }
 
 .dropdown-menu{
@@ -175,18 +178,144 @@ main{
     background:#2196f3;
 }
 
-.action-btn.docs-btn{
-    background:#ff9800;
-}
-
 .action-btn.activate-btn{
     background:#4caf50;
 }
 
-.approve-checkbox{
-    width: 18px;
-    height: 18px;
+/* Modal Styles */
+.modal-overlay{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0,0,0,0.5);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 1000;
+    animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn{
+    from{opacity:0;}
+    to{opacity:1;}
+}
+
+.modal-card{
+    background: #fff;
+    border-radius: 15px;
+    padding: 30px;
+    max-width: 500px;
+    width: 90%;
+    box-shadow: 0 20px 40px rgba(0,0,0,.2);
+    position: relative;
+    animation: slideUp 0.3s ease;
+}
+
+@keyframes slideUp{
+    from{transform: translateY(50px); opacity: 0;}
+    to{transform: translateY(0); opacity: 1;}
+}
+
+.modal-header{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #e8f5e9;
+}
+
+.modal-title{
+    font-size: 24px;
+    font-weight: 700;
+    color: #1b5e20;
+    margin: 0;
+}
+
+.close-btn{
+    background: none;
+    border: none;
+    font-size: 28px;
     cursor: pointer;
+    color: #666;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: 0.3s;
+}
+
+.close-btn:hover{
+    background: #f0f0f0;
+    color: #333;
+}
+
+.seller-details{
+    display: grid;
+    gap: 15px;
+}
+
+.detail-item{
+    display: flex;
+    align-items: center;
+    padding: 12px 0;
+    border-bottom: 1px solid #f0f0f0;
+}
+
+.detail-item:last-child{
+    border-bottom: none;
+}
+
+.detail-label{
+    font-weight: 600;
+    color: #1b5e20;
+    min-width: 120px;
+    margin-right: 15px;
+}
+
+.detail-value{
+    color: #333;
+    flex: 1;
+}
+
+.detail-icon{
+    margin-right: 10px;
+    font-size: 18px;
+}
+
+/* Modal Responsive */
+@media (max-width: 768px) {
+    .modal-card {
+        margin: 20px;
+        padding: 20px;
+        max-width: none;
+        width: calc(100% - 40px);
+    }
+    
+    .modal-title {
+        font-size: 20px;
+    }
+    
+    .detail-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 5px;
+    }
+    
+    .detail-label {
+        min-width: auto;
+        margin-right: 0;
+        font-size: 14px;
+    }
+    
+    .detail-value {
+        font-size: 14px;
+    }
 }
 
 /* FOOTER */
@@ -218,7 +347,8 @@ footer{
         margin-top:10px;
         background:#1b5e20;
         border-radius:8px;
-    }
+    }approvels
+
 
     #navbar.active{
         display:flex;
@@ -259,7 +389,6 @@ footer{
             <a href="#">🌿 Plants</a>
             <div class="dropdown-menu">
                 <a href="plant-pedia.html">Plant Pedia</a>
-                <a href="add-plant.html">Add Plant</a>
             </div>
         </div>
     </nav>
@@ -275,7 +404,6 @@ footer{
     <!-- Pending Approvals Table -->
     <div class="section-header">
         <h3>📋 Pending Approvals</h3>
-        <button onclick="bulkApprove()" style="background: #4caf50; color: white; border: none; padding: 8px 16px; border-radius: 4px; cursor: pointer;">✅ Bulk Approve Selected</button>
     </div>
 
     <div class="table-wrapper">
@@ -283,22 +411,18 @@ footer{
         <thead>
             <tr>
                 <th>View Details</th>
-                <th>Approve</th>
                 <th>Owner Name</th>
                 <th>Shop Name</th>
                 <th>Shop Location</th>
-                <th>Documents</th>
                 <th>Actions</th>
             </tr>
         </thead>
         <tbody>
             <tr>
                 <td><button class="action-btn view-btn">👁️ View</button></td>
-                <td><input type="checkbox" class="approve-checkbox"></td>
                 <td>Rahul Verma</td>
                 <td>Green Paradise</td>
                 <td>Mumbai, Maharashtra</td>
-                <td><button class="action-btn docs-btn">📄 View Docs</button></td>
                 <td>
                     <button class="action-btn approve-btn">✅ Approve</button>
                     <button class="action-btn delete reject-btn">❌ Reject</button>
@@ -306,11 +430,9 @@ footer{
             </tr>
             <tr>
                 <td><button class="action-btn view-btn">👁️ View</button></td>
-                <td><input type="checkbox" class="approve-checkbox"></td>
                 <td>Meera Saxena</td>
                 <td>Bloom House</td>
                 <td>Delhi, India</td>
-                <td><button class="action-btn docs-btn">📄 View Docs</button></td>
                 <td>
                     <button class="action-btn approve-btn">✅ Approve</button>
                     <button class="action-btn delete reject-btn">❌ Reject</button>
@@ -318,11 +440,9 @@ footer{
             </tr>
             <tr>
                 <td><button class="action-btn view-btn">👁️ View</button></td>
-                <td><input type="checkbox" class="approve-checkbox"></td>
                 <td>Amit Kumar</td>
                 <td>Plant World</td>
                 <td>Bangalore, Karnataka</td>
-                <td><button class="action-btn docs-btn">📄 View Docs</button></td>
                 <td>
                     <button class="action-btn approve-btn">✅ Approve</button>
                     <button class="action-btn delete reject-btn">❌ Reject</button>
@@ -345,7 +465,6 @@ footer{
                 <th>Shop Name</th>
                 <th>Owner Name</th>
                 <th>Shop Location</th>
-                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -355,7 +474,6 @@ footer{
                 <td>Nature's Gift</td>
                 <td>Priya Sharma</td>
                 <td>Pune, Maharashtra</td>
-                <td><span style="color: #2e7d32; font-weight: bold;">Active</span></td>
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
@@ -367,7 +485,6 @@ footer{
                 <td>Green Thumb</td>
                 <td>Rajesh Patel</td>
                 <td>Ahmedabad, Gujarat</td>
-                <td><span style="color: #2e7d32; font-weight: bold;">Active</span></td>
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
@@ -379,11 +496,10 @@ footer{
                 <td>Botanical Bliss</td>
                 <td>Sneha Gupta</td>
                 <td>Chennai, Tamil Nadu</td>
-                <td><span style="color: #ff9800; font-weight: bold;">Suspended</span></td>
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn activate-btn">✅ Activate</button>
+                    <button class="action-btn delete">🚫 Suspend</button>
                 </td>
             </tr>
             <tr>
@@ -391,7 +507,6 @@ footer{
                 <td>Plant Paradise</td>
                 <td>Vikram Singh</td>
                 <td>Jaipur, Rajasthan</td>
-                <td><span style="color: #2e7d32; font-weight: bold;">Active</span></td>
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
@@ -403,7 +518,6 @@ footer{
                 <td>Foliage Friends</td>
                 <td>Kavita Jain</td>
                 <td>Hyderabad, Telangana</td>
-                <td><span style="color: #2e7d32; font-weight: bold;">Active</span></td>
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
@@ -432,40 +546,27 @@ function viewSellerDetails(button) {
     try {
         console.log('View button clicked');
         const row = button.closest('tr');
-        let ownerName, shopName, location;
+        let ownerName, shopName, location, sellerId = null;
         
-        if (row.cells.length === 7) {
-            ownerName = row.cells[2].textContent;
-            shopName = row.cells[3].textContent;
-            location = row.cells[4].textContent;
+        if (row.cells.length === 5) {
+            // Pending table: View Details, Owner Name, Shop Name, Shop Location, Actions
+            ownerName = row.cells[1].textContent;
+            shopName = row.cells[2].textContent;
+            location = row.cells[3].textContent;
             console.log('Pending table - Owner:', ownerName, 'Shop:', shopName, 'Location:', location);
         } else {
-            ownerName = row.cells[2].textContent;
+            // Existing shops table: Seller ID, Shop Name, Owner Name, Shop Location, Actions
+            sellerId = row.cells[0].textContent;
             shopName = row.cells[1].textContent;
+            ownerName = row.cells[2].textContent;
             location = row.cells[3].textContent;
             console.log('Existing shops table - Owner:', ownerName, 'Shop:', shopName, 'Location:', location);
         }
         
-        alert(`Seller Details:\n\nOwner: ${ownerName}\nShop: ${shopName}\nLocation: ${location}\n\nMore detailed information would be shown in a modal or separate page.`);
+        showSellerModal(ownerName, shopName, location, sellerId);
     } catch (error) {
         console.error('Error in viewSellerDetails:', error);
         alert('Error viewing seller details. Please try again.');
-    }
-}
-
-// View documents
-function viewDocuments(button) {
-    try {
-        console.log('Documents button clicked');
-        const row = button.closest('tr');
-        const ownerName = row.cells[2].textContent;
-        const shopName = row.cells[3].textContent;
-        console.log('Viewing documents for:', shopName);
-        
-        alert(`Viewing documents for ${shopName} owned by ${ownerName}\n\nDocument types: Business License, ID Proof, Address Proof, Tax Certificate\n\nIn a real application, this would open a document viewer.`);
-    } catch (error) {
-        console.error('Error in viewDocuments:', error);
-        alert('Error viewing documents. Please try again.');
     }
 }
 
@@ -474,8 +575,8 @@ function approveSeller(button) {
     try {
         console.log('Approve button clicked');
         const row = button.closest('tr');
-        const ownerName = row.cells[2].textContent;
-        const shopName = row.cells[3].textContent;
+        const ownerName = row.cells[1].textContent;
+        const shopName = row.cells[2].textContent;
         console.log('Approving seller:', shopName);
         
         if (confirm(`Are you sure you want to approve ${shopName} owned by ${ownerName}?`)) {
@@ -495,8 +596,8 @@ function rejectSeller(button) {
     try {
         console.log('Reject button clicked');
         const row = button.closest('tr');
-        const ownerName = row.cells[2].textContent;
-        const shopName = row.cells[3].textContent;
+        const ownerName = row.cells[1].textContent;
+        const shopName = row.cells[2].textContent;
         console.log('Rejecting seller:', shopName);
         
         if (confirm(`Are you sure you want to reject ${shopName} owned by ${ownerName}?`)) {
@@ -519,84 +620,13 @@ function suspendSeller(button) {
         console.log('Suspending seller:', shopName);
         
         if (confirm(`Are you sure you want to suspend ${shopName}?`)) {
-            const statusCell = row.cells[4];
-            statusCell.innerHTML = '<span style="color: #ff9800; font-weight: bold;">Suspended</span>';
-            const actionsCell = row.cells[5];
-            actionsCell.innerHTML = `
-                <button class="action-btn view-btn">👁️ View</button>
-                <button class="action-btn edit-btn">✏️ Edit</button>
-                <button class="action-btn activate-btn">✅ Activate</button>
-            `;
-            
-            actionsCell.querySelector('.view-btn').addEventListener('click', function() { viewSellerDetails(this); });
-            actionsCell.querySelector('.edit-btn').addEventListener('click', function() { editSeller(this); });
-            actionsCell.querySelector('.activate-btn').addEventListener('click', function() { activateSeller(this); });
-            
+            row.remove();
             alert(`${shopName} has been suspended.`);
             console.log('Seller suspended successfully');
         }
     } catch (error) {
         console.error('Error in suspendSeller:', error);
         alert('Error suspending seller. Please try again.');
-    }
-}
-
-// Activate seller
-function activateSeller(button) {
-    try {
-        console.log('Activate button clicked');
-        const row = button.closest('tr');
-        const shopName = row.cells[1].textContent;
-        console.log('Activating seller:', shopName);
-        
-        if (confirm(`Are you sure you want to reactivate ${shopName}?`)) {
-            const statusCell = row.cells[4];
-            statusCell.innerHTML = '<span style="color: #2e7d32; font-weight: bold;">Active</span>';
-            const actionsCell = row.cells[5];
-            actionsCell.innerHTML = `
-                <button class="action-btn view-btn">👁️ View</button>
-                <button class="action-btn edit-btn">✏️ Edit</button>
-                <button class="action-btn delete">🚫 Suspend</button>
-            `;
-            
-            actionsCell.querySelector('.view-btn').addEventListener('click', function() { viewSellerDetails(this); });
-            actionsCell.querySelector('.edit-btn').addEventListener('click', function() { editSeller(this); });
-            actionsCell.querySelector('.delete').addEventListener('click', function() { suspendSeller(this); });
-            
-            alert(`${shopName} has been reactivated.`);
-            console.log('Seller activated successfully');
-        }
-    } catch (error) {
-        console.error('Error in activateSeller:', error);
-        alert('Error activating seller. Please try again.');
-    }
-}
-
-// Bulk approve selected sellers
-function bulkApprove() {
-    try {
-        console.log('Bulk approve clicked');
-        const checkboxes = document.querySelectorAll('.approve-checkbox:checked');
-        console.log('Selected sellers:', checkboxes.length);
-        
-        if (checkboxes.length === 0) {
-            alert('Please select sellers to approve.');
-            console.warn('No sellers selected for bulk approval');
-            return;
-        }
-        
-        if (confirm(`Are you sure you want to approve ${checkboxes.length} selected seller(s)?`)) {
-            checkboxes.forEach(checkbox => {
-                const row = checkbox.closest('tr');
-                row.remove();
-            });
-            alert(`${checkboxes.length} seller(s) have been approved successfully!`);
-            console.log('Bulk approval completed, reloading...');
-            location.reload();
-        }
-    } catch (error) {
-        console.error('Error in bulkApprove:', error);
-        alert('Error approving sellers. Please try again.');
     }
 }
 
@@ -629,7 +659,7 @@ function editSeller(button) {
             const cells = row.querySelectorAll('td:not(:last-child)');
             cells.forEach(cell => {
                 const value = cell.textContent.trim();
-                // Skip ID column
+                // Skip ID column if it starts with #
                 if (!value.startsWith('#')) {
                     cell.innerHTML = `<input type="text" value="${value}" style="width: 100%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">`;
                 }
@@ -664,14 +694,6 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         console.log('Edit button listeners attached');
         
-        // Document buttons
-        document.querySelectorAll('.docs-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                viewDocuments(this);
-            });
-        });
-        console.log('Document button listeners attached');
-        
         // Approve buttons
         document.querySelectorAll('.approve-btn').forEach(btn => {
             btn.addEventListener('click', function() {
@@ -696,20 +718,96 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         console.log('Delete/Suspend button listeners attached');
         
-        // Activate buttons
-        document.querySelectorAll('.activate-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                activateSeller(this);
-            });
-        });
-        console.log('Activate button listeners attached');
-        
         console.log('All event listeners attached successfully');
     } catch (error) {
         console.error('Error attaching event listeners:', error);
     }
 });
+
+// Modal functions
+function showSellerModal(ownerName, shopName, location, sellerId = null) {
+    const modal = document.getElementById('sellerModal');
+    const title = document.getElementById('modalTitle');
+    const details = document.getElementById('sellerDetails');
+    
+    title.textContent = `${shopName} Details`;
+    
+    details.innerHTML = `
+        ${sellerId ? `<div class="detail-item">
+            <span class="detail-icon">🆔</span>
+            <span class="detail-label">Seller ID:</span>
+            <span class="detail-value">${sellerId}</span>
+        </div>` : ''}
+        <div class="detail-item">
+            <span class="detail-icon">👤</span>
+            <span class="detail-label">Owner Name:</span>
+            <span class="detail-value">${ownerName}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-icon">🏪</span>
+            <span class="detail-label">Shop Name:</span>
+            <span class="detail-value">${shopName}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-icon">📍</span>
+            <span class="detail-label">Location:</span>
+            <span class="detail-value">${location}</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-icon">📞</span>
+            <span class="detail-label">Contact:</span>
+            <span class="detail-value">+91 98765 43210</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-icon">📧</span>
+            <span class="detail-label">Email:</span>
+            <span class="detail-value">${ownerName.toLowerCase().replace(' ', '.')}@example.com</span>
+        </div>
+        <div class="detail-item">
+            <span class="detail-icon">📅</span>
+            <span class="detail-label">Joined:</span>
+            <span class="detail-value">January 15, 2024</span>
+        </div>
+    `;
+    
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+}
+
+function closeSellerModal() {
+    const modal = document.getElementById('sellerModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+}
+
+// Close modal when clicking outside
+document.addEventListener('click', function(event) {
+    const modal = document.getElementById('sellerModal');
+    if (event.target === modal) {
+        closeSellerModal();
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', function(event) {
+    if (event.key === 'Escape') {
+        closeSellerModal();
+    }
+});
 </script>
+
+<!-- Seller Details Modal -->
+<div id="sellerModal" class="modal-overlay">
+    <div class="modal-card">
+        <div class="modal-header">
+            <h2 id="modalTitle" class="modal-title">Seller Details</h2>
+            <button class="close-btn" onclick="closeSellerModal()">×</button>
+        </div>
+        <div id="sellerDetails" class="seller-details">
+            <!-- Details will be populated by JavaScript -->
+        </div>
+    </div>
+</div>
 
 </body>
 </html>
