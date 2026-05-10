@@ -5,6 +5,7 @@
     <title>Seller Register | Garden</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -57,6 +58,10 @@
             border: 1px solid #ccc;
         }
 
+        input::-ms-reveal,input::-ms-clear {
+            display: none;
+        }
+
         input:focus {
             outline: none;
             border-color: #4caf50;
@@ -78,6 +83,26 @@
             margin-top: 4px;
             font-size: 12px;
         }
+        
+.password-wrapper{
+    position: relative;
+    width: 100%;
+}
+
+.password-wrapper input{
+    width: 100%;
+    padding-right: 45px;
+}
+
+.toggle-password{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    font-size: 18px;
+    color: #555;
+}
 
         .strength-weak {
             color: #f44336;
@@ -157,9 +182,9 @@
     <div class="logo">🌿 Garden</div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <nav id="navbar">
-        <!-- <a href="../Index.html">Home</a>
+        <a href="../Index.html">Home</a>
         <a href="../plantcare.html">Plant Care</a>
-        <a href="../review.html">Reviews</a> -->
+        <a href="../review.html">Reviews</a>
     </nav>
 </header>
 
@@ -186,15 +211,28 @@
     </div>
 
     <div class="input-group">
-        <label>Password</label>
+    <label>Password</label>
+
+    <div class="password-wrapper">
         <input type="password" id="password">
-        <div class="error-message" id="passwordError"></div>
-        <div class="password-strength" id="passwordStrength"></div>
+
+        <span class="toggle-password" onclick="togglePassword('password')">
+            <i class="fa-solid fa-eye"></i>
+        </span>
     </div>
+
+    <div class="error-message" id="passwordError"></div>
+    <div class="password-strength" id="passwordStrength"></div>
+</div>
 
     <div class="input-group">
         <label>Confirm Password</label>
-        <input type="password" id="confirmPassword">
+        <div class="password-wrapper">
+            <input type="password" id="confirmPassword">
+            <span class="toggle-password" onclick="togglePassword('confirmPassword')">
+                <i class="fa-solid fa-eye"></i>
+            </span>
+        </div>
         <div class="error-message" id="confirmPasswordError"></div>
     </div>
 
@@ -230,6 +268,7 @@ const validators = {
 
 Object.keys(validators).forEach(field => {
     document.getElementById(field).addEventListener('blur', validators[field]);
+    document.getElementById(field).addEventListener('input', validators[field]);
 });
 
 document.getElementById('password').addEventListener('input', function(){
@@ -253,14 +292,24 @@ function validateAndRegister(){
 
 function validateName(inputId, errorId){
     const value = document.getElementById(inputId).value.trim();
+
     if(!value){
         showError(inputId, errorId, 'Name is required');
         return false;
     }
+
+    const namePattern = /^[A-Za-z\s]+$/;
+
+    if(!namePattern.test(value)){
+        showError(inputId, errorId, 'Name should contain only letters');
+        return false;
+    }
+
     if(value.length < 2){
         showError(inputId, errorId, 'Name must be at least 2 characters');
         return false;
     }
+
     clearFieldError(inputId, errorId);
     return true;
 }
@@ -300,7 +349,7 @@ function validatePassword(inputId, errorId){
         return false;
     }
     if(!isValidPassword(value)){
-        showError(inputId, errorId, 'Password must be 8+ chars and include uppercase, lowercase, number, and special character');
+        showError(inputId, errorId, 'Password must be more than 5 characters and contain letters and numbers');
         return false;
     }
     clearFieldError(inputId, errorId);
@@ -365,9 +414,6 @@ function checkPasswordStrength(inputId){
         requirements.push('8+ characters');
     }
 
-    if(/[A-Z]/.test(value)) score += 1;
-    else requirements.push('Uppercase');
-
     if(/[a-z]/.test(value)) score += 1;
     else requirements.push('Lowercase');
 
@@ -392,18 +438,27 @@ function isValidEmail(email){
 }
 
 function isValidPhone(phone){
-    const cleanPhone = phone.replace(/\D/g, '');
-    return cleanPhone.length === 10;
+    const phonePattern = /^[6-9]\d{9}$/;
+    return phonePattern.test(phone);
 }
 
 function isValidPassword(password){
-    const minLength = password.length >= 8;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
+    const minLength = password.length > 5;
+    const hasLetter = /[A-Za-z]/.test(password);
     const hasNumber = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
+    return minLength && hasLetter && hasNumber;
+}
 
-    return minLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar;
+function togglePassword(inputId){
+    const passwordInput = document.getElementById(inputId);
+
+    if(passwordInput.type === "password"){
+        passwordInput.type = "text";
+
+        setTimeout(() => {
+            passwordInput.type = "password";
+        }, 3000);
+    }
 }
 </script>
 </body>
