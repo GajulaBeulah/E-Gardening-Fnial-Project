@@ -4,7 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Seller Management - Plant Store Admin</title>
-
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="/header.css">
 <style>
 *{
     margin:0;
@@ -22,7 +23,7 @@ body{
 
 /* HEADER */
 header{
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    background: linear-gradient(135deg, #000000, #2e7d32);
     color: #fff;
     padding: 15px 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
@@ -37,7 +38,6 @@ header{
 .logo{
     font-size: 24px;
     font-weight: 700;
-
 }
 
 .menu-toggle{
@@ -59,12 +59,31 @@ header{
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
+    cursor: pointer;
     position: relative;
-    border-bottom: 3px solid transparent;
 }
 
-#navbar a:hover{
-    border-bottom: 3px solid #66bb6a;
+#navbar a:hover {
+    color: #fff;
+}
+
+#navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #76ff03;
+    transition: width 0.3s ease;
+}
+
+#navbar a:hover::after {
+    width: 100%;
+}
+
+.dropdown{
+    position: relative;
 }
 
 .dropdown-menu{
@@ -84,6 +103,11 @@ header{
 .dropdown-menu a{
     display:block;
     padding:12px 20px;
+    cursor: pointer;
+}
+
+.dropdown-menu a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
 }
 
 /* MAIN */
@@ -123,7 +147,6 @@ main{
     margin: 0;
 }
 
-/* TABLE */
 .table-wrapper{
     overflow-x:auto;
     margin-bottom: 40px;
@@ -166,165 +189,26 @@ main{
     background:#d32f2f;
 }
 
-.action-btn.approve-btn{
-    background:#4caf50;
-}
-
-.action-btn.reject-btn{
-    background:#f44336;
-}
-
 .action-btn.view-btn{
     background:#2196f3;
+}
+
+.action-btn.docs-btn{
+    background:#ff9800;
 }
 
 .action-btn.activate-btn{
     background:#4caf50;
 }
 
-/* Modal Styles */
-.modal-overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(0,0,0,0.5);
-    display: none;
-    justify-content: center;
-    align-items: center;
-    z-index: 1000;
-    animation: fadeIn 0.3s ease;
-}
-
-@keyframes fadeIn{
-    from{opacity:0;}
-    to{opacity:1;}
-}
-
-.modal-card{
-    background: #fff;
-    border-radius: 15px;
-    padding: 30px;
-    max-width: 500px;
-    width: 90%;
-    box-shadow: 0 20px 40px rgba(0,0,0,.2);
-    position: relative;
-    animation: slideUp 0.3s ease;
-}
-
-@keyframes slideUp{
-    from{transform: translateY(50px); opacity: 0;}
-    to{transform: translateY(0); opacity: 1;}
-}
-
-.modal-header{
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 20px;
-    padding-bottom: 15px;
-    border-bottom: 2px solid #e8f5e9;
-}
-
-.modal-title{
-    font-size: 24px;
-    font-weight: 700;
-    color: #1b5e20;
-    margin: 0;
-}
-
-.close-btn{
-    background: none;
-    border: none;
-    font-size: 28px;
-    cursor: pointer;
-    color: #666;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-radius: 50%;
-    transition: 0.3s;
-}
-
-.close-btn:hover{
-    background: #f0f0f0;
-    color: #333;
-}
-
-.seller-details{
-    display: grid;
-    gap: 15px;
-}
-
-.detail-item{
-    display: flex;
-    align-items: center;
-    padding: 12px 0;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.detail-item:last-child{
-    border-bottom: none;
-}
-
-.detail-label{
-    font-weight: 600;
-    color: #1b5e20;
-    min-width: 120px;
-    margin-right: 15px;
-}
-
-.detail-value{
-    color: #333;
-    flex: 1;
-}
-
-.detail-icon{
-    margin-right: 10px;
-    font-size: 18px;
-}
-
-/* Modal Responsive */
-@media (max-width: 768px) {
-    .modal-card {
-        margin: 20px;
-        padding: 20px;
-        max-width: none;
-        width: calc(100% - 40px);
-    }
-    
-    .modal-title {
-        font-size: 20px;
-    }
-    
-    .detail-item {
-        flex-direction: column;
-        align-items: flex-start;
-        gap: 5px;
-    }
-    
-    .detail-label {
-        min-width: auto;
-        margin-right: 0;
-        font-size: 14px;
-    }
-    
-    .detail-value {
-        font-size: 14px;
-    }
-}
-
 /* FOOTER */
 footer{
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
-    color: #fff;
-    padding: 20px;
-    text-align: center;
-    margin-top:auto;
+margin-top:auto;
+background:#1e5631;
+color:white;
+text-align:center;
+padding:15px;
+font-size:14px;
 }
 
 /* ================= RESPONSIVE ================= */
@@ -347,8 +231,7 @@ footer{
         margin-top:10px;
         background:#1b5e20;
         border-radius:8px;
-    }approvels
-
+    }
 
     #navbar.active{
         display:flex;
@@ -357,6 +240,8 @@ footer{
     #navbar a{
         width:100%;
         text-align:left;
+        cursor: pointer;
+        position: relative;
     }
 
     .page-header{
@@ -367,6 +252,222 @@ footer{
 
     main{
         padding:15px;
+    }
+}
+
+/* Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5);
+    backdrop-filter: blur(5px);
+}
+
+.modal-content {
+    background-color: #fff;
+    margin: 5% auto;
+    padding: 0;
+    border-radius: 12px;
+    width: 90%;
+    max-width: 600px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+@keyframes modalFadeIn {
+    from { opacity: 0; transform: translateY(-50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.modal-header {
+    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    color: white;
+    padding: 20px;
+    border-radius: 12px 12px 0 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.modal-header h2 {
+    margin: 0;
+    font-size: 24px;
+}
+
+.close-btn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 28px;
+    cursor: pointer;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    transition: background-color 0.3s;
+}
+
+.close-btn:hover {
+    background-color: rgba(255,255,255,0.2);
+}
+
+.modal-body {
+    padding: 25px;
+    max-height: 70vh;
+    overflow-y: auto;
+}
+
+.seller-detail-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.detail-item {
+    background: #f8f9fa;
+    padding: 15px;
+    border-radius: 8px;
+    border-left: 4px solid #2e7d32;
+}
+
+.detail-item h4 {
+    margin: 0 0 8px 0;
+    color: #1b5e20;
+    font-size: 14px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.detail-item p {
+    margin: 0;
+    font-size: 16px;
+    color: #333;
+    font-weight: 500;
+}
+
+.aadhaar-section {
+    background: #fff3cd;
+    border: 1px solid #ffeaa7;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.aadhaar-section h4 {
+    color: #856404;
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.aadhaar-number {
+    font-family: monospace;
+    font-size: 18px;
+    font-weight: bold;
+    color: #495057;
+    background: white;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid #dee2e6;
+    display: inline-block;
+    letter-spacing: 2px;
+}
+
+.products-section {
+    background: #e8f5e9;
+    border: 1px solid #c3e6cb;
+    border-radius: 8px;
+    padding: 20px;
+    margin-bottom: 20px;
+}
+
+.products-section h4 {
+    color: #155724;
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.product-count {
+    font-size: 32px;
+    font-weight: bold;
+    color: #2e7d32;
+    display: block;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.product-list {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 10px;
+}
+
+.product-item {
+    background: white;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 14px;
+    text-align: center;
+    border: 1px solid #dee2e6;
+}
+
+.contact-section {
+    background: #f8f9ff;
+    border: 1px solid #d1d5ff;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.contact-section h4 {
+    color: #004085;
+    margin: 0 0 15px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.contact-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.contact-item i {
+    color: #2e7d32;
+    width: 20px;
+}
+
+@media (max-width: 768px) {
+    .modal-content {
+        margin: 10% auto;
+        width: 95%;
+    }
+
+    .seller-detail-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .modal-body {
+        padding: 20px;
     }
 }
 
@@ -385,12 +486,7 @@ footer{
         <a href="sellers.html">🧑‍🌾 Sellers</a>
         <a href="reports.html">📈 Reports</a>
 
-        <div class="dropdown">
-            <a href="#">🌿 Plants</a>
-            <div class="dropdown-menu">
-                <a href="plant-pedia.html">Plant Pedia</a>
-            </div>
-        </div>
+        <a href="plant-pedia.html">🌿 Plants</a>
     </nav>
 </header>
 
@@ -399,57 +495,6 @@ footer{
 
     <div class="page-header">
         <h2>🧑‍🌾 Seller Management</h2>
-    </div>
-
-    <!-- Pending Approvals Table -->
-    <div class="section-header">
-        <h3>📋 Pending Approvals</h3>
-    </div>
-
-    <div class="table-wrapper">
-    <table class="data-table">
-        <thead>
-            <tr>
-                <th>View Details</th>
-                <th>Owner Name</th>
-                <th>Shop Name</th>
-                <th>Shop Location</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td><button class="action-btn view-btn">👁️ View</button></td>
-                <td>Rahul Verma</td>
-                <td>Green Paradise</td>
-                <td>Mumbai, Maharashtra</td>
-                <td>
-                    <button class="action-btn approve-btn">✅ Approve</button>
-                    <button class="action-btn delete reject-btn">❌ Reject</button>
-                </td>
-            </tr>
-            <tr>
-                <td><button class="action-btn view-btn">👁️ View</button></td>
-                <td>Meera Saxena</td>
-                <td>Bloom House</td>
-                <td>Delhi, India</td>
-                <td>
-                    <button class="action-btn approve-btn">✅ Approve</button>
-                    <button class="action-btn delete reject-btn">❌ Reject</button>
-                </td>
-            </tr>
-            <tr>
-                <td><button class="action-btn view-btn">👁️ View</button></td>
-                <td>Amit Kumar</td>
-                <td>Plant World</td>
-                <td>Bangalore, Karnataka</td>
-                <td>
-                    <button class="action-btn approve-btn">✅ Approve</button>
-                    <button class="action-btn delete reject-btn">❌ Reject</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
     </div>
 
     <!-- Existing Shops Table -->
@@ -477,7 +522,7 @@ footer{
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">🚫 Suspend</button>
+                    <button class="action-btn delete">�️ Delete</button>
                 </td>
             </tr>
             <tr>
@@ -488,7 +533,7 @@ footer{
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">🚫 Suspend</button>
+                    <button class="action-btn delete">�️ Delete</button>
                 </td>
             </tr>
             <tr>
@@ -499,7 +544,7 @@ footer{
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">🚫 Suspend</button>
+                    <button class="action-btn delete">🗑️ Delete</button>
                 </td>
             </tr>
             <tr>
@@ -510,7 +555,7 @@ footer{
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">🚫 Suspend</button>
+                    <button class="action-btn delete">�️ Delete</button>
                 </td>
             </tr>
             <tr>
@@ -521,7 +566,7 @@ footer{
                 <td>
                     <button class="action-btn view-btn">👁️ View</button>
                     <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">🚫 Suspend</button>
+                    <button class="action-btn delete">�️ Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -531,8 +576,51 @@ footer{
 </div>
 </main>
 
-<footer>
-    © 2026 Garden | All Rights Reserved
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="users.html">users</a></li>
+        <li><a href="sellers.html">sellers</a></li>
+        <li><a href="reports.html">reports</a></li>
+            <li><a href="plants.html">plants</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
 </footer>
 
 <script>
@@ -546,87 +634,111 @@ function viewSellerDetails(button) {
     try {
         console.log('View button clicked');
         const row = button.closest('tr');
-        let ownerName, shopName, location, sellerId = null;
-        
-        if (row.cells.length === 5) {
-            // Pending table: View Details, Owner Name, Shop Name, Shop Location, Actions
-            ownerName = row.cells[1].textContent;
-            shopName = row.cells[2].textContent;
-            location = row.cells[3].textContent;
-            console.log('Pending table - Owner:', ownerName, 'Shop:', shopName, 'Location:', location);
-        } else {
-            // Existing shops table: Seller ID, Shop Name, Owner Name, Shop Location, Actions
-            sellerId = row.cells[0].textContent;
-            shopName = row.cells[1].textContent;
-            ownerName = row.cells[2].textContent;
-            location = row.cells[3].textContent;
-            console.log('Existing shops table - Owner:', ownerName, 'Shop:', shopName, 'Location:', location);
-        }
-        
-        showSellerModal(ownerName, shopName, location, sellerId);
+        const sellerId = row.cells[0].textContent;
+        const shopName = row.cells[1].textContent;
+        const ownerName = row.cells[2].textContent;
+        const location = row.cells[3].textContent;
+
+        // Sample detailed data for each seller (in a real app, this would come from a database)
+        const sellerData = {
+            '#S001': {
+                aadhaar: '1234-5678-9012',
+                productCount: 45,
+                products: ['Aloe Vera', 'Money Plant', 'Snake Plant', 'Peace Lily', 'Spider Plant', 'Pothos', 'ZZ Plant', 'Rubber Plant'],
+                phone: '+91 98765 43210',
+                email: 'priya.sharma@naturesgift.com',
+                joinDate: 'March 2023'
+            },
+            '#S002': {
+                aadhaar: '2345-6789-0123',
+                productCount: 32,
+                products: ['Rose', 'Tulip', 'Sunflower', 'Daisy', 'Lily', 'Orchid', 'Carnation', 'Chrysanthemum'],
+                phone: '+91 87654 32109',
+                email: 'rajesh.patel@greenthumb.com',
+                joinDate: 'January 2024'
+            },
+            '#S003': {
+                aadhaar: '3456-7890-1234',
+                productCount: 28,
+                products: ['Tomato', 'Basil', 'Chili', 'Cucumber', 'Lettuce', 'Spinach', 'Coriander', 'Mint'],
+                phone: '+91 76543 21098',
+                email: 'amit.verma@freshharvest.com',
+                joinDate: 'February 2024'
+            },
+            '#S004': {
+                aadhaar: '4567-8901-2345',
+                productCount: 67,
+                products: ['Ceramic Pot', 'Plastic Pot', 'Terracotta Pot', 'Hanging Basket', 'Planter Box', 'Decorative Pot', 'Seed Tray', 'Watering Can'],
+                phone: '+91 65432 10987',
+                email: 'kavita.singh@potteryworld.com',
+                joinDate: 'December 2023'
+            },
+            '#S005': {
+                aadhaar: '5678-9012-3456',
+                productCount: 23,
+                products: ['Neem Oil', 'Compost', 'Fertilizer', 'Pesticide', 'Plant Food', 'Soil Mix', 'Vermicompost', 'Organic Manure'],
+                phone: '+91 54321 09876',
+                email: 'suresh.kumar@gardeningcare.com',
+                joinDate: 'April 2024'
+            }
+        };
+
+        const data = sellerData[sellerId] || {
+            aadhaar: 'XXXX-XXXX-XXXX',
+            productCount: 0,
+            products: ['No products listed'],
+            phone: '+91 XXXXX XXXXX',
+            email: 'seller@example.com',
+            joinDate: 'Unknown'
+        };
+
+        // Populate modal with data
+        document.getElementById('modal-seller-id').textContent = sellerId;
+        document.getElementById('modal-owner-name').textContent = ownerName;
+        document.getElementById('modal-shop-name').textContent = shopName;
+        document.getElementById('modal-location').textContent = location;
+        document.getElementById('modal-aadhaar').textContent = data.aadhaar;
+        document.getElementById('modal-product-count').textContent = data.productCount;
+        document.getElementById('modal-phone').textContent = data.phone;
+        document.getElementById('modal-email').textContent = data.email;
+        document.getElementById('modal-join-date').textContent = `Joined: ${data.joinDate}`;
+
+        // Populate product list
+        const productList = document.getElementById('modal-product-list');
+        productList.innerHTML = '';
+        data.products.forEach(product => {
+            const productItem = document.createElement('div');
+            productItem.className = 'product-item';
+            productItem.textContent = product;
+            productList.appendChild(productItem);
+        });
+
+        // Show modal
+        document.getElementById('sellerModal').style.display = 'block';
+        console.log('Modal opened with seller details');
+
     } catch (error) {
         console.error('Error in viewSellerDetails:', error);
         alert('Error viewing seller details. Please try again.');
     }
 }
 
-// Approve seller
-function approveSeller(button) {
+// Delete seller
+function deleteSeller(button) {
     try {
-        console.log('Approve button clicked');
-        const row = button.closest('tr');
-        const ownerName = row.cells[1].textContent;
-        const shopName = row.cells[2].textContent;
-        console.log('Approving seller:', shopName);
-        
-        if (confirm(`Are you sure you want to approve ${shopName} owned by ${ownerName}?`)) {
-            row.remove();
-            alert(`${shopName} has been approved successfully!`);
-            console.log('Seller approved, reloading...');
-            location.reload();
-        }
-    } catch (error) {
-        console.error('Error in approveSeller:', error);
-        alert('Error approving seller. Please try again.');
-    }
-}
-
-// Reject seller
-function rejectSeller(button) {
-    try {
-        console.log('Reject button clicked');
-        const row = button.closest('tr');
-        const ownerName = row.cells[1].textContent;
-        const shopName = row.cells[2].textContent;
-        console.log('Rejecting seller:', shopName);
-        
-        if (confirm(`Are you sure you want to reject ${shopName} owned by ${ownerName}?`)) {
-            row.remove();
-            alert(`${shopName} has been rejected.`);
-            console.log('Seller rejected successfully');
-        }
-    } catch (error) {
-        console.error('Error in rejectSeller:', error);
-        alert('Error rejecting seller. Please try again.');
-    }
-}
-
-// Suspend seller
-function suspendSeller(button) {
-    try {
-        console.log('Suspend button clicked');
+        console.log('Delete button clicked');
         const row = button.closest('tr');
         const shopName = row.cells[1].textContent;
-        console.log('Suspending seller:', shopName);
+        console.log('Deleting seller:', shopName);
         
-        if (confirm(`Are you sure you want to suspend ${shopName}?`)) {
+        if (confirm(`Are you sure you want to delete ${shopName}? This action cannot be undone.`)) {
             row.remove();
-            alert(`${shopName} has been suspended.`);
-            console.log('Seller suspended successfully');
+            alert(`${shopName} has been deleted successfully!`);
+            console.log('Seller deleted successfully');
         }
     } catch (error) {
-        console.error('Error in suspendSeller:', error);
-        alert('Error suspending seller. Please try again.');
+        console.error('Error in deleteSeller:', error);
+        alert('Error deleting seller. Please try again.');
     }
 }
 
@@ -650,7 +762,6 @@ function editSeller(button) {
                 }
             });
             button.textContent = '✏️ Edit';
-            button.classList.remove('approve-btn');
             alert('Seller details updated successfully!');
             console.log('Edit mode disabled, changes saved');
         } else {
@@ -659,13 +770,12 @@ function editSeller(button) {
             const cells = row.querySelectorAll('td:not(:last-child)');
             cells.forEach(cell => {
                 const value = cell.textContent.trim();
-                // Skip ID column if it starts with #
+                // Skip ID column
                 if (!value.startsWith('#')) {
                     cell.innerHTML = `<input type="text" value="${value}" style="width: 100%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">`;
                 }
             });
             button.textContent = '💾 Save';
-            button.classList.add('approve-btn');
         }
     } catch (error) {
         console.error('Error in editSeller:', error);
@@ -694,29 +804,13 @@ document.addEventListener('DOMContentLoaded', function() {
         });
         console.log('Edit button listeners attached');
         
-        // Approve buttons
-        document.querySelectorAll('.approve-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                approveSeller(this);
-            });
-        });
-        console.log('Approve button listeners attached');
-        
-        // Reject buttons
-        document.querySelectorAll('.reject-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                rejectSeller(this);
-            });
-        });
-        console.log('Reject button listeners attached');
-        
-        // Delete/Suspend buttons
+        // Delete buttons
         document.querySelectorAll('.action-btn.delete').forEach(btn => {
             btn.addEventListener('click', function() {
-                suspendSeller(this);
+                deleteSeller(this);
             });
         });
-        console.log('Delete/Suspend button listeners attached');
+        console.log('Delete button listeners attached');
         
         console.log('All event listeners attached successfully');
     } catch (error) {
@@ -724,87 +818,77 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 });
 
-// Modal functions
-function showSellerModal(ownerName, shopName, location, sellerId = null) {
-    const modal = document.getElementById('sellerModal');
-    const title = document.getElementById('modalTitle');
-    const details = document.getElementById('sellerDetails');
-    
-    title.textContent = `${shopName} Details`;
-    
-    details.innerHTML = `
-        ${sellerId ? `<div class="detail-item">
-            <span class="detail-icon">🆔</span>
-            <span class="detail-label">Seller ID:</span>
-            <span class="detail-value">${sellerId}</span>
-        </div>` : ''}
-        <div class="detail-item">
-            <span class="detail-icon">👤</span>
-            <span class="detail-label">Owner Name:</span>
-            <span class="detail-value">${ownerName}</span>
-        </div>
-        <div class="detail-item">
-            <span class="detail-icon">🏪</span>
-            <span class="detail-label">Shop Name:</span>
-            <span class="detail-value">${shopName}</span>
-        </div>
-        <div class="detail-item">
-            <span class="detail-icon">📍</span>
-            <span class="detail-label">Location:</span>
-            <span class="detail-value">${location}</span>
-        </div>
-        <div class="detail-item">
-            <span class="detail-icon">📞</span>
-            <span class="detail-label">Contact:</span>
-            <span class="detail-value">+91 98765 43210</span>
-        </div>
-        <div class="detail-item">
-            <span class="detail-icon">📧</span>
-            <span class="detail-label">Email:</span>
-            <span class="detail-value">${ownerName.toLowerCase().replace(' ', '.')}@example.com</span>
-        </div>
-        <div class="detail-item">
-            <span class="detail-icon">📅</span>
-            <span class="detail-label">Joined:</span>
-            <span class="detail-value">January 15, 2024</span>
-        </div>
-    `;
-    
-    modal.style.display = 'flex';
-    document.body.style.overflow = 'hidden';
-}
-
-function closeSellerModal() {
-    const modal = document.getElementById('sellerModal');
-    modal.style.display = 'none';
-    document.body.style.overflow = 'auto';
+// Modal close function
+function closeModal() {
+    document.getElementById('sellerModal').style.display = 'none';
 }
 
 // Close modal when clicking outside
-document.addEventListener('click', function(event) {
+window.onclick = function(event) {
     const modal = document.getElementById('sellerModal');
-    if (event.target === modal) {
-        closeSellerModal();
+    if (event.target == modal) {
+        modal.style.display = 'none';
     }
-});
-
-// Close modal with Escape key
-document.addEventListener('keydown', function(event) {
-    if (event.key === 'Escape') {
-        closeSellerModal();
-    }
-});
+}
 </script>
 
 <!-- Seller Details Modal -->
-<div id="sellerModal" class="modal-overlay">
-    <div class="modal-card">
+<div id="sellerModal" class="modal">
+    <div class="modal-content">
         <div class="modal-header">
-            <h2 id="modalTitle" class="modal-title">Seller Details</h2>
-            <button class="close-btn" onclick="closeSellerModal()">×</button>
+            <h2>👤 Seller Details</h2>
+            <button class="close-btn" onclick="closeModal()">&times;</button>
         </div>
-        <div id="sellerDetails" class="seller-details">
-            <!-- Details will be populated by JavaScript -->
+        <div class="modal-body">
+            <div class="seller-detail-grid">
+                <div class="detail-item">
+                    <h4>👨‍💼 Owner Name</h4>
+                    <p id="modal-owner-name">-</p>
+                </div>
+                <div class="detail-item">
+                    <h4>🏪 Shop Name</h4>
+                    <p id="modal-shop-name">-</p>
+                </div>
+                <div class="detail-item">
+                    <h4>📍 Location</h4>
+                    <p id="modal-location">-</p>
+                </div>
+                <div class="detail-item">
+                    <h4>🆔 Seller ID</h4>
+                    <p id="modal-seller-id">-</p>
+                </div>
+            </div>
+
+            <div class="aadhaar-section">
+                <h4>🪪 Aadhaar Card Details</h4>
+                <div class="aadhaar-number" id="modal-aadhaar">XXXX-XXXX-XXXX</div>
+            </div>
+
+            <div class="products-section">
+                <h4>📦 Products & Inventory</h4>
+                <div class="product-count" id="modal-product-count">0</div>
+                <div class="product-list" id="modal-product-list">
+                    <!-- Products will be populated here -->
+                </div>
+            </div>
+
+            <div class="contact-section">
+                <h4>📞 Contact Information</h4>
+                <div class="contact-info">
+                    <div class="contact-item">
+                        <i class="fas fa-phone"></i>
+                        <span id="modal-phone">+91 XXXXX XXXXX</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-envelope"></i>
+                        <span id="modal-email">seller@example.com</span>
+                    </div>
+                    <div class="contact-item">
+                        <i class="fas fa-calendar"></i>
+                        <span id="modal-join-date">Joined: January 2024</span>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>

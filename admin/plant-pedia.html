@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Plant Pedia Management - Plant Store Admin</title>
+<title>Plants Management - Plant Store Admin</title>
  <link rel="stylesheet" href="../../header.css">
 <style>
 *{
@@ -11,6 +11,7 @@
     padding:0;
     box-sizing:border-box;
     font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+
 }
 
 /* ✅ Proper Page Layout */
@@ -21,23 +22,9 @@ body{
     flex-direction:column;
 }
 
-/* ✅ Header Full Width
-header{
-    width:100%;
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
-    color:#fff;
-    padding:15px 30px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-}
 
-.logo{
-    font-size:22px;
-    font-weight:600;
-} */
 header{
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    background: linear-gradient(135deg, #000000, #2e7d32);
     color: #fff;
     padding: 15px 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
@@ -70,22 +57,40 @@ header{
     text-decoration: none;
     transition: 0.3s;
     position: relative;
-    border-bottom: 3px solid transparent;
+    cursor: pointer;
 }
 
-/* Disable problematic hover effects from header.css */
+/* Ensure dropdown links and nav buttons show pointer cursor */
+.dropdown-menu a,
+.menu-toggle,
+.logo,
+.back-btn,
+.submit-btn {
+    cursor: pointer;
+}
+
+/* Keep header hover styles active for better feedback */
 #navbar a:hover {
-    transform: none !important;
     color: #fff !important;
-    border-bottom: 3px solid #66bb6a !important;
+}
+
+#navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #76ff03;
+    transition: width 0.3s ease;
 }
 
 #navbar a:hover::after {
-    width: 0 !important;
+    width: 100%;
 }
 
-.dropdown > a:hover {
-    border-bottom: 3px solid #66bb6a;
+.dropdown-menu a:hover {
+    background: rgba(255,255,255,0.1);
 }
 
 /* Dropdown Styles */
@@ -126,16 +131,8 @@ header{
     background: rgba(255,255,255,0.1);
 }
 
-/* Show dropdown on hover - REMOVED */
-/* .dropdown:hover .dropdown-menu {
-    display: block;
-    opacity: 1;
-    visibility: visible;
-    transform: translateY(0);
-} */
-
-/* Show dropdown when active (clicked) */
-.dropdown-menu.active {
+/* Show dropdown on hover */
+.dropdown:hover .dropdown-menu {
     display: block;
     opacity: 1;
     visibility: visible;
@@ -294,6 +291,18 @@ footer{
 }
 
 /* Add Plant Form Styles */
+.page-header-add{
+    background: linear-gradient(135deg,#1b5e20,#2e7d32);
+    color:#fff;
+    padding:25px;
+    border-radius:12px;
+    margin: 40px auto 30px auto;
+    width:100%;
+    max-width:600px;
+    text-align:center;
+    position: relative;
+}
+
 .form-container{
     background:#fff;
     padding:35px;
@@ -301,8 +310,7 @@ footer{
     box-shadow:0 6px 20px rgba(0,0,0,.08);
     width:100%;
     max-width:600px;
-    margin: 20px auto;
-    display: none; /* Initially hidden */
+    margin: 0 auto 40px auto;
 }
 
 .form-group{
@@ -355,22 +363,6 @@ footer{
     background:linear-gradient(135deg,#66bb6a,#2e7d32);
     transform:translateY(-2px);
 }
-
-.add-plant-btn{
-    padding:10px 20px;
-    background:linear-gradient(135deg,#2e7d32,#1b5e20);
-    color:#fff;
-    border:none;
-    border-radius:6px;
-    font-weight:600;
-    cursor:pointer;
-    transition:.3s;
-}
-
-.add-plant-btn:hover{
-    background:linear-gradient(135deg,#66bb6a,#2e7d32);
-    transform:translateY(-2px);
-}
 </style>
 </head>
 
@@ -383,25 +375,16 @@ footer{
             <a href="users.html">👥 Users</a>
             <a href="sellers.html">🧑‍🌾 Sellers</a>
             <a href="reports.html">📈 Reports</a>
-            <div class="dropdown">
-                <a href="#" onclick="toggleDropdown(); return false;">🌿 Plants</a>
-                <div class="dropdown-menu">
-                    <a href="plant-pedia.html">Plant Pedia</a>
-                </div>
-            </div>
+            <a href="plant-pedia.html">🌿 Plants</a>
         </nav>
-        <!-- <div class="icons">
-            <span title="Search">🔍</span>
-            <span title="Settings">⚙️</span>
-            <span title="Profile">👤</span>
-        </div> -->
+        
     </header>
 
 <div class="dashboard-container">
 
     <div class="page-header">
-        <h2>🌿 Plant Pedia Management</h2>
-        <button class="add-plant-btn" onclick="toggleAddPlantForm()">➕ Add New Plant</button>
+        <h2>🌿 Plants Management</h2>
+        <!-- <a href="index.html" class="back-btn">← Back</a> -->
     </div>
 
     <table class="data-table">
@@ -473,7 +456,12 @@ footer{
         </tbody>
     </table>
 
-    <div class="form-container" id="addPlantForm">
+    <!-- Add New Plant Section -->
+    <div class="page-header-add">
+        <h2>➕ Add New Plant</h2>
+    </div>
+
+    <div class="form-container">
         <form onsubmit="handleAddPlant(event)">
             <div class="form-group">
                 <label>Plant Name *</label>
@@ -518,43 +506,56 @@ footer{
 
 </div>
 
-<footer>
-    <p>© 2026 Garden</p>
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="users.html">users</a></li>
+        <li><a href="sellers.html">sellers</a></li>
+        <li><a href="reports.html">reports</a></li>
+            <li><a href="plants.html">plants</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
 </footer>
 <script>
 function toggleMenu() {
     const navbar = document.getElementById('navbar');
     navbar.classList.toggle('active');
-}
-
-function toggleDropdown() {
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    dropdownMenu.classList.toggle('active');
-}
-
-// Close dropdown when clicking outside
-document.addEventListener('click', function(event) {
-    const dropdown = document.querySelector('.dropdown');
-    const dropdownMenu = document.querySelector('.dropdown-menu');
-    if (!dropdown.contains(event.target)) {
-        dropdownMenu.classList.remove('active');
-    }
-});
-
-function toggleAddPlantForm() {
-    const form = document.getElementById('addPlantForm');
-    if (form.style.display === 'none' || form.style.display === '') {
-        form.style.display = 'block';
-    } else {
-        form.style.display = 'none';
-    }
-}
-
-function handleAddPlant(event) {
-    event.preventDefault();
-    alert('✅ Plant added successfully!');
-    event.target.reset();
-    toggleAddPlantForm(); // Hide the form after adding
 }
 
 // View plant details
@@ -679,6 +680,13 @@ document.addEventListener('DOMContentLoaded', function() {
         console.error('Error attaching event listeners:', error);
     }
 });
+
+// Handle add plant form submission
+function handleAddPlant(event) {
+    event.preventDefault();
+    alert('✅ Plant added successfully!');
+    event.target.reset();
+}
 </script>
 </body>
 </html>
