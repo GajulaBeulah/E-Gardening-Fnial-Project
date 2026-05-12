@@ -4,7 +4,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>User Management - Plant Store Admin</title>
- <link rel="stylesheet" href="../../header.css">
+ <link rel="stylesheet" href="/header.css">
 <style>
 *{
     margin:0;
@@ -39,7 +39,7 @@ header{
 }
 
 header{
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    background: linear-gradient(135deg, #000000, #2e7d32);
     color: #fff;
     padding: 15px 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
@@ -70,10 +70,28 @@ header{
 .dropdown > a,
 #navbar > a{
     display: block;
+    position: relative;
     padding: 12px 18px;
     color: #fff;
     text-decoration: none;
     transition: 0.3s;
+}
+
+.dropdown > a::after,
+#navbar > a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    width: 0;
+    height: 2px;
+    background: #76ff03;
+    transition: width 0.3s ease;
+}
+
+.dropdown > a:hover::after,
+#navbar > a:hover::after {
+    width: 100%;
 }
 
 .dropdown-menu{
@@ -195,47 +213,12 @@ header{
 
 /* ✅ Proper Footer */
 footer{
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
-    color:#fff;
-    padding:40px 30px;
-    margin-top:auto;
-}
-
-.footer-container{
-    max-width:1200px;
-    margin:0 auto;
-    display:grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap:40px;
-    margin-bottom:30px;
-}
-
-.footer-section h3{
-    margin-bottom:15px;
-    color:#66bb6a;
-}
-
-.footer-section p,
-.footer-section ul li a{
-    font-size:14px;
-    color:#c8e6c9;
-    text-decoration:none;
-}
-
-.footer-section ul{
-    list-style:none;
-}
-
-.footer-section ul li{
-    margin-bottom:10px;
-}
-
-.footer-bottom{
-    text-align:center;
-    border-top:1px solid rgba(255,255,255,.2);
-    padding-top:20px;
-    font-size:13px;
-    color:#a8d5a8;
+margin-top:auto;
+background:#1e5631;
+color:white;
+text-align:center;
+padding:15px;
+font-size:14px;
 }
 
 /* Responsive */
@@ -258,19 +241,9 @@ footer{
             <a href="users.html">👥 Users</a>
             <a href="sellers.html">🧑‍🌾 Sellers</a>
             <a href="reports.html">📈 Reports</a>
-            <div class="dropdown">
-                <a href="#">🌿 Plants</a>
-                <div class="dropdown-menu">
-                    <a href="plant-pedia.html">Plant Pedia</a>
-                    <a href="add-plant.html">Add Plant</a>
-                </div>
-            </div>
+            <a href="plant-pedia.html">🌿 Plants</a>
         </nav>
-        <!-- <div class="icons">
-            <span title="Search">🔍</span>
-            <span title="Settings">⚙️</span>
-            <span title="Profile">👤</span>
-        </div> -->
+       
     </header>
 <div class="dashboard-container">
 
@@ -279,14 +252,9 @@ footer{
         <!-- <a href="index.html" class="back-btn">← Back</a> -->
     </div>
 
-    <!-- Search and Filter Section -->
+    <!-- Search Section -->
     <div style="margin-bottom: 20px; display: flex; gap: 10px; align-items: center;">
         <input type="text" id="searchInput" placeholder="Search by name or email..." style="padding: 8px; border: 1px solid #ccc; border-radius: 4px; width: 300px;">
-        <select id="statusFilter" style="padding: 8px; border: 1px solid #ccc; border-radius: 4px;">
-            <option value="">All Status</option>
-            <option value="Active">Active</option>
-            <option value="Inactive">Inactive</option>
-        </select>
         <button id="clearFilters" style="padding: 8px 16px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear</button>
     </div>
 
@@ -299,7 +267,6 @@ footer{
                 <th>Phone</th>
                 <th>Address</th>
                 <th>Join Date</th>
-                <th>Status</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -311,7 +278,6 @@ footer{
                 <td>+91 9876543210</td>
                 <td>Mumbai, Maharashtra</td>
                 <td>Jan 15, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -324,7 +290,6 @@ footer{
                 <td>+91 8765432109</td>
                 <td>Delhi, India</td>
                 <td>Feb 02, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -337,7 +302,6 @@ footer{
                 <td>+91 7654321098</td>
                 <td>Ahmedabad, Gujarat</td>
                 <td>Feb 05, 2025</td>
-                <td><span style="background:#ffe0b2;color:#e65100;padding:4px 8px;border-radius:4px;">Inactive</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -350,7 +314,6 @@ footer{
                 <td>+91 6543210987</td>
                 <td>Bangalore, Karnataka</td>
                 <td>Feb 10, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -363,7 +326,6 @@ footer{
                 <td>+91 5432109876</td>
                 <td>Chennai, Tamil Nadu</td>
                 <td>Feb 15, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -376,7 +338,6 @@ footer{
                 <td>+91 4321098765</td>
                 <td>Pune, Maharashtra</td>
                 <td>Feb 20, 2025</td>
-                <td><span style="background:#ffe0b2;color:#e65100;padding:4px 8px;border-radius:4px;">Inactive</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -389,7 +350,6 @@ footer{
                 <td>+91 3210987654</td>
                 <td>Kolkata, West Bengal</td>
                 <td>Feb 25, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -402,7 +362,6 @@ footer{
                 <td>+91 2109876543</td>
                 <td>Hyderabad, Telangana</td>
                 <td>Mar 01, 2025</td>
-                <td><span style="background:#c8e6c9;color:#1b5e20;padding:4px 8px;border-radius:4px;">Active</span></td>
                 <td>
                     <button class="action-btn">Edit</button>
                     <button class="action-btn delete">Delete</button>
@@ -413,8 +372,51 @@ footer{
 
 </div>
 
-<footer style="text-align: center;">
-    <p>© 2026 Garden</p>
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="users.html">users</a></li>
+        <li><a href="sellers.html">sellers</a></li>
+        <li><a href="reports.html">reports</a></li>
+            <li><a href="plants.html">plants</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
 </footer>
 
 <script>
@@ -548,28 +550,24 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
 
-        // Search and filter functionality
+        // Search functionality
         const searchInput = document.getElementById('searchInput');
-        const statusFilter = document.getElementById('statusFilter');
         const clearFilters = document.getElementById('clearFilters');
         const table = document.querySelector('.data-table');
         const rows = table.querySelectorAll('tbody tr');
 
         function filterTable() {
             const searchTerm = searchInput.value.toLowerCase();
-            const statusValue = statusFilter.value;
 
-            console.log('Filtering table with search:', searchTerm, 'status:', statusValue);
+            console.log('Filtering table with search:', searchTerm);
 
             rows.forEach(row => {
                 const name = row.cells[1].textContent.toLowerCase();
                 const email = row.cells[2].textContent.toLowerCase();
-                const status = row.cells[6].textContent.trim();
 
                 const matchesSearch = name.includes(searchTerm) || email.includes(searchTerm);
-                const matchesStatus = !statusValue || status === statusValue;
 
-                if (matchesSearch && matchesStatus) {
+                if (matchesSearch) {
                     row.style.display = '';
                 } else {
                     row.style.display = 'none';
@@ -578,10 +576,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         searchInput.addEventListener('input', filterTable);
-        statusFilter.addEventListener('change', filterTable);
         clearFilters.addEventListener('click', function() {
             searchInput.value = '';
-            statusFilter.value = '';
             filterTable();
         });
 

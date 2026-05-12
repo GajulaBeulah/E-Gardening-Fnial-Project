@@ -4,6 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plant Pedia Management - Plant Store Admin</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+<link rel="stylesheet" href="/header.css">
+
 
 <style>
 *{
@@ -22,7 +25,7 @@ body{
 
 /* HEADER */
 header{
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    background: linear-gradient(135deg, #000000, #2e7d32);
     color:#fff;
     padding:15px 30px;
     box-shadow:0 4px 12px rgba(0,0,0,.15);
@@ -59,10 +62,27 @@ header{
     color:#fff;
     text-decoration:none;
     transition:.3s;
+    cursor: pointer;
+    position: relative;
 }
 
 #navbar a:hover{
-    background:rgba(255,255,255,.1);
+    color:#fff;
+}
+
+#navbar a::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #76ff03;
+    transition: width 0.3s ease;
+}
+
+#navbar a:hover::after {
+    width: 100%;
 }
 
 .dropdown{
@@ -87,6 +107,7 @@ header{
     display:block;
     padding:12px 20px;
     color:#fff;
+    cursor: pointer;
 }
 
 .dropdown-menu a:hover{
@@ -159,13 +180,6 @@ main{
 }
 
 /* FOOTER */
-footer{
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
-    color:#fff;
-    padding:20px;
-    text-align:center;
-    margin-top:auto;
-}
 
 .metric-cards{
     display:grid;
@@ -211,6 +225,14 @@ footer{
     margin-bottom:12px;
     color:#1b5e20;
 }
+footer{
+margin-top:auto;
+background:#1e5631;
+color:white;
+text-align:center;
+padding:15px;
+font-size:14px;
+}
 
 @media (max-width:1024px){
     .chart-grid{
@@ -242,6 +264,8 @@ footer{
     #navbar a{
         width:100%;
         text-align:left;
+        cursor: pointer;
+        position: relative;
     }
 
     .dropdown{
@@ -278,13 +302,7 @@ footer{
         <a href="sellers.html">🧑‍🌾 Sellers</a>
         <a href="reports.html">📈 Reports</a>
 
-        <div class="dropdown">
-            <a href="#">🌿 Plants</a>
-            <div class="dropdown-menu">
-                <a href="plant-pedia.html">Plant Pedia</a>
-                <a href="add-plant.html">Add Plant</a>
-            </div>
-        </div>
+        <a href="plant-pedia.html">🌿 Plants</a>
     </nav>
 </header>
 
@@ -325,35 +343,55 @@ footer{
         </div>
     </div>
 
-    <div class="table-wrapper">
-    <table class="data-table">
-        <thead:
-            <tr>
-                <th>Plant Name</th>
-                <th>Category</th>
-                <th>Care Level</th>
-                <th>Views</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <td>🌿 Monstera Deliciosa</td>
-                <td>Indoor Plants</td>
-                <td>Easy</td>
-                <td>1,245</td>
-                <td>
-                    <button class="action-btn">Edit</button>
-                    <button class="action-btn delete">Delete</button>
-                </td>
-            </tr>
-        </tbody>
-    </table>
+    
     </div>
 </div>
 </main>
-<footer>
-    © 2026 Garden | All Rights Reserved
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="users.html">users</a></li>
+        <li><a href="sellers.html">sellers</a></li>
+        <li><a href="reports.html">reports</a></li>
+            <li><a href="plants.html">plants</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
 </footer>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script>

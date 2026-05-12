@@ -33,7 +33,7 @@ body{
 .dashboard-header{
     background: linear-gradient(135deg,#1b5e20,#2e7d32);
     color:#fff;
-    padding:35px;
+    padding:40px 30px;
     border-radius:18px;
     margin-bottom:30px;
     display:flex;
@@ -191,12 +191,7 @@ body{
     transform:translateX(3px);
 }
 
-.footer{
-    font-size:13px;
-    text-align:center;
-    padding:20px;
-    color:#888;
-}
+
 
 @media(max-width:768px){
     .dashboard-header{
@@ -210,7 +205,7 @@ body{
 }
 
 header{
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
+    background: linear-gradient(135deg, #0e0c0c, #2e7d32);
     color: #fff;
     padding: 15px 30px;
     box-shadow: 0 4px 12px rgba(0,0,0,.15);
@@ -243,10 +238,28 @@ header{
 .dropdown > a,
 #navbar > a{
     display: block;
+    position: relative;
     padding: 12px 18px;
     color: #fff;
     text-decoration: none;
     transition: .3s;
+}
+
+#navbar > a::after,
+.dropdown > a::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 8px;
+    width: 0;
+    height: 2px;
+    background: #76ff03;
+    transition: width .3s ease;
+}
+
+#navbar > a:hover::after,
+.dropdown > a:hover::after {
+    width: 100%;
 }
 
 #navbar > a:hover,
@@ -305,87 +318,17 @@ header{
     cursor: pointer;
 }
 
+
 footer{
-    background: linear-gradient(135deg, #1b5e20, #2e7d32);
-    color: #fff;
-    padding: 40px 30px;
-    margin-top: 60px;
-    border-top: 1px solid #2e7d32;
+margin-top:auto;
+background:#1e5631;
+color:white;
+text-align:center;
+padding:15px;
+font-size:14px;
 }
 
-.footer-container{
-    max-width: 1200px;
-    margin: 0 auto;
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 40px;
-    margin-bottom: 30px;
-}
 
-.footer-section h3{
-    font-size: 18px;
-    margin-bottom: 15px;
-    color: #66bb6a;
-}
-
-.footer-section p{
-    font-size: 14px;
-    color: #c8e6c9;
-    line-height: 1.8;
-}
-
-.footer-section ul{
-    list-style: none;
-}
-
-.footer-section ul li{
-    margin-bottom: 10px;
-}
-
-.footer-section ul li a{
-    color: #c8e6c9;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 14px;
-}
-
-.footer-section ul li a:hover{
-    color: #66bb6a;
-}
-
-.footer-bottom{
-    text-align: center;
-    padding-top: 20px;
-    border-top: 1px solid rgba(255,255,255,.1);
-    color: #a8d5a8;
-    font-size: 13px;
-}
-
-.social-links{
-    display: flex;
-    gap: 15px;
-    margin-top: 15px;
-    justify-content: center;
-}
-
-.social-links a{
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    background: rgba(255,255,255,.1);
-    border-radius: 50%;
-    color: #fff;
-    text-decoration: none;
-    transition: 0.3s;
-    font-size: 18px;
-}
-
-.social-links a:hover{
-    background: #66bb6a;
-    transform: translateY(-3px);
-}
 
 @media(max-width: 768px){
     header{
@@ -426,19 +369,9 @@ footer{
             <a href="users.html">👥 Users</a>
             <a href="sellers.html">🧑‍🌾 Sellers</a>
             <a href="reports.html">📈 Reports</a>
-            <div class="dropdown">
-                <a href="#">🌿 Plants</a>
-                <div class="dropdown-menu">
-                    <a href="plant-pedia.html">Plant Pedia</a>
-                    <a href="add-plant.html">Add Plant</a>
-                </div>
-            </div>
+            <a href="plant-pedia.html">🌿 Plants</a>
         </nav>
-          <!-- <div class="icons">
-            <span title="Search">🔍</span>
-            <span title="Settings">⚙️</span>
-            <span title="Profile">👤</span>
-        </div>   -->
+          
     </header>
 
 <div class="dashboard-container">
@@ -517,16 +450,57 @@ footer{
             <div class="function-title">Plant Pedia</div>
             <div class="function-desc">Manage plant care guides, growth tips & images.</div>
             <div class="function-actions">
-                <a href="plant-pedia.html" class="function-link">Edit</a>
-                <a href="add-plant.html" class="function-link">Add New</a>
+                <a href="plant-pedia.html" class="function-link">Manage</a>
             </div>
         </div>
     </div>
 </div>
-<footer style="text-align: center;">
-<p>© 2026 Garden</p>
-</footer>
+<footer class="footer">
+  <div class="footer-container">
 
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Dashboard</a></li>
+        <li><a href="users.html">users</a></li>
+        <li><a href="sellers.html">sellers</a></li>
+        <li><a href="reports.html">reports</a></li>
+            <li><a href="plants.html">plants</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
 <script>
 function toggleMenu() {
     const navbar = document.getElementById('navbar');
