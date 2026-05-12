@@ -24,9 +24,6 @@
           background-color: #0b140c;
             color: #fff;
             padding: 15px 40px;
-        }
-
-        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -35,6 +32,21 @@
         .logo {
             font-size: 22px;
             font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: #c8e6c9;
         }
 
         .orders-section {
@@ -99,132 +111,96 @@
         }
 
         footer {
-            background: #2e7d32;
+            background: green;
             color: white;
             text-align: center;
             padding: 20px;
             margin-top: 40px;
         }
-        
 
-   /* Header/Navbar */
-        header {
-        background-color: #0b140c;
-            padding: 15px 40px;
-            color: #fff;
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
         }
 
-        .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+        /* Tablet (max-width: 992px) */
+        @media (max-width: 992px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
+            .orders-section {
+                padding: 30px 20px;
+            }
         }
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
+        /* Mobile (max-width: 600px) */
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
 
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
+            .logo {
+                font-size: 18px;
+            }
 
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-            font-size: 15px;
-            transition: 0.3s ease;
-        }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
 
-        nav ul li a:hover {
-            color: #c8e6c9;
-        }
-    /* ================= RESPONSIVE ================= */
+            .orders-section {
+                padding: 20px 10px;
+            }
 
-/* Tablet */
-@media (max-width: 992px) {
+            .orders-card {
+                padding: 20px;
+            }
 
-    .nav-container {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
+            .orders-card p {
+                font-size: 20px;
+            }
 
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
+            .dropdown {
+                padding: 15px;
+            }
 
-    .orders-section {
-        padding: 30px 20px;
-    }
-}
+            /* Table scroll on mobile */
+            .analytics {
+                overflow-x: auto;
+            }
 
-/* Mobile */
-@media (max-width: 600px) {
+            table {
+                font-size: 12px;
+            }
 
-    header {
-        padding: 15px 20px;
-    }
+            th, td {
+                padding: 6px;
+            }
 
-    .logo {
-        font-size: 18px;
-    }
-
-    .orders-section {
-        padding: 20px 10px;
-    }
-
-    .orders-card {
-        padding: 20px;
-    }
-
-    .orders-card p {
-        font-size: 20px;
-    }
-
-    .dropdown {
-        padding: 15px;
-    }
-
-    /* Table scroll on mobile */
-    .analytics {
-        overflow-x: auto;
-    }
-
-    table {
-        font-size: 12px;
-    }
-
-    th, td {
-        padding: 6px;
-    }
-
-    footer {
-        padding: 15px;
-        font-size: 14px;
-    }
-}</style>
+            footer {
+                padding: 15px;
+                font-size: 14px;
+            }
+        }</style>
 </head>
 
 <body>
 
  <header>
-    <div class="nav-container">
-        <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-
-        <nav>
-            <ul>
-                <li><a href="./sales.html">Sales</a></li>
-                <li><a href="./orders.html">Orders</a></li>
-                <li><a href="./product.html">Products</a></li>
-                <li><a href="./profile.html">Profile</a></li>
-                <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
-            </ul>
-        </nav>
-    </div>
+    <h1 class="logo">🌿 Garden Seller Dashboard</h1>
+    <nav>
+        <ul>
+            <li><a href="./sales.html">Sales</a></li>
+            <li><a href="./orders.html">Orders</a></li>
+            <li><a href="./product.html">Products</a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
 </header>
 
     <section class="orders-section">

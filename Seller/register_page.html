@@ -5,7 +5,6 @@
     <title>Seller Register | Garden</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../header.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -19,6 +18,36 @@
             background: linear-gradient(135deg, #1e5631, #4caf50);
             display: flex;
             flex-direction: column;
+        }
+
+        /* HEADER */
+        header {
+            background-color: #0b140c;
+            padding: 15px 40px;
+            color: #fff;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 22px;
+            font-weight: bold;
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav ul li a {
+            text-decoration: none;
+            color: white;
+        }
+
+        nav ul li a:hover {
+            color: #c8e6c9;
         }
 
         .container {
@@ -58,10 +87,6 @@
             border: 1px solid #ccc;
         }
 
-        input::-ms-reveal,input::-ms-clear {
-            display: none;
-        }
-
         input:focus {
             outline: none;
             border-color: #4caf50;
@@ -83,26 +108,6 @@
             margin-top: 4px;
             font-size: 12px;
         }
-        
-.password-wrapper{
-    position: relative;
-    width: 100%;
-}
-
-.password-wrapper input{
-    width: 100%;
-    padding-right: 45px;
-}
-
-.toggle-password{
-    position: absolute;
-    right: 15px;
-    top: 50%;
-    transform: translateY(-50%);
-    cursor: pointer;
-    font-size: 18px;
-    color: #555;
-}
 
         .strength-weak {
             color: #f44336;
@@ -157,18 +162,49 @@
 
         footer {
             margin-top: auto;
-            background: #1e5631;
+            background: green;
             color: white;
             text-align: center;
-            padding: 15px;
-            font-size: 14px;
+            padding: 20px;
         }
 
         footer p {
             color: white;
+            margin: 0;
         }
 
-        @media (max-width: 420px) {
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
+
+        /* RESPONSIVE DESIGN */
+
+        /* Tablet (max-width: 992px) */
+        @media (max-width: 992px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+        }
+
+        /* Mobile (max-width: 600px) */
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
+
             .container {
                 width: 92%;
                 padding: 24px;
@@ -179,12 +215,13 @@
 <body>
 
 <header>
-    <div class="logo">🌿 Garden</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <nav id="navbar">
-        <a href="../Index.html">Home</a>
-        <a href="../plantcare.html">Plant Care</a>
-        <a href="../review.html">Reviews</a>
+    <h1 class="logo">🌿 Garden Seller</h1>
+    <nav>
+        <ul>
+            <li><a href="../index.html">Home</a></li>
+            <li><a href="selllogin.html">Login</a></li>
+            <li><a href="../User/plantcare.html">Plant Care</a></li>
+        </ul>
     </nav>
 </header>
 
@@ -211,28 +248,15 @@
     </div>
 
     <div class="input-group">
-    <label>Password</label>
-
-    <div class="password-wrapper">
+        <label>Password</label>
         <input type="password" id="password">
-
-        <span class="toggle-password" onclick="togglePassword('password')">
-            <i class="fa-solid fa-eye"></i>
-        </span>
+        <div class="error-message" id="passwordError"></div>
+        <div class="password-strength" id="passwordStrength"></div>
     </div>
-
-    <div class="error-message" id="passwordError"></div>
-    <div class="password-strength" id="passwordStrength"></div>
-</div>
 
     <div class="input-group">
         <label>Confirm Password</label>
-        <div class="password-wrapper">
-            <input type="password" id="confirmPassword">
-            <span class="toggle-password" onclick="togglePassword('confirmPassword')">
-                <i class="fa-solid fa-eye"></i>
-            </span>
-        </div>
+        <input type="password" id="confirmPassword">
         <div class="error-message" id="confirmPasswordError"></div>
     </div>
 
@@ -243,15 +267,53 @@
     </div>
 </div>
 
-<footer>
-    <p>© 2026 Garden Decoration Services. All Rights Reserved</p>
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- About Section -->
+        <div class="footer-section">
+            <h3>Green Garden</h3>
+            <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../decoserv.html">Decoration Services</a></li>
+                <li><a href="../fruits.html">Plants</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: support@greengarden.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Location: Hyderabad, India</p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#">🌱FaceBook</a>
+                <a href="#">🌿Instagram</a>
+                <a href="#">🌼YouTube</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="footer-bottom">
+        <p>© 2026 Green Garden | All Rights Reserved</p>
+    </div>
 </footer>
 
 <script>
-function toggleMenu(){
-    document.getElementById("navbar").classList.toggle("active");
-}
-
 const registerBtn = document.getElementById('registerBtn');
 
 registerBtn.addEventListener('click', function(){
@@ -268,7 +330,6 @@ const validators = {
 
 Object.keys(validators).forEach(field => {
     document.getElementById(field).addEventListener('blur', validators[field]);
-    document.getElementById(field).addEventListener('input', validators[field]);
 });
 
 document.getElementById('password').addEventListener('input', function(){
@@ -292,24 +353,14 @@ function validateAndRegister(){
 
 function validateName(inputId, errorId){
     const value = document.getElementById(inputId).value.trim();
-
     if(!value){
         showError(inputId, errorId, 'Name is required');
         return false;
     }
-
-    const namePattern = /^[A-Za-z\s]+$/;
-
-    if(!namePattern.test(value)){
-        showError(inputId, errorId, 'Name should contain only letters');
-        return false;
-    }
-
     if(value.length < 2){
         showError(inputId, errorId, 'Name must be at least 2 characters');
         return false;
     }
-
     clearFieldError(inputId, errorId);
     return true;
 }
@@ -349,7 +400,7 @@ function validatePassword(inputId, errorId){
         return false;
     }
     if(!isValidPassword(value)){
-        showError(inputId, errorId, 'Password must be more than 5 characters and contain letters and numbers');
+        showError(inputId, errorId, 'Password must be 8+ chars and include uppercase, lowercase, number, and special character');
         return false;
     }
     clearFieldError(inputId, errorId);
@@ -414,6 +465,9 @@ function checkPasswordStrength(inputId){
         requirements.push('8+ characters');
     }
 
+    if(/[A-Z]/.test(value)) score += 1;
+    else requirements.push('Uppercase');
+
     if(/[a-z]/.test(value)) score += 1;
     else requirements.push('Lowercase');
 
@@ -438,27 +492,18 @@ function isValidEmail(email){
 }
 
 function isValidPhone(phone){
-    const phonePattern = /^[6-9]\d{9}$/;
-    return phonePattern.test(phone);
+    const cleanPhone = phone.replace(/\D/g, '');
+    return cleanPhone.length === 10;
 }
 
 function isValidPassword(password){
-    const minLength = password.length > 5;
-    const hasLetter = /[A-Za-z]/.test(password);
+    const minLength = password.length >= 8;
+    const hasUpperCase = /[A-Z]/.test(password);
+    const hasLowerCase = /[a-z]/.test(password);
     const hasNumber = /\d/.test(password);
-    return minLength && hasLetter && hasNumber;
-}
+    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
 
-function togglePassword(inputId){
-    const passwordInput = document.getElementById(inputId);
-
-    if(passwordInput.type === "password"){
-        passwordInput.type = "text";
-
-        setTimeout(() => {
-            passwordInput.type = "password";
-        }, 3000);
-    }
+    return minLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar;
 }
 </script>
 </body>

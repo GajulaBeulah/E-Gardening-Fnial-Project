@@ -19,14 +19,11 @@
             color: #333;
         }
 
-        /* Header */
+        /* HEADER */
         header {
             background-color: #0b140c;
             padding: 15px 40px;
             color: #fff;
-        }
-
-        .nav-container {
             display: flex;
             justify-content: space-between;
             align-items: center;
@@ -46,7 +43,6 @@
         nav ul li a {
             text-decoration: none;
             color: white;
-            font-size: 15px;
         }
 
         nav ul li a:hover {
@@ -135,89 +131,91 @@
             color: white;
             text-align: center;
             padding: 20px;
-            margin-top: 80px;
+            margin-top: 40px;
         }
-    /* ================= RESPONSIVE ================= */
 
-/* Tablet */
-@media (max-width: 992px) {
+        .footer-bottom {
+            text-align: center;
+            font-size: 14px;
+            border-top: 1px solid #333;
+            padding-top: 15px;
+        }
 
-    .nav-container {
-        flex-direction: column;
-        gap: 10px;
-        text-align: center;
-    }
+        /* ================= RESPONSIVE ================= */
 
-    nav ul {
-        flex-direction: column;
-        gap: 10px;
-    }
+        /* Tablet (max-width: 992px) */
+        @media (max-width: 992px) {
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
 
-    .profile-section {
-        padding: 30px 20px;
-    }
-}
+            .profile-section {
+                padding: 30px 20px;
+            }
+        }
 
-/* Mobile */
-@media (max-width: 600px) {
+        /* Mobile (max-width: 600px) */
+        @media (max-width: 600px) {
+            header {
+                padding: 15px 20px;
+            }
 
-    header {
-        padding: 15px 20px;
-    }
+            .logo {
+                font-size: 18px;
+            }
 
-    .logo {
-        font-size: 18px;
-    }
+            nav ul {
+                flex-direction: column;
+                gap: 10px;
+            }
 
-    .profile-section {
-        padding: 20px 10px;
-    }
+            .profile-section {
+                padding: 20px 10px;
+            }
 
-    .profile-form {
-        padding: 20px;
-    }
+            .profile-form {
+                padding: 20px;
+            }
 
-    .profile-img img {
-        width: 90px;
-        height: 90px;
-    }
+            .profile-img img {
+                width: 90px;
+                height: 90px;
+            }
 
-    .form-group input,
-    .form-group textarea,
-    .form-group select {
-        padding: 10px;
-        font-size: 14px;
-    }
+            .form-group input,
+            .form-group textarea,
+            .form-group select {
+                padding: 10px;
+                font-size: 14px;
+            }
 
-    .btn-save {
-        padding: 12px;
-        font-size: 14px;
-    }
+            .btn-save {
+                padding: 12px;
+                font-size: 14px;
+            }
 
-    footer {
-        font-size: 14px;
-        padding: 15px;
-    }
-}</style>
+            footer {
+                font-size: 14px;
+                padding: 15px;
+            }
+        }</style>
 </head>
 
 <body>
 
 <!-- Header -->
 <header>
-    <div class="nav-container">
-        <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-
-        <nav>
-            <ul>
-                <li><a href="./sales.html">Sales</a></li>
-                <li><a href="./orders.html">Orders</a></li>
-                <li><a href="./product.html">Products</a></li>
-                <li><a href="./profile.html">Profile</a></li>
-                <li><a href="../selllogin.html">Logout</a></li>
-            </ul>
-        </nav>
-    </div>
+    <h1 class="logo">🌿 Garden Seller Dashboard</h1>
+    <nav>
+        <ul>
+            <li><a href="./sales.html">Sales</a></li>
+            <li><a href="./orders.html">Orders</a></li>
+            <li><a href="./product.html">Products</a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
 </header>
 
 <!-- Profile Section -->
