@@ -189,9 +189,9 @@ width:90%;
     <div class="logo">🌿 Garden</div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <nav id="navbar">
-        <a href="/E-Gardening/User/Index.html">Home</a>
-        <a href="#plant">Plant Care</a>
-        <a href="#aboutus">About us</a>
+        <a href="/E-Gardening/User/Index.html">Dashboard</a>
+        <!-- <a href="#plant">Plant Care</a>
+        <a href="#aboutus">About us</a> -->
     </nav>
     </div>
 </header>
@@ -220,7 +220,7 @@ width:90%;
 <div id="notification"></div>
 
 <div class="extra">
-New User? <a onclick="showRegister()">Create Account</a>
+New User? <a href="register_page.html">Create Account</a>
 <br><br>
 <a onclick="showForgot()">Forgot Password?</a>
 </div>
@@ -296,8 +296,50 @@ Already have an account? <a onclick="showLogin()">Login</a>
 </div>
 
 <!-- FOOTER -->
-<footer>
-<p>© 2026 Garden Decoration Services. All Rights Reserved | Creating Beautiful Outdoor Spaces</p>
+<footer class="footer">
+    <div class="footer-container">
+
+        <!-- About Section -->
+        <div class="footer-section">
+            <h3>Green Garden</h3>
+            <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+        </div>
+
+        <!-- Quick Links -->
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="../index.html">Home</a></li>
+                <li><a href="../decoserv.html">Decoration Services</a></li>
+                <li><a href="../fruits.html">Plants</a></li>
+                <li><a href="../contact.html">Contact</a></li>
+            </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: support@greengarden.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Location: Hyderabad, India</p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#">🌱FaceBook</a>
+                <a href="#">🌿Instagram</a>
+                <a href="#">🌼YouTube</a>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Bottom Line -->
+    <div class="footer-bottom">
+        <p>© 2026 Green Garden | All Rights Reserved</p>
+    </div>
 </footer>
 
 <script>
