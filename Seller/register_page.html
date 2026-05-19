@@ -5,6 +5,7 @@
     <title>Seller Register | Garden</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../header.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
         * {
             margin: 0;
@@ -52,11 +53,13 @@
 
         .container {
             background: white;
-            width: 380px;
+            width: 450px;
             padding: 32px;
             border-radius: 12px;
             box-shadow: 0 10px 25px rgba(0, 0, 0, 0.25);
             margin: auto;
+            margin-top: 20px;
+            margin-bottom: 20px;
         }
 
         h2 {
@@ -119,6 +122,46 @@
 
         .strength-strong {
             color: #4caf50;
+        }
+
+        .password-wrapper {
+            position: relative;
+            width: 100%;
+        }
+
+        .password-wrapper input {
+            width: 100%;
+            padding: 10px;
+            padding-right: 40px;
+        }
+
+        .toggle-password {
+            position: absolute;
+            right: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            cursor: pointer;
+            font-size: 18px;
+            color: #555;
+        }
+
+        /* Hide all default browser password visibility toggles */
+        input[type="password"]::-webkit-credentials-auto-fill-button {
+            display: none !important;
+        }
+
+        input[type="password"]::-ms-reveal {
+            display: none;
+        }
+
+        input[type="password"] {
+            -webkit-appearance: none;
+            -moz-appearance: none;
+            appearance: none;
+        }
+
+        input[type="password"]::-webkit-autofill-strong-password-icon {
+            display: none !important;
         }
 
         .btn {
@@ -249,14 +292,24 @@
 
     <div class="input-group">
         <label>Password</label>
-        <input type="password" id="password">
+        <div class="password-wrapper">
+            <input type="password" id="password">
+            <span class="toggle-password" onclick="togglePassword('password')">
+                <i class="fa-solid fa-eye"></i>
+            </span>
+        </div>
         <div class="error-message" id="passwordError"></div>
         <div class="password-strength" id="passwordStrength"></div>
     </div>
 
     <div class="input-group">
         <label>Confirm Password</label>
-        <input type="password" id="confirmPassword">
+        <div class="password-wrapper">
+            <input type="password" id="confirmPassword">
+            <span class="toggle-password" onclick="togglePassword('confirmPassword')">
+                <i class="fa-solid fa-eye"></i>
+            </span>
+        </div>
         <div class="error-message" id="confirmPasswordError"></div>
     </div>
 
@@ -329,7 +382,11 @@ const validators = {
 };
 
 Object.keys(validators).forEach(field => {
-    document.getElementById(field).addEventListener('blur', validators[field]);
+    const element = document.getElementById(field);
+    if(element){
+        element.addEventListener('blur', validators[field]);
+        element.addEventListener('input', validators[field]);
+    }
 });
 
 document.getElementById('password').addEventListener('input', function(){
@@ -346,7 +403,7 @@ function validateAndRegister(){
     const isConfirmValid = validateConfirmPassword('confirmPassword', 'confirmPasswordError');
 
     if(isNameValid && isEmailValid && isPhoneValid && isPasswordValid && isConfirmValid){
-        alert('Registration successful!');
+        alert('Registration Successful!');
         window.location.href = 'selllogin.html';
     }
 }
@@ -399,8 +456,8 @@ function validatePassword(inputId, errorId){
         showError(inputId, errorId, 'Password is required');
         return false;
     }
-    if(!isValidPassword(value)){
-        showError(inputId, errorId, 'Password must be 8+ chars and include uppercase, lowercase, number, and special character');
+    if(value.length < 8){
+        showError(inputId, errorId, 'Password must be at least 8 characters');
         return false;
     }
     clearFieldError(inputId, errorId);
@@ -465,9 +522,6 @@ function checkPasswordStrength(inputId){
         requirements.push('8+ characters');
     }
 
-    if(/[A-Z]/.test(value)) score += 1;
-    else requirements.push('Uppercase');
-
     if(/[a-z]/.test(value)) score += 1;
     else requirements.push('Lowercase');
 
@@ -477,9 +531,9 @@ function checkPasswordStrength(inputId){
     if(/[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(value)) score += 1;
     else requirements.push('Special char');
 
-    if(score <= 2){
+    if(score <= 1){
         strengthDiv.innerHTML = '<span class="strength-weak">Weak password</span>' + (requirements.length ? '<br><small>Needs: ' + requirements.join(', ') + '</small>' : '');
-    } else if(score <= 4){
+    } else if(score <= 3){
         strengthDiv.innerHTML = '<span class="strength-medium">Medium strength</span>' + (requirements.length ? '<br><small>Needs: ' + requirements.join(', ') + '</small>' : '');
     } else {
         strengthDiv.innerHTML = '<span class="strength-strong">Strong password</span>';
@@ -492,18 +546,23 @@ function isValidEmail(email){
 }
 
 function isValidPhone(phone){
-    const cleanPhone = phone.replace(/\D/g, '');
-    return cleanPhone.length === 10;
+    const phonePattern = /^[6-9]\d{9}$/;
+    return phonePattern.test(phone);
 }
 
-function isValidPassword(password){
-    const minLength = password.length >= 8;
-    const hasUpperCase = /[A-Z]/.test(password);
-    const hasLowerCase = /[a-z]/.test(password);
-    const hasNumber = /\d/.test(password);
-    const hasSpecialChar = /[!@#$%^&*()_+\-=\[\]{};':"\\|,.<>\/?]/.test(password);
-
-    return minLength && hasUpperCase && hasLowerCase && hasNumber && hasSpecialChar;
+function togglePassword(inputId){
+    const input = document.getElementById(inputId);
+    const icon = event.target.closest('.toggle-password').querySelector('i');
+    
+    if(input.type === 'password'){
+        input.type = 'text';
+        icon.classList.remove('fa-eye');
+        icon.classList.add('fa-eye-slash');
+    } else {
+        input.type = 'password';
+        icon.classList.remove('fa-eye-slash');
+        icon.classList.add('fa-eye');
+    }
 }
 </script>
 </body>
