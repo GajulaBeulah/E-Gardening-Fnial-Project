@@ -5,9 +5,10 @@
     <meta charset="UTF-8">
     <title> Good Luck Money Plant Variegated with Ibiza Pot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/project/plant-care/header.css">
        <link rel="stylesheet" href="../header.css">
     <style>
-        body {
+         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             background: #f5f6f7;
@@ -30,7 +31,7 @@
         .product {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
         }
 
         /* .images {
@@ -126,12 +127,15 @@
             border-top: 1px solid #ddd;
             font-size: 13px;
             color: #eee;
+        
         }
-          .card{
+        
+        .card{
           width: fit-content;
           background-color: #ffffff;
           margin: auto;
         }
+
         /* ================= RESPONSIVE FIX ================= */
 
 /* Restore images flex (because it was commented) */
@@ -278,11 +282,11 @@
         <div class="logo">🌿 Garden</div>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <nav id="navbar">
-          <a href="./plantcare.html">Home</a>
+     <a href="./plantcare.html">Home</a>
             <div class="dropdown">
             <a href="#">Plants</a>
             <div class="dropdown-menu">
-         <a href="./indoor.html">Indoor</a>
+      <a href="./indoor.html">Indoor</a>
                 <a href="./outdoor.html">Outdoor</a>
                 <a href="./flower.html">Flowers</a>
                 <a href="./medicine.html">Medical</a>
@@ -302,28 +306,28 @@
                     <a href="./contact.html">Contact</a> 
                 <div class="icons">
         <!-- LOGOUT BUTTON ADDED -->    <a href="./user_profile_Page.html">Profile👤</a>
-   <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+         <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
     </div>
         </nav>
         </header>
 <div class="card">
     <div class="product">
         <div class="images">
-            <!-- Replace src with actual image paths -->
-            <img src="https://gachwala.in/wp-content/uploads/2023/03/IMAGE-1-6.webp"
-                alt="Money Plant Variegated">
+           <!--plant image-->
+            <img src="https://m.media-amazon.com/images/I/71SPnqGx-JL._AC_UF350,350_QL80_.jpg" alt="Vasaka Plant">
         </div>
 
         <div class="details">
-            <h1>Neer Brahmi Plant Live | Bacopa Monnieri</h1>
+            <h1>Neem (Azadirachta indica)  | Medicinal Herb
+                    |</h1>
 
 
             <div class="price">
-                ₹444 <del>₹888</del>
+                ₹399 <del>₹699</del>
             </div>
             <div class="offer">₹50 OFF · Inclusive of all taxes</div>
 
-              <a href="#" class="btn">Add to cart</a>      <a href="#" class="btn" onclick="showBuyNowForm()">Buy Now</a>
+              <a href="#" class="btn">Add to cart</a>    <a href="#" class="btn" onclick="showBuyNowForm()">Buy Now</a>
 
             <div class="badges">
                 <div>🚚 Fast Delivery</div>
@@ -345,39 +349,38 @@
 <div>
     <ul>
         <li>
-            Memory & Brain Health
-
-            Commonly used to support memory, focus, and cognitive function.
+            <strong>Skin Health</strong><br>
+            Traditionally used to help manage skin problems such as acne, itching, and irritation.
         </li>
-        <li>
-            Stress & Anxiety Relief
 
-            Traditionally believed to help reduce stress and promote relaxation.
+        <li>
+            <strong>Immunity Support</strong><br>
+            Believed to help support the body's natural defense system.
         </li>
-        <li>
-            Nervous System Support
 
-            Used in Ayurveda to support brain and nervous system health.
+        <li>
+            <strong>Oral Health</strong><br>
+            Neem twigs and leaves are traditionally used for maintaining healthy teeth and gums.
         </li>
-        <li>
-            Better Sleep
 
-            May help improve sleep quality and calm the mind.
+        <li>
+            <strong>Blood Purification</strong><br>
+            Commonly used in Ayurveda to support overall blood health.
         </li>
-        <li>
-            Anti-Inflammatory Properties
 
-            Contains natural compounds that may help reduce inflammation.
+        <li>
+            <strong>Hair & Scalp Health</strong><br>
+            May help reduce dandruff and support a healthy scalp.
         </li>
-        <li>
-            Digestive Health
 
-            Sometimes used to support digestion and stomach health.
+        <li>
+            <strong>Wound Healing</strong><br>
+            Leaves are traditionally used for minor wounds and skin care.
         </li>
-        <li>
-            Antioxidant Benefits
 
-            Rich in antioxidants that may help protect cells from damage.
+        <li>
+            <strong>Digestive Health</strong><br>
+            Sometimes used to support digestion and overall stomach health.
         </li>
     </ul>
 </div>
@@ -439,13 +442,15 @@
             </tr>
         </table>
     </div>
-  </div>
+
+    </div>
+</div>
 </div>
     <!-- Buy Now Modal for Air Purifier Money indoorPlant -->
     <div id="buyNowModal" class="modal">
         <div class="modal-content">
             <span class="close" onclick="closeBuyNowForm()">&times;</span>
-            <h2>Buy Now:Neer Brahmi Plant Live | Bacopa Monnieri</h2>
+            <h2>Buy Now:Vasaka (Justicia adhatoda)  | Adhatoda Medicinal Herb</h2>
             <p>Fill in the details to purchase.</p>
             <form id="buyNowForm">
                 <label for="fullName">Full Name</label>
@@ -487,7 +492,7 @@
     <!-- Quick Links -->
     <div class="footer-section">
       <h3>Quick Links</h3>
-      <ul>
+       <ul>
         <li><a href="./plantcare.html">Home</a></li>
         <li><a href="./decoserv.html">Decoration Services</a></li>
         <li><a href="./fruits.html">Plants</a></li>
@@ -520,6 +525,7 @@
     <p>© 2026 Green Garden | All Rights Reserved</p>
   </div>
 </footer>
+    
     <script>
 function toggleMenu() {
     document.getElementById("navbar").classList.toggle("active");
