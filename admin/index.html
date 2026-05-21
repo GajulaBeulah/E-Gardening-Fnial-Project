@@ -227,6 +227,9 @@ header{
     display: flex;
     align-items: center;
 }
+nav li {
+    list-style: none;
+}
 
 .dropdown{
     position: relative;
@@ -239,7 +242,7 @@ header{
     padding: 12px 18px;
     color: #fff;
     text-decoration: none;
-    transition: .3s;
+    
 }
 
 #navbar > a::after,
@@ -327,6 +330,7 @@ font-size:14px;
 
 
 
+
 @media(max-width: 768px){
     header{
         flex-direction: column;
@@ -362,11 +366,12 @@ font-size:14px;
         <div class="logo">🌿 Garden Admin</div>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         <nav id="navbar">
-            <a href="index.html">📊 Dashboard</a>
-            <a href="users.html">👥 Users</a>
-            <a href="sellers.html">🧑‍🌾 Sellers</a>
-            <a href="reports.html">📈 Reports</a>
-            <a href="plant-pedia.html">🌿 Plants</a>
+            <a href="index.html"> Dashboard</a>
+            <a href="users.html"> Users</a>
+            <a href="sellers.html"> Sellers</a>
+            <a href="reports.html"> Reports</a>
+            <a href="plant-pedia.html"> Plants</a>
+             <li><a href="/E-Gardening-Fnial-Project/index.html" onclick="logout()">Logout</a></li>
         </nav>
           
     </header>
@@ -375,7 +380,7 @@ font-size:14px;
 
     <div class="dashboard-header">
         <div class="header-content">
-            <h1>🌱 Admin Dashboard</h1>
+            <h1> Admin Dashboard</h1>
             <p>Garden Store Administration Panel</p>
         </div>
     </div>
@@ -384,35 +389,35 @@ font-size:14px;
 
     <div class="stats-grid">
         <div class="stat-card">
-            <div class="stat-icon">👥</div>
+            
             <div class="stat-label">Total Users</div>
             <div class="stat-value">1,248</div>
             <div class="stat-subtext">+42 this month</div>
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon">🧑‍🌾</div>
+           
             <div class="stat-label">Sellers</div>
             <div class="stat-value">312</div>
             <div class="stat-subtext">+18 new sellers</div>
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon">🛒</div>
+            
             <div class="stat-label">Orders</div>
             <div class="stat-value">8,563</div>
             <div class="stat-subtext">₹1.2L revenue</div>
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon">🌼</div>
+            
             <div class="stat-label">Products</div>
             <div class="stat-value">3,421</div>
             <div class="stat-subtext">156 added</div>
         </div>
 
         <div class="stat-card">
-            <div class="stat-icon">⭐</div>
+           
             <div class="stat-label">Avg Rating</div>
             <div class="stat-value">4.8</div>
             <div class="stat-subtext">From 12,400+ reviews</div>
@@ -470,6 +475,7 @@ font-size:14px;
         <li><a href="sellers.html">sellers</a></li>
         <li><a href="reports.html">reports</a></li>
             <li><a href="plants.html">plants</a></li>
+            
       </ul>
     </div>
 
@@ -485,9 +491,9 @@ font-size:14px;
     <div class="footer-section">
       <h3>Follow Us</h3>
       <div class="social-icons">
-        <a href="#">🌱FaceBook</a>
-        <a href="#">🌿Instagram</a>
-        <a href="#">🌼YouTube</a>
+        <a href="#">FaceBook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
       </div>
     </div>
 

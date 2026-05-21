@@ -37,7 +37,10 @@ header{
     align-items:center;
     flex-wrap:wrap;
 }
-
+ 
+nav li{
+    list-style:none;
+}
 .logo{
     font-size:24px;
     font-weight:700;
@@ -285,6 +288,7 @@ font-size:14px;
     main{
         padding:15px;
     }
+    
 }
 </style>
 </head>
@@ -296,12 +300,13 @@ font-size:14px;
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
     <nav id="navbar">
-        <a href="index.html">📊 Dashboard</a>
-        <a href="users.html">👥 Users</a>
-        <a href="sellers.html">🧑‍🌾 Sellers</a>
-        <a href="reports.html">📈 Reports</a>
+        <a href="index.html"> Dashboard</a>
+        <a href="users.html"> Users</a>
+        <a href="sellers.html"> Sellers</a>
+        <a href="reports.html"> Reports</a>
 
-        <a href="plant-pedia.html">🌿 Plants</a>
+        <a href="plant-pedia.html"> Plants</a>
+            <li><a href="/E-Gardening-Fnial-Project/index.html" onclick="logout()">Logout</a></li>
     </nav>
 </header>
 
@@ -309,7 +314,7 @@ font-size:14px;
 <div class="dashboard-container">
 
     <div class="page-header">
-        <h2>🌿 Plant Pedia Management</h2>
+        <h2>Plant Pedia Management</h2>
     </div>
 
     <div class="metric-cards">
@@ -379,9 +384,9 @@ font-size:14px;
     <div class="footer-section">
       <h3>Follow Us</h3>
       <div class="social-icons">
-        <a href="#">🌱FaceBook</a>
-        <a href="#">🌿Instagram</a>
-        <a href="#">🌼YouTube</a>
+        <a href="#">FaceBook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
       </div>
     </div>
 
@@ -399,12 +404,12 @@ function toggleMenu() {
     navbar.classList.toggle('active');
 }
 
-const weeklyViews = [600, 840, 670, 900, 1100, 1300, 970];
+const weeklyViews = [800, 840, 670, 900, 1100, 1300, 970];
 const categoryDistribution = {
     labels: ['Indoor', 'Outdoor', 'Succulents', 'Herbs', 'Flowering'],
     data: [38, 20, 17, 14, 11]
 };
-
+                                        
 const viewsCtx = document.getElementById('viewsChart').getContext('2d');
 new Chart(viewsCtx, {
     type: 'line',
@@ -416,8 +421,8 @@ new Chart(viewsCtx, {
             borderColor: '#1b5e20',
             backgroundColor: 'rgba(46,125,50,0.25)',
             fill: true,
-            tension: 0.35,
-            pointBackgroundColor: '#2e7d32'
+            tension: 0.2,
+            pointBackgroundColor: 'blue',
         }]
     },
     options: {
@@ -440,14 +445,16 @@ new Chart(categoryCtx, {
         datasets: [{
             data: categoryDistribution.data,
             backgroundColor: ['#66bb6a', '#ffee58', '#26c6da', '#ab47bc', '#ef5350'],
-            borderWidth: 1
+            borderWidth: 1,
         }]
     },
     options: {
         responsive: true,
         plugins: {
-            legend: {position: 'right'}
+            legend: {position: 'flas'},
         }
+
+       
     }
 });
 
