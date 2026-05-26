@@ -275,7 +275,7 @@
         </div>
 
         <!-- TABLE -->
-        <div class="box" id="detailsBox" style="display:none;">
+        <!-- <div class="box" id="detailsBox" style="display:none;">
             <h3>Order Details</h3>
 
             <table>
@@ -292,7 +292,7 @@
 
                 <tbody id="detailsTable"></tbody>
             </table>
-        </div>
+        </div> -->
 
     </div>
 
@@ -412,52 +412,7 @@ statusChart = new Chart(document.getElementById("statusChart"), {
             });
         }
 
-        function showOrders(type) {
-            document.getElementById("detailsBox").style.display = "block";
-            let table = document.getElementById("detailsTable");
-            table.innerHTML = "";
-
-            let filtered = orders;
-
-            if (type === "delivered") {
-                filtered = orders.filter(o => o.status === "Delivered");
-            }
-            else if (type === "pending") {
-                filtered = orders.filter(o => o.status === "Pending");
-            }
-
-            filtered.forEach((o, index) => {
-                table.innerHTML += `
-        <tr>
-            <td>${o.name}</td>
-            <td>${o.product}</td>
-            <td>${o.time}</td>
-            <td>₹${o.price}</td>
-            <td>${o.qty}</td>
-            <td>${o.tracking}</td>
-            <td>${o.address}</td>
-            <td>
-                <button onclick="editOrder(${index})">Edit</button>
-                <button onclick="deleteOrder(${index})">Delete</button>
-            </td>
-        </tr>`;
-            });
-        }
-
-        function editOrder(index) {
-            let name = prompt("Edit Name", orders[index].name);
-            if (name) {
-                orders[index].name = name;
-                updateCounts();
-                showOrders("all");
-            }
-        }
-
-        function deleteOrder(index) {
-            orders.splice(index, 1);
-            updateCounts();
-            showOrders("all");
-        }
+      
 
         function logout() {
             alert("Logged out!");
