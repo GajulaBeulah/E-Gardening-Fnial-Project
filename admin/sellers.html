@@ -38,6 +38,10 @@ header{
 .logo{
     font-size: 24px;
     font-weight: 700;
+    cursor: pointer;
+}
+nav li {
+    list-style: none;
 }
 
 .menu-toggle{
@@ -354,34 +358,8 @@ font-size:14px;
     font-weight: 500;
 }
 
-.aadhaar-section {
-    background: #fff3cd;
-    border: 1px solid #ffeaa7;
-    border-radius: 8px;
-    padding: 20px;
-    margin-bottom: 20px;
-}
 
-.aadhaar-section h4 {
-    color: #856404;
-    margin: 0 0 15px 0;
-    display: flex;
-    align-items: center;
-    gap: 8px;
-}
 
-.aadhaar-number {
-    font-family: monospace;
-    font-size: 18px;
-    font-weight: bold;
-    color: #495057;
-    background: white;
-    padding: 10px;
-    border-radius: 6px;
-    border: 1px solid #dee2e6;
-    display: inline-block;
-    letter-spacing: 2px;
-}
 
 .products-section {
     background: #e8f5e9;
@@ -469,6 +447,7 @@ font-size:14px;
     .modal-body {
         padding: 20px;
     }
+    
 }
 
 </style>
@@ -481,12 +460,13 @@ font-size:14px;
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
     <nav id="navbar">
-        <a href="index.html">📊 Dashboard</a>
-        <a href="users.html">👥 Users</a>
-        <a href="sellers.html">🧑‍🌾 Sellers</a>
-        <a href="reports.html">📈 Reports</a>
+        <a href="index.html"> Dashboard</a>
+        <a href="users.html">Users</a>
+        <a href="sellers.html"> Sellers</a>
+        <a href="reports.html">Reports</a>
 
-        <a href="plant-pedia.html">🌿 Plants</a>
+        <a href="plant-pedia.html"> Plants</a>
+            <li><a href="/E-Gardening-Fnial-Project/index.html" onclick="logout()">Logout</a></li>
     </nav>
 </header>
 
@@ -494,12 +474,12 @@ font-size:14px;
 <div class="dashboard-container">
 
     <div class="page-header">
-        <h2>🧑‍🌾 Seller Management</h2>
+        <h2> Seller Management</h2>
     </div>
 
     <!-- Existing Shops Table -->
     <div class="section-header">
-        <h3>🏪 Existing Shops</h3>
+        <h3> Existing Shops</h3>
     </div>
 
     <div class="table-wrapper">
@@ -520,9 +500,9 @@ font-size:14px;
                 <td>Priya Sharma</td>
                 <td>Pune, Maharashtra</td>
                 <td>
-                    <button class="action-btn view-btn">👁️ View</button>
-                    <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">�️ Delete</button>
+                    <button class="action-btn view-btn">View</button>
+                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
                 </td>
             </tr>
             <tr>
@@ -531,9 +511,9 @@ font-size:14px;
                 <td>Rajesh Patel</td>
                 <td>Ahmedabad, Gujarat</td>
                 <td>
-                    <button class="action-btn view-btn">👁️ View</button>
-                    <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">�️ Delete</button>
+                    <button class="action-btn view-btn">View</button>
+                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
                 </td>
             </tr>
             <tr>
@@ -542,9 +522,9 @@ font-size:14px;
                 <td>Sneha Gupta</td>
                 <td>Chennai, Tamil Nadu</td>
                 <td>
-                    <button class="action-btn view-btn">👁️ View</button>
-                    <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">🗑️ Delete</button>
+                    <button class="action-btn view-btn">View</button>
+                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
                 </td>
             </tr>
             <tr>
@@ -553,9 +533,9 @@ font-size:14px;
                 <td>Vikram Singh</td>
                 <td>Jaipur, Rajasthan</td>
                 <td>
-                    <button class="action-btn view-btn">👁️ View</button>
-                    <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">�️ Delete</button>
+                    <button class="action-btn view-btn">View</button>
+                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
                 </td>
             </tr>
             <tr>
@@ -564,9 +544,9 @@ font-size:14px;
                 <td>Kavita Jain</td>
                 <td>Hyderabad, Telangana</td>
                 <td>
-                    <button class="action-btn view-btn">👁️ View</button>
-                    <button class="action-btn edit-btn">✏️ Edit</button>
-                    <button class="action-btn delete">�️ Delete</button>
+                    <button class="action-btn view-btn">View</button>
+                    <button class="action-btn edit-btn">Edit</button>
+                    <button class="action-btn delete">Delete</button>
                 </td>
             </tr>
         </tbody>
@@ -609,9 +589,9 @@ font-size:14px;
     <div class="footer-section">
       <h3>Follow Us</h3>
       <div class="social-icons">
-        <a href="#">🌱FaceBook</a>
-        <a href="#">🌿Instagram</a>
-        <a href="#">🌼YouTube</a>
+        <a href="#">FaceBook</a>
+        <a href="#">Instagram</a>
+        <a href="#">YouTube</a>
       </div>
     </div>
 
@@ -642,7 +622,7 @@ function viewSellerDetails(button) {
         // Sample detailed data for each seller (in a real app, this would come from a database)
         const sellerData = {
             '#S001': {
-                aadhaar: '1234-5678-9012',
+                
                 productCount: 45,
                 products: ['Aloe Vera', 'Money Plant', 'Snake Plant', 'Peace Lily', 'Spider Plant', 'Pothos', 'ZZ Plant', 'Rubber Plant'],
                 phone: '+91 98765 43210',
@@ -650,7 +630,7 @@ function viewSellerDetails(button) {
                 joinDate: 'March 2023'
             },
             '#S002': {
-                aadhaar: '2345-6789-0123',
+              
                 productCount: 32,
                 products: ['Rose', 'Tulip', 'Sunflower', 'Daisy', 'Lily', 'Orchid', 'Carnation', 'Chrysanthemum'],
                 phone: '+91 87654 32109',
@@ -658,7 +638,7 @@ function viewSellerDetails(button) {
                 joinDate: 'January 2024'
             },
             '#S003': {
-                aadhaar: '3456-7890-1234',
+               
                 productCount: 28,
                 products: ['Tomato', 'Basil', 'Chili', 'Cucumber', 'Lettuce', 'Spinach', 'Coriander', 'Mint'],
                 phone: '+91 76543 21098',
@@ -666,7 +646,7 @@ function viewSellerDetails(button) {
                 joinDate: 'February 2024'
             },
             '#S004': {
-                aadhaar: '4567-8901-2345',
+                
                 productCount: 67,
                 products: ['Ceramic Pot', 'Plastic Pot', 'Terracotta Pot', 'Hanging Basket', 'Planter Box', 'Decorative Pot', 'Seed Tray', 'Watering Can'],
                 phone: '+91 65432 10987',
@@ -674,7 +654,7 @@ function viewSellerDetails(button) {
                 joinDate: 'December 2023'
             },
             '#S005': {
-                aadhaar: '5678-9012-3456',
+                
                 productCount: 23,
                 products: ['Neem Oil', 'Compost', 'Fertilizer', 'Pesticide', 'Plant Food', 'Soil Mix', 'Vermicompost', 'Organic Manure'],
                 phone: '+91 54321 09876',
@@ -684,7 +664,7 @@ function viewSellerDetails(button) {
         };
 
         const data = sellerData[sellerId] || {
-            aadhaar: 'XXXX-XXXX-XXXX',
+            
             productCount: 0,
             products: ['No products listed'],
             phone: '+91 XXXXX XXXXX',
@@ -697,7 +677,7 @@ function viewSellerDetails(button) {
         document.getElementById('modal-owner-name').textContent = ownerName;
         document.getElementById('modal-shop-name').textContent = shopName;
         document.getElementById('modal-location').textContent = location;
-        document.getElementById('modal-aadhaar').textContent = data.aadhaar;
+        
         document.getElementById('modal-product-count').textContent = data.productCount;
         document.getElementById('modal-phone').textContent = data.phone;
         document.getElementById('modal-email').textContent = data.email;
@@ -859,10 +839,6 @@ window.onclick = function(event) {
                 </div>
             </div>
 
-            <div class="aadhaar-section">
-                <h4>🪪 Aadhaar Card Details</h4>
-                <div class="aadhaar-number" id="modal-aadhaar">XXXX-XXXX-XXXX</div>
-            </div>
 
             <div class="products-section">
                 <h4>📦 Products & Inventory</h4>

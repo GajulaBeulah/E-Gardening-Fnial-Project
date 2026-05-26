@@ -242,33 +242,39 @@
 <section class="edit-product-section">
     <h2>Update Product Details ✏️</h2>
 
-    <form class="edit-form">
-        <!-- Image Placeholder -->
-        <!-- <div class="image-preview">
-            <img src="https://via.placeholder.com/200" alt="Product Image">
-        </div> -->
+    <form class="edit-form" id="editForm">
+        <div class="success-message" id="successMsg" style="display:none; background:#e8f5e9; color:#2e7d32; padding:15px; border-radius:6px; margin-bottom:25px; text-align:center; font-weight:bold;">✅ Product updated successfully!</div>
+        <div class="error-message" id="errorMsg" style="display:none; background:#fdecea; color:#d32f2f; padding:15px; border-radius:6px; margin-bottom:25px; text-align:center; font-weight:bold;">⚠️ Please select a product!</div>
+
+        <div class="form-group">
+            <label>Select Product to Edit</label>
+            <select id="productSelect" required style="width: 100%; padding: 12px; border-radius: 6px; border: 1px solid #ccc; font-size: 14px;">
+                <option value="">-- Choose a product --</option>
+            </select>
+        </div>
 
         <div class="form-group">
             <label>Product Name</label>
-            <input type="text" placeholder="Enter product name">
+            <input type="text" id="productName" placeholder="Enter product name" required>
+        </div>
+
+        <div class="form-group">
+            <label>Product Quantity</label>
+            <input type="number" id="productQuantity" placeholder="Enter quantity" min="0" required>
         </div>
 
         <div class="form-group">
             <label>Product Price</label>
-            <input type="number" placeholder="Enter product price">
-        </div>
-
-        <div class="form-group">
-            <label>Change Product Image</label>
-            <input type="file">
+            <input type="number" id="productPrice" placeholder="Enter product price" min="0" step="0.01" required>
         </div>
 
         <div class="form-group">
             <label>Product Information</label>
-            <textarea rows="4" placeholder="Enter product details"></textarea>
+            <textarea id="productInfo" rows="4" placeholder="Enter product details"></textarea>
         </div>
 
         <button type="submit" class="btn-save">Save Changes</button>
+        <button type="button" style="width: 100%; padding: 10px; background: #666; border: none; color: #fff; font-size: 14px; border-radius: 6px; cursor: pointer; margin-top: 10px;" onclick="goBack()">Back to Products</button>
     </form>
 </section>
 
@@ -319,5 +325,100 @@
     <p>© 2026 Green Garden | All Rights Reserved</p>
   </div>
 </footer>
+
+<script>
+// Load products into dropdown
+function loadProducts() {
+    const products = JSON.parse(localStorage.getItem('products')) || [];
+    const selectElement = document.getElementById('productSelect');
+    
+    // Clear existing options except the first one
+    while (selectElement.options.length > 1) {
+        selectElement.remove(1);
+    }
+    
+    products.forEach((product, index) => {
+        const option = document.createElement('option');
+        option.value = JSON.stringify(product);
+        option.textContent = `${product.name} (${product.quantity} units)`;
+        selectElement.appendChild(option);
+    });
+}
+
+// Load product details when selected
+document.getElementById('productSelect').addEventListener('change', function() {
+    if (this.value) {
+        const product = JSON.parse(this.value);
+        document.getElementById('productName').value = product.name;
+        document.getElementById('productQuantity').value = product.quantity;
+        document.getElementById('productPrice').value = product.price || '';
+        document.getElementById('productInfo').value = product.info || '';
+    }
+});
+
+// Handle form submission
+document.getElementById('editForm').addEventListener('submit', function(e) {
+    e.preventDefault();
+    
+    const selectValue = document.getElementById('productSelect').value;
+    if (!selectValue) {
+        document.getElementById('errorMsg').style.display = 'block';
+        document.getElementById('successMsg').style.display = 'none';
+        return;
+    }
+    
+    const oldProduct = JSON.parse(selectValue);
+    const newName = document.getElementById('productName').value.trim();
+    const newQuantity = parseInt(document.getElementById('productQuantity').value);
+    const newPrice = parseFloat(document.getElementById('productPrice').value);
+    const newInfo = document.getElementById('productInfo').value.trim();
+    
+    if (!newName || !newQuantity || !newPrice) {
+        document.getElementById('errorMsg').textContent = '⚠️ Please fill all fields correctly!';
+        document.getElementById('errorMsg').style.display = 'block';
+        return;
+    }
+    
+    // Get products
+    let products = JSON.parse(localStorage.getItem('products')) || [];
+    
+    // Update the product
+    products = products.map(p => {
+        if (p.name === oldProduct.name) {
+            return {
+                name: newName,
+                quantity: newQuantity,
+                price: newPrice,
+                info: newInfo
+            };
+        }
+        return p;
+    });
+    
+    // Save updated list
+    localStorage.setItem('products', JSON.stringify(products));
+    
+    // Show success message
+    document.getElementById('successMsg').style.display = 'block';
+    document.getElementById('errorMsg').style.display = 'none';
+    
+    // Reload products dropdown
+    loadProducts();
+    document.getElementById('editForm').reset();
+    
+    // Redirect after 2 seconds
+    setTimeout(() => {
+        window.location.href = './product.html';
+    }, 2000);
+});
+
+function goBack() {
+    window.location.href = './product.html';
+}
+
+// Load products when page loads
+window.addEventListener('load', loadProducts);
+</script>
+
 </body>
 </html>

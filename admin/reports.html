@@ -4,9 +4,9 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Plant Pedia Management - Plant Store Admin</title>
+
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 <link rel="stylesheet" href="../header.css">
-
 
 <style>
 *{
@@ -17,15 +17,14 @@
 }
 
 body{
-    background: linear-gradient(135deg,#e8f5e9,#f1f8e9);
+    background:linear-gradient(135deg,#e8f5e9,#f1f8e9);
     min-height:100vh;
     display:flex;
     flex-direction:column;
 }
 
-/* HEADER */
 header{
-    background: linear-gradient(135deg, #000000, #2e7d32);
+    background:linear-gradient(135deg,#000000,#2e7d32);
     color:#fff;
     padding:15px 30px;
     box-shadow:0 4px 12px rgba(0,0,0,.15);
@@ -43,7 +42,7 @@ header{
     font-weight:700;
 }
 
-.menu-toggle{
+.menu-toggle{ 
     display:none;
     background:none;
     border:none;
@@ -62,59 +61,24 @@ header{
     color:#fff;
     text-decoration:none;
     transition:.3s;
-    cursor: pointer;
-    position: relative;
-}
-
-#navbar a:hover{
-    color:#fff;
-}
-
-#navbar a::after {
-    content: '';
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 0;
-    height: 2px;
-    background: #76ff03;
-    transition: width 0.3s ease;
-}
-
-#navbar a:hover::after {
-    width: 100%;
-}
-
-.dropdown{
     position:relative;
 }
 
-.dropdown-menu{
-    display:none;
+#navbar a::after{
+    content:'';
     position:absolute;
-    top:100%;
+    bottom:0;
     left:0;
-    background:#1b5e20;
-    min-width:200px;
-    border-radius:0 0 8px 8px;
+    width:0;
+    height:2px;
+    background:#76ff03;
+    transition:width .3s ease;
 }
 
-.dropdown:hover .dropdown-menu{
-    display:block;
+#navbar a:hover::after{
+    width:100%;
 }
 
-.dropdown-menu a{
-    display:block;
-    padding:12px 20px;
-    color:#fff;
-    cursor: pointer;
-}
-
-.dropdown-menu a:hover{
-    background:#2e7d32;
-}
-
-/* MAIN */
 main{
     flex:1;
     padding:20px;
@@ -127,7 +91,7 @@ main{
 }
 
 .page-header{
-    background: linear-gradient(135deg,#1b5e20,#2e7d32);
+    background:linear-gradient(135deg,#1b5e20,#2e7d32);
     color:#fff;
     padding:25px;
     border-radius:12px;
@@ -136,49 +100,6 @@ main{
     justify-content:space-between;
     align-items:center;
 }
-
-.table-wrapper{
-    overflow-x:auto;
-}
-
-.data-table{
-    width:100%;
-    border-collapse:collapse;
-    background:#fff;
-    border-radius:12px;
-    overflow:hidden;
-    box-shadow:0 6px 20px rgba(0,0,0,.08);
-    min-width:600px;
-}
-
-.data-table th{
-    background:linear-gradient(135deg,#2e7d32,#1b5e20);
-    color:#fff;
-    padding:15px;
-    text-align:left;
-}
-
-.data-table td{
-    padding:15px;
-    border-bottom:1px solid #eee;
-}
-
-.action-btn{
-    padding:6px 12px;
-    margin:0 3px;
-    background:#2e7d32;
-    color:#fff;
-    border:none;
-    border-radius:4px;
-    cursor:pointer;
-    font-size:12px;
-}
-
-.action-btn.delete{
-    background:#d32f2f;
-}
-
-/* FOOTER */
 
 .metric-cards{
     display:grid;
@@ -224,24 +145,63 @@ main{
     margin-bottom:12px;
     color:#1b5e20;
 }
+
 footer{
-margin-top:auto;
-background:#1e5631;
-color:white;
-text-align:center;
-padding:15px;
-font-size:14px;
+    margin-top:auto;
+    background:#1e5631;
+    color:white;
+    padding:20px;
 }
 
-@media (max-width:1024px){
+.footer-container{
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:space-between;
+    gap:20px;
+}
+
+.footer-section{
+    flex:1;
+    min-width:200px;
+}
+
+.footer-section h3{
+    margin-bottom:10px;
+}
+
+.footer-section ul{
+    list-style:none;
+}
+
+.footer-section ul li{
+    margin-bottom:8px;
+}
+
+.footer-section a{
+    color:white;
+    text-decoration:none;
+}
+
+.social-icons{
+    display:flex;
+    flex-direction:column;
+    gap:8px;
+}
+
+.footer-bottom{
+    text-align:center;
+    margin-top:20px;
+    border-top:1px solid rgba(255,255,255,.2);
+    padding-top:10px;
+}
+
+@media(max-width:1024px){
     .chart-grid{
         grid-template-columns:1fr;
     }
 }
 
-/* ================= RESPONSIVE ================= */
-
-@media (max-width:768px){
+@media(max-width:768px){
 
     .menu-toggle{
         display:block;
@@ -263,17 +223,6 @@ font-size:14px;
     #navbar a{
         width:100%;
         text-align:left;
-        cursor: pointer;
-        position: relative;
-    }
-
-    .dropdown{
-        width:100%;
-    }
-
-    .dropdown-menu{
-        position:static;
-        width:100%;
     }
 
     .page-header{
@@ -284,6 +233,10 @@ font-size:14px;
 
     main{
         padding:15px;
+    }
+
+    .footer-container{
+        flex-direction:column;
     }
 }
 </style>
@@ -296,12 +249,12 @@ font-size:14px;
     <button class="menu-toggle" onclick="toggleMenu()">☰</button>
 
     <nav id="navbar">
-        <a href="index.html">📊 Dashboard</a>
-        <a href="users.html">👥 Users</a>
-        <a href="sellers.html">🧑‍🌾 Sellers</a>
-        <a href="reports.html">📈 Reports</a>
-
-        <a href="plant-pedia.html">🌿 Plants</a>
+        <a href="index.html">Dashboard</a>
+        <a href="users.html">Users</a>
+        <a href="sellers.html">Sellers</a>
+        <a href="reports.html">Reports</a>
+        <a href="plant-pedia.html">Plants</a>
+        <a href="/E-Gardening-Fnial-Project/index.html" onclick="logout()">Logout</a>
     </nav>
 </header>
 
@@ -309,7 +262,7 @@ font-size:14px;
 <div class="dashboard-container">
 
     <div class="page-header">
-        <h2>🌿 Plant Pedia Management</h2>
+        <h2>Plant Pedia Management</h2>
     </div>
 
     <div class="metric-cards">
@@ -317,14 +270,17 @@ font-size:14px;
             <h3>Total Plants</h3>
             <p id="total-plants">0</p>
         </div>
+
         <div class="metric-card">
             <h3>Active Sellers</h3>
             <p id="active-sellers">0</p>
         </div>
+
         <div class="metric-card">
             <h3>Weekly Views</h3>
             <p id="weekly-views">0</p>
         </div>
+
         <div class="metric-card">
             <h3>Avg Care Level</h3>
             <p id="avg-care">0.0</p>
@@ -336,124 +292,141 @@ font-size:14px;
             <h3>Weekly Plant Page Views</h3>
             <canvas id="viewsChart" height="250"></canvas>
         </div>
+
         <div class="chart-card">
             <h3>Plant Category Distribution</h3>
             <canvas id="categoryChart" height="250"></canvas>
         </div>
     </div>
 
-    
-    </div>
 </div>
 </main>
-<footer class="footer">
-  <div class="footer-container">
 
-    <!-- About Section -->
-    <div class="footer-section">
-      <h3>Green Garden</h3>
-      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+<footer>
+    <div class="footer-container">
+
+        <div class="footer-section">
+            <h3>Green Garden</h3>
+            <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="sellers.html">Sellers</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="plants.html">Plants</a></li>
+            </ul>
+        </div>
+
+        <div class="footer-section">
+            <h3>Contact</h3>
+            <p>Email: support@greengarden.com</p>
+            <p>Phone: +91 98765 43210</p>
+            <p>Location: Hyderabad, India</p>
+        </div>
+
+        <div class="footer-section">
+            <h3>Follow Us</h3>
+            <div class="social-icons">
+                <a href="#">Facebook</a>
+                <a href="#">Instagram</a>
+                <a href="#">YouTube</a>
+            </div>
+        </div>
+
     </div>
 
-    <!-- Quick Links -->
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="index.html">Dashboard</a></li>
-        <li><a href="users.html">users</a></li>
-        <li><a href="sellers.html">sellers</a></li>
-        <li><a href="reports.html">reports</a></li>
-            <li><a href="plants.html">plants</a></li>
-      </ul>
+    <div class="footer-bottom">
+        <p>© 2026 Green Garden | All Rights Reserved</p>
     </div>
-
-    <!-- Contact Info -->
-    <div class="footer-section">
-      <h3>Contact</h3>
-      <p>Email: support@greengarden.com</p>
-      <p>Phone: +91 98765 43210</p>
-      <p>Location: Hyderabad, India</p>
-    </div>
-
-    <!-- Social Media -->
-    <div class="footer-section">
-      <h3>Follow Us</h3>
-      <div class="social-icons">
-        <a href="#">🌱FaceBook</a>
-        <a href="#">🌿Instagram</a>
-        <a href="#">🌼YouTube</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Bottom Line -->
-  <div class="footer-bottom">
-    <p>© 2026 Green Garden | All Rights Reserved</p>
-  </div>
 </footer>
+
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
 <script>
 function toggleMenu() {
-    const navbar = document.getElementById('navbar');
-    navbar.classList.toggle('active');
+    document.getElementById('navbar').classList.toggle('active');
 }
 
-const weeklyViews = [500, 840, 670, 900, 1100, 1300, 970];
+function logout() {
+    alert("Logged out successfully");
+}
+
+const weeklyViews = [800, 840, 670, 900, 1100, 1300, 970];
+
 const categoryDistribution = {
     labels: ['Indoor', 'Outdoor', 'Succulents', 'Herbs', 'Flowering'],
     data: [38, 20, 17, 14, 11]
 };
 
 const viewsCtx = document.getElementById('viewsChart').getContext('2d');
+
 new Chart(viewsCtx, {
     type: 'line',
     data: {
-        labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+        labels: ['Mon','Tue','Wed','Thu','Fri','Sat','Sun'],
         datasets: [{
             label: 'Page Views',
             data: weeklyViews,
             borderColor: '#1b5e20',
             backgroundColor: 'rgba(46,125,50,0.25)',
             fill: true,
-            tension: 0.35,
-            pointBackgroundColor: '#2e7d32'
+            tension: 0.2,
+            pointBackgroundColor: 'blue'
         }]
     },
     options: {
         responsive: true,
         plugins: {
-            legend: {display: true, position: 'top'},
-            title: {display: false}
+            legend: {
+                display:true,
+                position:'top'
+            }
         },
         scales: {
-            y: {beginAtZero: true}
+            y: {
+                beginAtZero:true
+            }
         }
     }
 });
 
 const categoryCtx = document.getElementById('categoryChart').getContext('2d');
-new Chart(categoryCtx, {
-    type: 'pie',
-    data: {
-        labels: categoryDistribution.labels,
-        datasets: [{
-            data: categoryDistribution.data,
-            backgroundColor: ['#66bb6a', '#ffee58', '#26c6da', '#ab47bc', '#ef5350'],
-            borderWidth: 1
+
+new Chart(categoryCtx,{
+    type:'pie',
+    data:{
+        labels:categoryDistribution.labels,
+        datasets:[{
+            data:categoryDistribution.data,
+            backgroundColor:[
+                '#66bb6a',
+                '#ffee58',
+                '#26c6da',
+                '#ab47bc',
+                '#ef5350'
+            ],
+            borderWidth:1
         }]
     },
-    options: {
-        responsive: true,
-        plugins: {
-            legend: {position: 'right'}
+    options:{
+        responsive:true,
+        animation:false,
+        rotation:0,
+        plugins:{
+            legend:{
+                position:'right'
+            }
         }
     }
 });
 
 const totalPlants = 128;
 const activeSellers = 14;
-const weeklyTotalViews = weeklyViews.reduce((acc, v) => acc+v, 0);
+const weeklyTotalViews = weeklyViews.reduce((acc,v)=>acc+v,0);
 const avgCare = 2.3;
 
 document.getElementById('total-plants').textContent = totalPlants;
