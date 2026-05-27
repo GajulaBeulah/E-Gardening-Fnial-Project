@@ -183,7 +183,8 @@ flex-direction:column;
                  <a href="./plantdetails.html">Plantopidia</a>
                  <a href="#">Contact</a> 
                 <div class="icons">
-        <!-- LOGOUT BUTTON ADDED -->    <a href="./user_profile_Page.html">Profile👤</a>
+        
+      <a href="./user_profile_Page.html">Profile👤</a>
    <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
     </div>
         </nav>
@@ -207,18 +208,18 @@ flex-direction:column;
 <h2>Send Message</h2>
 
 <div class="input-group">
-<label>Name</label>
-<input type="text" placeholder="Enter your name">
+<label>Full Name</label>
+<input type="text" id="fullname" required>
 </div>
 
 <div class="input-group">
 <label>Email</label>
-<input type="email" placeholder="Enter your email">
+<input type="email" id="email" placeholder="Enter your email">
 </div>
 
 <div class="input-group">
 <label>Message</label>
-<textarea placeholder="Write your message"></textarea>
+<textarea id="message" placeholder="Write your message"></textarea>
 </div>
 
 <button class="btn">Send Message</button>
@@ -276,6 +277,54 @@ flex-direction:column;
 function toggleMenu() {
     document.getElementById("navbar").classList.toggle("active");
 }
+
+// Auto capitalize first letter
+      function capitalizeWords(input) {
+        input.addEventListener("input", function () {
+          this.value = this.value
+            .toLowerCase()
+            .replace(/\b\w/g, (char) => char.toUpperCase());
+        });
+      }
+
+      // Apply capitalize
+      capitalizeWords(document.getElementById("fullname"));
+      
+document.getElementById("message").addEventListener("input", function () {
+    this.value =
+        this.value.charAt(0).toUpperCase() +
+        this.value.slice(1).toLowerCase();
+});
+
+
+
+document.querySelector(".btn").addEventListener("click", function () {
+    const fullname = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (fullname === "") {
+        alert("Please enter name");
+        return;
+    }
+
+    if (email === "") {
+        alert("Please enter email");
+        return;
+    }
+
+    if (message === "") {
+        alert("Please enter message");
+        return;
+    }
+
+    alert("Message sent successfully!");
+
+    document.getElementById("fullname").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("message").value = "";
+});
 </script>
+<script src="../cart.js"></script>
 </body>
 </html>
