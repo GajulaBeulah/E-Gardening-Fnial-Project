@@ -37,9 +37,9 @@ nav a {
     font-weight: 600;
 }
 
-nav a:hover {
+/* nav a:hover {
     text-decoration: underline;
-}
+} */
 
 .dropdown {
     position: relative;
