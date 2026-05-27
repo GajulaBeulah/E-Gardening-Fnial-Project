@@ -317,14 +317,14 @@ function initializeProducts() {
     const existingProducts = localStorage.getItem('products');
     if (!existingProducts) {
         const defaultProducts = [
-            { name: 'Garden Chair', quantity: 25 },
-            { name: 'Outdoor Table', quantity: 18 },
-            { name: 'Flower Pot', quantity: 32 },
-            { name: 'Hanging Lamp', quantity: 12 },
-            { name: 'Garden Bench', quantity: 8 },
-            { name: 'Water Fountain', quantity: 15 },
-            { name: 'Plant Stand', quantity: 22 },
-            { name: 'Decor Stones', quantity: 36 }
+            { name: 'Neem plant', quantity: 25 },
+            { name: 'Rose flower', quantity: 18 },
+            { name: 'Basil plant', quantity: 32 },
+            { name: 'Snake Plant', quantity: 12 },
+            { name: 'jasmine', quantity: 8 },
+            { name: 'black rose', quantity: 15 },
+            { name: 'Peace Lily', quantity: 22 },
+            { name: 'mango seed', quantity: 36 }
         ];
         localStorage.setItem('products', JSON.stringify(defaultProducts));
     }
