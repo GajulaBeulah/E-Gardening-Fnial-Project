@@ -172,6 +172,118 @@ nav a:hover::after {
     animation: fadeInUp 1s ease;
 }
 
+.hero-slider {
+    position: relative;
+    width: 90%;
+    margin: 30px auto;
+    min-height: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.3);
+}
+
+.hero-slide {
+    position: absolute;
+    inset: 0;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transform: translateX(100%);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+
+.hero-slide.active {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+.hero-slide h1 {
+    position: relative;
+    z-index: 1;
+    font-size: 3.5rem;
+    color: #f7fbe7;
+    text-shadow: 2px 2px 18px rgba(0, 0, 0, 0.7);
+    text-align: center;
+    margin: 0 20px;
+}
+
+.hero-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(9, 48, 9, 0.45) 0%, rgba(5, 19, 5, 0.85) 100%);
+}
+
+.hero-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 48px;
+    height: 48px;
+    border: none;
+    border-radius: 50%;
+    background: rgba(0, 0, 0, 0.35);
+    color: #ffffff;
+    font-size: 24px;
+    cursor: pointer;
+    z-index: 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-prev {
+    left: 20px;
+}
+
+.hero-next {
+    right: 20px;
+}
+
+.hero-dots {
+    position: absolute;
+    bottom: 18px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    z-index: 2;
+}
+
+.hero-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.8);
+    background: rgba(255, 255, 255, 0.35);
+    cursor: pointer;
+}
+
+.hero-dot.active {
+    background: #76ff03;
+    border-color: #76ff03;
+}
+
+@media(max-width:900px) {
+    .hero-slide h1 {
+        font-size: 2.5rem;
+    }
+}
+
+@media(max-width:600px) {
+    .hero-slider {
+        min-height: 360px;
+    }
+
+    .hero-nav {
+        width: 40px;
+        height: 40px;
+    }
+}
+
 @keyframes fadeInUp {
     from {
         opacity: 0;
