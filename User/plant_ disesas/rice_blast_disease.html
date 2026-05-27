@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rice Blast Disease Identification</title>
+<link rel="stylesheet" href="../../header.css">
+  <style>
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, Helvetica, sans-serif;
+    }
+
+    body{
+      background:#eef7ec;
+      color:#222;
+      line-height:1.7;
+    }
+    .hero{
+      height:350px;
+      background:url('https://images.unsplash.com/photo-1500382017468-9049fed747ef?q=80&w=1200&auto=format&fit=crop') center/cover;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+    }
+
+    .hero-content{
+      background:rgba(0,0,0,0.5);
+      padding:30px;
+      border-radius:10px;
+    }
+
+    .hero h2{
+      font-size:42px;
+      margin-bottom:15px;
+    }
+
+    .hero p{
+      font-size:20px;
+    }
+
+    .container{
+      width:90%;
+      max-width:1100px;
+      margin:40px auto;
+    }
+
+    .disease-section{
+      background:white;
+      margin-bottom:40px;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 4px 12px rgba(0,0,0,0.1);
+    }
+
+    .disease-section img{
+      width:100%;
+      height:400px;
+      object-fit:cover;
+    }
+
+   
+
+    .content h2{
+      color:#2d5a27;
+      margin-bottom:20px;
+      font-size:34px;
+    }
+
+    .content h3{
+      margin-top:20px;
+      color:#1f3f1b;
+    }
+
+    .content p{
+      margin-top:10px;
+      font-size:18px;
+    }
+    footer{
+      background:#2d5a27;
+      color:white;
+      text-align:center;
+      padding:20px;
+      margin-top:50px;
+    }
+
+    @media(max-width:768px){
+
+      .hero h2{
+        font-size:30px;
+      }
+
+      .content h2{
+        font-size:28px;
+      }
+
+      .disease-section img{
+        height:250px;
+      }
+    }
+
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+     <a href="./plantcare.html">Home</a>
+            <div class="dropdown">
+            <a href="#">Plants</a>
+             <div class="dropdown-menu">
+              <a href="../indoor.html">Indoor</a>
+                <a href="../outdoor.html">Outdoor</a>
+                <a href="../flower.html">Flowers</a>
+                <a href="../medicine.html">Medical</a>
+            </div>
+        </div>
+        <div class=" dropdown">
+            <a href="#seeds">Seeds</a>
+            <div class="dropdown-menu">
+                <a href="../fruits.html">Fruits seeds</a>
+                <a href="../veg.html">Vegetables seeds</a>
+                <a href="../flowers.html">Flowers seeds</a>
+            </div>
+        </div>
+        <a href="../pots.html">Pots</a>
+        <a href="../decoserv.html">Services</a>
+        <a href="../plantdetails.html">Plantopidia</a>
+         <a href="../plant_ disesas/new_page.html">Plantaid</a>
+              <a href="../contact.html">Contact</a> 
+           <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->   
+         <a href="../user_profile_Page.html">Profile👤</a>
+        <a href="../../index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+   
+    </header>
+
+  <!-- HERO SECTION -->
+
+  <section class="hero">
+
+    <div class="hero-content">
+
+      <h2>Rice Blast Disease Identification</h2>
+
+      <p>
+        Learn symptoms, causes, and treatment methods for rice blast diseases.
+      </p>
+
+    </div>
+
+  </section>
+
+  <!-- MAIN CONTENT -->
+
+  <div class="container">
+
+    <!-- 1 -->
+
+    <section class="disease-section">
+
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZmmPEgFH5K7QhjqJy136XkaA4eDNueOJ8cw&s" alt="Leaf Blast">
+
+      <div class="content">
+
+        <h2>1. Leaf Blast</h2>
+
+        <h3>Plant Identification</h3>
+
+        <p>
+          Leaf blast is a common fungal disease that affects rice leaves during humid weather.
+        </p>
+
+        <h3>Symptoms</h3>
+
+        <ul>
+          <li>Diamond-shaped spots on leaves</li>
+          <li>Gray center with brown borders</li>
+          <li>Drying leaf tips</li>
+          <li>Reduced plant growth</li>
+        </ul>
+
+        <h3>How to Take Care</h3>
+
+        <ul>
+          <li>Use disease-resistant seeds</li>
+          <li>Avoid excess nitrogen fertilizer</li>
+          <li>Maintain proper water level</li>
+          <li>Apply fungicide spray</li>
+        </ul>
+
+      </div>
+
+    </section>
+
+    <!-- 2 -->
+
+    <section class="disease-section">
+
+      <img src="https://www.dpi.nsw.gov.au/__data/assets/image/0007/799315/BacterialPanicleBlight1.jpg" alt="Node Blast">
+
+      <div class="content">
+
+        <h2>2. Node Blast</h2>
+
+        <h3>Plant Identification</h3>
+
+        <p>
+          Node blast attacks the stem nodes of rice plants and weakens plant structure.
+        </p>
+
+        <h3>Symptoms</h3>
+
+        <ul>
+          <li>Black or brown stem nodes</li>
+          <li>Weak stem structure</li>
+          <li>Broken stems</li>
+          <li>Poor grain formation</li>
+        </ul>
+
+        <h3>How to Take Care</h3>
+
+        <ul>
+          <li>Keep field clean</li>
+          <li>Remove infected plants</li>
+          <li>Improve field drainage</li>
+          <li>Use balanced fertilizers</li>
+        </ul>
+
+      </div>
+
+    </section>
+
+    <!-- 3 -->
+
+    <section class="disease-section">
+
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQLYyWj3y1koaahsRM7Y8TKuse_tlL4E5lZSQ&s" alt="Neck Blast">
+
+      <div class="content">
+
+        <h2>3. Neck Blast</h2>
+
+        <h3>Plant Identification</h3>
+
+        <p>
+          Neck blast affects the neck portion of rice panicles and reduces grain yield.
+        </p>
+
+        <h3>Symptoms</h3>
+
+        <ul>
+          <li>Brown neck region</li>
+          <li>Empty grains</li>
+          <li>Dry panicles</li>
+          <li>Reduced harvest</li>
+        </ul>
+
+        <h3>How to Take Care</h3>
+
+        <ul>
+          <li>Spray fungicides early</li>
+          <li>Use healthy seeds</li>
+          <li>Maintain proper spacing</li>
+          <li>Monitor crop regularly</li>
+        </ul>
+
+      </div>
+
+    </section>
+
+    <!-- 4 -->
+
+    <section class="disease-section">
+
+      <img src="https://cdn.shopify.com/s/files/1/0762/3639/0696/files/3-s2.0-B9780128143834000086-u08-35-9780128143834_480x480.webp?v=1707388954" alt="Collar Blast">
+
+      <div class="content">
+
+        <h2>4. Collar Blast</h2>
+
+        <h3>Plant Identification</h3>
+
+        <p>
+          Collar blast appears where the leaf joins the stem and damages rice leaves.
+        </p>
+
+        <h3>Symptoms</h3>
+
+        <ul>
+          <li>Brown lesions at leaf base</li>
+          <li>Leaf drying</li>
+          <li>Weak leaf attachment</li>
+          <li>Yellowing leaves</li>
+        </ul>
+
+        <h3>How to Take Care</h3>
+
+        <ul>
+          <li>Maintain field hygiene</li>
+          <li>Use resistant rice varieties</li>
+          <li>Avoid overcrowding plants</li>
+          <li>Provide proper irrigation</li>
+        </ul>
+
+      </div>
+
+    </section>
+
+    <!-- 5 -->
+
+    <section class="disease-section">
+
+      <img src="https://bsppjournals.onlinelibrary.wiley.com/cms/asset/f2ab9d0f-cdf7-4149-abed-e3ed73394f37/ppa13386-toc-0001-m.jpg?trick=1772567049735" alt="Panicle Blast">
+
+      <div class="content">
+
+        <h2>5. Panicle Blast</h2>
+
+        <h3>Plant Identification</h3>
+
+        <p>
+          Panicle blast infects rice grains and affects grain quality and production.
+        </p>
+
+        <h3>Symptoms</h3>
+
+        <ul>
+          <li>Discolored grains</li>
+          <li>Dry panicles</li>
+          <li>Poor grain filling</li>
+          <li>Low crop yield</li>
+        </ul>
+
+        <h3>How to Take Care</h3>
+
+        <ul>
+          <li>Apply recommended fungicides</li>
+          <li>Use certified seeds</li>
+          <li>Maintain balanced nutrients</li>
+          <li>Remove infected crop residue</li>
+        </ul>
+
+      </div>
+
+    </section>
+
+  </div>
+
+  <!-- FOOTER -->
+
+ <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+        <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>

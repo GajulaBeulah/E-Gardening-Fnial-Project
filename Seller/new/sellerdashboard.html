@@ -219,20 +219,19 @@
 
 <body>
 
-    <header>
-        <!-- <div class="nav-container"> -->
-            <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-            <nav>
-                <ul>
-                    <li><a href="./sales.html">Sales</a></li>
-                    <li><a href="./orders.html">Orders</a></li>
-                    <li><a href="./product.html">Products</a></li>
-                    <li><a href="./profile.html">Profile</a></li>
-                    <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
-                </ul>
-            </nav>
-        <!-- </div> -->
-    </header>
+   <header>
+    <h1 class="logo">🌿 Garden Seller Dashboard</h1>
+    <nav>
+        <ul>
+             <li><a href="./sellerdashboard.html">Home</a></li>
+            <li><a href="./sales.html">Sales</a></li>
+            <li><a href="./orders.html">Orders</a></li>
+            <li><a href="./product.html">Products</a></li>
+            <li><a href="./profile.html">Profile</a></li>
+            <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
+        </ul>
+    </nav>
+</header>
 
     <div class="main">
 
@@ -275,7 +274,7 @@
         </div>
 
         <!-- TABLE -->
-        <div class="box" id="detailsBox" style="display:none;">
+        <!-- <div class="box" id="detailsBox" style="display:none;">
             <h3>Order Details</h3>
 
             <table>
@@ -292,7 +291,7 @@
 
                 <tbody id="detailsTable"></tbody>
             </table>
-        </div>
+        </div> -->
 
     </div>
 
@@ -412,6 +411,9 @@ statusChart = new Chart(document.getElementById("statusChart"), {
             });
         }
 
+<<<<<<< HEAD
+      
+=======
         function showOrders(type) {
             document.getElementById("detailsBox").style.display = "block";
             let table = document.getElementById("detailsTable");
@@ -445,12 +447,47 @@ statusChart = new Chart(document.getElementById("statusChart"), {
         }
 
         function editOrder(index) {
-            let name = prompt("Edit Name", orders[index].name);
-            if (name) {
-                orders[index].name = name;
-                updateCounts();
-                showOrders("all");
+            const order = orders[index];
+            const name = prompt("Edit Name", order.name);
+            if (name === null) return;
+            const product = prompt("Edit Product", order.product);
+            if (product === null) return;
+            const time = prompt("Edit Time", order.time);
+            if (time === null) return;
+            const priceInput = prompt("Edit Price", order.price);
+            if (priceInput === null) return;
+            const price = parseFloat(priceInput);
+            if (isNaN(price) || price < 0) {
+                alert("Invalid price entered.");
+                return;
             }
+            const qtyInput = prompt("Edit Quantity", order.qty);
+            if (qtyInput === null) return;
+            const qty = parseInt(qtyInput, 10);
+            if (isNaN(qty) || qty < 0) {
+                alert("Invalid quantity entered.");
+                return;
+            }
+            const tracking = prompt("Edit Tracking ID", order.tracking);
+            if (tracking === null) return;
+            const address = prompt("Edit Address", order.address);
+            if (address === null) return;
+            const status = prompt("Edit Status (Pending/Delivered)", order.status);
+            if (status === null) return;
+
+            orders[index] = {
+                name: name.trim() || order.name,
+                product: product.trim() || order.product,
+                time: time.trim() || order.time,
+                price,
+                qty,
+                tracking: tracking.trim() || order.tracking,
+                address: address.trim() || order.address,
+                status: status.trim() || order.status
+            };
+
+            updateCounts();
+            showOrders("all");
         }
 
         function deleteOrder(index) {
@@ -458,6 +495,7 @@ statusChart = new Chart(document.getElementById("statusChart"), {
             updateCounts();
             showOrders("all");
         }
+>>>>>>> 022063a138603dca72d1f7dafb37453d2dcc0a41
 
         function logout() {
             alert("Logged out!");

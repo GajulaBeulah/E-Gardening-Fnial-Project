@@ -1,70 +1,82 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
-    <title>Ugaoo Good Luck Money Plant Variegated with Ibiza Pot</title>
+    <title> Good Luck Money Plant Variegated with Ibiza Pot</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="../header.css">
-        <script src="./addtocard.js"></script>
+    <link rel="stylesheet" href="/project/plant-care/header.css">
+       <link rel="stylesheet" href="../header.css">
     <style>
-        body {
+         body {
             font-family: Arial, Helvetica, sans-serif;
             margin: 0;
             background: #f5f6f7;
             color: #333;
         }
+
         .container {
             max-width: 1100px;
             margin: auto;
             background: #fff;
             padding: 20px;
         }
+
         .breadcrumb {
             font-size: 14px;
             color: #777;
             margin-bottom: 15px;
         }
+
         .product {
             display: flex;
             flex-wrap: wrap;
-            gap: 30px;
+            gap: 20px;
         }
-        .images {
+
+        /* .images {
             flex: 1;
             min-width: 280px;
-        }
+        } */
         .images img {
-            width: 100%;
+            width: 350px;
             border-radius: 6px;
             border: 1px solid #ddd;
         }
+
         .details {
-            flex: 1;
+            /* flex: 1; */
             min-width: 280px;
         }
+
         h1 {
             font-size: 24px;
             margin-bottom: 10px;
         }
+
         .brand {
             color: #2e7d32;
             font-weight: bold;
             margin-bottom: 10px;
         }
+
         .price {
             font-size: 28px;
             color: #d32f2f;
             margin: 10px 0;
         }
+
         .price del {
             font-size: 16px;
             color: #777;
             margin-left: 10px;
         }
+
         .offer {
             color: #388e3c;
             margin-bottom: 15px;
         }
+
         .btn {
             display: inline-block;
             padding: 12px 25px;
@@ -74,71 +86,92 @@
             border-radius: 4px;
             font-weight: bold;
         }
+
         .badges {
-            margin-right: 20px;
             display: flex;
             gap: 20px;
             margin: 20px 0;
             font-size: 14px;
         }
+
         .section {
             margin-top: 30px;
-            margin-left: 30px;
         }
+
         .section h2 {
             font-size: 20px;
             border-bottom: 2px solid #eee;
             padding-bottom: 5px;
         }
+
         table {
-            width: 100%;
+            width: 60%;
             border-collapse: collapse;
             margin-top: 15px;
         }
+
         table td {
             padding: 10px;
             border-bottom: 1px solid #eee;
         }
+
         table td:first-child {
             font-weight: bold;
             width: 30%;
             background: #fafafa;
         }
+
         footer {
             margin-top: 40px;
             padding-top: 15px;
             border-top: 1px solid #ddd;
             font-size: 13px;
             color: #eee;
+        
         }
-        /* ================= RESPONSIVE MEDIA QUERIES ================= */
+        
+        .card{
+          width: fit-content;
+          background-color: #ffffff;
+          margin: auto;
+        }
 
-/* Tablet View */
+        /* ================= RESPONSIVE FIX ================= */
+
+/* Restore images flex (because it was commented) */
+.images {
+    flex: 1;
+    min-width: 280px;
+}
+
+/* Make image responsive */
+.images img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Tablet */
 @media (max-width: 992px) {
 
     .product {
         flex-direction: column;
     }
 
-    h1 {
-        font-size: 22px;
+    table {
+        width: 100%;
     }
 
-    .price {
-        font-size: 24px;
+    .card {
+        width: 100%;
     }
 }
 
 
-/* Mobile View */
+/* Mobile */
 @media (max-width: 600px) {
 
     .container {
         padding: 15px;
-    }
-
-    .breadcrumb {
-        font-size: 12px;
     }
 
     h1 {
@@ -152,22 +185,23 @@
     .btn {
         width: 100%;
         text-align: center;
-        padding: 12px;
     }
 
     .badges {
-            margin-right: 20px;
         flex-direction: column;
         gap: 10px;
     }
 
-    table td {
+    table {
+        width: 100%;
         font-size: 14px;
-        padding: 8px;
     }
-}
 
-/* Modal Styles */
+    footer {
+        text-align: center;
+        font-size: 12px;
+    }
+}/* Modal Styles */
 .modal {
     display: none;
     position: fixed;
@@ -240,17 +274,15 @@
 #buyNowForm button:hover {
     background: #1b5e20;
 }
-        li {
-            margin-left: 30px;
-        }
     </style>
 </head>
+
 <body>
-       <header>
+   <header>
         <div class="logo">🌿 Garden</div>
         <div class="menu-toggle" onclick="toggleMenu()">☰</div>
         <nav id="navbar">
-         <a href="./plantcare.html">Home</a>
+     <a href="./plantcare.html">Home</a>
             <div class="dropdown">
             <a href="#">Plants</a>
             <div class="dropdown-menu">
@@ -270,106 +302,99 @@
         </div>
         <a href="./pots.html">Pots</a>
         <a href="./decoserv.html">Services</a>
-                 <a href="./plantdetails.html">Plantopidia</a>   <a href="../User/plant_ disesas/new_page.html">plantaid</a>
+                 <a href="./plantdetails.html">Plantopidia</a> <a href="../User/plant_ disesas/new_page.html">plantaid</a>
                     <a href="./contact.html">Contact</a> 
-
-
                 <div class="icons">
-              
-        <a href="./user_profile_Page.html">Profile👤</a>
-        <a href="cart.html" class="auth-link cart-link" style="color: rgb(0, 8, 0); font-size: 20px; position: absolute;top: 85px;right: 10px ; border: 2px solid rgb(17, 117, 44); padding: 5px 5px;">🛒 Cart <span class="cart-count" style="background:#d32f2f;border: 1px solid rgb(1, 3, 0); border-radius:50%;padding:2px 8px;font-size:21px;margin-left:5px;">0</span></a>
-                
-  <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+        <!-- LOGOUT BUTTON ADDED -->    <a href="./user_profile_Page.html">Profile👤</a>
+         <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
     </div>
         </nav>
         </header>
-<div class="container">
-
-    <div class="breadcrumb">
-       Tomato Seeds
-    </div>
-
-    <div class="product" style="margin-top: 20px;">
+<div class="card">
+    <div class="product">
         <div class="images">
             <!-- Replace src with actual image paths -->
-            <img src="https://gogreenkol.in/cdn/shop/files/89380e7b-7548-4292-8ecc-e24372be461f.png?v=1764154933&width=1445" alt="">
+            <img src="https://tse1.mm.bing.net/th/id/OIP.wTPNqAa2BrIH7B-7BdRLoQHaHa?r=0&rs=1&pid=ImgDetMain&o=7&rm=3"
+                alt="Aloevera Plant">
         </div>
 
         <div class="details">
-            <h1>Cosmos Seeds</h1>
-            <div class="brand">Brand: Ugaoo</div>
+            <h1>Aloevera Plant
+                    |</h1>
+
 
             <div class="price">
-                ₹39<del>₹69</del>
+                ₹399 <del>₹699</del>
             </div>
-            <div class="offer">₹30 OFF · Inclusive of all taxes</div>
-    <a href="#" class="btn">Add to cart</a> 
-            <a href="#" class="btn" onclick="showBuyNowForm()">Buy Now</a>
+            <div class="offer">₹50 OFF · Inclusive of all taxes</div>
+
+              <a href="#" class="btn">Add to cart</a>    <a href="#" class="btn" onclick="showBuyNowForm()">Buy Now</a>
 
             <div class="badges">
                 <div>🚚 Fast Delivery</div>
                 <div>❌ No Return or Exchange</div>
+                <div>🌱 Live Plant (Perishable)</div>
             </div>
-        </div>
-    </div>
-
-    <!-- Buy Now Form Modal for Cosmos Seeds -->
-    <div id="buyNowModal" class="modal">
-        <div class="modal-content">
-            <span class="close" onclick="closeBuyNowForm()">&times;</span>
-            <h2>Buy Now Form: Cosmos Seeds</h2>
-            <p>Fill in the details to purchase the Cosmos Seeds.</p>
-            <form id="buyNowForm">
-                <label for="fullName">Full Name</label>
-                <input type="text" id="fullName" placeholder="Enter your name" required>
-
-                <label for="phone">Phone Number</label>
-                <input type="tel" id="phone" placeholder="Enter phone number" required>
-
-                <label for="email">Email Address</label>
-                <input type="email" id="email" placeholder="Enter email">
-
-                <label for="address">Delivery Address</label>
-                <textarea id="address" rows="3" placeholder="Enter delivery address" required></textarea>
-
-                <label for="deliveryDate">Preferred Delivery Date</label>
-                <input type="date" id="deliveryDate" required>
-
-                <label for="quantity">Quantity</label>
-                <input type="number" id="quantity" min="1" value="1" required>
-
-                <label for="payment">Payment Method</label>
-                <select id="payment" required>
-                    <option value="">Select Payment Method</option>
-                    <option>Credit Card</option>
-                    <option>Debit Card</option>
-                    <option>UPI</option>
-                    <option>Cash on Delivery</option>
-                </select>
-
-                <label for="notes">Additional Notes</label>
-                <textarea id="notes" rows="2" placeholder="Any special instructions"></textarea>
-
-                <button type="submit" class="btn">Submit Order</button>
-            </form>
         </div>
     </div>
 
     <div class="section">
         <h2>Highlights</h2>
         <ul>
-            <li>Lush and vibrant seeds</li>
+            <li>Lush and vibrant Medicinal plant</li>
             <li>Enhances freshness and positivity in living spaces</li>
-            <li>Variegated seeds with decorative Ibiza pot</li>
+            <li>Variegated money plant with decorative Ibiza pot</li>
         </ul>
     </div>
+<h2>Medicinal Benefits</h2>
+<div>
+    <ul>
+        <li>
+            <strong>Skin Care</strong><br>
+            Commonly used to soothe dry skin, irritation, and minor sunburns.
+        </li>
 
+        <li>
+            <strong>Wound Healing</strong><br>
+            Traditionally used for minor cuts, burns, and skin healing.
+        </li>
+
+        <li>
+            <strong>Digestive Health</strong><br>
+            Sometimes used to support digestion and stomach comfort.
+        </li>
+
+        <li>
+            <strong>Hair & Scalp Health</strong><br>
+            May help nourish the scalp and support healthy hair.
+        </li>
+
+        <li>
+            <strong>Hydration Support</strong><br>
+            Rich in water content and believed to help maintain skin hydration.
+        </li>
+
+        <li>
+            <strong>Anti-Inflammatory Properties</strong><br>
+            Contains natural compounds that may help reduce minor inflammation.
+        </li>
+
+        <li>
+            <strong>General Wellness</strong><br>
+            Traditionally used to support overall health and natural care routines.
+        </li>
+    </ul>
+</div>
     <div class="section">
         <h2>Product Information</h2>
         <table>
             <tr>
                 <td>Product Type</td>
-                <td>CosmosSeeds</td>
+                <td>Plant</td>
+            </tr>
+            <tr>
+                <td>Plant Type</td>
+                <td>Leaf</td>
             </tr>
             <tr>
                 <td>Net Quantity</td>
@@ -399,13 +424,13 @@
         <table>
             <tr>
                 <td>Seller Name</td>
-                <td>Bonsai Gardens</td>
+                <td>Geddit Convenience Private Limited</td>
             </tr>
             <tr>
                 <td>Seller Address</td>
                 <td>
                     Unit 803, Lodha Supremus, Saki Vihar Road,<br>
-                    Opp MTNL Office, Powai, Mumbai, Maharashra– 400072
+                    Opp MTNL Office, Powai, Mumbai, Maharashtra – 400072
                 </td>
             </tr>
             <tr>
@@ -414,14 +439,48 @@
             </tr>
             <tr>
                 <td>Customer Care</td>
-                <td>support@Garden E-marketing.com</td>
+                <td>support@gardenmarket.com</td>
             </tr>
         </table>
     </div>
 
-
+    </div>
 </div>
-  <!-- FOOTER -->
+</div>
+    <!-- Buy Now Modal for Air Purifier Money indoorPlant -->
+    <div id="buyNowModal" class="modal">
+        <div class="modal-content">
+            <span class="close" onclick="closeBuyNowForm()">&times;</span>
+            <h2>Buy Now:Aloevera Plant</h2>
+            <p>Fill in the details to purchase.</p>
+            <form id="buyNowForm">
+                <label for="fullName">Full Name</label>
+                <input type="text" id="fullName" placeholder="Enter your name" required>
+                <label for="phone">Phone Number</label>
+                <input type="tel" id="phone" placeholder="Enter phone number" required>
+                <label for="email">Email</label>
+                <input type="email" id="email" placeholder="Enter email">
+                <label for="address">Delivery Address</label>
+                <textarea id="address" rows="3" placeholder="Enter address" required></textarea>
+                <label for="deliveryDate">Preferred Delivery Date</label>
+                <input type="date" id="deliveryDate" required>
+                <label for="quantity">Quantity</label>
+                <input type="number" id="quantity" min="1" value="1" required>
+                <label for="payment">Payment Method</label>
+                <select id="payment" required>
+                    <option value="">Select Payment</option>
+                    <option>Credit Card</option>
+                    <option>Debit Card</option>
+                    <option>UPI</option>
+                    <option>Cash on Delivery</option>
+                </select>
+                <label for="notes">Additional Notes</label>
+                <textarea id="notes" rows="2" placeholder="Special instructions"></textarea>
+                <button type="submit" class="btn">Submit Order</button>
+            </form>
+        </div>
+    </div>
+    <!-- FOOTER -->
   <footer class="footer">
   <div class="footer-container">
 
@@ -434,7 +493,7 @@
     <!-- Quick Links -->
     <div class="footer-section">
       <h3>Quick Links</h3>
-     <ul>
+       <ul>
         <li><a href="./plantcare.html">Home</a></li>
         <li><a href="./decoserv.html">Decoration Services</a></li>
         <li><a href="./fruits.html">Plants</a></li>
@@ -447,7 +506,7 @@
       <h3>Contact</h3>
       <p>Email: support@greengarden.com</p>
       <p>Phone: +91 98765 43210</p>
-      <p>Location: Mumbai, India</p>
+      <p>Location: Hyderabad, India</p>
     </div>
 
     <!-- Social Media -->
@@ -467,7 +526,8 @@
     <p>© 2026 Green Garden | All Rights Reserved</p>
   </div>
 </footer>
-<script>
+    
+    <script>
 function toggleMenu() {
     document.getElementById("navbar").classList.toggle("active");
 }
@@ -496,6 +556,6 @@ document.getElementById("buyNowForm").addEventListener("submit", function(event)
     // Here you can add code to send the form data to a server
 });
 </script>
-<script src="../cart.js"></script>
 </body>
+
 </html>

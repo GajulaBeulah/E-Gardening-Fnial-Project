@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Plant Disease Identification</title>
+<link rel="stylesheet" href="../../header.css">
+  <style>
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+      font-family: Arial, sans-serif;
+    }
+
+    body{
+      background:#f4fff4;
+      color:#333;
+    }
+
+
+  
+
+
+    .hero{
+      height:90vh;
+      background:url('https://images.unsplash.com/photo-1466692476868-aef1dfb1e735?q=80&w=1200') center/cover no-repeat;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:center;
+      color:white;
+      position:relative;
+    }
+
+    .hero::before{
+      content:'';
+      position:absolute;
+      width:100%;
+      height:100%;
+      background:rgba(0,0,0,0.5);
+    }
+
+    .hero-content{
+      position:relative;
+      z-index:2;
+      max-width:700px;
+    }
+
+    .hero-content h2{
+      font-size:55px;
+      margin-bottom:20px;
+    }
+
+    .hero-content p{
+      font-size:20px;
+      margin-bottom:25px;
+    }
+
+    .hero-content button{
+      padding:12px 28px;
+      border:none;
+      background:#43a047;
+      color:white;
+      font-size:18px;
+      border-radius:5px;
+      cursor:pointer;
+      transition:0.3s;
+    }
+
+    .hero-content button:hover{
+      background:#2e7d32;
+    }
+
+    .section-title{
+      text-align:center;
+      margin:60px 0 30px;
+      font-size:38px;
+      color:#1b5e20;
+    }
+
+   
+    .card-container{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(250px, 1fr));
+      gap:25px;
+      padding:0 50px 60px;
+    }
+
+    .card{
+      background:white;
+      border-radius:12px;
+      overflow:hidden;
+      box-shadow:0 5px 15px rgba(0,0,0,0.1);
+      transition:0.3s;
+    }
+
+    .card:hover{
+      transform:translateY(-10px);
+    }
+
+    .card img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+    }
+
+    .card-content{
+      padding:20px;
+    }
+
+    .card-content h3{
+      color:#2e7d32;
+      margin-bottom:10px;
+    }
+
+    .card-content p{
+      font-size:15px;
+      margin-bottom:15px;
+      line-height:1.5;
+    }
+
+    .card-content a{
+      text-decoration:none;
+    }
+
+    .card-actions{
+      display:flex;
+      gap:10px;
+      align-items:center;
+      margin-top:8px;
+    }
+
+    .card-actions .btn{
+      background:#1b5e20;
+      color:white;
+      border:none;
+      padding:10px 18px;
+      border-radius:5px;
+      cursor:pointer;
+      text-decoration:none;
+      display:inline-block;
+      font-size:15px;
+    }
+
+    .card-actions .btn:hover{
+      background:#43a047;
+    }
+
+    .card-actions .btn-outline{
+      background:transparent;
+      color:#1b5e20;
+      border:2px solid #1b5e20;
+      padding:8px 16px;
+      border-radius:5px;
+      cursor:pointer;
+      font-size:15px;
+    }
+
+    .card-actions .btn-outline:hover{
+      background:#f1f8f1;
+    }
+
+    /* GALLERY */
+    .gallery{
+      display:grid;
+      grid-template-columns:repeat(auto-fit, minmax(220px, 1fr));
+      gap:20px;
+      padding:0 50px 60px;
+    }
+
+    .gallery img{
+      width:100%;
+      height:220px;
+      object-fit:cover;
+      border-radius:10px;
+      transition:0.3s;
+    }
+
+    .gallery img:hover{
+      transform:scale(1.05);
+    }
+
+   
+    footer{
+      background:#1b5e20;
+      color:white;
+      text-align:center;
+      padding:25px;
+      margin-top:40px;
+    }
+
+    footer p{
+      margin:5px 0;
+    }
+
+
+    @media(max-width:768px){
+
+      nav{
+        flex-direction:column;
+        gap:15px;
+      }
+
+      .hero-content h2{
+        font-size:38px;
+      }
+
+      .hero-content p{
+        font-size:16px;
+      }
+    }
+
+  </style>
+</head>
+<body>
+
+  
+  <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+     <a href="../plantcare.html">Home</a>
+            <div class="dropdown">
+            <a href="#">Plants</a>
+             <div class="dropdown-menu">
+              <a href="../indoor.html">Indoor</a>
+                <a href="../outdoor.html">Outdoor</a>
+                <a href="../flower.html">Flowers</a>
+                <a href="../medicine.html">Medical</a>
+            </div>
+        </div>
+        <div class=" dropdown">
+            <a href="#seeds">Seeds</a>
+            <div class="dropdown-menu">
+                <a href="../fruits.html">Fruits seeds</a>
+                <a href="../veg.html">Vegetables seeds</a>
+                <a href="../flowers.html">Flowers seeds</a>
+            </div>
+        </div>
+        <a href="../pots.html">Pots</a>
+        <a href="../decoserv.html">Services</a>
+        <a href="../plantdetails.html">Plantopidia</a>
+         <a href="../plant_ disesas/new_page.html">Plantaid</a>
+              <a href="../contact.html">Contact</a> 
+           <div class="icons">
+        <!-- LOGOUT BUTTON ADDED -->   
+         <a href="../user_profile_Page.html">Profile👤</a>
+        <a href="../../index.html" class="auth-link" id="logoutBtn">Logout</a>
+    </div>
+        </nav>
+   
+    </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <h2>Plant Disease Identification</h2>
+      <p>
+        Detect and identify plant diseases easily to protect crops
+        and improve healthy plant growth.
+      </p>
+      <!-- <button>Explore More</button> -->
+    </div>
+  </section>
+
+  <!-- DISEASE CARDS -->
+  <h2 class="section-title">Common Plant Diseases</h2>
+
+  <section class="card-container">
+
+    <!-- CARD 1 -->
+    <div class="card">
+      <img src="https://highyieldsagro.com/wp-content/uploads/2025/06/Tomato-Bacterial-Leaf-Spot.webp" alt="Tomato Disease">
+
+      <div class="card-content">
+        <h3>Tomato Leaf Spot</h3>
+        <p>
+          Tomato leaf spot causes yellow and brown patches on leaves,
+          reducing plant growth and fruit quality.
+        </p>
+
+        <div class="card-actions">
+          <a class="btn" href="see_more1.html">See More</a>
+                <a class="btn" href="https://youtu.be/VY-OpeVmtq0?si=WWrlXitoAayf9s_C">watch video</a>
+        
+        </div>
+      </div>
+    </div>
+
+     <!-- CARD 2-->
+    <div class="card">
+      <img src="https://images.openai.com/static-rsc-4/R80CHkReTGIdIOzpY47kGYm8czfauo5p0hoJlWYiTKtXRCmokwgUM8PVRGRR-cuT5AdKw8162yIBEwXMLuGgd3XZr9klX5-f0G2mcRaotk5PHT5DvbJCpsAr95DgMTV70wmNUCX6XRA_4m9O433z9akN3bbJye3DZUi_e3ph5Kw?purpose=inline" alt="Tomato Disease">
+
+      <div class="card-content">
+        <h3>Root rot</h3>
+        <p>
+         Root rot is a disease that damages plant roots, causing yellow leaves, wilting, and poor plant growth.
+
+        </p>
+
+        <div class="card-actions">
+          <a class="btn" href="see_more2.html">See More</a>
+                       <a class="btn" href="https://youtu.be/7-FMFP6stPM?si=UmImWqIsWsbUh3El">watch video</a>
+        </div>
+      </div>
+    </div>
+    <!-- CARD 3 -->
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRZmmPEgFH5K7QhjqJy136XkaA4eDNueOJ8cw&s" alt="Rice Disease">
+
+      <div class="card-content">
+        <h3>Rice Blast Disease</h3>
+        <p>
+          Rice blast is a fungal disease affecting rice crops,
+          leading to major agricultural losses.
+        </p>
+
+        <div class="card-actions">
+          <a class="btn" href="rice_blast_disease.html">See More</a>
+         <a class="btn" href="https://youtu.be/H-qrRkj2_Vw?si=on1xQLs5STsz2XeJ">watch video</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 4-->
+    <div class="card">
+      <img src="https://celkau.in/crops/Cropsimg/vegetablesimg/Potato/Diseases/Early%20blight/icon/1.jpg" alt="Potato Disease">
+
+      <div class="card-content">
+        <h3>Potato Early Blight</h3>
+        <p>
+          Early blight creates dark circular spots on potato leaves
+          and weakens crop productivity.
+        </p>
+
+        <div class="card-actions">
+          <a class="btn" href="potato_early_blight.html">See More</a>
+          <a class="btn" href="https://youtu.be/JRqpm5i6u4c?si=hmyGMjTRppSVRhif">watch video</a>
+        </div>
+      </div>
+    </div>
+
+    <!-- CARD 5 -->
+    <div class="card">
+      <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRbSryG7ebGit6BFS-yieG7YabdrwyHOnzdVg&s" alt="Apple Disease">
+
+      <div class="card-content">
+        <h3>Apple Scab</h3>
+        <p>
+          Apple scab produces dark lesions on fruits and leaves,
+          affecting fruit appearance and quality.
+        </p>
+
+        <div class="card-actions">
+          <a class="btn" href="apple_scab.html">See More</a>
+          <a class="btn" href="https://youtu.be/ayCIf0V34Yc?si=ZqMVVE6BUDA1xVPq">watch video</a>
+        </div>
+      </div>
+    </div>
+    
+
+  </section>
+
+  <!-- GALLERY -->
+  <h2 class="section-title">Plant Gallery</h2>
+
+  <section class="gallery">
+
+    <img src="https://rootsraja.in/cdn/shop/articles/5-Common-Plant-Diseases-Blog-Image.png?v=1748513272" alt="">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR6C0dlK3YawhIL8MNrp8rols4bJPZr2Sau8w&s" alt="">
+    <img src="https://media.istockphoto.com/id/483451251/photo/fungal-attack.jpg?s=612x612&w=0&k=20&c=PM0Lld99Io4DU6sRqemkytZUkuSF5effOJ8fhIAXwVo=" alt="">
+    <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1slxGcNjMbD0gqX6ByEjgMH0W6g9piL80gQ&s" alt="">
+    <img src="https://cdn.shopify.com/s/files/1/0786/1570/7954/files/shutterstock-1809969313.jpg?v=1708269484" alt="">
+    <img src="https://cdn.shopify.com/s/files/1/0279/3586/6967/t/36/assets/powdery-mildew-on-leaf-1684356627338_1000x.jpg?v=1684356634" alt="">
+
+  </section>
+
+
+ <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+        <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+
+</body>
+</html>
