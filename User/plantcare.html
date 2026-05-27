@@ -12,13 +12,21 @@
             background-color: black;
             color: white;
         }
-
-        /* ===== Testimonials CSS ===== */
-        .testimonials {
-            text-align: center;
-            padding: 60px 20px;
-            background: #0f1a12;
-        }
+.testimonials{
+    text-align:center;
+    padding:60px 20px;
+    background:  #0f1a12;
+}
+.testimonials h2{
+    font-size:32px;
+    color:#ff9800;
+    margin-bottom:10px;
+}
+.testimonials .subtitle{
+    font-size:16px;
+    color:green;
+    margin-bottom:40px;
+}
 
         .testimonials h2 {
             font-size: 32px;
@@ -122,15 +130,15 @@
         </div>
         <a href="./pots.html">Pots</a>
         <a href="./decoserv.html">Services</a>
-        <a href="./plantdetails.html">Plantopidia</a> <a href="../User/plant_ disesas/new_page.html">plantaid</a>
-        <a href="./contact.html">Contact</a>
-        <div class="icons">
-            <!-- LOGOUT BUTTON ADDED --> <a href="./user_profile_Page.html">Profile👤</a>
-            <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
-            <!-- <a href="/Seller/seller-register.html" class="auth-link">Register</a>
-         <span>👤 -->
-        </div>
-    </nav>
+          <a href="./plantdetails.html">Plantopidia</a>
+             <a href="./contact.html">Contact</a> 
+    <div class="icons">
+       
+        <a href="./user_profile_Page.html">Profile👤</a>
+        
+         <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+          
+    </div>
     <!-- <div class="icons"><span>🔍</span>
         <a href="/Admin/admin-login.html" class="auth-link">Login</a>
         <a href="/Seller/seller-register.html" class="auth-link">Register</a>
@@ -605,5 +613,17 @@
             })();
         </script>
         </body>
-
+<script>
+// LOGOUT FUNCTION
+document.getElementById("logoutBtn").addEventListener("click", function(e){
+    e.preventDefault();
+    // Clear login data
+    localStorage.removeItem("isLoggedIn");
+    alert("✅ Logged out successfully!");
+    // Redirect to login page
+    window.location.href = "../index.html";
+});
+</script>
+    <script src="../cart.js"></script>
+</body>
 </html>

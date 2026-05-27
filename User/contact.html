@@ -22,16 +22,16 @@
     }
 
     /* HEADER */
-    header {
+    /* header {
       background: #1e5631;
       color: white;
       padding: 15px 30px;
       display: flex;
       justify-content: space-between;
       align-items: center;
-    }
+    } */
 
-    header .logo {
+    /* header .logo {
       font-size: 22px;
       font-weight: bold;
     }
@@ -46,7 +46,7 @@
     header nav a:hover {
       text-decoration: underline;
     }
-
+ */
     /* CONTACT SECTION */
     .container {
       max-width: 1000px;
@@ -132,19 +132,19 @@
       cursor: pointer;
     }
 
-    .btn:hover {
+    /* .btn:hover {
       background: #3e8e41;
-    }
+    } */
 
     /* FOOTER */
-    footer {
+    /* footer {
       margin-top: auto;
       background: #1e5631;
       color: white;
       text-align: center;
       padding: 15px;
       font-size: 14px;
-    }
+    } */
 
     /* RESPONSIVE */
     @media(max-width:768px) {
@@ -157,128 +157,183 @@
 
 <body>
 
-  <header>
-    <div class="logo">🌿 Garden</div>
-    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-    <nav id="navbar">
-      <a href="./plantcare.html">Home</a>
-      <div class="dropdown">
-        <a href="#">Plants</a>
-        <div class="dropdown-menu">
-          <a href="./indoor.html">Indoor</a>
-          <a href="./outdoor.html">Outdoor</a>
-          <a href="./flower.html">Flowers</a>
-          <a href="./medicine.html">Medical</a>
+ <header>
+        <div class="logo">🌿 Garden</div>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
+     <a href="./plantcare.html">Home</a>
+            <div class="dropdown">
+            <a href="#">Plants</a>
+             <div class="dropdown-menu">
+              <a href="./indoor.html">Indoor</a>
+                <a href="./outdoor.html">Outdoor</a>
+                <a href="./flower.html">Flowers</a>
+                <a href="./medicine.html">Medical</a>
+            </div>
         </div>
-      </div>
-      <div class=" dropdown">
-        <a href="#seeds">Seeds</a>
-        <div class="dropdown-menu">
-          <a href="./fruits.html">Fruits seeds</a>
-          <a href="./veg.html">Vegetables seeds</a>
-          <a href="./flowers.html">Flowers seeds</a>
+        <div class=" dropdown">
+            <a href="#seeds">Seeds</a>
+            <div class="dropdown-menu">
+                <a href="./fruits.html">Fruits seeds</a>
+                <a href="./veg.html">Vegetables seeds</a>
+                <a href="./flowers.html">Flowers seeds</a>
+            </div>
         </div>
-      </div>
-      <a href="./pots.html">Pots</a>
-      <a href="./decoserv.html">Services</a>
-      <a href="./plantdetails.html">Plantopidia</a>
-      <a href="./plantdetails.html">Plantaid</a>
-      <a href="#">Contact</a>
-      <div class="icons">
-        <!-- LOGOUT BUTTON ADDED --> <a href="./user_profile_Page.html">Profile👤</a>
+        <a href="./pots.html">Pots</a>
+        <a href="./decoserv.html">Services</a>
+        <a href="./plantdetails.html">Plantopidia</a>
+        <a href="../User/plant_ disesas/new_page.html">plantaid</a>
+              <a href="./contact.html">Contact</a> 
+           <div class="icons">
+
+         <a href="./user_profile_Page.html">Profile👤</a>
         <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
-      </div>
-    </nav>
-  </header>
+        
+    </div>
+        </nav>
+         <!-- <div class="icons">
+        <a href="cart.html" class="auth-link cart-link">🛒 Cart <span class="cart-count" style="background:#d32f2f;color:white;border-radius:50%;padding:2px 6px;font-size:12px;margin-left:4px;">0</span></a><span>🔍</span>
+        <a href="/project/login.html" class="auth-link">Login</a>
+        <a href="/project/register.html" class="auth-link">Register</a>
+        <span>👤</span>
+    </div> -->
+    </header>
+<div class="container">
 
-  <div class="container">
+<!-- LEFT SIDE -->
+<div class="contact-info">
+<h2>Contact Us 🌿</h2>
+<p>We help you grow your dream garden. Reach out for plant services and support.</p>
 
-    <!-- LEFT SIDE -->
-    <div class="contact-info">
-      <h2>Contact Us 🌿</h2>
-      <p>We help you grow your dream garden. Reach out for plant services and support.</p>
+<div class="info-item">📍 Location: Hyderabad, India</div>
+<div class="info-item">📞 Phone: +91 98765 43210</div>
+<div class="info-item">📧 Email: support@garden.com</div>
 
-      <div class="info-item">📍 Location: Hyderabad, India</div>
-      <div class="info-item">📞 Phone: +91 98765 43210</div>
-      <div class="info-item">📧 Email: support@garden.com</div>
+</div>
 
+<!-- RIGHT SIDE -->
+<div class="contact-form">
+<h2>Send Message</h2>
+
+<div class="input-group">
+<label>Full Name</label>
+<input type="text" id="fullname" required>
+</div>
+
+<div class="input-group">
+<label>Email</label>
+<input type="email" id="email" placeholder="Enter your email">
+</div>
+
+<div class="input-group">
+<label>Message</label>
+<textarea id="message" placeholder="Write your message"></textarea>
+</div>
+
+<button class="btn">Send Message</button>
+
+</div>
+
+</div>
+ <!-- FOOTER -->
+   <footer class="footer">
+  <div class="footer-container">
+
+    <!-- About Section -->
+    <div class="footer-section">
+      <h3>Green Garden</h3>
+      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
     </div>
 
-    <!-- RIGHT SIDE -->
-    <div class="contact-form">
-      <h2>Send Message</h2>
+    <!-- Quick Links -->
+    <div class="footer-section">
+      <h3>Quick Links</h3>
+        <ul>
+        <li><a href="./plantcare.html">Home</a></li>
+        <li><a href="./decoserv.html">Decoration Services</a></li>
+        <li><a href="./fruits.html">Plants</a></li>
+        <li><a href="./contact.html">Contact</a></li>
+      </ul>
+    </div>
 
-      <div class="input-group">
-        <label>Name</label>
-        <input type="text" placeholder="Enter your name">
+    <!-- Contact Info -->
+    <div class="footer-section">
+      <h3>Contact</h3>
+      <p>Email: support@greengarden.com</p>
+      <p>Phone: +91 98765 43210</p>
+      <p>Location: Hyderabad, India</p>
+    </div>
+
+    <!-- Social Media -->
+    <div class="footer-section">
+      <h3>Follow Us</h3>
+      <div class="social-icons">
+        <a href="#">🌱FaceBook</a>
+        <a href="#">🌿Instagram</a>
+        <a href="#">🌼YouTube</a>
       </div>
-
-      <div class="input-group">
-        <label>Email</label>
-        <input type="email" placeholder="Enter your email">
-      </div>
-
-      <div class="input-group">
-        <label>Message</label>
-        <textarea placeholder="Write your message"></textarea>
-      </div>
-
-      <button class="btn">Send Message</button>
-
     </div>
 
   </div>
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-container">
 
-      <!-- About Section -->
-      <div class="footer-section">
-        <h3>Green Garden</h3>
-        <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
-      </div>
+  <!-- Bottom Line -->
+  <div class="footer-bottom">
+    <p>© 2026 Green Garden | All Rights Reserved</p>
+  </div>
+</footer>
+<script>
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
 
-      <!-- Quick Links -->
-      <div class="footer-section">
-        <h3>Quick Links</h3>
-        <ul>
-          <li><a href="#">Home</a></li>
-          <li><a href="#">Shop</a></li>
-          <li><a href="#">Plants</a></li>
-          <li><a href="#">Contact</a></li>
-        </ul>
-      </div>
+// Auto capitalize first letter
+      function capitalizeWords(input) {
+        input.addEventListener("input", function () {
+          this.value = this.value
+            .toLowerCase()
+            .replace(/\b\w/g, (char) => char.toUpperCase());
+        });
+      }
 
-      <!-- Contact Info -->
-      <div class="footer-section">
-        <h3>Contact</h3>
-        <p>Email: support@greengarden.com</p>
-        <p>Phone: +91 98765 43210</p>
-        <p>Location: Hyderabad, India</p>
-      </div>
+      // Apply capitalize
+      capitalizeWords(document.getElementById("fullname"));
+      
+document.getElementById("message").addEventListener("input", function () {
+    this.value =
+        this.value.charAt(0).toUpperCase() +
+        this.value.slice(1).toLowerCase();
+});
 
-      <!-- Social Media -->
-      <div class="footer-section">
-        <h3>Follow Us</h3>
-        <div class="social-icons">
-          <a href="#">🌱FaceBook</a>
-          <a href="#">🌿Instagram</a>
-          <a href="#">🌼YouTube</a>
-        </div>
-      </div>
 
-    </div>
 
-    <!-- Bottom Line -->
-    <div class="footer-bottom">
-      <p>© 2026 Green Garden | All Rights Reserved</p>
-    </div>
-  </footer>
-  <script>
-    function toggleMenu() {
-      document.getElementById("navbar").classList.toggle("active");
+document.querySelector(".btn").addEventListener("click", function () {
+    const fullname = document.getElementById("fullname").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const message = document.getElementById("message").value.trim();
+
+    if (fullname === "") {
+        alert("Please enter name");
+        return;
     }
-  </script>
+
+    if (email === "") {
+        alert("Please enter email");
+        return;
+    }
+
+    if (message === "") {
+        alert("Please enter message");
+        return;
+    }
+
+    alert("Message sent successfully!");
+
+    document.getElementById("fullname").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("message").value = "";
+});
+</script>
+<script src="../cart.js"></script>
 </body>
 
 </html>
