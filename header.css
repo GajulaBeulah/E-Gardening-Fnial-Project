@@ -209,6 +209,36 @@ nav a:hover::after {
 .icons .auth-link:last-of-type:hover {
     background: rgba(118, 255, 3, 0.1);
 }
+
+/* Cart Button Styling */
+.icons .cart-link {
+    background-color: black;
+    color: white;
+    font-size: 20px;
+    border: 2px solid rgb(17, 117, 44);
+    padding: 3px 3px;
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    border-radius: 4px;
+    margin-left: 15px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: all 0.3s ease;
+}
+
+.icons .cart-link:hover {
+    background-color: rgb(225, 59, 78);
+    box-shadow: 0 4px 10px rgba(17, 117, 44, 0.4);
+}
+
+.cart-count {
+    border-radius: 25%;
+    padding: 3px 6px;
+    font-size: 16px;
+    background-color: #f42b03;
+    color: white;
+}
 footer {
     background: green;
     color: white;
