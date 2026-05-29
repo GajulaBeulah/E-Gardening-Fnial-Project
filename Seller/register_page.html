@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Seller Register | Garden</title>
+    <title>Register</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../header.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -257,15 +257,22 @@
 </head>
 <body>
 
+
+
+
+
+
 <header>
-    <h1 class="logo">🌿 Garden Seller</h1>
-    <nav>
-        <ul>
-            <li><a href="../index.html">Home</a></li>
-            <li><a href="selllogin.html">Login</a></li>
-        </ul>
+    <div class="logo">🌿 Garden</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
+        <a href="../index.html">Home</a>
+        <a href="./selllogin.html">Login</a>
     </nav>
+    </div>
 </header>
+
+
 
 <div class="container">
     <h2> Registration</h2>
@@ -366,6 +373,11 @@
 </footer>
 
 <script>
+
+function toggleMenu(){
+document.getElementById("navbar").classList.toggle("active");
+}
+
 const registerBtn = document.getElementById('registerBtn');
 
 registerBtn.addEventListener('click', function(){
