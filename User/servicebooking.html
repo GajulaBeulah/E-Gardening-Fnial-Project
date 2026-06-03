@@ -144,7 +144,7 @@ button:hover {
     <div class="logo">🌿 Garden</div>
     <div class="menu-toggle" onclick="toggleMenu()">☰</div>
     <nav id="navbar">
-        <a href="#">Home</a>
+        <a href="./plantcare.html">Home</a>
         <div class="dropdown">
             <a href="#">Plants</a>
             <div class="dropdown-menu">
@@ -180,18 +180,18 @@ button:hover {
   <h1 id="head">🧑‍🌾 Book Garden Decoration Service</h1>
 <div class="container">
   <h2>Service Booking Form</h2>
-  <form>
+  <form id="bookingForm">
     <label>Full Name</label>
-    <input type="text" placeholder="Enter your name" required>
+    <input type="text" id="fullName" placeholder="Enter your name" required>
 
     <label>Phone Number</label>
-    <input type="tel" placeholder="Enter phone number" required>
+    <input type="tel" id="phone" placeholder="Enter phone number" required>
 
     <label>Email</label>
-    <input type="email" placeholder="Enter email">
+    <input type="email" id="email" placeholder="Enter email">
 
     <label>Select Service</label>
-    <select required>
+    <select id="service" required>
       <option value="">-- Select Service --</option>
       <option>Garden Decoration</option>
       <option>Balcony Garden Service</option>
@@ -200,20 +200,20 @@ button:hover {
     </select>
 
     <label>Preferred Date</label>
-    <input type="date" required>
+    <input type="date" id="date" required>
 
     <label>Address</label>
-    <textarea rows="3" placeholder="Enter service address" required></textarea>
+    <textarea id="address" rows="3" placeholder="Enter full address (Include village/city name)" required></textarea>
 
     <label>Additional Notes (optional)</label>
-    <textarea rows="3" placeholder="Any special requirements"></textarea>
+    <textarea id="notes" rows="3" placeholder="Any special requirements"></textarea>
 
     <button type="submit">Confirm Booking</button>
   </form>
 
   <p class="note">Our team will contact you within 24 hours to confirm the service.</p>
 </div>
-    <    <!-- FOOTER -->
+       <!-- FOOTER -->
   <footer class="footer">
   <div class="footer-container">
 
@@ -259,11 +259,140 @@ button:hover {
     <p>© 2026 Green Garden | All Rights Reserved</p>
   </div>
 </footer>
-        <script>
+    
+
+<script src="../cart.js"></script>
+    <script>
 function toggleMenu() {
     document.getElementById("navbar").classList.toggle("active");
 }
+
+document.getElementById('bookingForm')
+.addEventListener('submit', function(e) {
+
+    e.preventDefault();
+
+    let name =
+        document.getElementById('fullName')
+        .value.trim();
+
+    let phone =
+        document.getElementById('phone')
+        .value.trim();
+
+    let email =
+        document.getElementById('email')
+        .value.trim();
+
+    let date =
+        document.getElementById('date')
+        .value;
+
+    let address =
+        document.getElementById('address')
+        .value.trim();
+
+    // Empty name check
+    if (name === '') {
+        alert('Name should not be empty');
+        return;
+    }
+
+    // Capitalize name
+    name =
+        name.charAt(0).toUpperCase() +
+        name.slice(1).toLowerCase();
+
+    document.getElementById('fullName')
+        .value = name;
+
+    // Name validation
+    const namePattern =
+        /^[A-Za-z ]+$/;
+
+    if (!namePattern.test(name)) {
+        alert(
+            'Name should contain only letters'
+        );
+        return;
+    }
+
+    // Remove spaces in phone
+    phone =
+        phone.replace(/\s/g, '');
+
+    // Phone validation
+    const phonePattern =
+        /^[6789]\d{9}$/;
+
+    if (!phonePattern.test(phone)) {
+
+        alert(
+            'Phone number must start with 6, 7, 8 or 9 and contain exactly 10 digits'
+        );
+
+        return;
+    }
+
+    // Email validation
+    if (email !== '') {
+
+        const emailPattern =
+            /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+        if (!emailPattern.test(email)) {
+
+            alert('Enter a valid email');
+            return;
+        }
+    }
+
+    // Date validation
+    const today =
+        new Date().toISOString().split('T')[0];
+
+    if (date < today) {
+
+        alert(
+            'Please select today or a future date'
+        );
+
+        return;
+    }
+
+    
+    alert(
+        'Booking confirmed successfully!'
+    );
+
+    this.reset();
+});
+
+
+
+
+function capitalizeFirstLetter(inputId) {
+
+    const input =
+        document.getElementById(inputId);
+
+    input.addEventListener('input', function() {
+
+        let value = this.value;
+
+        if (value.length > 0) {
+
+            this.value =
+                value.charAt(0).toUpperCase() +
+                value.slice(1);
+        }
+    });
+}
+
+capitalizeFirstLetter('fullName');
+capitalizeFirstLetter('address');
+capitalizeFirstLetter('notes');
+
 </script>
-<script src="../cart.js"></script>
 </body>
 </html>

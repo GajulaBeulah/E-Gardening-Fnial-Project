@@ -1,6 +1,3 @@
-
-
-/* ================== BASE CSS ================== */
 * {
     margin: 0;
     padding: 0;
@@ -14,7 +11,6 @@ body {
     line-height: 1.6;
 }
 
-/* HEADER */
 header {
     background-color: #0b140c;
     display: flex;
@@ -149,7 +145,6 @@ nav a:hover::after {
     color: white;
 }
 
-/* HERO */
 .hero {
     background: linear-gradient(rgba(13, 71, 13, 0.4), rgba(13, 71, 13, 0.4)), 
                 url("https://media.architecturaldigest.com/photos/5dcde00380598800086215f6/16:9/w_2560%2Cc_limit/Osofsky_Oct19-5.jpg") 
@@ -184,7 +179,6 @@ nav a:hover::after {
     }
 }
 
-/* SECTION */
 .section-title {
     text-align: center;
     margin: 50px 0 30px 0;
@@ -201,7 +195,6 @@ nav a:hover::after {
     flex-wrap: wrap;
 }
 
-/* CARD */
 .card {
     position: relative;
     width: 300px;
@@ -217,7 +210,6 @@ nav a:hover::after {
     transform: translateY(-10px);
 }
 
-/* IMAGE */
 .card img {
     width: 100%;
     height: 100%;
@@ -226,7 +218,6 @@ nav a:hover::after {
     border-radius: 15px;
 }
 
-/* CONTENT */
 .card-content {
     position: absolute;
     inset: 0;
@@ -276,7 +267,6 @@ nav a:hover::after {
     color: #a5d6a7;
 }
 
-/* SERVICE SECTION */
 .service {
     padding: 40px 20px;
 }
@@ -325,7 +315,6 @@ nav a:hover::after {
     line-height: 1.8;
 }
 
-/* FOOTER */
 footer {
     background: linear-gradient(135deg, #2d5016 0%, #1a3a0a 100%);
     color: white;
@@ -340,9 +329,7 @@ footer p {
     opacity: 0.9;
 }
 
-/* ================== RESPONSIVE CSS ================== */
 
-/* 📱 MOBILE */
 @media (max-width: 768px) {
 
     header {
@@ -400,7 +387,6 @@ footer p {
     }
 }
 
-/* 📲 TABLET */
 @media (min-width: 769px) and (max-width: 1024px) {
 
     .hero {
@@ -426,14 +412,12 @@ footer p {
     }
 }
 
-/* 💻 DESKTOP */
 @media (min-width: 1025px) {
     .hero {
         width: 1000px;
     }
 }
 
-/* MENU TOGGLE BUTTON */
 .menu-toggle {
     display: none;
     font-size: 26px;
@@ -441,7 +425,6 @@ footer p {
     color: #76ff03;
 }
 
-/* MOBILE MENU */
 @media (max-width: 768px) {
 
     .menu-toggle {

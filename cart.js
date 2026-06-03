@@ -79,10 +79,11 @@ document.addEventListener('DOMContentLoaded', () => {
         const text = (el.innerText || '').toLowerCase().trim();
         return el.classList.contains('add-cart') || text === 'add to card' || text === 'add to cart';
     });
-    const isCartPage = window.location.pathname.includes('cart.html');
+    const pathname = window.location.pathname;
+    const isImportantPage = pathname.includes('cart.html') || pathname.includes('place_order.html') || pathname.includes('plantcare.html');
     const cartLinks = document.querySelectorAll('.cart-link');
     
-    if (!hasAddButton && !isCartPage) {
+    if (!hasAddButton && !isImportantPage) {
         cartLinks.forEach(link => link.style.display = 'none');
     }
 });

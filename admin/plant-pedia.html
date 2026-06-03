@@ -379,7 +379,7 @@ nav li {
             <a href="sellers.html"> Sellers</a>
             <a href="reports.html"> Reports</a>
             <a href="plant-pedia.html"> Plants</a>
-             <li><a href="/E-Gardening-Fnial-Project/index.html" onclick="logout()">Logout</a></li>
+             <li><a href="../index.html" onclick="logout()">Logout</a></li>
         </nav>
         
     </header>
@@ -397,16 +397,16 @@ nav li {
                 <th>Plant Name</th>
                 <th>Category</th>
                 <th>Care Level</th>
-                <th>Views</th>
+                <th>Watering</th>
                 <th>Actions</th>
             </tr>
         </thead>
-        <tbody>
+        <tbody id="plantTableBody">
             <tr>
-                <td>🌿 Monstera Deliciosa</td>
+                <td> Monstera Deliciosa</td>
                 <td>Indoor Plants</td>
                 <td>Easy</td>
-                <td>1,245</td>
+                <td>40%</td>
                 <td>
                     <button class="action-btn view-btn"> View</button>
                     <button class="action-btn edit-btn"> Edit</button>
@@ -417,7 +417,7 @@ nav li {
                 <td> Snake Plant</td>
                 <td>Indoor Plants</td>
                 <td>Very Easy</td>
-                <td>892</td>
+                <td>70%</td>
                 <td>
                     <button class="action-btn view-btn"> View</button>
                     <button class="action-btn edit-btn"> Edit</button>
@@ -428,7 +428,7 @@ nav li {
                 <td> Spider Plant</td>
                 <td>Hanging Plants</td>
                 <td>Easy</td>
-                <td>654</td>
+                <td>30%</td>
                 <td>
                     <button class="action-btn view-btn">View</button>
                     <button class="action-btn edit-btn"> Edit</button>
@@ -439,7 +439,7 @@ nav li {
                 <td>Pothos Plant</td>
                 <td>Hanging Plants</td>
                 <td>Easy</td>
-                <td>554</td>
+                <td>50%</td>
                 <td>
                     <button class="action-btn view-btn">View</button>
                     <button class="action-btn edit-btn"> Edit</button>
@@ -450,7 +450,7 @@ nav li {
                 <td>Aloe Vera Plant</td>
                 <td>Indoor Plants</td>
                 <td>Easy</td>
-                <td>654</td>
+                <td>5%</td>
                 <td>
                     <button class="action-btn view-btn">View</button>
                     <button class="action-btn edit-btn"> Edit</button>
@@ -466,15 +466,15 @@ nav li {
     </div>
 
     <div class="form-container">
-        <form onsubmit="handleAddPlant(event)">
+        <form id="addPlantForm" onsubmit="handleAddPlant(event)">
             <div class="form-group">
-                <label>Plant Name *</label>
-                <input type="text" required>
+                <label for="plantName">Plant Name *</label>
+                <input id="plantName" name="plantName" type="text" required>
             </div>
 
             <div class="form-group">
-                <label>Category *</label>
-                <select required>
+                <label for="plantCategory">Category *</label>
+                <select id="plantCategory" name="plantCategory" required>
                     <option value="">Select Category</option>
                     <option>Indoor Plants</option>
                     <option>Outdoor Plants</option>
@@ -484,8 +484,8 @@ nav li {
             </div>
 
             <div class="form-group">
-                <label>Care Level *</label>
-                <select required>
+                <label for="careLevel">Care Level *</label>
+                <select id="careLevel" name="careLevel" required>
                     <option value="">Select Care Level</option>
                     <option>Very Easy</option>
                     <option>Easy</option>
@@ -495,13 +495,13 @@ nav li {
             </div>
 
             <div class="form-group">
-                <label>Description *</label>
-                <textarea required></textarea>
+                <label for="plantDescription">Description *</label>
+                <textarea id="plantDescription" name="plantDescription" required></textarea>
             </div>
 
             <div class="form-group">
-                <label>Watering Frequency *</label>
-                <input type="text" required>
+                <label for="wateringFrequency">Watering Frequency *</label>
+                <input id="wateringFrequency" name="wateringFrequency" type="text" required>
             </div>
 
             <button type="submit" class="submit-btn">✅ Add Plant</button>
@@ -570,11 +570,11 @@ function viewPlant(button) {
         const plantName = row.cells[0].textContent.trim();
         const category = row.cells[1].textContent.trim();
         const careLevel = row.cells[2].textContent.trim();
-        const views = row.cells[3].textContent.trim();
+        const watering = row.cells[3].textContent.trim();
         
-        console.log('Plant Details - Name:', plantName, 'Category:', category, 'Care Level:', careLevel, 'Views:', views);
+        console.log('Plant Details - Name:', plantName, 'Category:', category, 'Care Level:', careLevel, 'Watering:', watering);
         
-        alert(`🌿 Plant Details\n\nName: ${plantName}\nCategory: ${category}\nCare Level: ${careLevel}\nViews: ${views}\n\nDetailed description and care instructions would be shown here.`);
+        alert(`🌿 Plant Details\n\nName: ${plantName}\nCategory: ${category}\nCare Level: ${careLevel}\nWatering: ${watering}\n\nDetailed description and care instructions would be shown here.`);
     } catch (error) {
         console.error('Error in viewPlant:', error);
         alert('Error viewing plant details. Please try again.');
@@ -586,12 +586,12 @@ function editPlant(button) {
     try {
         console.log('Edit button clicked');
         const row = button.closest('tr');
-        const isEditing = button.textContent.includes('Save');
-        
+        const isEditing = button.textContent.trim().includes('Save');
+
         if (isEditing) {
             // Save changes
             console.log('Saving plant changes');
-            const cells = row.querySelectorAll('td:not(:last-child)');
+            const cells = getPlantCells(row);
             cells.forEach((cell, index) => {
                 const input = cell.querySelector('input');
                 if (input) {
@@ -600,7 +600,7 @@ function editPlant(button) {
                     cell.textContent = newValue;
                 }
             });
-            button.textContent = '✏️ Edit';
+            button.textContent = ' Edit';
             button.classList.remove('save-btn');
             button.classList.add('edit-btn');
             alert('Plant details updated successfully!');
@@ -608,12 +608,20 @@ function editPlant(button) {
         } else {
             // Enter edit mode
             console.log('Entering edit mode for plant');
-            const cells = row.querySelectorAll('td:not(:last-child)');
+            const cells = getPlantCells(row);
             cells.forEach(cell => {
                 const value = cell.textContent.trim();
-                cell.innerHTML = `<input type="text" value="${value}" style="width: 100%; padding: 4px; border: 1px solid #ccc; border-radius: 4px;">`;
+                const input = document.createElement('input');
+                input.type = 'text';
+                input.value = value;
+                input.style.width = '100%';
+                input.style.padding = '4px';
+                input.style.border = '1px solid #ccc';
+                input.style.borderRadius = '4px';
+                cell.textContent = '';
+                cell.appendChild(input);
             });
-            button.textContent = '💾 Save';
+            button.textContent = ' Save';
             button.classList.remove('edit-btn');
             button.classList.add('save-btn');
         }
@@ -650,46 +658,107 @@ function validatePlantData(name, category, careLevel) {
     return true;
 }
 
+function createActionButton(text, className, clickHandler) {
+    const button = document.createElement('button');
+    button.type = 'button';
+    button.textContent = text;
+    button.className = className;
+    button.addEventListener('click', clickHandler);
+    return button;
+}
+
+function addPlantToTable(plantData) {
+    const tbody = document.getElementById('plantTableBody');
+    if (!tbody) {
+        console.error('Plant table body not found');
+        return;
+    }
+
+    const row = document.createElement('tr');
+
+    row.innerHTML = `
+        <td>${plantData.name}</td>
+        <td>${plantData.category}</td>
+        <td>${plantData.careLevel}</td>
+        <td>${plantData.watering}</td>
+    `;
+
+    const actionCell = document.createElement('td');
+    const viewBtn = createActionButton('View', 'action-btn view-btn', function() { viewPlant(this); });
+    const editBtn = createActionButton(' Edit', 'action-btn edit-btn', function() { editPlant(this); });
+    const deleteBtn = createActionButton('Delete', 'action-btn delete', function() { deletePlant(this); });
+
+    actionCell.appendChild(viewBtn);
+    actionCell.appendChild(editBtn);
+    actionCell.appendChild(deleteBtn);
+    row.appendChild(actionCell);
+    tbody.appendChild(row);
+}
+
+function getPlantCells(row) {
+    return Array.from(row.children).slice(0, -1);
+}
+
 // Add event listeners when DOM is loaded
 document.addEventListener('DOMContentLoaded', function() {
     console.log('DOM Content Loaded - Attaching event listeners');
-    
-    try {
-        // View buttons
-        document.querySelectorAll('.view-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                viewPlant(this);
-            });
-        });
-        console.log('View button listeners attached');
-        
-        // Edit buttons
-        document.querySelectorAll('.edit-btn').forEach(btn => {
-            btn.addEventListener('click', function() {
-                editPlant(this);
-            });
-        });
-        console.log('Edit button listeners attached');
-        
-        // Delete buttons
-        document.querySelectorAll('.action-btn.delete').forEach(btn => {
-            btn.addEventListener('click', function() {
-                deletePlant(this);
-            });
-        });
-        console.log('Delete button listeners attached');
-        
-        console.log('All event listeners attached successfully');
-    } catch (error) {
-        console.error('Error attaching event listeners:', error);
-    }
+
+    document.body.addEventListener('click', function(event) {
+        const button = event.target.closest('button');
+        if (!button) {
+            return;
+        }
+
+        if (button.matches('.view-btn')) {
+            viewPlant(button);
+            return;
+        }
+
+        if (button.matches('.edit-btn') || button.matches('.save-btn')) {
+            editPlant(button);
+            return;
+        }
+
+        if (button.matches('.action-btn.delete')) {
+            deletePlant(button);
+            return;
+        }
+    });
+
+    console.log('Global action button delegation attached successfully');
 });
 
 // Handle add plant form submission
 function handleAddPlant(event) {
     event.preventDefault();
+
+    const form = document.getElementById('addPlantForm');
+    if (!form) {
+        console.error('Add plant form not found');
+        return;
+    }
+
+    const name = form.plantName.value.trim();
+    const category = form.plantCategory.value.trim();
+    const careLevel = form.careLevel.value.trim();
+    const description = form.plantDescription.value.trim();
+    const watering = form.wateringFrequency.value.trim();
+
+    if (!validatePlantData(name, category, careLevel)) {
+        alert('Please fill out all required fields.');
+        return;
+    }
+
+    addPlantToTable({
+        name: name,
+        category: category,
+        careLevel: careLevel,
+        description: description,
+        watering: watering || 'N/A'
+    });
+
     alert('✅ Plant added successfully!');
-    event.target.reset();
+    form.reset();
 }
 </script>
 </body>

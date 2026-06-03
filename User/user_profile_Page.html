@@ -23,6 +23,10 @@
     margin-bottom: 30px;
 }
 
+#logoutBtn{
+    color: rgb(254, 253, 253);
+}
+
 .profile-avatar {
     width: 100px;
     height: 100px;
@@ -152,9 +156,9 @@
                  <a href="./contact.html">Contact</a> 
                          <a href="./user_profile_Page.html">Profile👤</a>
                 <div class="icons">
-           <a href="cart.html" class="auth-link cart-link" style="color: white; font-size: 20px; border: 2px solid rgb(17, 117, 44); padding: 3px 3px;">🛒<span class="cart-count" style=" border-radius:25%;padding:3px 9px;font-size:16px; margin-left: -1px;">0</span></a>
+           <a href="cart.html" class="auth-link cart-link" style="margin-right: -15px; color: white; font-size: 20px; border: 2px solid rgb(17, 117, 44); padding: 3px 3px; background: linear-gradient(135deg, #2921be 0%, #a2b394 100%);">🛒<span class="cart-count" style=" border-radius:25%;padding:3px 9px;font-size:16px; margin-left: -1px;">0</span></a>
         
-       <a href="../Index.html" class="auth-link" id="logoutBtn">Logout</a>
+       <a href="../Index.html" class="auth-link" id="logoutBtn" style="color: #76ff03;">Logout</a>
     </div>
         </nav>
         </header>
@@ -181,8 +185,6 @@
         <button class="tab-button"
                 onclick="showTab(event,'wishlist')">Wishlist</button>
 
-        <button class="tab-button"
-                onclick="showTab(event,'settings')">Settings</button>
     </div>
 
     <!-- PROFILE -->
@@ -286,18 +288,6 @@
         </div>
     </div>
 
-    <!-- SETTINGS -->
-    <div id="settings" class="tab-content">
-        <div class="settings">
-            <h2>Account Settings</h2>
-
-            <button class="edit-button"
-                    onclick="saveSettings()">
-                Save Settings
-            </button>
-        </div>
-    </div>
-
 </div>
 
 <script>
@@ -359,9 +349,81 @@ function editProfile(button) {
 
         if (isEditing) {
 
-            console.log('Saving profile');
+    // Get input values
+    let firstName =
+        document.getElementById('firstName')
+        .value.trim();
 
-            const profileData = {
+    let lastName =
+        document.getElementById('lastName')
+        .value.trim();
+
+    let phone =
+        document.getElementById('phone')
+        .value.trim();
+
+    // First letter capital, remaining small
+    firstName =
+        firstName.charAt(0).toUpperCase() +
+        firstName.slice(1).toLowerCase();
+
+    lastName =
+        lastName.charAt(0).toUpperCase() +
+        lastName.slice(1).toLowerCase();
+
+    // Update input fields
+    document.getElementById('firstName')
+        .value = firstName;
+
+    document.getElementById('lastName')
+        .value = lastName;
+
+    // Name validation (only letters)
+    
+    const namePattern = /^[A-Za-z ]+$/;
+
+    // Empty validation
+if (firstName === '') {
+    alert('First name should not be empty');
+    return;
+}
+
+if (lastName === '') {
+    alert('Last name should not be empty');
+    return;
+}
+
+
+// Name validation (only letters and spaces)
+if (!namePattern.test(firstName)) {
+    alert('First name should contain only letters');
+    return;
+}
+
+if (!namePattern.test(lastName)) {
+    alert('Last name should contain only letters');
+    return;
+}
+
+   // Remove spaces from phone number
+phone = phone.replace(/\s/g, '');
+
+// Phone validation
+const phonePattern =
+    /^[6789]\d{9}$/;
+
+if (!phonePattern.test(phone)) {
+
+    alert(
+        'Phone number must start with 6, 7, 8 or 9 and contain exactly 10 digits'
+    );
+
+    return;
+}
+
+    console.log('Saving profile');
+
+    const profileData = {
 
                 firstName:
                     document.getElementById('firstName')
@@ -420,7 +482,7 @@ function editProfile(button) {
 
             imageInput.disabled = false;
 
-            button.textContent = '💾 Save';
+            button.textContent = 'Save';
         }
 
     } catch (error) {
@@ -472,15 +534,12 @@ window.onload = function() {
 
             document.getElementById('defaultAvatar')
                 .style.display = 'none';
-    </script>
-<script src="../cart.js"></script>
+   
     }
 }
-
-function saveSettings() {
-    alert('Settings saved successfully!');
 }
 
-</script>
+ </script>
+<script src="../cart.js"></script>
 </body>
 </html>
