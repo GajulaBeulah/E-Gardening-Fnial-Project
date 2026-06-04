@@ -1,552 +1,1209 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
+  <head>
+    <meta charset="UTF-8" />
     <title>Sales Dashboard</title>
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="../../header.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../../header.css" />
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            font-family: Arial;
-        }
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        font-family: Arial;
+      }
 
-        body {
-            background: #f4f6f8;
-        }
+      body {
+        background: #f4f6f8;
+      }
 
-        header {
-          background-color: #0b140c;
-            color: #fff;
-            padding: 15px 40px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+      header {
+        background-color: #0b140c;
+        color: #fff;
+        padding: 15px 40px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+      }
 
-        .logo {
-            font-size: 22px;
-            font-weight: bold;
-        }
+      .logo {
+        font-size: 22px;
+        font-weight: bold;
+      }
 
+      nav ul {
+        list-style: none;
+        display: flex;
+        gap: 25px;
+      }
+
+      nav ul li a {
+        text-decoration: none;
+        color: white;
+      }
+
+      nav ul li a:hover {
+        color: #c8e6c9;
+      }
+
+      .sales-section {
+        padding: 50px 40px;
+        max-width: 1200px;
+        margin: auto;
+      }
+
+      .sales-cards {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 25px;
+      }
+
+      .sales-card {
+        background: #fff;
+        padding: 30px;
+        border-radius: 12px;
+        text-align: center;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+        cursor: pointer;
+      }
+
+      .sales-card p {
+        font-size: 26px;
+        color: #2e7d32;
+        font-weight: bold;
+      }
+
+      .analytics {
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        margin-top: 15px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      }
+
+      table {
+        width: 100%;
+        border-collapse: collapse;
+      }
+
+      th,
+      td {
+        padding: 10px;
+        border: 1px solid #ccc;
+        text-align: center;
+      }
+
+      th {
+        background: #2e7d32;
+        color: #fff;
+      }
+
+      /* .dropdown {
+        display: none;
+        width: 100%;
+        margin-top: 30px;
+        grid-column: 1 / -1;
+        } */
+      .dropdown {
+        display: none;
+        width: 100%;
+        margin-top: 30px;
+        background: #fff;
+        padding: 20px;
+        border-radius: 12px;
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+
+        /* Important */
+        position: relative;
+        left: 0;
+        min-width: 100%;
+      }
+
+      footer {
+        background: green;
+        color: white;
+        text-align: center;
+        padding: 20px;
+        margin-top: 40px;
+      }
+
+      .footer-bottom {
+        text-align: center;
+        font-size: 14px;
+        border-top: 1px solid #333;
+        padding-top: 15px;
+      }
+
+      .extra-row {
+        display: none;
+      }
+
+      .see-more-btn {
+        margin-top: 15px;
+        padding: 10px 20px;
+        background: #2e7d32;
+        color: white;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+
+      .extra-row {
+        display: none;
+      }
+
+      /* Tablet (max-width: 992px) */
+      @media (max-width: 992px) {
         nav ul {
-            list-style: none;
-            display: flex;
-            gap: 25px;
-        }
-
-        nav ul li a {
-            text-decoration: none;
-            color: white;
-        }
-
-        nav ul li a:hover {
-            color: #c8e6c9;
+          flex-direction: column;
+          gap: 10px;
         }
 
         .sales-section {
-            padding: 50px 40px;
-            max-width: 1200px;
-            margin: auto;
+          padding: 30px 20px;
+        }
+      }
+
+      /* Mobile (max-width: 600px) */
+      @media (max-width: 600px) {
+        header {
+          padding: 15px 20px;
         }
 
-        .sales-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+        .logo {
+          font-size: 18px;
+        }
+
+        nav ul {
+          flex-direction: column;
+          gap: 10px;
+        }
+
+        .sales-section {
+          padding: 20px 10px;
         }
 
         .sales-card {
-            background: #fff;
-            padding: 30px;
-            border-radius: 12px;
-            text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-            cursor: pointer;
+          padding: 20px;
         }
 
         .sales-card p {
-            font-size: 26px;
-            color: #2e7d32;
-            font-weight: bold;
-        }
-
-        .analytics {
-            background: #fff;
-            padding: 20px;
-            border-radius: 12px;
-            margin-top: 15px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+          font-size: 20px;
         }
 
         table {
-            width: 100%;
-            border-collapse: collapse;
+          font-size: 12px;
         }
 
         th,
         td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-
-        th {
-            background: #2e7d32;
-            color: #fff;
-        }
-
-        .dropdown {
-            display: none;
+          padding: 6px;
         }
 
         footer {
-            background: green;
-            color: white;
-            text-align: center;
-            padding: 20px;
-            margin-top: 40px;
+          font-size: 14px;
+          padding: 15px;
         }
+      }
+    </style>
+  </head>
 
-        .footer-bottom {
-            text-align: center;
-            font-size: 14px;
-            border-top: 1px solid #333;
-            padding-top: 15px;
-        }
-
-        /* Tablet (max-width: 992px) */
-        @media (max-width: 992px) {
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .sales-section {
-                padding: 30px 20px;
-            }
-        }
-
-        /* Mobile (max-width: 600px) */
-        @media (max-width: 600px) {
-            header {
-                padding: 15px 20px;
-            }
-
-            .logo {
-                font-size: 18px;
-            }
-
-            nav ul {
-                flex-direction: column;
-                gap: 10px;
-            }
-
-            .sales-section {
-                padding: 20px 10px;
-            }
-
-            .sales-card {
-                padding: 20px;
-            }
-
-            .sales-card p {
-                font-size: 20px;
-            }
-
-            table {
-                font-size: 12px;
-            }
-
-            th, td {
-                padding: 6px;
-            }
-
-            footer {
-                font-size: 14px;
-                padding: 15px;
-            }
-        }</style>
-</head>
-
-<body>
-
-<header>
-    <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-    <nav>
+  <body>
+    <header>
+      <h1 class="logo">🌿 Garden Seller Dashboard</h1>
+      <nav>
         <ul>
-             <li><a href="./sellerdashboard.html">Home</a></li>
-            <li><a href="./sales.html">Sales</a></li>
-            <li><a href="./orders.html">Orders</a></li>
-            <li><a href="./product.html">Products</a></li>
-            <li><a href="./profile.html">Profile</a></li>
-            <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
+          <li><a href="./sellerdashboard.html">Home</a></li>
+          <li><a href="./sales.html">Sales</a></li>
+          <li><a href="./orders.html">Orders</a></li>
+          <li><a href="./product.html">Products</a></li>
+          <li><a href="./profile.html">Profile</a></li>
+          <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
         </ul>
-    </nav>
-</header>
+      </nav>
+    </header>
 
     <section class="sales-section">
+      <h2 style="text-align: center; margin-bottom: 30px">Sales Overview 📊</h2>
 
-        <h2 style="text-align:center;margin-bottom:30px;">Sales Overview 📊</h2>
+      <div class="sales-cards">
+        <!-- TOTAL SALES -->
+        <div>
+          <div class="sales-card" onclick="toggle('total')">
+            <h3>Total Sales</h3>
+            <p>₹ 30,000</p>
+          </div>
 
-        <div class="sales-cards">
+          <div id="total" class="dropdown analytics">
+            <h3>Total Sales Details</h3>
+            <table>
+              <tr>
+                <th>Plant</th>
+                <th>Customer</th>
+                <th>Mobile No</th>
+                <th>Quantity</th>
+                <th>₹</th>
+              </tr>
 
-            <!-- TOTAL SALES -->
-            <div>
-                <div class="sales-card" onclick="toggle('total')">
-                    <h3>Total Sales</h3>
-                    <p>₹ 1,25,000</p>
-                </div>
+              <tr>
+                <td>Rose</td>
+                <td>Ravi</td>
+                <td>8876543210</td>
+                <td>5</td>
+                <td>500</td>
+              </tr>
 
-                <div id="total" class="dropdown analytics">
-                    <h3>Total Sales Details</h3>
-                    <table>
-                        <tr>
-                            <th>Plant</th>
-                            <th>Customer</th>
-                            <th>₹</th>
-                        </tr>
-                        <tr>
-                            <td>Rose</td>
-                            <td>Ravi</td>
-                            <td>500</td>
-                        </tr>
-                        <tr>
-                            <td>Tulsi</td>
-                            <td>Anjali</td>
-                            <td>300</td>
-                        </tr>
-                        <tr>
-                            <td>Aloe</td>
-                            <td>Suresh</td>
-                            <td>400</td>
-                        </tr>
-                        <tr>
-                            <td>Mango</td>
-                            <td>Kiran</td>
-                            <td>900</td>
-                        </tr>
-                        <tr>
-                            <td>Neem</td>
-                            <td>Priya</td>
-                            <td>200</td>
-                        </tr>
-                        <tr>
-                            <td>Bamboo</td>
-                            <td>Rahul</td>
-                            <td>700</td>
-                        </tr>
-                        <tr>
-                            <td>Money Plant</td>
-                            <td>Divya</td>
-                            <td>350</td>
-                        </tr>
-                        <tr>
-                            <td>Cactus</td>
-                            <td>Arun</td>
-                            <td>150</td>
-                        </tr>
-                        <tr>
-                            <td>Hibiscus</td>
-                            <td>Meena</td>
-                            <td>450</td>
-                        </tr>
-                        <tr>
-                            <td>Lavender</td>
-                            <td>Vikram</td>
-                            <td>600</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+              <tr>
+                <td>Rose</td>
+                <td>Priya</td>
+                <td>9876543211</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
 
-            <!-- LAST MONTH -->
-            <div>
-                <div class="sales-card" onclick="toggle('last')">
-                    <h3>Last Month</h3>
-                    <p>₹ 35,000</p>
-                </div>
+              <tr>
+                <td>Neem</td>
+                <td>Ravi</td>
+                <td>7123401122</td>
+                <td>5</td>
+                <td>520</td>
+              </tr>
 
-                <div id="last" class="dropdown analytics">
-                    <h3>Last Month Sales</h3>
-                    <table>
-                        <tr>
-                            <th>Plant</th>
-                            <th>Customer</th>
-                            <th>₹</th>
-                        </tr>
-                        <tr>
-                            <td>Rose</td>
-                            <td>Amit</td>
-                            <td>400</td>
-                        </tr>
-                        <tr>
-                            <td>Tulsi</td>
-                            <td>Neha</td>
-                            <td>200</td>
-                        </tr>
-                        <tr>
-                            <td>Aloe</td>
-                            <td>Raj</td>
-                            <td>300</td>
-                        </tr>
-                        <tr>
-                            <td>Mango</td>
-                            <td>Sita</td>
-                            <td>800</td>
-                        </tr>
-                        <tr>
-                            <td>Neem</td>
-                            <td>John</td>
-                            <td>250</td>
-                        </tr>
-                        <tr>
-                            <td>Bamboo</td>
-                            <td>Ali</td>
-                            <td>600</td>
-                        </tr>
-                        <tr>
-                            <td>Money</td>
-                            <td>Pooja</td>
-                            <td>350</td>
-                        </tr>
-                        <tr>
-                            <td>Cactus</td>
-                            <td>Sam</td>
-                            <td>150</td>
-                        </tr>
-                        <tr>
-                            <td>Hibiscus</td>
-                            <td>Rani</td>
-                            <td>450</td>
-                        </tr>
-                        <tr>
-                            <td>Lavender</td>
-                            <td>David</td>
-                            <td>500</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+              <tr>
+                <td>Aloe</td>
+                <td>Sneha</td>
+                <td>9988774455</td>
+                <td>3</td>
+                <td>350</td>
+              </tr>
 
-            <!-- CURRENT MONTH -->
-            <div>
-                <div class="sales-card" onclick="toggle('current')">
-                    <h3>Current Month</h3>
-                    <p>₹ 18,500</p>
-                </div>
+              <tr>
+                <td>Mango</td>
+                <td>Karthik</td>
+                <td>6012345671</td>
+                <td>8</td>
+                <td>900</td>
+              </tr>
 
-                <div id="current" class="dropdown analytics">
-                    <h3>Current Month Sales</h3>
-                    <table>
-                        <tr>
-                            <th>Plant</th>
-                            <th>Customer</th>
-                            <th>₹</th>
-                        </tr>
-                        <tr>
-                            <td>Rose</td>
-                            <td>Karthik</td>
-                            <td>500</td>
-                        </tr>
-                        <tr>
-                            <td>Tulsi</td>
-                            <td>Swathi</td>
-                            <td>250</td>
-                        </tr>
-                        <tr>
-                            <td>Aloe</td>
-                            <td>Ramesh</td>
-                            <td>300</td>
-                        </tr>
-                        <tr>
-                            <td>Mango</td>
-                            <td>Teja</td>
-                            <td>900</td>
-                        </tr>
-                        <tr>
-                            <td>Neem</td>
-                            <td>Latha</td>
-                            <td>200</td>
-                        </tr>
-                        <tr>
-                            <td>Bamboo</td>
-                            <td>Ajay</td>
-                            <td>600</td>
-                        </tr>
-                        <tr>
-                            <td>Money</td>
-                            <td>Keerthi</td>
-                            <td>350</td>
-                        </tr>
-                        <tr>
-                            <td>Cactus</td>
-                            <td>Varun</td>
-                            <td>150</td>
-                        </tr>
-                        <tr>
-                            <td>Hibiscus</td>
-                            <td>Sneha</td>
-                            <td>450</td>
-                        </tr>
-                        <tr>
-                            <td>Lavender</td>
-                            <td>Manoj</td>
-                            <td>500</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+              <tr>
+                <td>Bamboo</td>
+                <td>Divya</td>
+                <td>8345612345</td>
+                <td>6</td>
+                <td>700</td>
+              </tr>
 
-            <!-- PENDING -->
-            <div>
-                <div class="sales-card" onclick="toggle('pending')">
-                    <h3>Pending Amount</h3>
-                    <p>₹ 7,200</p>
-                </div>
+              <tr>
+                <td>Money Plant</td>
+                <td>Arjun</td>
+                <td>9765432199</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
 
-                <div id="pending" class="dropdown analytics">
-                    <h3>Pending Payments</h3>
-                    <table>
-                        <tr>
-                            <th>Plant</th>
-                            <th>Customer</th>
-                            <th>₹</th>
-                        </tr>
-                        <tr>
-                            <td>Rose</td>
-                            <td>Arjun</td>
-                            <td>200</td>
-                        </tr>
-                        <tr>
-                            <td>Tulsi</td>
-                            <td>Megha</td>
-                            <td>150</td>
-                        </tr>
-                        <tr>
-                            <td>Aloe</td>
-                            <td>Kishore</td>
-                            <td>300</td>
-                        </tr>
-                        <tr>
-                            <td>Mango</td>
-                            <td>Anu</td>
-                            <td>500</td>
-                        </tr>
-                        <tr>
-                            <td>Neem</td>
-                            <td>Sunil</td>
-                            <td>250</td>
-                        </tr>
-                        <tr>
-                            <td>Bamboo</td>
-                            <td>Deepak</td>
-                            <td>400</td>
-                        </tr>
-                        <tr>
-                            <td>Money</td>
-                            <td>Nisha</td>
-                            <td>350</td>
-                        </tr>
-                        <tr>
-                            <td>Cactus</td>
-                            <td>Rohit</td>
-                            <td>150</td>
-                        </tr>
-                        <tr>
-                            <td>Hibiscus</td>
-                            <td>Gayatri</td>
-                            <td>450</td>
-                        </tr>
-                        <tr>
-                            <td>Lavender</td>
-                            <td>Tarun</td>
-                            <td>500</td>
-                        </tr>
-                    </table>
-                </div>
-            </div>
+              <tr>
+                <td>Hibiscus</td>
+                <td>Meena</td>
+                <td>7445566112</td>
+                <td>5</td>
+                <td>550</td>
+              </tr>
 
+              <tr>
+                <td>Lavender</td>
+                <td>Rahul</td>
+                <td>9879871110</td>
+                <td>7</td>
+                <td>800</td>
+              </tr>
+
+              <tr>
+                <td>Tulsi</td>
+                <td>Anjali</td>
+                <td>6123456789</td>
+                <td>3</td>
+                <td>300</td>
+              </tr>
+
+              <tr>
+                <td>Aloe</td>
+                <td>Suresh</td>
+                <td>9988776655</td>
+                <td>4</td>
+                <td>400</td>
+              </tr>
+
+              <tr>
+                <td>Mango</td>
+                <td>Kiran</td>
+                <td>8871204567</td>
+                <td>9</td>
+                <td>900</td>
+              </tr>
+
+              <tr>
+                <td>Neem</td>
+                <td>Priya</td>
+                <td>9012345678</td>
+                <td>2</td>
+                <td>200</td>
+              </tr>
+
+              <tr>
+                <td>Bamboo</td>
+                <td>Rahul</td>
+                <td>8345678901</td>
+                <td>7</td>
+                <td>700</td>
+              </tr>
+
+              <tr>
+                <td>Money Plant</td>
+                <td>Divya</td>
+                <td>7765432109</td>
+                <td>3</td>
+                <td>350</td>
+              </tr>
+
+              <tr>
+                <td>Cactus</td>
+                <td>Arun</td>
+                <td>6898989898</td>
+                <td>1</td>
+                <td>150</td>
+              </tr>
+
+              <tr>
+                <td>Hibiscus</td>
+                <td>Meena</td>
+                <td>8445566778</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
+
+              <tr>
+                <td>Lavender</td>
+                <td>Vikram</td>
+                <td>9879879876</td>
+                <td>6</td>
+                <td>600</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Bamboo</td>
+                <td>Srinu</td>
+                <td>8345678901</td>
+                <td>7</td>
+                <td>700</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Money Plant</td>
+                <td>Lakshmi</td>
+                <td>6765432109</td>
+                <td>3</td>
+                <td>350</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Cactus</td>
+                <td>Raju</td>
+                <td>8898989898</td>
+                <td>1</td>
+                <td>150</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Hibiscus</td>
+                <td>Sailaja</td>
+                <td>9445566778</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Lavender</td>
+                <td>Mahesh</td>
+                <td>8879879876</td>
+                <td>6</td>
+                <td>600</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Tulsi</td>
+                <td>Praveen</td>
+                <td>6123456780</td>
+                <td>5</td>
+                <td>500</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Neem</td>
+                <td>Keerthana</td>
+                <td>9988112233</td>
+                <td>3</td>
+                <td>300</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Aloe</td>
+                <td>Chandu</td>
+                <td>7556677889</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Mango</td>
+                <td>Bhavani</td>
+                <td>9887766554</td>
+                <td>8</td>
+                <td>850</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Rose</td>
+                <td>Harika</td>
+                <td>8876541230</td>
+                <td>5</td>
+                <td>550</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Bamboo</td>
+                <td>Srikanth</td>
+                <td>9345671234</td>
+                <td>7</td>
+                <td>750</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Money Plant</td>
+                <td>Deepthi</td>
+                <td>8765412345</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Cactus</td>
+                <td>Vamsi</td>
+                <td>9898912345</td>
+                <td>2</td>
+                <td>250</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Hibiscus</td>
+                <td>Swapna</td>
+                <td>8445511223</td>
+                <td>5</td>
+                <td>550</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Lavender</td>
+                <td>Karthik</td>
+                <td>6879812345</td>
+                <td>8</td>
+                <td>850</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Rose</td>
+                <td>Sruthi</td>
+                <td>9011227788</td>
+                <td>6</td>
+                <td>650</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Tulsi</td>
+                <td>Ajay</td>
+                <td>7345612345</td>
+                <td>4</td>
+                <td>420</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Neem</td>
+                <td>Divya</td>
+                <td>9988771122</td>
+                <td>5</td>
+                <td>520</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Aloe</td>
+                <td>Ramesh</td>
+                <td>9556699887</td>
+                <td>3</td>
+                <td>350</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Mango</td>
+                <td>Sindhu</td>
+                <td>9887744221</td>
+                <td>9</td>
+                <td>950</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Rose</td>
+                <td>Anusha</td>
+                <td>9011223344</td>
+                <td>2</td>
+                <td>250</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Tulsi</td>
+                <td>Praveen</td>
+                <td>9123456780</td>
+                <td>5</td>
+                <td>500</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Neem</td>
+                <td>Keerthana</td>
+                <td>9988112233</td>
+                <td>3</td>
+                <td>300</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Aloe</td>
+                <td>Chandu</td>
+                <td>9556677889</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Mango</td>
+                <td>Bhavani</td>
+                <td>9887766554</td>
+                <td>8</td>
+                <td>850</td>
+              </tr>
+              <tr class="extra-row">
+                <td>Rose</td>
+                <td>Harika</td>
+                <td>9876541230</td>
+                <td>5</td>
+                <td>550</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Tulsi</td>
+                <td>Naresh</td>
+                <td>9123409876</td>
+                <td>6</td>
+                <td>600</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Neem</td>
+                <td>Lavanya</td>
+                <td>9012341122</td>
+                <td>3</td>
+                <td>350</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Bamboo</td>
+                <td>Srikanth</td>
+                <td>9345671234</td>
+                <td>7</td>
+                <td>750</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Money Plant</td>
+                <td>Deepthi</td>
+                <td>9765412345</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Cactus</td>
+                <td>Vamsi</td>
+                <td>9898912345</td>
+                <td>2</td>
+                <td>250</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Hibiscus</td>
+                <td>Swapna</td>
+                <td>9445511223</td>
+                <td>5</td>
+                <td>550</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Lavender</td>
+                <td>Karthik</td>
+                <td>9879812345</td>
+                <td>8</td>
+                <td>850</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Aloe</td>
+                <td>Mahender</td>
+                <td>9556612345</td>
+                <td>6</td>
+                <td>650</td>
+              </tr>
+
+              <tr class="extra-row">
+                <td>Mango</td>
+                <td>Sravani</td>
+                <td>9887712345</td>
+                <td>10</td>
+                <td>950</td>
+              </tr>
+            </table>
+            <button id="seeMoreBtn" class="see-more-btn" onclick="showMore()">
+              See More
+            </button>
+          </div>
         </div>
 
-        <!-- Chart -->
-        <div class="analytics" style="margin-top:40px;">
-            <h3 style="text-align:center;">Sales Analytics</h3>
-            <canvas id="chart"></canvas>
+        <!-- LAST MONTH -->
+        <div>
+          <div class="sales-card" onclick="toggle('last')">
+            <h3>Last Month</h3>
+            <p>₹ 10,400</p>
+          </div>
+
+          <div id="last" class="dropdown analytics">
+            <h3>Last Month Sales</h3>
+            <table>
+              <tr>
+                <th>Plant</th>
+                <th>Customer</th>
+                <th>Mobile No</th>
+                <th>Quantity</th>
+                <th>₹</th>
+              </tr>
+
+              <tr>
+                <td>Aloe</td>
+                <td>Raj</td>
+                <td>9988776600</td>
+                <td>3</td>
+                <td>300</td>
+              </tr>
+
+              <tr>
+                <td>Mango</td>
+                <td>Sita</td>
+                <td>9871204500</td>
+                <td>8</td>
+                <td>800</td>
+              </tr>
+
+              <tr>
+                <td>Neem</td>
+                <td>John</td>
+                <td>9012345600</td>
+                <td>2</td>
+                <td>250</td>
+              </tr>
+
+              <tr>
+                <td>Bamboo</td>
+                <td>Ali</td>
+                <td>9345678902</td>
+                <td>6</td>
+                <td>600</td>
+              </tr>
+
+              <tr>
+                <td>Money Plant</td>
+                <td>Pooja</td>
+                <td>9765432110</td>
+                <td>3</td>
+                <td>350</td>
+              </tr>
+
+              <tr>
+                <td>Cactus</td>
+                <td>Sam</td>
+                <td>9898989800</td>
+                <td>1</td>
+                <td>150</td>
+              </tr>
+
+              <tr>
+                <td>Hibiscus</td>
+                <td>Rani</td>
+                <td>9445566700</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
+
+              <tr>
+                <td>Jasmine</td>
+                <td>Ravi</td>
+                <td>9000000001</td>
+                <td>10</td>
+                <td>1000</td>
+              </tr>
+
+              <tr>
+                <td>Rose</td>
+                <td>Meera</td>
+                <td>9000000002</td>
+                <td>9</td>
+                <td>900</td>
+              </tr>
+
+              <tr>
+                <td>Tulsi</td>
+                <td>Aarav</td>
+                <td>9000000003</td>
+                <td>8</td>
+                <td>800</td>
+              </tr>
+
+              <tr>
+                <td>Mango</td>
+                <td>Divya</td>
+                <td>9000000004</td>
+                <td>7</td>
+                <td>700</td>
+              </tr>
+
+              <tr>
+                <td>Neem</td>
+                <td>Kiran</td>
+                <td>9000000005</td>
+                <td>6</td>
+                <td>650</td>
+              </tr>
+
+              <tr>
+                <td>Aloe</td>
+                <td>Sneha</td>
+                <td>9000000006</td>
+                <td>5</td>
+                <td>600</td>
+              </tr>
+
+              <tr>
+                <td>Bamboo</td>
+                <td>Arjun</td>
+                <td>9000000007</td>
+                <td>4</td>
+                <td>550</td>
+              </tr>
+
+              <tr>
+                <td>Hibiscus</td>
+                <td>Pooja</td>
+                <td>9000000008</td>
+                <td>3</td>
+                <td>800</td>
+              </tr>
+
+              <tr>
+                <td>Lavender</td>
+                <td>David</td>
+                <td>9879879800</td>
+                <td>5</td>
+                <td>500</td>
+              </tr>
+            </table>
+          </div>
         </div>
 
-    </section>
-      <!-- FOOTER -->
-  <footer class="footer">
-  <div class="footer-container">
+        <!-- CURRENT MONTH -->
+        <div>
+          <div class="sales-card" onclick="toggle('current')">
+            <h3>Current Month</h3>
+            <p>₹ 9,000</p>
+          </div>
 
-    <!-- About Section -->
-    <div class="footer-section">
-      <h3>Green Garden</h3>
-      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
-    </div>
+          <div id="current" class="dropdown analytics">
+            <h3>Current Month Sales</h3>
+            <table>
+              <tr>
+                <th>Plant</th>
+                <th>Customer</th>
+                <th>Mobile No</th>
+                <th>Quantity</th>
+                <th>₹</th>
+              </tr>
+              <tr>
+                <td>Rose</td>
+                <td>Karthik</td>
+                <td>9876543201</td>
+                <td>5</td>
+                <td>500</td>
+              </tr>
 
-    <!-- Quick Links -->
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-        <ul>
-        <li><a href="./plantcare.html">Home</a></li>
-        <li><a href="./decoserv.html">Decoration Services</a></li>
-        <li><a href="./fruits.html">Plants</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-    </div>
+              <tr>
+                <td>Tulsi</td>
+                <td>Swathi</td>
+                <td>9123456701</td>
+                <td>2</td>
+                <td>250</td>
+              </tr>
 
-    <!-- Contact Info -->
-    <div class="footer-section">
-      <h3>Contact</h3>
-      <p>Email: support@greengarden.com</p>
-      <p>Phone: +91 98765 43210</p>
-      <p>Location: Hyderabad, India</p>
-    </div>
+              <tr>
+                <td>Aloe</td>
+                <td>Ramesh</td>
+                <td>9988776611</td>
+                <td>3</td>
+                <td>300</td>
+              </tr>
 
-    <!-- Social Media -->
-    <div class="footer-section">
-      <h3>Follow Us</h3>
-      <div class="social-icons">
-        <a href="#">🌱FaceBook</a>
-        <a href="#">🌿Instagram</a>
-        <a href="#">🌼YouTube</a>
+              <tr>
+                <td>Mango</td>
+                <td>Teja</td>
+                <td>9871204511</td>
+                <td>9</td>
+                <td>900</td>
+              </tr>
+
+              <tr>
+                <td>Neem</td>
+                <td>Latha</td>
+                <td>9012345611</td>
+                <td>2</td>
+                <td>200</td>
+              </tr>
+
+              <tr>
+                <td>Bamboo</td>
+                <td>Ajay</td>
+                <td>9345678911</td>
+                <td>6</td>
+                <td>600</td>
+              </tr>
+
+              <tr>
+                <td>Money Plant</td>
+                <td>Keerthi</td>
+                <td>9765432121</td>
+                <td>3</td>
+                <td>350</td>
+              </tr>
+
+              <tr>
+                <td>Cactus</td>
+                <td>Varun</td>
+                <td>9898989811</td>
+                <td>1</td>
+                <td>150</td>
+              </tr>
+
+              <tr>
+                <td>Jasmine</td>
+                <td>Ravi</td>
+                <td>9001112233</td>
+                <td>10</td>
+                <td>1000</td>
+              </tr>
+
+              <tr>
+                <td>Rose</td>
+                <td>Meera</td>
+                <td>9001112244</td>
+                <td>9</td>
+                <td>900</td>
+              </tr>
+
+              <tr>
+                <td>Tulsi</td>
+                <td>Arjun</td>
+                <td>9001112255</td>
+                <td>8</td>
+                <td>800</td>
+              </tr>
+
+              <tr>
+                <td>Mango</td>
+                <td>Divya</td>
+                <td>9001112266</td>
+                <td>7</td>
+                <td>700</td>
+              </tr>
+
+              <tr>
+                <td>Neem</td>
+                <td>Kiran</td>
+                <td>9001112277</td>
+                <td>6</td>
+                <td>600</td>
+              </tr>
+
+              <tr>
+                <td>Aloe</td>
+                <td>Sneha</td>
+                <td>9001112288</td>
+                <td>8</td>
+                <td>800</td>
+              </tr>
+
+              <tr>
+                <td>Hibiscus</td>
+                <td>Sneha</td>
+                <td>9445566711</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
+
+              <tr>
+                <td>Lavender</td>
+                <td>Manoj</td>
+                <td>9879879811</td>
+                <td>5</td>
+                <td>500</td>
+              </tr>
+            </table>
+          </div>
+        </div>
+
+        <!-- PENDING -->
+        <div>
+          <div class="sales-card" onclick="toggle('pending')">
+            <h3>Pending Amount</h3>
+            <p>₹ 4,050</p>
+          </div>
+
+          <div id="pending" class="dropdown analytics">
+            <h3>Pending Payments</h3>
+            <table>
+              <tr>
+                <th>Plant</th>
+                <th>Customer</th>
+                <th>Mobile No</th>
+                <th>Quantity</th>
+                <th>₹</th>
+              </tr>
+              <tr>
+                <td>Mango</td>
+                <td>Anu</td>
+                <td>9871204522</td>
+                <td>5</td>
+                <td>500</td>
+              </tr>
+
+              <tr>
+                <td>Neem</td>
+                <td>Sunil</td>
+                <td>9012345622</td>
+                <td>2</td>
+                <td>250</td>
+              </tr>
+
+              <tr>
+                <td>Bamboo</td>
+                <td>Deepak</td>
+                <td>9345678922</td>
+                <td>4</td>
+                <td>400</td>
+              </tr>
+
+              <tr>
+                <td>Money Plant</td>
+                <td>Nisha</td>
+                <td>9765432132</td>
+                <td>3</td>
+                <td>350</td>
+              </tr>
+
+              <tr>
+                <td>Cactus</td>
+                <td>Rohit</td>
+                <td>9898989822</td>
+                <td>1</td>
+                <td>150</td>
+              </tr>
+
+              <tr>
+                <td>Hibiscus</td>
+                <td>Gayatri</td>
+                <td>9445566722</td>
+                <td>4</td>
+                <td>450</td>
+              </tr>
+
+              <tr>
+                <td>Jasmine</td>
+                <td>Ravi</td>
+                <td>9001113300</td>
+                <td>4</td>
+                <td>400</td>
+              </tr>
+
+              <tr>
+                <td>Rose</td>
+                <td>Divya</td>
+                <td>9001113311</td>
+                <td>2</td>
+                <td>200</td>
+              </tr>
+
+              <tr>
+                <td>Tulsi</td>
+                <td>Kiran</td>
+                <td>9001113322</td>
+                <td>1</td>
+                <td>200</td>
+              </tr>
+
+              <tr>
+                <td>Lavender</td>
+                <td>Tarun</td>
+                <td>9879879822</td>
+                <td>5</td>
+                <td>500</td>
+              </tr>
+            </table>
+          </div>
+        </div>
       </div>
-    </div>
 
-  </div>
+      <!-- Chart -->
+      <div class="analytics" style="margin-top: 40px">
+        <h3 style="text-align: center">Sales Analytics</h3>
+        <canvas id="chart"></canvas>
+      </div>
+    </section>
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer-container">
+        <!-- About Section -->
+        <div class="footer-section">
+          <h3>Green Garden</h3>
+          <p>
+            Your one-stop shop for plants, seeds, and gardening tools. Grow your
+            dream garden with us.
+          </p>
+        </div>
 
-  <!-- Bottom Line -->
-  <div class="footer-bottom">
-    <p>© 2026 Green Garden | All Rights Reserved</p>
-  </div>
-</footer>
+        <!-- Quick Links -->
+        <div class="footer-section">
+          <h3>Quick Links</h3>
+          <ul>
+            <li><a href="./plantcare.html">Home</a></li>
+            <li><a href="./decoserv.html">Decoration Services</a></li>
+            <li><a href="./fruits.html">Plants</a></li>
+            <li><a href="./contact.html">Contact</a></li>
+          </ul>
+        </div>
+
+        <!-- Contact Info -->
+        <div class="footer-section">
+          <h3>Contact</h3>
+          <p>Email: support@greengarden.com</p>
+          <p>Phone: +91 98765 43210</p>
+          <p>Location: Hyderabad, India</p>
+        </div>
+
+        <!-- Social Media -->
+        <div class="footer-section">
+          <h3>Follow Us</h3>
+          <div class="social-icons">
+            <a href="#">🌱FaceBook</a>
+            <a href="#">🌿Instagram</a>
+            <a href="#">🌼YouTube</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Bottom Line -->
+      <div class="footer-bottom">
+        <p>© 2026 Green Garden | All Rights Reserved</p>
+      </div>
+    </footer>
 
     <script>
-        function toggle(id) {
-            const el = document.getElementById(id);
-            el.style.display = (el.style.display === "block") ? "none" : "block";
-        }
+      //         function toggle(id) {
 
-        new Chart(document.getElementById('chart'), {
-            type: 'bar',
-            data: {
-                labels: ['Last Month', 'Current Month', 'Pending'],
-                datasets: [{
-                    data: [35000, 18500, 7200],
-                    backgroundColor: ['#66bb6a', '#2e7d32', '#ffa726']
-                }]
-            },
-            options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+      //     // Hide all sections first
+      //     const dropdowns = document.querySelectorAll('.dropdown');
+
+      //     dropdowns.forEach(item => {
+      //         item.style.display = "none";
+      //     });
+
+      //     // Show clicked section
+      //     document.getElementById(id).style.display = "block";
+      // }
+
+      let clickCount = 0;
+
+      function showMore() {
+        clickCount++;
+
+        const rows = document.querySelectorAll("#total .group" + clickCount);
+
+        rows.forEach((row) => {
+          row.style.display = "table-row";
         });
+
+        // Hide button after last group
+        if (clickCount === 3) {
+          document.getElementById("seeMoreBtn").style.display = "none";
+        }
+      }
+
+      function showMore() {
+        const hiddenRows = document.querySelectorAll("#total .extra-row");
+
+        hiddenRows.forEach((row) => {
+          row.style.display = "table-row";
+        });
+
+        document.getElementById("seeMoreBtn").style.display = "none";
+      }
+
+      function toggle(id) {
+        const dropdowns = document.querySelectorAll(".dropdown");
+
+        // Hide all tables
+        dropdowns.forEach((item) => {
+          item.style.display = "none";
+        });
+
+        // Show selected table
+        const selected = document.getElementById(id);
+        selected.style.display = "block";
+
+        // Move selected table below cards
+        const salesSection = document.querySelector(".sales-section");
+        const chartBox = document.querySelector("#chart").parentElement;
+
+        salesSection.insertBefore(selected, chartBox);
+      }
+
+      new Chart(document.getElementById("chart"), {
+        type: "bar",
+        data: {
+          labels: ["Last Month", "Current Month", "Pending"],
+          datasets: [
+            {
+              data: [35000, 18500, 7200],
+              backgroundColor: ["#66bb6a", "#2e7d32", "#ffa726"],
+            },
+          ],
+        },
+        options: {
+          plugins: { legend: { display: false } },
+          scales: { y: { beginAtZero: true } },
+        },
+      });
     </script>
-
-</body>
-
+  </body>
 </html>

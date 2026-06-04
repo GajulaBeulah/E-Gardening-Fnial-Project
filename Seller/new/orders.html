@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <title>Orders Dashboard</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <link rel="stylesheet" href="../../header.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
@@ -13,15 +14,16 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: Arial;
+            font-family: Arial, sans-serif;
         }
 
         body {
             background: #f4f6f8;
         }
 
+        /* HEADER */
         header {
-          background-color: #0b140c;
+            background-color: #0b140c;
             color: #fff;
             padding: 15px 40px;
             display: flex;
@@ -49,12 +51,14 @@
             color: #c8e6c9;
         }
 
+        /* SECTION */
         .orders-section {
             padding: 50px 40px;
             max-width: 1200px;
             margin: auto;
         }
 
+        /* CARDS */
         .orders-cards {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
@@ -67,8 +71,13 @@
             padding: 30px;
             border-radius: 12px;
             text-align: center;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
             cursor: pointer;
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+            transition: transform 0.2s;
+        }
+
+        .orders-card:hover {
+            transform: translateY(-2px);
         }
 
         .orders-card p {
@@ -77,15 +86,62 @@
             font-weight: bold;
         }
 
+        /* DROPDOWN */
         .dropdown {
             display: none;
             background: #fff;
             padding: 20px;
             border-radius: 12px;
             margin-bottom: 30px;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
         }
 
+        /* TABLE */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+
+        th, td {
+            padding: 10px;
+            border: 1px solid #ccc;
+            text-align: center;
+        }
+
+        th {
+            background: #2e7d32;
+            color: #fff;
+        }
+
+        /* COLLAPSED ROW */
+        .collapsed-row {
+            display: none;
+        }
+
+        /* VIEW / SEE MORE BUTTONS */
+        .view-btn {
+            padding: 6px 12px;
+            background: #2e7d32;
+            border: none;
+            color: white;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: bold;
+            font-size: 13px;
+            transition: background 0.2s;
+        }
+
+        .view-btn:hover {
+            background: #1b5e20;
+        }
+
+        /* PENDING FILTER */
         .pending-filter {
             display: flex;
             gap: 10px;
@@ -101,6 +157,11 @@
             color: #2e7d32;
             cursor: pointer;
             font-weight: bold;
+            transition: background 0.2s, color 0.2s;
+        }
+
+        .filter-btn:hover {
+            background: #e8f5e9;
         }
 
         .filter-btn.active {
@@ -114,43 +175,131 @@
             color: #555;
         }
 
-        table {
-            width: 100%;
-            border-collapse: collapse;
-        }
-
-        th,
-        td {
-            padding: 10px;
-            border: 1px solid #ccc;
-            text-align: center;
-        }
-
-        th {
-            background: #2e7d32;
-            color: #fff;
-        }
-
+        /* ANALYTICS */
         .analytics {
             background: #fff;
             padding: 30px;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+            margin-top: 30px;
         }
 
+        /* FOOTER styles directly from snippet */
         footer {
             background: green;
             color: white;
             text-align: center;
             padding: 20px;
             margin-top: 40px;
+            margin-bottom: 0px;
+        }
+
+        .footer {
+          background-color: #2e7d32;
+          color: #fff;
+          padding: 40px 20px 10px;
+          font-family: Arial, sans-serif;
+        }
+
+        .footer-container {
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: space-between;
+        }
+
+        .footer-section {
+          width: 22%;
+          margin-bottom: 20px;
+        }
+
+        .footer-section h3 {
+          margin-bottom: 15px;
+          font-size: 18px;
+        }
+
+        .footer-section p,
+        .footer-section ul {
+          font-size: 14px;
+          line-height: 1.6;
+        }
+
+        .footer-section ul {
+          list-style: none;
+          padding: 0;
+        }
+
+        .footer-section ul li {
+          margin-bottom: 8px;
+        }
+
+        .footer-section ul li a {
+          color: #c8e6c9;
+          text-decoration: none;
+        }
+
+        .footer-section ul li a:hover {
+          text-decoration: underline;
+        }
+
+        .social-icons a {
+          margin-right: 10px;
+          font-size: 20px;
+          text-decoration: none;
+          color: #fff;
         }
 
         .footer-bottom {
-            text-align: center;
+          text-align: center;
+          border-top: 1px solid #a5d6a7;
+          margin-top: 20px;
+          padding-top: 10px;
+          font-size: 14px;
+        }
+
+        /* MODAL */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.6);
+            justify-content: center;
+            align-items: center;
+            z-index: 999;
+        }
+
+        .modal-content {
+            background: white;
+            padding: 25px;
+            border-radius: 12px;
+            width: 420px;
+            max-width: 90%;
+            text-align: left;
+        }
+
+        .close {
+            float: right;
+            font-size: 22px;
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .modal-content p {
+            margin: 6px 0;
             font-size: 14px;
-            border-top: 1px solid #333;
-            padding-top: 15px;
+            line-height: 1.4;
+        }
+
+        .modal-content ul {
+            margin-top: 10px;
+            padding-left: 20px;
+            font-size: 14px;
+        }
+
+        .modal-content ul li {
+            margin-bottom: 4px;
         }
 
         /* Tablet (max-width: 992px) */
@@ -162,6 +311,10 @@
 
             .orders-section {
                 padding: 30px 20px;
+            }
+            
+            .footer-container {
+                flex-direction: column;
             }
         }
 
@@ -210,45 +363,46 @@
             }
 
             footer {
+                margin-top: 80px;
                 padding: 15px;
-                font-size: 14px;
             }
-        }</style>
+        }
+    </style>
 </head>
 
 <body>
 
- <header>
-    <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-    <nav>
-        <ul>
-             <li><a href="./sellerdashboard.html">Home</a></li>
-            <li><a href="./sales.html">Sales</a></li>
-            <li><a href="./orders.html">Orders</a></li>
-            <li><a href="./product.html">Products</a></li>
-            <li><a href="./profile.html">Profile</a></li>
-            <li><a href="../selllogin.html" onclick="logout()">Logout</a></li>
-        </ul>
-    </nav>
-</header>
+    <header>
+        <h1 class="logo">🌿 Garden Seller Dashboard</h1>
+        <nav>
+            <ul>
+                <li><a href="./sellerdashboard.html">Home</a></li>
+                <li><a href="./sales.html">Sales</a></li>
+                <li><a href="./orders.html">Orders</a></li>
+                <li><a href="./product.html">Products</a></li>
+                <li><a href="./profile.html">Profile</a></li>
+                <li><a href="../selllogin.html">Logout</a></li>
+            </ul>
+        </nav>
+    </header>
 
     <section class="orders-section">
 
-        <h2 style="text-align:center;margin-bottom:30px;">Orders Overview 📦</h2>
+        <h2 style="text-align:center;margin-bottom:30px;">Orders Overview</h2>
 
         <div class="orders-cards">
 
-            <div class="orders-card" onclick="showDropdown('total')">
+            <div class="orders-card active-card" id="card-total" onclick="showDropdown('total')">
                 <h3>Total Orders</h3>
                 <p>320</p>
             </div>
 
-            <div class="orders-card" onclick="showDropdown('current')">
+            <div class="orders-card" id="card-current" onclick="showDropdown('current')">
                 <h3>Current Orders</h3>
                 <p>45</p>
             </div>
 
-            <div class="orders-card" onclick="showDropdown('pending')">
+            <div class="orders-card" id="card-pending" onclick="showDropdown('pending')">
                 <h3>Pending Orders</h3>
                 <p>12</p>
             </div>
@@ -256,289 +410,386 @@
         </div>
 
         <!-- TOTAL ORDERS -->
-        <div class="dropdown" id="total">
-            <h3>Total Orders Details</h3>
-            <table>
-                <tr>
-                    <th>Plant</th>
-                    <th>Customer</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Address</th>
-                    <th>Price ₹</th>
-                </tr>
-
-                <tr>
-                    <td>Rose</td>
-                    <td>Ravi</td>
-                    <td>01-03-2026</td>
-                    <td>10:30 AM</td>
-                    <td>Hyderabad</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <td>Tulsi</td>
-                    <td>Anjali</td>
-                    <td>02-03-2026</td>
-                    <td>11:00 AM</td>
-                    <td>Chennai</td>
-                    <td>300</td>
-                </tr>
-                <tr>
-                    <td>Aloe Vera</td>
-                    <td>Suresh</td>
-                    <td>03-03-2026</td>
-                    <td>12:00 PM</td>
-                    <td>Bangalore</td>
-                    <td>400</td>
-                </tr>
-                <tr>
-                    <td>Mango</td>
-                    <td>Kiran</td>
-                    <td>04-03-2026</td>
-                    <td>01:00 PM</td>
-                    <td>Delhi</td>
-                    <td>900</td>
-                </tr>
-                <tr>
-                    <td>Neem</td>
-                    <td>Priya</td>
-                    <td>05-03-2026</td>
-                    <td>02:30 PM</td>
-                    <td>Mumbai</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>Bamboo</td>
-                    <td>Rahul</td>
-                    <td>06-03-2026</td>
-                    <td>03:00 PM</td>
-                    <td>Pune</td>
-                    <td>700</td>
-                </tr>
-                <tr>
-                    <td>Money Plant</td>
-                    <td>Divya</td>
-                    <td>07-03-2026</td>
-                    <td>04:00 PM</td>
-                    <td>Vizag</td>
-                    <td>350</td>
-                </tr>
-                <tr>
-                    <td>Cactus</td>
-                    <td>Arun</td>
-                    <td>08-03-2026</td>
-                    <td>05:00 PM</td>
-                    <td>Kolkata</td>
-                    <td>150</td>
-                </tr>
-                <tr>
-                    <td>Hibiscus</td>
-                    <td>Meena</td>
-                    <td>09-03-2026</td>
-                    <td>06:00 PM</td>
-                    <td>Jaipur</td>
-                    <td>450</td>
-                </tr>
-                <tr>
-                    <td>Lavender</td>
-                    <td>Vikram</td>
-                    <td>10-03-2026</td>
-                    <td>07:00 PM</td>
-                    <td>Goa</td>
-                    <td>600</td>
-                </tr>
-
-            </table>
+        <div class="dropdown" id="total" style="display: block;">
+            <h3 style="margin-bottom:15px;color:#2e7d32;">Total Orders Details</h3>
+            <div class="table-responsive">
+                <table id="total-table">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Mobile No</th>
+                            <th>Email</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Total Price ₹</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="text-align: left; margin-top: 15px;">
+                <button type="button" class="view-btn" onclick="toggleTableRows('total', this)" data-expanded="false">See More</button>
+            </div>
         </div>
 
         <!-- CURRENT ORDERS -->
         <div class="dropdown" id="current">
-            <h3>Current Orders</h3>
-            <table>
-                <tr>
-                    <th>Plant</th>
-                    <th>Customer</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Address</th>
-                    <th>Price ₹</th>
-                </tr>
-
-                <tr>
-                    <td>Rose</td>
-                    <td>Karthik</td>
-                    <td>20-03-2026</td>
-                    <td>10:00 AM</td>
-                    <td>Hyderabad</td>
-                    <td>500</td>
-                </tr>
-                <tr>
-                    <td>Tulsi</td>
-                    <td>Swathi</td>
-                    <td>21-03-2026</td>
-                    <td>11:30 AM</td>
-                    <td>Chennai</td>
-                    <td>250</td>
-                </tr>
-                <tr>
-                    <td>Aloe</td>
-                    <td>Ramesh</td>
-                    <td>22-03-2026</td>
-                    <td>12:30 PM</td>
-                    <td>Bangalore</td>
-                    <td>300</td>
-                </tr>
-                <tr>
-                    <td>Mango</td>
-                    <td>Teja</td>
-                    <td>23-03-2026</td>
-                    <td>01:30 PM</td>
-                    <td>Delhi</td>
-                    <td>900</td>
-                </tr>
-                <tr>
-                    <td>Neem</td>
-                    <td>Latha</td>
-                    <td>24-03-2026</td>
-                    <td>02:00 PM</td>
-                    <td>Mumbai</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>Bamboo</td>
-                    <td>Ajay</td>
-                    <td>25-03-2026</td>
-                    <td>03:30 PM</td>
-                    <td>Pune</td>
-                    <td>600</td>
-                </tr>
-
-            </table>
+            <h3 style="margin-bottom:15px;color:#2e7d32;">Current Orders Details</h3>
+            <div class="table-responsive">
+                <table id="current-table">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Mobile No</th>
+                            <th>Email</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Total Price ₹</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="text-align: left; margin-top: 15px;">
+                <button type="button" class="view-btn" onclick="toggleTableRows('current', this)" data-expanded="false">See More</button>
+            </div>
         </div>
 
         <!-- PENDING ORDERS -->
         <div class="dropdown" id="pending">
-            <h3>Pending Orders</h3>
+            <h3 style="margin-bottom:15px;color:#2e7d32;">Pending Orders Details</h3>
             <div class="pending-filter">
                 <button type="button" class="filter-btn active" data-range="month">This Month</button>
             </div>
             <div class="pending-info" id="pendingInfo">Showing pending orders for this month</div>
-            <table>
-                <tr>
-                    <th>Plant</th>
-                    <th>Customer</th>
-                    <th>Date</th>
-                    <th>Time</th>
-                    <th>Address</th>
-                    <th>Price ₹</th>
-                </tr>
-
-                <tr>
-                    <td>Rose</td>
-                    <td>Arjun</td>
-                    <td>28-03-2026</td>
-                    <td>10:00 AM</td>
-                    <td>Hyderabad</td>
-                    <td>200</td>
-                </tr>
-                <tr>
-                    <td>Tulsi</td>
-                    <td>Megha</td>
-                    <td>28-03-2026</td>
-                    <td>11:00 AM</td>
-                    <td>Chennai</td>
-                    <td>150</td>
-                </tr>
-                <tr>
-                    <td>Aloe</td>
-                    <td>Kishore</td>
-                    <td>29-03-2026</td>
-                    <td>12:00 PM</td>
-                    <td>Bangalore</td>
-                    <td>300</td>
-                </tr>
-                <tr>
-                    <td>Mango</td>
-                    <td>Anu</td>
-                    <td>29-03-2026</td>
-                    <td>01:00 PM</td>
-                    <td>Delhi</td>
-                    <td>500</td>
-                </tr>
-
-            </table>
+            
+            <div class="table-responsive">
+                <table id="pending-table">
+                    <thead>
+                        <tr>
+                            <th>Customer Name</th>
+                            <th>Mobile No</th>
+                            <th>Email</th>
+                            <th>Date</th>
+                            <th>Quantity</th>
+                            <th>Total Price ₹</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- Populated dynamically via JS -->
+                    </tbody>
+                </table>
+            </div>
+            
+            <div style="text-align: left; margin-top: 15px;">
+                <button type="button" class="view-btn" onclick="toggleTableRows('pending', this)" data-expanded="false">See More</button>
+            </div>
         </div>
 
         <!-- Chart -->
         <div class="analytics">
-            <h3 style="text-align:center;">Orders Analytics</h3>
+            <h3 style="text-align:center;margin-bottom:20px;color:#2e7d32;">Orders Analytics</h3>
             <canvas id="ordersChart"></canvas>
         </div>
 
     </section>
-      <!-- FOOTER -->
-  <footer class="footer">
-  <div class="footer-container">
 
-    <!-- About Section -->
-    <div class="footer-section">
-      <h3>Green Garden</h3>
-      <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-container">
+
+            <!-- About Section -->
+            <div class="footer-section">
+                <h3>Green Garden</h3>
+                <p>Your one-stop shop for plants, seeds, and gardening tools. Grow your dream garden with us.</p>
+            </div>
+
+            <!-- Quick Links -->
+            <div class="footer-section">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="./plantcare.html">Home</a></li>
+                    <li><a href="./decoserv.html">Decoration Services</a></li>
+                    <li><a href="./fruits.html">Plants</a></li>
+                    <li><a href="./contact.html">Contact</a></li>
+                </ul>
+            </div>
+
+            <!-- Contact Info -->
+            <div class="footer-section">
+                <h3>Contact</h3>
+                <p>Email: support@greengarden.com</p>
+                <p>Phone: +91 98765 43210</p>
+                <p>Location: Hyderabad, India</p>
+            </div>
+
+            <!-- Social Media -->
+            <div class="footer-section">
+                <h3>Follow Us</h3>
+                <div class="social-icons">
+                    <a href="#">🌱FaceBook</a>
+                    <a href="#">🌿Instagram</a>
+                    <a href="#">🌼YouTube</a>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom Line -->
+        <div class="footer-bottom">
+            <p>© 2026 Green Garden | All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <!-- MODAL -->
+    <div class="modal" id="modal" onclick="closeModalOutside(event)">
+        <div class="modal-content">
+            <span class="close" onclick="closeModal()">×</span>
+            <div id="modalBody"></div>
+        </div>
     </div>
-
-    <!-- Quick Links -->
-    <div class="footer-section">
-      <h3>Quick Links</h3>
-        <ul>
-        <li><a href="./plantcare.html">Home</a></li>
-        <li><a href="./decoserv.html">Decoration Services</a></li>
-        <li><a href="./fruits.html">Plants</a></li>
-        <li><a href="./contact.html">Contact</a></li>
-      </ul>
-    </div>
-
-    <!-- Contact Info -->
-    <div class="footer-section">
-      <h3>Contact</h3>
-      <p>Email: support@greengarden.com</p>
-      <p>Phone: +91 98765 43210</p>
-      <p>Location: Hyderabad, India</p>
-    </div>
-
-    <!-- Social Media -->
-    <div class="footer-section">
-      <h3>Follow Us</h3>
-      <div class="social-icons">
-        <a href="#">🌱FaceBook</a>
-        <a href="#">🌿Instagram</a>
-        <a href="#">🌼YouTube</a>
-      </div>
-    </div>
-
-  </div>
-
-  <!-- Bottom Line -->
-  <div class="footer-bottom">
-    <p>© 2026 Green Garden | All Rights Reserved</p>
-  </div>
-</footer>
 
     <script>
-        function showDropdown(id) {
-            document.querySelectorAll('.dropdown').forEach(d => d.style.display = "none");
-            document.getElementById(id).style.display = "block";
+        // Set limits for rendering
+        const INITIAL_LIMIT = 20;
+        const EXPANDED_LIMIT = 50;
+
+        // Data arrays initialized with your hardcoded values (Telugu names & standardized to Hyderabad colonies with H.Nos)
+        const initialTotalOrders = [
+            { name: 'Ravi', mobile: '9065784973', email: 'ravi@gmail.com', date: '01-03-2026', qty: 3, price: 450, address: 'H.No: 12-3-45, Green Park Colony, Hyderabad', detail: 'rose - 1 pc - ₹ 150, Jasmin - 1 pc - ₹ 100, sunflower - 1 pc - ₹ 200' },
+            { name: 'Anjali', mobile: '9845102345', email: 'anjali@gmail.com', date: '02-03-2026', qty: 4, price: 800, address: 'H.No: 8-2-120, Banjara Hills, Hyderabad', detail: 'Tulsi - 1 pc - ₹ 200, Aloe Vera - 1 pc - ₹ 200, Neem - 1 pc - ₹ 200, Cactus - 1 pc - ₹ 200' },
+            { name: 'Suresh', mobile: '7012345678', email: 'suresh@gmail.com', date: '03-03-2026', qty: 2, price: 600, address: 'H.No: 3-6-789, Kukatpally, Hyderabad', detail: 'Neem - 1 pc - ₹ 300, Cactus - 1 pc - ₹ 300' },
+            { name: 'Kiran', mobile: '8123456789', email: 'kiran@gmail.com', date: '04-03-2026', qty: 3, price: 900, address: 'H.No: 1-45, Begumpet, Hyderabad', detail: 'Mango - 1 pc - ₹ 400, Rose - 1 pc - ₹ 250, Tulsi - 1 pc - ₹ 250' },
+            { name: 'Priya', mobile: '9988776655', email: 'priya@gmail.com', date: '05-03-2026', qty: 1, price: 200, address: 'H.No: 4-82, Plot No: 82, Madhapur, Hyderabad', detail: 'Neem - 1 pc - ₹ 200' },
+            { name: 'Ramu', mobile: '9123456780', email: 'ramu@gmail.com', date: '06-03-2026', qty: 2, price: 700, address: 'H.No: 5-34/A, F-201, Shanti Vihar, Jubilee Hills, Hyderabad', detail: 'Bamboo - 1 pc - ₹ 400, Lavender - 1 pc - ₹ 300' },
+            { name: 'Divya', mobile: '8899001122', email: 'divya@gmail.com', date: '07-03-2026', qty: 1, price: 350, address: 'H.No: 15-2-4, Ameerpet, Hyderabad', detail: 'Money Plant - 1 pc - ₹ 350' },
+            { name: 'Venkat', mobile: '7766554433', email: 'venkat@gmail.com', date: '08-03-2026', qty: 1, price: 150, address: 'H.No: 2-12, A-12, Secunderabad, Hyderabad', detail: 'Cactus - 1 pc - ₹ 150' },
+            { name: 'Meena', mobile: '9444433333', email: 'meena@gmail.com', date: '09-03-2026', qty: 2, price: 450, address: 'H.No: 4-21, Gachibowli, Hyderabad', detail: 'Hibiscus - 1 pc - ₹ 250, Rose - 1 pc - ₹ 200' },
+            { name: 'Vikram', mobile: '9000088888', email: 'vikram@gmail.com', date: '10-03-2026', qty: 2, price: 600, address: 'H.No: 9-7, Hitech City, Hyderabad', detail: 'Lavender - 1 pc - ₹ 350, Aloe Vera - 1 pc - ₹ 250' }
+        ];
+
+        const initialCurrentOrders = [
+            { name: 'Karthik', mobile: '9876543210', email: 'karthik@gmail.com', date: '20-03-2026', qty: 2, price: 500, address: 'H.No: 4-56/A, Jubilee Hills, Hyderabad', detail: 'Rose - 1 pc - ₹ 300, Tulsi - 1 pc - ₹ 200' },
+            { name: 'Swathi', mobile: '9998887776', email: 'swathi@gmail.com', date: '21-03-2026', qty: 1, price: 250, address: 'H.No: 2-104/5, Flat 104, Green Meadows, Banjara Hills, Hyderabad', detail: 'Tulsi - 1 pc - ₹ 250' },
+            { name: 'Ramesh', mobile: '8887776665', email: 'ramesh@gmail.com', date: '22-03-2026', qty: 1, price: 300, address: 'H.No: 6-89, Kukatpally, Hyderabad', detail: 'Aloe - 1 pc - ₹ 300' },
+            { name: 'Teja', mobile: '7776665554', email: 'teja@gmail.com', date: '23-03-2026', qty: 3, price: 900, address: 'H.No: 8-5/B, Flat 5, Gachibowli, Hyderabad', detail: 'Mango - 1 pc - ₹ 500, Rose - 1 pc - ₹ 200, Bamboo - 1 pc - ₹ 200' },
+            { name: 'Latha', mobile: '6665554443', email: 'latha@gmail.com', date: '24-03-2026', qty: 1, price: 200, address: 'H.No: 3-12, Block C, Madhapur, Hyderabad', detail: 'Neem - 1 pc - ₹ 200' },
+            { name: 'Ajay', mobile: '9555444332', email: 'ajay@gmail.com', date: '25-03-2026', qty: 2, price: 600, address: 'H.No: 1-42, Plot 42, Jubilee Hills, Hyderabad', detail: 'Bamboo - 1 pc - ₹ 350, Money Plant - 1 pc - ₹ 250' }
+        ];
+
+        const initialPendingOrders = [
+            { name: 'Arjun', mobile: '9444555666', email: 'arjun@gmail.com', date: '28-03-2026', qty: 1, price: 200, address: 'H.No: 10-34, Gachibowli, Hyderabad', detail: 'Rose - 1 pc - ₹ 200' },
+            { name: 'Megha', mobile: '9333444555', email: 'megha@gmail.com', date: '28-03-2026', qty: 1, price: 150, address: 'H.No: 8-4, No. 4, Banjara Hills, Hyderabad', detail: 'Tulsi - 1 pc - ₹ 150' },
+            { name: 'Kishore', mobile: '9222333444', email: 'kishore@gmail.com', date: '29-03-2026', qty: 1, price: 300, address: 'H.No: 11-5, Block D, Kukatpally, Hyderabad', detail: 'Aloe - 1 pc - ₹ 300' },
+            { name: 'Anu', mobile: '9111222333', email: 'anu@gmail.com', date: '29-03-2026', qty: 2, price: 500, address: 'H.No: 18-9/A, Gachibowli, Hyderabad', detail: 'Mango - 1 pc - ₹ 350, Aloe - 1 pc - ₹ 150' }
+        ];
+
+        // Dynamic Generator to generate entries up to target count (Strictly Telugu names, H.Nos in Hyderabad)
+        function generateRemainingOrders(initialList, targetCount) {
+            const list = [...initialList];
+            const customerNames = [
+                'Anand', 'Srinivas', 'Vijay Kumar', 'Sravanthi', 'Venkatesh', 'Harini', 'Pawan', 'Sireesha', 'Jyothi', 'Sai Kiran', 
+                'Lalitha', 'Murali', 'Raju', 'Lakshmi', 'Ramesh', 'Saritha', 'Kavitha', 'Prasad', 'Sandhya', 'Krishna', 
+                'Radha', 'Hari', 'Sekhar', 'Venu', 'Madhu', 'Sreedhar', 'Pranathi', 'Bhaskar', 'Gopal', 'Rajesh'
+            ];
+            const plantNames = ['Rose', 'Tulsi', 'Aloe Vera', 'Mango', 'Neem', 'Bamboo', 'Money Plant', 'Cactus', 'Hibiscus', 'Lavender', 'Jasmine', 'Sunflower'];
+            const hyderabadColonies = ['Banjara Hills', 'Jubilee Hills', 'Gachibowli', 'Kukatpally', 'Madhapur', 'Ameerpet', 'Secunderabad', 'Begumpet', 'Green Park Colony', 'Hitech City', 'Kondapur', 'Manikonda', 'Miyapur', 'Nampally'];
+
+            for (let i = list.length; i < targetCount; i++) {
+                const name = customerNames[i % customerNames.length] + ' ' + String.fromCharCode(65 + (i % 26));
+                const mobile = '98' + String(10000000 + i * 23).substring(0, 8);
+                const email = name.toLowerCase().replace(' ', '') + '@gmail.com';
+                
+                // Distribute dates in March 2026
+                const dayNum = 1 + (i % 28);
+                const day = String(dayNum).padStart(2, '0');
+                const date = `${day}-03-2026`;
+
+                const qty = 1 + (i % 4);
+                
+                let detailItems = [];
+                let priceSum = 0;
+                for (let q = 0; q < qty; q++) {
+                    const plant = plantNames[(i + q) % plantNames.length];
+                    const pPrice = 100 + ((i + q) % 5) * 50; // ₹100, 150, 200, 250, 300
+                    priceSum += pPrice;
+                    detailItems.push(`${plant} - 1 pc - ₹ ${pPrice}`);
+                }
+                
+                const price = priceSum;
+                const colony = hyderabadColonies[i % hyderabadColonies.length];
+                
+                // Generate a realistic Hyderabad house number format like H.No: 1-12/A, 12-45/3/B
+                const majorNo = 1 + (i % 16);
+                const minorNo = 1 + (i % 50);
+                const subLetter = i % 10 ? String.fromCharCode(65 + (i % 4)) : String(1 + (i % 9));
+                const houseNo = `H.No: ${majorNo}-${minorNo}/${subLetter}`;
+                
+                const address = `${houseNo}, Street ${1 + (i % 12)}, ${colony}, Hyderabad`;
+                const detail = detailItems.join(', ');
+
+                list.push({ name, mobile, email, date, qty, price, address, detail });
+            }
+            return list;
         }
 
-        document.querySelectorAll('.filter-btn').forEach(button => {
-            button.addEventListener('click', function() {
-                document.querySelectorAll('.filter-btn').forEach(btn => btn.classList.remove('active'));
-                this.classList.add('active');
-                const info = document.getElementById('pendingInfo');
-                info.textContent = 'Showing pending orders for this month';
+        // Full datasets
+        const allOrders = {
+            'total': generateRemainingOrders(initialTotalOrders, 320),
+            'current': generateRemainingOrders(initialCurrentOrders, 45),
+            'pending': generateRemainingOrders(initialPendingOrders, 12)
+        };
+
+        // Render function to populate tables dynamically
+        function renderTable(type, limit = INITIAL_LIMIT) {
+            const tbody = document.querySelector(`#${type}-table tbody`);
+            const data = allOrders[type];
+            const itemsToShow = limit ? data.slice(0, limit) : data;
+            
+            let html = "";
+            itemsToShow.forEach(order => {
+                html += `
+                    <tr>
+                        <td>${order.name}</td>
+                        <td>${order.mobile}</td>
+                        <td>${order.email}</td>
+                        <td>${order.date}</td>
+                        <td>${order.qty}</td>
+                        <td>${order.price}</td>
+                        <td>
+                            <button class="view-btn" onclick="openView(this)"
+                                data-customer="${order.name}"
+                                data-mobile="${order.mobile}"
+                                data-email="${order.email}"
+                                data-date="${order.date}"
+                                data-qty="${order.qty}"
+                                data-price="${order.price}"
+                                data-address="${order.address}"
+                                data-plants-detail="${order.detail}">
+                                View
+                            </button>
+                        </td>
+                    </tr>
+                `;
             });
+            tbody.innerHTML = html;
+
+            // Hide the See More button container if the total dataset size is within the initial rendering limit (20)
+            const buttonContainer = document.querySelector(`#${type} .view-btn[onclick*="toggleTableRows"]`).parentElement;
+            if (data.length <= INITIAL_LIMIT) {
+                buttonContainer.style.display = "none";
+            } else {
+                buttonContainer.style.display = "block";
+            }
+        }
+
+        // Initial render on page load: Shows first 20 entries
+        window.onload = function() {
+            renderTable('total', INITIAL_LIMIT);
+            renderTable('current', INITIAL_LIMIT);
+            renderTable('pending', INITIAL_LIMIT);
+        };
+
+        // Tab switching and active class highlight on cards
+        function showDropdown(id) {
+            // Hide all tables
+            document.querySelectorAll('.dropdown').forEach(d => d.style.display = "none");
+            
+            // Show requested table
+            document.getElementById(id).style.display = "block";
+            
+            // Remove active classes on all cards
+            document.querySelectorAll('.orders-card').forEach(card => card.classList.remove('active-card'));
+            
+            // Add active class to clicked card
+            document.getElementById('card-' + id).classList.add('active-card');
+        }
+
+        // See More / See Less Toggle handler
+        function toggleTableRows(type, btn) {
+            const isExpanded = btn.dataset.expanded === "true";
+            if (isExpanded) {
+                // Collapse rows back to initial limit (20)
+                renderTable(type, INITIAL_LIMIT);
+                btn.textContent = "See More";
+                btn.dataset.expanded = "false";
+            } else {
+                // Expand table to display expanded limit (50)
+                renderTable(type, EXPANDED_LIMIT);
+                btn.textContent = "See Less";
+                btn.dataset.expanded = "true";
+            }
+        }
+
+        // Pending filter active toggler
+        document.querySelectorAll('.filter-btn').forEach(button => {
+            if (!button.onclick) { // Avoid binding on toggleTableRows buttons
+                button.addEventListener('click', function() {
+                    document.querySelectorAll('.pending-filter .filter-btn').forEach(btn => btn.classList.remove('active'));
+                    this.classList.add('active');
+                    const info = document.getElementById('pendingInfo');
+                    info.textContent = 'Showing pending orders for this month';
+                });
+            }
         });
 
+        // Open detailed view modal with dynamic values matching exact format
+        function openView(btn) {
+            const customer = btn.dataset.customer;
+            const mobile = btn.dataset.mobile;
+            const email = btn.dataset.email;
+            const date = btn.dataset.date;
+            const qty = btn.dataset.qty;
+            const price = btn.dataset.price;
+            const address = btn.dataset.address;
+            const plantDetailsRaw = btn.dataset.plantsDetail.split(",");
+
+            let plantList = "";
+            for (let i = 0; i < plantDetailsRaw.length; i++) {
+                plantList += `<li>${plantDetailsRaw[i].trim()}</li>`;
+            }
+
+            document.getElementById("modalBody").innerHTML = `
+                <h3>Order Details</h3><br>
+
+                <p><b>Customer name:</b> ${customer}</p>
+                <p><b>Email:</b> ${email}</p>
+                <p><b>Address:</b> ${address}</p>
+                <p><b>Mobile No:</b> ${mobile}</p>
+                <p><b>Date:</b> ${date}</p>
+                <p><b>Total price:</b> ₹${price}</p>
+                <p><b>Quantity:</b> ${qty}</p>
+
+                <br>
+                <p><b>Plants List:</b></p>
+                <ul>${plantList}</ul>
+            `;
+
+            document.getElementById("modal").style.display = "flex";
+        }
+
+        // Close detailed view modal
+        function closeModal() {
+            document.getElementById("modal").style.display = "none";
+        }
+
+        // Close detailed view modal when clicked outside content
+        function closeModalOutside(event) {
+            if (event.target === document.getElementById("modal")) {
+                closeModal();
+            }
+        }
+
+        // Chart.js with reference code colors
         new Chart(document.getElementById('ordersChart'), {
             type: 'bar',
             data: {
@@ -548,7 +799,18 @@
                     backgroundColor: ['#66bb6a', '#2e7d32', '#ffa726']
                 }]
             },
-            options: { plugins: { legend: { display: false } }, scales: { y: { beginAtZero: true } } }
+            options: { 
+                plugins: { 
+                    legend: { 
+                        display: false 
+                    } 
+                }, 
+                scales: { 
+                    y: { 
+                        beginAtZero: true 
+                    } 
+                } 
+            }
         });
     </script>
 
