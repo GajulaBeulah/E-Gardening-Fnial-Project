@@ -607,12 +607,38 @@ footer p {
     }
 
     .cards {
-        margin: 15px;
+        margin: 10px;
+        gap: 12px;
+        justify-content: center;
     }
 
     .card {
-        width: 90%;
-        height: 320px;
+        width: calc(50% - 6px);
+        height: 260px;
+    }
+
+    .card-content {
+        padding: 10px;
+    }
+
+    .icon {
+        font-size: 30px;
+        margin-bottom: 8px;
+    }
+
+    .card h3 {
+        font-size: 16px;
+        margin-bottom: 5px;
+    }
+
+    .card p {
+        font-size: 12px;
+        margin-bottom: 8px;
+    }
+
+    .card ul li {
+        font-size: 11px;
+        margin: 4px 0;
     }
 
     .box {

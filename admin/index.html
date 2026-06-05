@@ -328,36 +328,6 @@ padding:15px;
 font-size:14px;
 }
 
-
-
-
-@media(max-width: 768px){
-    header{
-        flex-direction: column;
-        gap: 15px;
-    }
-    
-    .menu-toggle{
-        display: block;
-    }
-    
-    #navbar{
-        display: none;
-        width: 100%;
-        flex-direction: column;
-        gap: 0;
-    }
-    
-    #navbar.active{
-        display: flex;
-    }
-    
-    .dropdown-menu{
-        position: static;
-        display: none;
-        background: #0d3f1f;
-    }
-}
 </style>
 </head>
 
@@ -366,12 +336,14 @@ font-size:14px;
         <div class="logo">🌿 Garden Admin</div>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         <nav id="navbar">
-            <a href="index.html"> Dashboard</a>
-            <a href="users.html"> Users</a>
-            <a href="sellers.html"> Sellers</a>
-            <a href="reports.html"> Reports</a>
-            <a href="plant-pedia.html"> Plants</a>
-             <li><a href="/E-Gardening-Fnial-Project/index.html" onclick="logout()">Logout</a></li>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="sellers.html">Sellers</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="plant-pedia.html">Plants</a></li>
+                <li><a href="../index.html" onclick="logout()">Logout</a></li>
+            </ul>
         </nav>
           
     </header>
@@ -508,6 +480,10 @@ font-size:14px;
 function toggleMenu() {
     const navbar = document.getElementById('navbar');
     navbar.classList.toggle('active');
+}
+
+function logout() {
+    alert("Logged out successfully");
 }
 </script>
 

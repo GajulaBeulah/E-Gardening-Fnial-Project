@@ -145,11 +145,24 @@
 
       footer {
         margin-top: auto;
-        background: #1e5631;
-        color: white;
-        text-align: center;
-        padding: 15px;
-        font-size: 14px;
+      }
+
+      /* Responsive Design */
+      @media (max-width: 768px) {
+        .checkout-container {
+          margin: 20px 10px;
+          padding: 20px;
+        }
+
+        .form-row {
+          flex-direction: column;
+          gap: 0;
+        }
+
+        .button-group {
+          flex-direction: column;
+          gap: 10px;
+        }
       }
       
     </style>

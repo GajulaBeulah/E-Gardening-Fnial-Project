@@ -176,12 +176,7 @@ body{
 
  /* Footer */
             footer {
-            background: green;
-            color: white;
-            text-align: center;
-            padding: 200px;
-            margin-top: 200px;
-          
+            margin-top: 40px;
         }
 
         
@@ -235,13 +230,15 @@ body{
                 padding: 15px;
                 font-size: 14px;
             }
-        }</style>
+        }
+        </style>
 </head>
 
 <body>
 <header>
     <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
         <ul>
             <li><a href="./sellerdashboard.html">Home</a></li>            
             <li><a href="./sales.html">Sales</a></li>
@@ -378,6 +375,10 @@ window.addEventListener('load', loadProducts);
 
 // Refresh products every 2 seconds to see updates
 setInterval(loadProducts, 2000);
+
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
 </script>
 
 <!-- FOOTER -->

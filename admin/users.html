@@ -203,11 +203,12 @@ nav li {
 /* ✅ Proper Footer */
 footer{
 margin-top:auto;
-background:#1e5631;
-color:white;
-text-align:center;
-padding:15px;
-font-size:14px;
+}
+
+.table-wrapper {
+    width: 100%;
+    overflow-x: auto;
+    margin-bottom: 25px;
 }
 
 /* Responsive */
@@ -217,7 +218,9 @@ font-size:14px;
         gap:10px;
         text-align:center;
     }
-    
+    .data-table {
+        min-width: 800px;
+    }
 }
 </style>
 </head>
@@ -227,12 +230,14 @@ font-size:14px;
         <div class="logo">🌿 Garden Admin</div>
         <button class="menu-toggle" onclick="toggleMenu()">☰</button>
         <nav id="navbar">
-            <a href="index.html"> Dashboard</a>
-            <a href="users.html"> Users</a>
-            <a href="sellers.html"> Sellers</a>
-            <a href="reports.html"> Reports</a>
-            <a href="plant-pedia.html"> Plants</a>
-                <li><a href="/E-Gardening-Fnial-Project/index.html" onclick="logout()">Logout</a></li>
+            <ul>
+                <li><a href="index.html">Dashboard</a></li>
+                <li><a href="users.html">Users</a></li>
+                <li><a href="sellers.html">Sellers</a></li>
+                <li><a href="reports.html">Reports</a></li>
+                <li><a href="plant-pedia.html">Plants</a></li>
+                <li><a href="../index.html" onclick="logout()">Logout</a></li>
+            </ul>
         </nav>
        
     </header>
@@ -249,6 +254,7 @@ font-size:14px;
         <button id="clearFilters" style="padding: 8px 16px; background: #666; color: white; border: none; border-radius: 4px; cursor: pointer;">Clear</button>
     </div>
 
+    <div class="table-wrapper">
     <table class="data-table">
         <thead>
             <tr>
@@ -360,6 +366,7 @@ font-size:14px;
             </tr>
         </tbody>
     </table>
+    </div>
 
 </div>
 
@@ -518,6 +525,15 @@ function deleteUser(button) {
         console.error('Error in deleteUser function:', error);
         alert('An error occurred while deleting the user. Please try again.');
     }
+}
+
+function toggleMenu() {
+    const navbar = document.getElementById('navbar');
+    navbar.classList.toggle('active');
+}
+
+function logout() {
+    alert("Logged out successfully");
 }
 
 // Add event listeners to buttons when page loads

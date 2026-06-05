@@ -206,6 +206,51 @@
       }
     }
 
+    @media(max-width:480px){
+      .card-container{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 12px;
+        padding: 0 10px 40px;
+      }
+      
+      .gallery{
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px;
+        padding: 0 10px 40px;
+      }
+      
+      .card img, .gallery img{
+        height: 140px;
+      }
+      
+      .card-content{
+        padding: 10px;
+      }
+      
+      .card-content h3{
+        font-size: 15px;
+        margin-bottom: 5px;
+      }
+      
+      .card-content p{
+        font-size: 13px;
+        line-height: 1.4;
+        margin-bottom: 10px;
+      }
+      
+      .card-actions{
+        flex-direction: column;
+        gap: 8px;
+        align-items: stretch;
+      }
+      
+      .card-actions .btn{
+        padding: 8px;
+        font-size: 13px;
+        text-align: center;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -416,6 +461,10 @@
     <p>© 2026 Green Garden | All Rights Reserved</p>
   </div>
 </footer>
-
+  <script>
+    function toggleMenu() {
+        document.getElementById("navbar").classList.toggle("active");
+    }
+  </script>
 </body>
 </html>

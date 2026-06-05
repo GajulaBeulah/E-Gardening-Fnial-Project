@@ -139,19 +139,8 @@
         }
 
         /* Footer */
-             footer {
-            background: green;
-            color:white;
-            text-align: center;
-            padding: 20px;
+        footer {
             margin-top: 150px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: 14px;
-            border-top: 1px solid #333;
-            padding-top: 15px;
         }
         /* RESPONSIVE DESIGN */
 
@@ -226,7 +215,8 @@
 <!-- Header -->
 <header>
     <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
         <ul>
              <li><a href="./sellerdashboard.html">Home</a></li>
             <li><a href="./sales.html">Sales</a></li>
@@ -416,6 +406,10 @@ document.getElementById('editForm').addEventListener('submit', function(e) {
         window.location.href = './product.html';
     }, 2000);
 });
+
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
 
 function goBack() {
     window.location.href = './product.html';

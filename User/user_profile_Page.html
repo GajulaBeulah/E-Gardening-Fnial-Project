@@ -124,6 +124,56 @@
     color: #4caf50;
     font-weight: bold;
 }
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .profile-container {
+        margin: 15px;
+        padding: 15px;
+    }
+    
+    .info-item {
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+    }
+    
+    .info-item label {
+        width: 100%;
+    }
+    
+    .info-item input {
+        width: 100%;
+    }
+    
+    .profile-tabs {
+        flex-wrap: wrap;
+        gap: 10px;
+    }
+    
+    .tab-button {
+        flex: 1 1 calc(50% - 10px);
+        margin: 0;
+        text-align: center;
+        padding: 8px 12px;
+    }
+    
+    .order-item, .wishlist-item {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 15px;
+    }
+    
+    .order-item img, .wishlist-item img {
+        width: 100%;
+        height: auto;
+        max-height: 200px;
+    }
+    
+    .order-details, .wishlist-details {
+        margin-left: 0;
+    }
+}
 </style>
 </head>
 <body>
@@ -539,6 +589,9 @@ window.onload = function() {
 }
 }
 
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
+}
  </script>
 <script src="../cart.js"></script>
 </body>

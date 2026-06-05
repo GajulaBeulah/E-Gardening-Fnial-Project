@@ -153,18 +153,7 @@
 
         /* Footer */
         footer {
-            background: green;
-            color: white;
-            text-align: center;
-            padding: 20px;
             margin-top: 40px;
-        }
-
-        .footer-bottom {
-            text-align: center;
-            font-size: 14px;
-            border-top: 1px solid #333;
-            padding-top: 15px;
         }
 
 
@@ -263,7 +252,8 @@
 <!-- Header -->
 <header>
     <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
         <ul>
             <li><a href="./sellerdashboard.html">Home</a></li>
             <li><a href="./sales.html">Sales</a></li>
@@ -487,6 +477,10 @@ document.getElementById('addForm').addEventListener('submit', function(e) {
 function showError() {
     document.getElementById('errorMsg').style.display = 'block';
     document.getElementById('successMsg').style.display = 'none';
+}
+
+function toggleMenu() {
+    document.getElementById("navbar").classList.toggle("active");
 }
 
 function goBack() {

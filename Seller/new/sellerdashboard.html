@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Seller Dashboard</title>
     <link rel="stylesheet" href="../../header.css">
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -23,12 +24,6 @@
             justify-content: space-between;
             align-items: center;
         }
-
-       /* .nav-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        } */
 
         .logo {
             font-size: 22px;
@@ -113,9 +108,16 @@
         }
 
         /* TABLE */
+        .table-responsive {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 15px;
+        }
+
         table {
             width: 100%;
             border-collapse: collapse;
+            min-width: 600px;
         }
 
         th {
@@ -146,10 +148,6 @@
 
         /* FOOTER */
         footer {
-            background: green;
-            color: white;
-            text-align: center;
-            padding: 20px;
             margin-top: 40px;
         }
         
@@ -221,7 +219,8 @@
 
    <header>
     <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-    <nav>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    <nav id="navbar">
         <ul>
              <li><a href="./sellerdashboard.html">Home</a></li>
             <li><a href="./sales.html">Sales</a></li>
@@ -274,24 +273,24 @@
         </div>
 
         <!-- TABLE -->
-        <!-- <div class="box" id="detailsBox" style="display:none;">
+        <div class="box" id="detailsBox" style="display:none;">
             <h3>Order Details</h3>
-
-            <table>
-                <tr>
-                    <th>Name</th>
-                    <th>Product</th>
-                    <th>Time</th>
-                    <th>Price</th>
-                    <th>Qty</th>
-                    <th>Tracking ID</th>
-                    <th>Address</th>
-                    <th>Action</th>
-                </tr>
-
-                <tbody id="detailsTable"></tbody>
-            </table>
-        </div> -->
+            <div class="table-responsive">
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Product</th>
+                        <th>Time</th>
+                        <th>Price</th>
+                        <th>Qty</th>
+                        <th>Tracking ID</th>
+                        <th>Address</th>
+                        <th>Action</th>
+                    </tr>
+                    <tbody id="detailsTable"></tbody>
+                </table>
+            </div>
+        </div>
 
     </div>
 
@@ -345,10 +344,10 @@
     <script>
 
         let orders = [
-            { name: "Jan", product: "Rose", time: "10AM", price: 20000, qty: 2, tracking: "TRK1", address: "Hyderabad", status: "Pending" },
-            { name: "Feb", product: "Tulsi", time: "11AM", price: 15000, qty: 1, tracking: "TRK2", address: "Chennai", status: "Delivered" },
-            { name: "March", product: "Lily", time: "12PM", price: 30000, qty: 3, tracking: "TRK3", address: "Delhi", status: "Pending" },
-            { name: "April", product: "Aloe", time: "1PM", price: 12000, qty: 1, tracking: "TRK4", address: "Mumbai", status: "Delivered" },
+            { name: "Jan", product: "Rose", time: "10AM", price: 200000, qty: 2, tracking: "TRK1", address: "Hyderabad", status: "Pending" },
+            { name: "Feb", product: "Tulsi", time: "11AM", price: 120000, qty: 1, tracking: "TRK2", address: "Chennai", status: "Delivered" },
+            { name: "March", product: "Lily", time: "12PM", price: 180000, qty: 3, tracking: "TRK3", address: "Delhi", status: "Pending" },
+            { name: "April", product: "Aloe", time: "1PM", price: 60000, qty: 1, tracking: "TRK4", address: "Mumbai", status: "Delivered" },
             { name: "may", product: "Cactus", time: "2PM", price: 18000, qty: 2, tracking: "TRK5", address: "Pune", status: "Pending" },
             { name: "June", product: "Jasmine", time: "3PM", price: 22000, qty: 2, tracking: "TRK6", address: "Bangalore", status: "Delivered" },
             { name: "July", product: "Bonsai", time: "4PM", price: 50000, qty: 1, tracking: "TRK7", address: "Kolkata", status: "Pending" },
@@ -497,6 +496,10 @@ statusChart = new Chart(document.getElementById("statusChart"), {
             showOrders("all");
         }
 
+
+        function toggleMenu() {
+            document.getElementById("navbar").classList.toggle("active");
+        }
 
         function logout() {
             alert("Logged out!");

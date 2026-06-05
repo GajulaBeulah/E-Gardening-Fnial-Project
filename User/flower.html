@@ -3,6 +3,7 @@
 
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Plant Product Card</title>
         <link rel="stylesheet" href="../header.css">
             <script src="./addtocard.js"></script>
@@ -30,11 +31,10 @@
             min-height: 170px;
             border: 2px solid rgb(115, 9, 110);
             border-radius: 10px;
-              box-shadow: 3px 3px rgb(39, 39, 39);
-            padding:10px;
-            box-shadow: 6px 6px 10 px gray;
+            padding: 10px;
+            box-shadow: 6px 6px 10px rgba(0, 0, 0, 0.15);
             padding-bottom: 1px;
-
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
 
         .card img {
@@ -95,7 +95,22 @@
         .add-cart {
             background: #5f0e85;
             color: #fff;
-            
+            width: 85%;
+            max-width: 250px;
+            margin-top: 15px;
+            margin-bottom: 15px;
+            padding: 10px;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 10px;
+            border: none;
+            cursor: pointer;
+            transition: background 0.3s ease, transform 0.2s ease;
+        }
+
+        .add-cart:hover {
+            background: #450a63;
+            transform: scale(1.05);
         }
 
         .flex {
@@ -119,8 +134,9 @@
             text-align: center;
             background-color: #5f0e85;
         }
-        .card:hover{
-            transform: scale(1.1);
+        .card:hover {
+            transform: scale(1.05);
+            box-shadow: 8px 8px 15px rgba(0,0,0,0.25);
         }
         /* Large tablets */
 @media (max-width: 1024px) {
@@ -156,13 +172,16 @@
 /* Mobile */
 @media (max-width: 480px) {
     .flex {
-        grid-template-columns: 1fr;
-        padding: 15px;
+        grid-template-columns: repeat(2, 1fr);
+        padding: 10px;
+        column-gap: 15px;
+        row-gap: 15px;
     }
 
     .card {
-        width: 95%;
-        margin: auto;
+        width: 100%;
+        margin: 0;
+        padding: 8px;
     }
 
     .head {
@@ -245,7 +264,7 @@ footer {
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 30 days</div>
 
-                <button class="add-cart" style="margin-top: 20px; width: 200px; margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
             </div>
         </div>
 
@@ -253,8 +272,8 @@ footer {
         <!-- CARD 1 -->
         <div class="card">
            <a href="/day1/flow2.html"> <img src="https://plantskingdom.in/cdn/shop/files/adarna_-1.jpg?v=1720273683&width=823" style="height: 190px;">
-            <div class="card-content" ></a>
-
+           </a>
+            <div class="card-content">
                 <div class="title">ADARNA THAI BOUGAINVILLEA FLOWER PLANT</div>
 
                 <div class="price">₹399</div>
@@ -262,13 +281,10 @@ footer {
                 <div class="rating">★★★★☆</div>
                 <div class="reviews">995 Reviews</div>
 
-
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 10 days</div>
 
-                <button class="add-cart" style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
-             
-
+                <button class="add-cart">Add to Cart</button>
             </div>
         </div>
 
@@ -276,20 +292,18 @@ footer {
         <div class="card">
            <a href="/day1/flow3.html"> <img
                 src="https://plantskingdom.in/cdn/shop/products/rose-maroon_400x_acbf71ed-4449-4f86-950d-b650746c982c.webp?v=1667670277"style="height: 190px;">
-            <div class="card-content"></a>
-
+           </a>
+            <div class="card-content">
                 <div class="title">Black Rose Plant for Sale </div>
                 <div class="price">₹459</div>
 
                 <div class="rating">★★★★☆</div>
                 <div class="reviews">672 Reviews</div>
 
-
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 10 days</div>
 
-
-                <button class="add-cart" style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>              
+                <button class="add-cart">Add to Cart</button>              
             </div>
         </div>
 
@@ -297,15 +311,15 @@ footer {
         <div class="card">
            <a href="/day1/flow4.html"><img
                 src="https://plantskingdom.in/cdn/shop/products/ROSE1_496cc553-ab65-4395-b0e1-4d1bb422eaa1.jpg?v=1658737219">
-            <div class="card-content"></a>
-
+           </a>
+            <div class="card-content">
                 <div class="title">Rose Plant</div>
                 <div class="price">₹369</div>
                 <div class="rating">★★★★☆</div>
                 <div class="reviews">19 Reviews</div>
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 15 days</div>
-                <button class="add-cart" style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
             </div>
         </div>
         <!-- CARD 4 -->
@@ -323,7 +337,7 @@ footer {
                 <div class="sold">⚡ Sold in 15 days</div>
 
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                 
             </div>
         </div>
@@ -344,7 +358,7 @@ footer {
                 <div class="sold">⚡ Sold in 15 days</div>
 
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
               
             </div>
 
@@ -364,7 +378,7 @@ footer {
                 <div class="sold">⚡ Sold in 15 days</div>
 
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                
             </div>
         </div>
@@ -385,7 +399,7 @@ footer {
                     <div class="sold">⚡ Sold in 15 days</div>
 
 
-                    <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                    <button class="add-cart">Add to Cart</button>
                    
                 </div>
             </div>
@@ -407,7 +421,7 @@ footer {
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 10 days</div>
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                 
 
             </div>
@@ -429,7 +443,7 @@ footer {
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 24 days</div>
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                 
             </div>
         </div>
@@ -450,7 +464,7 @@ footer {
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 15 days</div>
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                 
 
             </div>
@@ -472,7 +486,7 @@ footer {
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 19 days</div>
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                
             </div>
         </div>
@@ -493,7 +507,7 @@ footer {
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 26 days</div>
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                 
             </div>
         </div>
@@ -513,7 +527,7 @@ footer {
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 12 days</div>
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                
             </div>
         </div>
@@ -533,7 +547,7 @@ footer {
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 12 days</div>
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                
             </div>
         </div>
@@ -548,13 +562,13 @@ footer {
                 <div class="price">₹599</div>
 
                 <div class="rating">★★★★☆</div>
-                <div class="reviews">23Reviews</div>
+                <div class="reviews">23 Reviews</div>
 
 
                 <div class="offer">🎁 Offers Inside</div>
                 <div class="sold">⚡ Sold in 18 days</div>
 
-                <button class="add-cart"style="margin-top: 20px; width: 200px;margin-bottom: 30px;">Add to Cart</button>
+                <button class="add-cart">Add to Cart</button>
                 
             </div>
         </div>

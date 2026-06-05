@@ -184,76 +184,8 @@
             margin-top: 30px;
         }
 
-        /* FOOTER styles directly from snippet */
         footer {
-            background: green;
-            color: white;
-            text-align: center;
-            padding: 20px;
             margin-top: 40px;
-            margin-bottom: 0px;
-        }
-
-        .footer {
-          background-color: #2e7d32;
-          color: #fff;
-          padding: 40px 20px 10px;
-          font-family: Arial, sans-serif;
-        }
-
-        .footer-container {
-          display: flex;
-          flex-wrap: wrap;
-          justify-content: space-between;
-        }
-
-        .footer-section {
-          width: 22%;
-          margin-bottom: 20px;
-        }
-
-        .footer-section h3 {
-          margin-bottom: 15px;
-          font-size: 18px;
-        }
-
-        .footer-section p,
-        .footer-section ul {
-          font-size: 14px;
-          line-height: 1.6;
-        }
-
-        .footer-section ul {
-          list-style: none;
-          padding: 0;
-        }
-
-        .footer-section ul li {
-          margin-bottom: 8px;
-        }
-
-        .footer-section ul li a {
-          color: #c8e6c9;
-          text-decoration: none;
-        }
-
-        .footer-section ul li a:hover {
-          text-decoration: underline;
-        }
-
-        .social-icons a {
-          margin-right: 10px;
-          font-size: 20px;
-          text-decoration: none;
-          color: #fff;
-        }
-
-        .footer-bottom {
-          text-align: center;
-          border-top: 1px solid #a5d6a7;
-          margin-top: 20px;
-          padding-top: 10px;
-          font-size: 14px;
         }
 
         /* MODAL */
@@ -374,7 +306,8 @@
 
     <header>
         <h1 class="logo">🌿 Garden Seller Dashboard</h1>
-        <nav>
+        <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+        <nav id="navbar">
             <ul>
                 <li><a href="./sellerdashboard.html">Home</a></li>
                 <li><a href="./sales.html">Sales</a></li>
@@ -392,7 +325,7 @@
 
         <div class="orders-cards">
 
-            <div class="orders-card active-card" id="card-total" onclick="showDropdown('total')">
+            <div class="orders-card" id="card-total" onclick="showDropdown('total')">
                 <h3>Total Orders</h3>
                 <p>320</p>
             </div>
@@ -410,7 +343,7 @@
         </div>
 
         <!-- TOTAL ORDERS -->
-        <div class="dropdown" id="total" style="display: block;">
+        <div class="dropdown" id="total">
             <h3 style="margin-bottom:15px;color:#2e7d32;">Total Orders Details</h3>
             <div class="table-responsive">
                 <table id="total-table">
@@ -812,6 +745,10 @@
                 } 
             }
         });
+
+        function toggleMenu() {
+            document.getElementById("navbar").classList.toggle("active");
+        }
     </script>
 
 </body>
